@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <com.example.testpermission.ad.AutoHideHeaderLayout
+        android:id="@+id/sticky_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:scrollY="200dp">
+
+        <!--<com.example.testpermission.ad.MyAppBarLayout-->
+        <!--android:id="@+id/app_bar_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="600dp"-->
+        <!--android:background="#ff0000"-->
+        <!--app:layout_behavior="com.example.testpermission.ad.AppBarZoomBehavior">-->
+
+        <!--<com.example.testpermission.ad.HomeHeadAdView-->
+        <!--android:id="@+id/home_head_ad_view"-->
+        <!--android:background="#ff00ff"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:layout_scrollFlags="scroll|exitUntilCollapsed" />-->
+
+        <!--</com.example.testpermission.ad.MyAppBarLayout>-->
+
+
+        <com.example.testpermission.ad.MyHeader
+            android:id="@+id/my_header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+
+            app:layout_behavior=".ad.MyHeader$MyHeadBehavior">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="asdfasldfja sldfjas ldfja sdl afsd falsdkfj alsdkfj alsdkfj asldkfj asldfj asldfj asldfj asd fjas dfas dfj sdfasldfja sldfjas ldfja sdl afsd falsdkfj alsdkfj alsdkfj asldkfj asldfj asldfj asldfj asd fjas dfas dfj sdfasldfja sldfjas ldfja sdl afsd falsdkfj alsdkfj alsdkfj asldkfj asldfj asldfj asldfj asd fjas dfas dfj asdf asd fas dfa sdf asdf as df" />
+
+        </com.example.testpermission.ad.MyHeader>
+
+        <com.example.testpermission.MyRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            app:layout_behavior=".ad.MyHeader$MyScrollBehavior" />
+
+    </com.example.testpermission.ad.AutoHideHeaderLayout>
+
+
+</FrameLayout>

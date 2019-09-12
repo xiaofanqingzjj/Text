@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#000000">
+
+        <com.tencent.story.videoplayer.localscalablevideoview.ScalableVideoView
+            android:id="@+id/video_player"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.tencent.story.videoplayer.localscalablevideoview.controller.MediaController2
+            android:id="@+id/media_controller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!--<MediaController-->
+            <!--android:id="@+id/media_controlle2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+    </FrameLayout>
+
+    <com.example.test.DownloadButtom
+        android:id="@+id/btn_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WebView" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/discover_top_ad_bg_card_bg"
+        android:text="Leaks" />
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:animateLayoutChanges="true">-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn1"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="阅读"-->
+    <!--android:layout_weight="1"/>-->
+
+
+    <!--<Button-->
+    <!--android:id="@+id/btn2"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="下载"-->
+    <!--android:layout_weight="1"/>-->
+    <!--</LinearLayout>-->
+
+    <com.example.test.TestClipView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3300ff00" />
+</LinearLayout>

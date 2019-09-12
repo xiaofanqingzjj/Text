@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 颜色库，为了避免和其他的颜色冲突，这里加一个B前缀 -->
+    <color name="BC1">#FFFFFF</color>
+
+    <color name="BC1A95">#F2FFFFFF</color>
+    <color name="BC1A80">#CCFFFFFF</color>
+    <color name="BC1A60">#99FFFFFF</color>
+    <color name="BC1A40">#66FFFFFF</color>
+    <color name="BC1A20">#33FFFFFF</color>
+    <color name="BC1A10">#1AFFFFFF</color>
+
+
+
+    <color name="BC2">#000000</color>
+
+    <color name="BC2A80">#CC000000</color>
+    <color name="BC2A60">#99000000</color>
+    <color name="BC2A40">#66000000</color>
+    <color name="BC2A20">#33000000</color>
+    <color name="BC2A10">#1A000000</color>
+    <color name="BC2A4">#0A000000</color>
+
+    <color name="BC3">#333333</color>
+
+    <color name="BC3A80">#CC333333</color>
+    <color name="BC3A60">#99333333</color>
+    <color name="BC3A40">#66333333</color>
+    <color name="BC3A20">#33333333</color>
+    <color name="BC3A10">#1A333333</color>
+
+    <color name="BC9A80">#CCFFC600</color>
+
+
+    <color name="BC4">#666666</color>
+    <color name="BC5">#999999</color>
+    <color name="BC6">#CCCCCC</color>
+    <color name="BC7">#EEEEEE</color>
+    <color name="BC8">#FAFAFA</color>
+    <color name="BC8A10">#1AFAFAFA</color>
+
+
+
+    <color name="BC9">#FFC600</color>
+
+    <color name="BC10">#FFC446</color>
+    <color name="BC10A80">#CCFFC446</color>
+    <color name="BC10A60">#99FFC446</color>
+    <color name="BC10A40">#66FFC446</color>
+    <color name="BC10A20">#33FFC446</color>
+    <color name="BC10A10">#1AFFC446</color>
+
+
+
+    <color name="BC11">#14DD85</color>
+    <color name="BC12">#314C83</color>
+
+    <color name="BC14">#F56618</color>
+    <color name="BC14A60">#99F56618</color>
+
+
+    <color name="BC18">#FFF2DC</color>
+    <color name="BC18A60">#99FFF2DC</color>
+
+    <!-- 字体大小库 -->
+    <dimen name="T100">33dp</dimen>
+    <dimen name="T60">20dp</dimen>
+    <dimen name="T54">18dp</dimen>
+    <dimen name="T48">16dp</dimen>
+    <dimen name="T42">14dp</dimen>
+    <dimen name="T36">12dp</dimen>
+    <dimen name="T30">10dp</dimen>
+
+
+    <!-- 间距 -->
+    <dimen name="D102">34dp</dimen>
+    <dimen name="D84">28dp</dimen>
+    <dimen name="D72">24dp</dimen>
+    <dimen name="D60">20dp</dimen>
+    <dimen name="D48">16dp</dimen>
+    <dimen name="D42">14dp</dimen>
+    <dimen name="D36">12dp</dimen>
+    <dimen name="D32">10dp</dimen>
+    <dimen name="D24">8dp</dimen>
+    <dimen name="D12">4dp</dimen>
+
+    <!-- 圆角大小 -->
+    <dimen name="R60">20dp</dimen>
+    <dimen name="R48">16dp</dimen>
+    <dimen name="R42">14dp</dimen>
+    <dimen name="R36">12dp</dimen>
+    <dimen name="R24">8dp</dimen>
+
+
+    <!-- 按钮高度 -->
+    <dimen name="B71">24dp</dimen>
+    <dimen name="B96">32dp</dimen>
+    <dimen name="B120">40dp</dimen>
+
+
+</resources>

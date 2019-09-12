@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="user_guide_position_height">270dp</dimen>
+    <dimen name="next_margin_bottom">20dp</dimen>
+    <dimen name="user_guide_lottie_margin_bottom">40dp</dimen>
+
+    <dimen name="page1_top_ball_margin_bottom">50dp</dimen>
+    <dimen name="page1_bottom_ball_margin_top">40dp</dimen>
+
+
+    <dimen name="page2_top_ball_margin_bottom">60dp</dimen>
+    <dimen name="page2_bottom_ball_margin_top">40dp</dimen>
+
+
+</resources>

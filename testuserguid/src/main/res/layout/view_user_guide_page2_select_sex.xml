@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+
+    <View
+        android:id="@+id/v_for_star_position"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/user_guide_position_height"
+        android:layout_centerInParent="true" />
+
+
+    <FrameLayout
+        android:id="@+id/lottie_view_container"
+        android:layout_width="64dp"
+        android:layout_height="163dp"
+        android:layout_above="@+id/v_for_star_position"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="@dimen/user_guide_lottie_margin_bottom">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_view"
+            android:layout_width="37dp"
+            android:layout_height="123dp"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:paddingBottom="100dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/fl_girl"
+                android:layout_width="180dp"
+                android:layout_height="180dp">
+
+                <ImageView
+                    android:id="@+id/iv_girl_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alpha="0"
+                    android:src="@drawable/img_user_guide_circle_light" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_user_guide_girl" />
+
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:id="@+id/fl_boy"
+                android:layout_width="180dp"
+                android:layout_height="180dp">
+
+                <ImageView
+                    android:id="@+id/iv_boy_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alpha="0"
+                    android:src="@drawable/img_user_guide_circle_light" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_user_guide_boy" />
+
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

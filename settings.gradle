@@ -1,0 +1,1 @@
+include ':app', ':testpermission', ':testpermission2', ':testimsdk', ':testuserguid', 'lottie'

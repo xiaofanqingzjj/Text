@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- 第一页 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_page1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_user_guide_bg2" />
+
+
+    <com.example.testuserguid.MeteorView
+        android:id="@+id/meteor_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.example.testuserguid.FlashStarView2
+        android:id="@+id/fsv_page_stars"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <!-- 这个View存粹给两颗大星球定位 -->
+    <View
+        android:id="@+id/v_for_star_position"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/user_guide_position_height"
+        android:layout_centerInParent="true" />
+
+
+    <ImageView
+        android:id="@+id/iv_blue_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/v_for_star_position"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="@dimen/page2_top_ball_margin_bottom"
+        android:src="@drawable/img_user_guide_start2_b" />
+
+
+    <com.example.testuserguid.UserGuideViewPage2RecommendBook
+        android:id="@+id/page_recommend_book"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
+    <com.example.testuserguid.UserGuideViewPage2TagSelect
+        android:id="@+id/page_select_tag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
+    <com.example.testuserguid.UserGuideViewPage2SexSelect
+        android:id="@+id/page_select_sex"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/iv_yellow_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_for_star_position"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/page2_bottom_ball_margin_top"
+        android:src="@drawable/img_user_guide_start1_y" />
+
+
+    <TextView
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/next_margin_bottom"
+        android:background="@drawable/img_user_guide_btn_next"
+         />
+
+
+</RelativeLayout>
+

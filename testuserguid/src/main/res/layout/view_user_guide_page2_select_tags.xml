@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <View
+        android:id="@+id/v_for_star_position"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/user_guide_position_height"
+        android:layout_centerInParent="true" />
+
+
+    <FrameLayout
+        android:id="@+id/lottie_view_container"
+        android:layout_width="64dp"
+        android:layout_height="163dp"
+        android:layout_above="@+id/v_for_star_position"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="@dimen/user_guide_lottie_margin_bottom">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_view"
+            android:layout_width="64dp"
+            android:layout_height="144dp"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:paddingBottom="100dp">
+
+
+        <!--<include layout="@layout/view_user_guide_page2_select_tag_sub_tags" />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/iv_tag_sub1"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+        <!--android:textSize="14dp"-->
+        <!--android:textColor="#333333"-->
+        <!--android:layout_alignTop="@+id/fl_love"-->
+        <!--android:text="都市幻想"-->
+        <!--android:background="@drawable/selector_user_guide_sub_tag_bg_girl"-->
+        <!--android:visibility="invisible"  />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/iv_tag_sub2"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+        <!--android:layout_alignTop="@+id/fl_love"-->
+        <!--android:textSize="14dp"-->
+        <!--android:textColor="#333333"-->
+        <!--android:text="都市幻想"-->
+        <!--android:visibility="invisible"-->
+        <!--android:background="@drawable/selector_user_guide_sub_tag_bg_girl"  />-->
+
+
+        <!--<TextView-->
+        <!--android:id="@+id/iv_tag_sub3"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingRight="20dp"-->
+        <!--android:layout_alignTop="@+id/fl_love"-->
+        <!--android:textSize="14dp"-->
+        <!--android:textColor="#333333"-->
+        <!--android:text="都市幻想"-->
+        <!--android:visibility="invisible"-->
+        <!--android:background="@drawable/selector_user_guide_sub_tag_bg_girl"  />-->
+
+
+        <FrameLayout
+            android:id="@+id/fl_love"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_alignParentLeft="true">
+
+
+            <TextView
+                android:id="@+id/iv_tag1_sub1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="55dp"
+                android:background="@drawable/selector_user_guide_sub_tag_bg_girl"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="都市幻想"
+                android:textColor="#333333"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/iv_tag1_sub2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="55dp"
+                android:background="@drawable/selector_user_guide_sub_tag_bg_girl"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="都市幻想"
+                android:textColor="#333333"
+                android:textSize="14dp" />
+
+
+            <TextView
+                android:id="@+id/iv_tag1_sub3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="55dp"
+                android:background="@drawable/selector_user_guide_sub_tag_bg_girl"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="都市幻想"
+                android:textColor="#333333"
+                android:textSize="14dp" />
+
+
+            <!--<include layout="@layout/view_user_guide_page2_select_tag_sub_tags" />-->
+
+            <!--</FrameLayout>-->
+
+            <ImageView
+                android:id="@+id/iv_love_light"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center_vertical"
+                android:alpha="0"
+                android:src="@drawable/img_user_guide_circle_light" />
+
+            <ImageView
+                android:id="@+id/iv_love"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/img_user_guide_tag_love" />
+
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/fl_story"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_alignParentRight="true"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <!--<include layout="@layout/view_user_guide_page2_select_tag_sub_tags" />-->
+
+
+            <TextView
+                android:id="@+id/iv_tag2_sub1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="55dp"
+                android:background="@drawable/selector_user_guide_sub_tag_bg_girl"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="都市幻想"
+                android:textColor="#333333"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/iv_tag2_sub2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="55dp"
+                android:background="@drawable/selector_user_guide_sub_tag_bg_girl"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="都市幻想"
+                android:textColor="#333333"
+                android:textSize="14dp" />
+
+
+            <TextView
+                android:id="@+id/iv_tag2_sub3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="55dp"
+                android:background="@drawable/selector_user_guide_sub_tag_bg_girl"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="都市幻想"
+                android:textColor="#333333"
+                android:textSize="14dp" />
+
+
+            <ImageView
+                android:id="@+id/iv_story_light"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="right|center_vertical"
+                android:alpha="0"
+                android:src="@drawable/img_user_guide_circle_light" />
+
+            <ImageView
+                android:id="@+id/iv_story"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="right|center_vertical"
+                android:src="@drawable/img_user_guide_tag_story" />
+
+
+        </FrameLayout>
+
+
+    </RelativeLayout>
+</RelativeLayout>
+
