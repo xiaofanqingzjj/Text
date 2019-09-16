@@ -27,6 +27,11 @@ allprojects {
     }
 }
 
+//task test() {
+//    println p1
+//    println p2
+//}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

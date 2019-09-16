@@ -6,6 +6,15 @@ apply plugin: 'kotlin-kapt'
 
 android {
 
+    signingConfigs {
+        release {
+            storeFile file('somekey.keystore')
+            storePassword 'test01'
+            keyAlias = 'key0'
+            keyPassword 'test01'
+        }
+    }
+
     compileSdkVersion compile_sdk_version
 
     defaultConfig {
@@ -16,9 +25,18 @@ android {
         versionName "1.0"
     }
     buildTypes {
+
+        debug {
+            applicationIdSuffix "debug"
+
+        }
+
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+
         }
     }
 }
