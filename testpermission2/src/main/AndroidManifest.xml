@@ -78,6 +78,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".PermissionBySystemApiActivity" />
+        <activity android:name=".PermissionByDispatcherActivity" />
+
+        <activity android:name=".PermissionByMyPermissionsActivity" />
+        <activity android:name=".PermissionProxyAct" />
     </application>
 
 </manifest>
