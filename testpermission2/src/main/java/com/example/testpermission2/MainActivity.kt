@@ -17,7 +17,7 @@ class MainActivity : MenuActivity() {
             startActivity(Intent(this@MainActivity, PermissionByDispatcherActivity::class.java))
         }
 
-        addMenu("My Permissions") {
+        addMenu("My PermissionsRequestor") {
             startActivity(Intent(this@MainActivity, PermissionByMyPermissionsActivity::class.java))
         }
     }

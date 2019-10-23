@@ -1,4 +1,4 @@
-package com.example.testpermission2.my
+package com.tencent.permissionsrequestor
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,15 +7,13 @@ import java.lang.Exception
 
 
 /**
- * 一个空Fragment
+ * 一个用来请求权限不可见Fragment，对用户来说是透明的
+ *
  * @author fortunexiao
  *
  */
 class PermissionProxyFragment : Fragment() {
 
-
-    companion object {
-    }
 
 
     /**
@@ -32,28 +30,31 @@ class PermissionProxyFragment : Fragment() {
 
 
     // 外部回调
-    var onShowRationale: ((request: Permissions.PermissionRequest)->Unit)? = null
+    var onShowRationale: ((request: PermissionsRequestor.PermissionRequest)->Unit)? = null
     var onGranted: (()->Unit)? = null
-    var onDeny: (()->Unit)? = null
-    var onDenyAndNeverAskAgain: (()->Unit)? = null
+    var onDeny: ((withNeverAskAgain: Boolean)->Unit)? = null
+//    var onDenyAndNeverAskAgain: (()->Unit)? = null
 
 
     private val callback = object : PermissionHelper.Callback {
-        override fun onShowPermissionsRational(request: Permissions.PermissionRequest) {
+        override fun onShowPermissionsRational(request: PermissionsRequestor.PermissionRequest) {
             onShowRationale?.invoke(request)
         }
 
         override fun onPermissionGranted() {
             onGranted?.invoke()
+
+            // 如果正常授权，从Activity中移除当前授权
+            detach()
         }
 
-        override fun onPermissionDeny() {
-            onDeny?.invoke()
+        override fun onPermissionDeny(withNeverAskAgain: Boolean) {
+            onDeny?.invoke(withNeverAskAgain)
         }
 
-        override fun onPermissionAndNeverAskAgain() {
-            onDenyAndNeverAskAgain?.invoke()
-        }
+//        override fun onPermissionAndNeverAskAgain() {
+//            onDenyAndNeverAskAgain?.invoke()
+//        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +64,22 @@ class PermissionProxyFragment : Fragment() {
             requestInner()
             pendingRequestPermissions = false
         }
+    }
+
+    private fun detach() {
+        try {
+            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitNowAllowingStateLoss()
+        } catch (e: Exception) {
+            // ignore
+        }
+    }
+
+    /**
+     * 直接请求权限
+     * 某些场景要用
+     */
+    fun requestPermissionsDirect(permissions: Array<String>) {
+        requestPermissions(permissions, PermissionHelper.REQUEST_CODE_PERMISSION)
     }
 
     /**
@@ -101,12 +118,6 @@ class PermissionProxyFragment : Fragment() {
         permissionHelper?.onRequestPermissionsResult(requestCode, grantResults)
 
         isInOnRequestPermissionsResulting = false
-
-        try {
-            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commitNow()
-        } catch (e: Exception) {
-            // ignore
-        }
     }
 
 
@@ -132,15 +143,15 @@ class PermissionProxyFragment : Fragment() {
      * @return
      */
     override fun shouldShowRequestPermissionRationale(permission: String): Boolean {
-        var superResult = super.shouldShowRequestPermissionRationale(permission)
-        Log.d("PermissionDispatcher", "shouldShowRequestPermissionRationale super:$superResult")
+        var result = super.shouldShowRequestPermissionRationale(permission)
+        Log.d("PermissionDispatcher", "shouldShowRequestPermissionRationale super:$result")
 
-        if (isShowRationale && !isInOnRequestPermissionsResulting) { // 为true的时候当前调用该方法是用来判断用户是否勾选了"不再提示"，false的时候表示询问当前是否弹权限说明
-            superResult = true
+        if (!isInOnRequestPermissionsResulting) { // 为true的时候当前调用该方法是用来判断用户是否勾选了"不再提示"，false的时候表示询问当前是否弹权限说明
+            result = isShowRationale
         }
 
-        Log.d("PermissionDispatcher", "shouldShowRequestPermissionRationale return :$superResult")
-        return superResult
+        Log.d("PermissionDispatcher", "shouldShowRequestPermissionRationale return :$result")
+        return result
     }
 
 }

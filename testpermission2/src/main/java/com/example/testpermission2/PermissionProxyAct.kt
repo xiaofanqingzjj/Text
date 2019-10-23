@@ -5,8 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import com.example.testpermission2.my.PermissionHelper
-import com.example.testpermission2.my.Permissions
+import com.tencent.permissionsrequestor.PermissionHelper
+import com.tencent.permissionsrequestor.PermissionsRequestor
 
 
 /**
@@ -43,21 +43,17 @@ class PermissionProxyAct : Activity() {
 
 
     private val callback = object : PermissionHelper.Callback {
-        override fun onShowPermissionsRational(request: Permissions.PermissionRequest) {
-//            Permissions.onShowRational(request)
+        override fun onPermissionDeny(withNeverAskAgain: Boolean) {
+        }
+
+        override fun onShowPermissionsRational(request: PermissionsRequestor.PermissionRequest) {
+//            PermissionsRequestor.onShowRational(request)
         }
 
         override fun onPermissionGranted() {
-//            Permissions.onPermissionGranted()
+//            PermissionsRequestor.onPermissionGranted()
         }
 
-        override fun onPermissionDeny() {
-//            Permissions.onPermissionDeny()
-        }
-
-        override fun onPermissionAndNeverAskAgain() {
-//            Permissions.onPermissionDenyAndNeverAskAgain()
-        }
     }
 
 
@@ -102,7 +98,7 @@ class PermissionProxyAct : Activity() {
         super.finish()
 
         // 这里确保所有的监听器都被清空
-//        Permissions.clearCallback()
+//        PermissionsRequestor.clearCallback()
     }
 
 

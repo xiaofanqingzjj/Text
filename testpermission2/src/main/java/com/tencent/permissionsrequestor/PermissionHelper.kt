@@ -1,4 +1,4 @@
-package com.example.testpermission2.my
+package com.tencent.permissionsrequestor
 
 import android.support.v4.app.Fragment
 import java.lang.ref.WeakReference
@@ -62,9 +62,9 @@ internal class PermissionHelper( var fragment:  Fragment, var callback: Callback
                 } else { // 如果没有正确授权，判断用户是否勾选了不再提示，判断的方法为Activity的shouldShowRequestPermissionRationale方法
 
                     if (!PermissionUtils.shouldShowRequestPermissionRationale(fragment, *permissions!!)) { // 用户勾选了不在提示
-                        callback.onPermissionAndNeverAskAgain()
+                        callback.onPermissionDeny(true) //onPermissionAndNeverAskAgain()
                     } else { // 用户拒绝了权限申请
-                        callback.onPermissionDeny()
+                        callback.onPermissionDeny(false)
                     }
                 }
             }
@@ -76,7 +76,7 @@ internal class PermissionHelper( var fragment:  Fragment, var callback: Callback
     /**
      *
      */
-    private class Holder(var permissions: Array<String>, fragment: Fragment, callback: Callback) : Permissions.PermissionRequest {
+    private class Holder(var permissions: Array<String>, fragment: Fragment, callback: Callback) : PermissionsRequestor.PermissionRequest {
 
         val fragmentRef: WeakReference<Fragment> = WeakReference(fragment)
         val callbackRef: WeakReference<Callback> = WeakReference(callback)
@@ -88,19 +88,19 @@ internal class PermissionHelper( var fragment:  Fragment, var callback: Callback
         }
 
         override fun cancel() {
-            callbackRef.get()?.onPermissionDeny()
+            callbackRef.get()?.onPermissionDeny(false)
         }
     }
 
     interface Callback {
 
-        fun onShowPermissionsRational(request: Permissions.PermissionRequest)
+        fun onShowPermissionsRational(request: PermissionsRequestor.PermissionRequest)
 
         fun onPermissionGranted()
 
-        fun onPermissionDeny()
+        fun onPermissionDeny(withNeverAskAgain: Boolean)
 
-        fun onPermissionAndNeverAskAgain()
+//        fun onPermissionAndNeverAskAgain()
     }
 
 }

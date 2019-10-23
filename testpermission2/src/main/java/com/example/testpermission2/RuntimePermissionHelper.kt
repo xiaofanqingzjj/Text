@@ -71,7 +71,7 @@ object RuntimePermissionHelper {
      * @param permissions    权限
      * @param permissionDesc 使用说明，如果为空，则根据对应的权限获取一个默认的说明
      */
-    fun showRationalDialog(context: Context?, permissionName: String, permissions: Array<String>?, permissionDesc: String?, action: (()->Unit)? = null) {
+    fun showRationalDialog(context: Context?, permissionName: String, permissions: Array<String>?, permissionDesc: String?, process: (()->Unit)? = null) {
         var permissionDesc = permissionDesc
         if (context == null) {
             return
@@ -84,8 +84,8 @@ object RuntimePermissionHelper {
         AlertDialog.Builder(context)
                 .setTitle("允许使用【$permissionName】功能")
                 .setMessage(permissionDesc)
-                .setPositiveButton("去设置") { dialog, which ->
-                    action?.invoke()
+                .setPositiveButton("确定") { dialog, which ->
+                    process?.invoke()
                 }
                 .create().show()
 

@@ -1,4 +1,4 @@
-package com.example.testpermission2.my
+package com.tencent.permissionsrequestor
 
 import android.app.Activity
 import android.content.Context

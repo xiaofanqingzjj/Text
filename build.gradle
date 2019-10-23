@@ -41,7 +41,7 @@ ext {
 
     compile_sdk_version = 27
     target_sdk_version = 27
-    min_sdk_version = 19
+    min_sdk_version = 21
 
 //    build_tools_version = ""
     support_version = "27.0.2"

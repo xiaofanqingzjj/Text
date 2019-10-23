@@ -26,6 +26,8 @@
         <activity android:name=".WebViewActivity" />
 
         <activity android:name=".SomeLeakActivity" />
+
+        <activity android:name=".transition.TestTransitionActivity"  />
     </application>
 
 </manifest>
