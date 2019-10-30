@@ -2,6 +2,8 @@ package com.example.module_base.adapter
 
 import android.content.Context
 import android.view.View
+import androidx.annotation.IdRes
+import androidx.recyclerview.widget.RecyclerView
 
 
 /**
@@ -9,7 +11,7 @@ import android.view.View
  *
  * @author fortune
  */
-class QuickAdapter<T>
+open class QuickAdapter<T>
 
         /**
          *
@@ -35,5 +37,13 @@ class QuickAdapter<T>
 
     open fun bindData(data: T, viewHolder: ViewTypeViewHolder<T>?) {
         bindData?.invoke(data, viewHolder?.itemView)
+    }
+
+
+
+    fun getViewByPosition(recyclerView: RecyclerView?, position: Int, @IdRes viewId: Int): View? {
+
+
+        return recyclerView?.findViewHolderForLayoutPosition(position)?.itemView?.findViewById(viewId)
     }
 }

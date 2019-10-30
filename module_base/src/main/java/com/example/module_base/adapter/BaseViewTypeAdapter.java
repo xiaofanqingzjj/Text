@@ -2,13 +2,14 @@ package com.example.module_base.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -707,7 +708,7 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
          * 返回当前ViewHolder绑定的position
          * @return ViewHolder绑定的position
          */
-        protected int getCurrentBindPosition() {
+        public int getCurrentBindPosition() {
             return currentBindPosition;
         }
 

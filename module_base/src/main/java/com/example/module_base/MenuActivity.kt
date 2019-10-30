@@ -1,13 +1,13 @@
 package com.example.module_base
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_menu.*
 
 
@@ -61,7 +61,7 @@ open class MenuActivity: AppCompatActivity() {
             return menus.size
         }
 
-        override fun onBindViewHolder(holder: VH?, position: Int) {
+        override fun onBindViewHolder(holder: VH, position: Int) {
             val menu = menus[position]
             holder?.text?.text = menu.name
             holder?.itemView?.setOnClickListener {
