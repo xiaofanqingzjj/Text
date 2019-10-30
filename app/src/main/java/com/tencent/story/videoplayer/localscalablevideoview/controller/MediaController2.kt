@@ -12,7 +12,7 @@ import com.example.test.R
 import java.util.*
 import android.view.animation.AnimationUtils
 import android.view.animation.Animation
-import android.support.v4.view.ViewCompat.setRotation
+import androidx.core.view.ViewCompat.setRotation
 import android.widget.FrameLayout
 import android.opengl.ETC1.getHeight
 import android.opengl.ETC1.getWidth

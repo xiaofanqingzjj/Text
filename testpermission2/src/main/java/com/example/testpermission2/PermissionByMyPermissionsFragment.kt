@@ -2,8 +2,8 @@ package com.example.testpermission2
 
 import android.Manifest
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
+import androidx.core.app.Fragment
+import androidx.core.app.FragmentActivity
 import android.view.View
 import android.widget.Toast
 import com.tencent.permissionsrequestor.PermissionsRequestor

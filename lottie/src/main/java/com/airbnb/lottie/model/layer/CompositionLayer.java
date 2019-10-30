@@ -5,7 +5,7 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.support.annotation.FloatRange;
 import android.support.annotation.Nullable;
-import android.support.v4.util.LongSparseArray;
+import androidx.core.util.LongSparseArray;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieComposition;

@@ -2,8 +2,8 @@ package com.airbnb.lottie.parser;
 
 import android.graphics.PointF;
 import android.support.annotation.Nullable;
-import android.support.v4.util.SparseArrayCompat;
-import android.support.v4.view.animation.PathInterpolatorCompat;
+import androidx.core.util.SparseArrayCompat;
+import androidx.core.view.animation.PathInterpolatorCompat;
 import android.util.JsonReader;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;

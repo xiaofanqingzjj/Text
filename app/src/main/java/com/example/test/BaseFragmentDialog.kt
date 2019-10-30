@@ -1,8 +1,7 @@
 package com.tencent.story.base.dialog
 
-import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
+import androidx.fragment.app.DialogFragment
 
 
 /**
@@ -20,12 +19,14 @@ abstract class BaseFragmentDialog : DialogFragment() {
 //        }
 
         // 点击空白关闭窗口
-        dialog.setCanceledOnTouchOutside(true)
+        dialog?.setCanceledOnTouchOutside(true)
     }
 
-    // 当Dialog被取消的时候需要移除Fragment，系统默认没有做任何操作？很奇怪
-    override fun onCancel(dialog: DialogInterface?) {
-        super.onCancel(dialog)
-        onDismiss(dialog)
-    }
+//    // 当Dialog被取消的时候需要移除Fragment，系统默认没有做任何操作？很奇怪
+//    override fun onCancel(dialog: DialogInterface?) {
+//        super.onCancel(dialog)
+//        onDismiss(dialog)
+//    }
+
+
 }

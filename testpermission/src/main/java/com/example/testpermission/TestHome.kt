@@ -2,7 +2,7 @@ package com.example.testpermission
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import androidx.core.app.FragmentActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log

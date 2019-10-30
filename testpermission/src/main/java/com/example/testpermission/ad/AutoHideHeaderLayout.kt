@@ -2,7 +2,7 @@ package com.example.testpermission.ad
 
 import android.content.Context
 import android.os.Build
-import android.support.v4.view.NestedScrollingParent
+import androidx.core.view.NestedScrollingParent
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View

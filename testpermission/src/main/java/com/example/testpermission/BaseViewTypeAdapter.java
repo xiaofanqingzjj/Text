@@ -2,8 +2,8 @@ package com.example.testpermission;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewCompat;
+import androidx.core.app.FragmentManager;
+
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.LayoutInflater;

@@ -3,9 +3,9 @@ package com.example.test.testandroidextentions
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.util.AttributeSet
 import android.view.View
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.test_bind_views.*
 import kotlinx.android.synthetic.main.test_bind_views.view.*
 

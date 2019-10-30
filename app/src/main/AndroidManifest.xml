@@ -28,6 +28,7 @@
         <activity android:name=".SomeLeakActivity" />
 
         <activity android:name=".transition.TestTransitionActivity"  />
+        <activity android:name=".transition.ImgeViewerActivity" />
     </application>
 
 </manifest>

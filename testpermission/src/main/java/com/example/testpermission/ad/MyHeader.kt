@@ -5,8 +5,8 @@ import android.content.Context
 import android.graphics.Rect
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CoordinatorLayout
-import android.support.v4.view.GravityCompat
-import android.support.v4.view.ViewCompat
+import androidx.core.view.GravityCompat
+import androidx.core.view.ViewCompat
 import android.util.AttributeSet
 import android.util.Log
 import android.util.Property

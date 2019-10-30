@@ -1,8 +1,8 @@
 package com.tencent.permissionsrequestor
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
+import androidx.core.app.Fragment
+import androidx.core.app.FragmentActivity
+import androidx.core.app.FragmentManager
 import android.util.Log
 import java.lang.Exception
 

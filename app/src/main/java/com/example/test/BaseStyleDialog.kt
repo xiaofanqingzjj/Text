@@ -15,7 +15,7 @@ abstract class BaseStyleDialog : BaseFragmentDialog() {
         super.onActivityCreated(savedInstanceState)
 
         // 设置窗口样式
-        dialog.window?.run {
+        dialog?.window?.run {
 
             val windowWidth = context.resources.displayMetrics.widthPixels
             val width = (windowWidth * 0.8).toInt()

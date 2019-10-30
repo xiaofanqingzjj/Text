@@ -3,8 +3,8 @@ package com.example.testpermission2
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.FragmentActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.FragmentActivity
 import android.util.Log
 
 

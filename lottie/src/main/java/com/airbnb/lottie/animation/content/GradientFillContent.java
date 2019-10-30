@@ -11,7 +11,7 @@ import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.support.annotation.Nullable;
-import android.support.v4.util.LongSparseArray;
+import androidx.core.util.LongSparseArray;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieDrawable;

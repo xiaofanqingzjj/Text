@@ -1,1 +1,3 @@
 include ':app', ':testpermission', ':testpermission2', ':testimsdk', ':testuserguid', ':module_base', 'lottie'
+
+include ':TestTransitionAnim'

@@ -1,6 +1,6 @@
 package com.tencent.permissionsrequestor
 
-import android.support.v4.app.Fragment
+import androidx.core.app.Fragment
 import java.lang.ref.WeakReference
 
 

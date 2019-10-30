@@ -1,7 +1,7 @@
 package com.airbnb.lottie.model;
 
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
+import androidx.core.util.Pair;
 
 /**
  * Non final version of {@link Pair}

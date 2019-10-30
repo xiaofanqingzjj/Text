@@ -6,13 +6,13 @@ import android.graphics.Color
 import android.graphics.SurfaceTexture
 import android.media.MediaPlayer
 import android.net.Uri
-import android.support.annotation.RawRes
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Surface
 import android.view.TextureView
 import android.widget.MediaController
 import android.widget.VideoView
+import androidx.annotation.RawRes
 import com.example.test.R
 import com.tencent.story.videoplayer.localscalablevideoview.controller.MediaController2
 import java.io.FileDescriptor

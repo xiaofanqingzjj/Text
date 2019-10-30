@@ -11,8 +11,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.PersistableBundle
 import android.provider.Settings
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.FragmentActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.FragmentActivity
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup

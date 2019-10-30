@@ -1,9 +1,9 @@
 package com.qmuiteam.qmui.widget.dialog
 
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
 import android.view.*
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import com.example.test.R
 import com.tencent.story.base.dialog.BaseStyleDialog
 
@@ -83,7 +83,7 @@ class MenuDialog : BaseStyleDialog() {
         super.onActivityCreated(savedInstanceState)
 
         // 设置窗口样式
-        dialog.window?.run {
+        dialog?.window?.run {
 
             // 窗口显示屏幕的底部
             setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
