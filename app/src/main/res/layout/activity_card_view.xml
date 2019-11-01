@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+
+    <com.example.test.card.MaterialCardView
+        android:id="@+id/mcv"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:mcv_border_width="3dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="100dp"
+        app:cardBackgroundColor="#FF0000"
+        android:clipChildren="true"
+        app:cardElevation="5dp"
+        app:mcv_corner_bottom_right="30dp"
+        app:mcv_border_color="#00ff00"
+        app:cardCornerRadius="20dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/timg"
+            android:scaleType="centerCrop"/>
+    </com.example.test.card.MaterialCardView>
+
+
+
+</LinearLayout>

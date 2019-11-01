@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MaterialCardView">
+
+        <attr name="mcv_border_width" format="dimension|reference"/>
+        <attr name="mcv_border_color" format="color|reference"/>
+        <attr name="mcv_corner_top_left" format="dimension|reference" />
+        <attr name="mcv_corner_top_right" format="dimension|reference" />
+        <attr name="mcv_corner_bottom_left" format="dimension|reference" />
+        <attr name="mcv_corner_bottom_right" format="dimension|reference" />
+    </declare-styleable>
+
+</resources>

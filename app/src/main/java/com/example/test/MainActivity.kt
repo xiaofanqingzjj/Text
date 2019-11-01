@@ -6,7 +6,8 @@ import android.transition.Slide
 import com.example.module_base.MenuActivity
 import com.example.test.transition.TestTransitionActivity
 import android.transition.TransitionInflater
-
+import androidx.cardview.widget.CardView
+import com.example.test.card.CardViewActivity
 
 
 class MainActivity : MenuActivity() {
@@ -20,7 +21,11 @@ class MainActivity : MenuActivity() {
             startActivity(Intent(this@MainActivity, TestTransitionActivity::class.java))
         }
 
-        setupWindowAnimations()
+        addMenu("CardVIEW") {
+            startActivity(Intent(this@MainActivity, CardViewActivity::class.java))
+        }
+
+
     }
 
     private fun setupWindowAnimations() {

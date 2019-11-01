@@ -29,6 +29,10 @@
 
         <activity android:name=".transition.TestTransitionActivity"  />
         <activity android:name=".transition.ImgeViewerActivity" />
+
+        <activity android:name=".card.CardViewActivity" />
+
+
     </application>
 
 </manifest>
