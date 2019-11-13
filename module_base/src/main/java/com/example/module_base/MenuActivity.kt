@@ -1,5 +1,7 @@
 package com.example.module_base
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +46,14 @@ open class MenuActivity: AppCompatActivity() {
 
     open fun addMenu(name: String?, click:(()->Unit)? = null) {
         menus.add(Menu(name, click))
+        mAdapter?.notifyDataSetChanged()
+    }
+
+    fun addMenu(name: String?, targetClazz: Class<out Activity>) {
+        menus.add(Menu(name) {
+          startActivity(Intent(this@MenuActivity, targetClazz))
+        })
+
         mAdapter?.notifyDataSetChanged()
     }
 

@@ -1,16 +1,15 @@
 package com.ch.animdemo.base;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
-import com.ch.animdemo.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
-import java.lang.annotation.Annotation;
+import com.ch.animdemo.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

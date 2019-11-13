@@ -2,12 +2,13 @@ package com.ch.animdemo.demo.transition.imageviewer
 
 import android.content.Context
 import android.graphics.Point
-import androidx.core.widget.ViewDragHelper
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
+import androidx.customview.widget.ViewDragHelper
+import com.example.module_base.util.DensityUtil
 
 
 /**
@@ -31,7 +32,7 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
     /**
      * 当前的动画是否动画到结束
      */
-    private var isAnimToFinish = false
+//    private var isAnimToFinish = false
 
     /**
      * 当前是否正在执行动画
@@ -43,6 +44,15 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
      * 关闭窗口的回调
      */
     var onDismiss : (()->Unit)? = null
+
+
+    /**
+     * 向下拖动的时候需要把图片变小
+     *
+     * 这个距离是把图片滑动到最小的距离
+     */
+    val maxScoll = DensityUtil.dip2px(context, 300f)
+
 
     /**
      * 滑动位置监听
@@ -68,10 +78,31 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
              * 拖动的位置
              */
             override fun clampViewPositionVertical(child: View, top: Int, dy: Int): Int {
-                if (top > 0) { // 只能向下拖动
-                    return top
-                }
-                return 0
+////                if (top > 0) { // 只能向下拖动
+////                    return top
+////                }
+//
+//                if (top > 0) { // 向下拖动了， 图片缩小，背景变淡
+//
+//                    val scale  = 0.5f + (maxScoll - top).toFloat() / maxScoll.toFloat() * 0.5f
+//                    Log.d(TAG, "top: $top, dy:$dy scale:$scale, test${(maxScoll - top).toFloat() / maxScoll.toFloat() * 0.5f}")
+////                    dragView?.run {
+////                        scaleX = scale
+////                        scaleY = scale
+////                    }
+//                } else {
+//                    dragView?.run {
+//                        scaleX = 1f
+//                        scaleY = 1f
+//                    }
+//                }
+
+                return top
+            }
+
+            override fun clampViewPositionHorizontal(child: View, left: Int, dx: Int): Int {
+                return left
+//                return super.clampViewPositionHorizontal(child, left, dx)
             }
 
             /**
@@ -101,8 +132,25 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
 
             override fun onViewPositionChanged(changedView: View, left: Int, top: Int, dx: Int, dy: Int) {
                 super.onViewPositionChanged(changedView, left, top, dx, dy)
-//                Log.d(TAG, "onViewPositionChanged:$top， height: ${height}")
-                onScrollChangeListener?.invoke(top, height)
+                onScrollChangeListener?.invoke(top, maxScoll)
+
+                if (top > 0) { // 向下拖动了， 图片缩小，背景变淡
+                    var s =  (maxScoll - top).toFloat() / maxScoll.toFloat()
+                    if (s < 0) {
+                        s = 0f
+                    }
+                    val scale  = 0.5f + s * 0.5f
+                    Log.d(TAG, "top: $top, dy:$dy scale:$scale")
+                    dragView?.run {
+                        scaleX = scale
+                        scaleY = scale
+                    }
+                } else {
+                    changedView?.run {
+                        scaleX = 1f
+                        scaleY = 1f
+                    }
+                }
             }
 
         })
@@ -150,9 +198,9 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
         } else { // 动画执行结束
             isAnimming = false
 
-            if (isAnimToFinish) {
-                onDismiss?.invoke()
-            }
+//            if (isAnimToFinish) {
+//                onDismiss?.invoke()
+//            }
         }
     }
 
@@ -164,10 +212,11 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
     }
 
     private fun animFinish() {
-        viewDragHelper.settleCapturedViewAt(finalPos.x, finalPos.y)
-        invalidate()
-        isAnimming = true
-        isAnimToFinish = true
+        onDismiss?.invoke()
+//        viewDragHelper.settleCapturedViewAt(finalPos.x, finalPos.y)
+//        invalidate()
+//        isAnimming = true
+//        isAnimToFinish = true
     }
 
 }

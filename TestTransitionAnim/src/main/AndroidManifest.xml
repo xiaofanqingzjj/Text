@@ -42,6 +42,8 @@
             android:theme="@style/noactionbar" />
 
         <activity android:name=".demo.transition.imageviewer.ImageViewerActivity" />
+        <activity android:name=".demo.transition.imageviewer.ImageViewerActivity2"
+            android:theme="@style/transparent"/>
     </application>
 
 </manifest>

@@ -1,33 +1,11 @@
 package com.ch.animdemo.demo.transition
 
 import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-import androidx.core.app.SharedElementCallback
-import androidx.core.view.ViewCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.View
-import android.widget.ImageView
-
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import androidx.appcompat.app.AppCompatActivity
 import com.ch.animdemo.R
 import com.ch.animdemo.demo.transition.imageviewer.ImageViewerActivity
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
-
-import java.util.ArrayList
-import java.util.Objects
-
-import butterknife.BindView
-import butterknife.ButterKnife
-import kotlinx.android.synthetic.main.activity_wx2.*
 
 class WX2Activity : AppCompatActivity() {
 
@@ -39,7 +17,7 @@ class WX2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_container)
 
         fragment = WX2Fragment()
-        supportFragmentManager.beginTransaction().add(R.id.container, fragment).commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction().add(R.id.container, fragment!!).commitAllowingStateLoss()
     }
 
 

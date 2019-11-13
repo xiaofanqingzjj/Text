@@ -11,17 +11,15 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.startPostponedEnterTransition
-import androidx.core.app.FragmentActivity
 import androidx.core.app.SharedElementCallback
 import androidx.core.view.ViewCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.PagerSnapHelper
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -95,8 +93,8 @@ class ImageViewerActivity : FragmentActivity() {
 
                     val transitionName = ViewCompat.getTransitionName(backView)
 
-                    names?.add(transitionName)
-                    sharedElements?.put(transitionName, backView)
+                    names?.add(transitionName!!)
+                    sharedElements?.put(transitionName!!, backView)
 
                     // 清除回调
                     activity.setExitSharedElementCallback(object : SharedElementCallback() {
@@ -193,10 +191,10 @@ class ImageViewerActivity : FragmentActivity() {
                     names?.clear();
                     sharedElements?.clear();
 
-                    names?.add(ViewCompat.getTransitionName(exitView));
+                    names?.add(ViewCompat.getTransitionName(exitView!!)!!);
 
                     if (exitView != null) {
-                        sharedElements?.put(ViewCompat.getTransitionName(exitView), exitView);
+                        sharedElements?.put(ViewCompat.getTransitionName(exitView)!!, exitView);
                     }
                 }
 
