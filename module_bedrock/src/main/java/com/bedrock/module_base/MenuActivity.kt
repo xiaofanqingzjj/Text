@@ -11,39 +11,41 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bedrock.module_base.adapter.QuickAdapter
+import com.bedrock.module_base.adapter.quickAdapter
 import kotlinx.android.synthetic.main.activity_menu.*
 
 
 /**
  * A simple menu Activity
  *
- * @param fortune
+ * @author fortune
  */
 open class MenuActivity: AppCompatActivity() {
 
-
-    var menus = mutableListOf<Menu>()
-    var mAdapter: MenuAdapter? =null
+    private var menus = mutableListOf<Menu>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_menu)
 
-        mAdapter = MenuAdapter(menus)
-
-        recycler_view.run {
-            this.adapter = mAdapter
-            layoutManager = object : LinearLayoutManager(this@MenuActivity) {
-                override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
-                    return RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT)
+        recycler_view.quickAdapter(
+                data = menus,
+                itemLayoutId = android.R.layout.simple_expandable_list_item_1,
+                bindData = {data, itemView ->
+                    itemView?.run {
+                        (data as? Menu)?.run {
+                            val textView = findViewById<TextView>(android.R.id.text1)
+                            textView.text = name
+                            setOnClickListener {
+                                click?.invoke()
+                            }
+                        }
+                    }
                 }
-            }
-        }
-
+        )
     }
-
 
     /**
      * add menu
@@ -53,7 +55,7 @@ open class MenuActivity: AppCompatActivity() {
      */
     open fun addMenu(name: String?, click:(()->Unit)? = null) {
         menus.add(Menu(name, click))
-        mAdapter?.notifyDataSetChanged()
+        recycler_view?.adapter?.notifyDataSetChanged()
     }
 
     /**
@@ -67,7 +69,7 @@ open class MenuActivity: AppCompatActivity() {
           startActivity(Intent(this@MenuActivity, targetClazz))
         })
 
-        mAdapter?.notifyDataSetChanged()
+        recycler_view?.adapter?.notifyDataSetChanged()
     }
 
     /**
@@ -80,37 +82,13 @@ open class MenuActivity: AppCompatActivity() {
         menus.add(Menu(name) {
             FragmentContainerActivity.show(this, name, targetClazz)
         })
-        mAdapter?.notifyDataSetChanged()
+
+        recycler_view?.adapter?.notifyDataSetChanged()
     }
 
+    /**
+     * Menu
+     */
+    data class Menu(var name: String? = null, var click: (()->Unit)? = null)
 
-    class Menu(var name: String? = null, var click: (()->Unit)? = null)
-
-    class MenuAdapter(var menus: MutableList<Menu>): RecyclerView.Adapter<MenuAdapter.VH>() {
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-            val itemView = LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false)
-            return VH(itemView)
-        }
-
-        override fun getItemCount(): Int {
-            return menus.size
-        }
-
-        override fun onBindViewHolder(holder: VH, position: Int) {
-            val menu = menus[position]
-            holder?.text?.text = menu.name
-            holder?.itemView?.setOnClickListener {
-                menu.click?.invoke()
-            }
-        }
-
-
-        class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-            var text: TextView = itemView.findViewById(android.R.id.text1)
-
-
-        }
-    }
 }

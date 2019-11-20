@@ -2,8 +2,14 @@ package com.bedrock.module_base.adapter
 
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Adapter
+import android.widget.TextView
 import androidx.annotation.IdRes
+import androidx.annotation.LayoutRes
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_menu.*
 
 
 /**
@@ -20,7 +26,7 @@ open class QuickAdapter<T>
          * @param itemLayoutId ItemLayoutId
          * @param bindData 数据绑定到ItemView上
          */
-        constructor(context: Context, data: List<T>,  private var itemLayoutId: Int, private var bindData: ((data: T, itemView: View?)->Unit)? = null) : BaseViewTypeAdapter<T>(context, data) {
+        constructor(context: Context, data: List<T>, @LayoutRes private var itemLayoutId: Int, private var bindData: ((data: T, itemView: View?)->Unit)? = null) : BaseViewTypeAdapter<T>(context, data) {
 
     init {
         setViewTypeViewHolderHook(object : BaseViewTypeAdapter.AbsViewTypeViewHolderHook<T>() {
@@ -42,8 +48,28 @@ open class QuickAdapter<T>
 
 
     fun getViewByPosition(recyclerView: RecyclerView?, position: Int, @IdRes viewId: Int): View? {
-
-
         return recyclerView?.findViewHolderForLayoutPosition(position)?.itemView?.findViewById(viewId)
     }
+}
+
+
+/**
+ * 快速给RecyclerView设置一组数据
+ */
+fun RecyclerView.quickAdapter(data: List<Any>, @LayoutRes itemLayoutId: Int, bindData: ((data: Any, itemView: View?)->Unit)? = null): RecyclerView.Adapter<*>? {
+
+    this.adapter = QuickAdapter(
+        context = context,
+        data = data,
+        itemLayoutId = itemLayoutId,
+        bindData = bindData)
+
+    layoutManager = object : LinearLayoutManager(context) {
+        override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
+            return RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT)
+        }
+    }
+
+    return this.adapter
 }
