@@ -2,7 +2,6 @@ package com.example.testpermission2
 
 import android.content.Intent
 import android.os.Bundle
-import com.example.module_base.MenuActivity
 
 class MainActivity : MenuActivity() {
 

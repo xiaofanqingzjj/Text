@@ -1,13 +1,10 @@
 package com.example.test
 
-import android.content.Intent
 import android.os.Bundle
 import android.transition.Slide
-import com.example.module_base.MenuActivity
+import com.bedrock.module_base.FragmentContainerActivity
+import com.bedrock.module_base.MenuActivity
 import com.example.test.transition.TestTransitionActivity
-import android.transition.TransitionInflater
-import androidx.cardview.widget.CardView
-import com.example.module_base.FragmentContainerActivity
 import com.example.test.card.CardViewActivity
 
 

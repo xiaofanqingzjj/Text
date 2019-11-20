@@ -1,4 +1,4 @@
-package com.example.module_base.adapter;
+package com.bedrock.module_base.adapter;
 
 import android.content.Context;
 import android.os.Bundle;

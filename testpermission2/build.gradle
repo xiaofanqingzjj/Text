@@ -38,7 +38,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(":module_base")
+    implementation project(':module_bedrock')
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
 

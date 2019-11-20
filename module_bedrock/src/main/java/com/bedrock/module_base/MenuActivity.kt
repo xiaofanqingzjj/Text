@@ -1,4 +1,4 @@
-package com.example.module_base
+package com.bedrock.module_base
 
 import android.app.Activity
 import android.content.Intent
@@ -8,13 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_menu.*
 
 
 /**
- * 一个简单到菜单Activity
+ * A simple menu Activity
  *
  * @param fortune
  */
@@ -44,16 +45,41 @@ open class MenuActivity: AppCompatActivity() {
     }
 
 
+    /**
+     * add menu
+     *
+     * @param name menu title
+     * @param click menu click listener
+     */
     open fun addMenu(name: String?, click:(()->Unit)? = null) {
         menus.add(Menu(name, click))
         mAdapter?.notifyDataSetChanged()
     }
 
+    /**
+     * Add menu
+     *
+     * @param name menu title
+     * @param targetClazz menu jump activity class
+     */
     fun addMenu(name: String?, targetClazz: Class<out Activity>) {
         menus.add(Menu(name) {
           startActivity(Intent(this@MenuActivity, targetClazz))
         })
 
+        mAdapter?.notifyDataSetChanged()
+    }
+
+    /**
+     * Add menu by fragment
+     *
+     * @param name menu title
+     * @param targetClazz menu jump fragment class
+     */
+    fun addMenuByFragment(name: String?, targetClazz: Class<out Fragment>) {
+        menus.add(Menu(name) {
+            FragmentContainerActivity.show(this, name, targetClazz)
+        })
         mAdapter?.notifyDataSetChanged()
     }
 

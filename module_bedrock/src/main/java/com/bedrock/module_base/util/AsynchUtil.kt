@@ -1,4 +1,4 @@
-package com.example.module_base.util
+package com.bedrock.module_base.util
 
 import android.os.AsyncTask
 import android.os.Handler

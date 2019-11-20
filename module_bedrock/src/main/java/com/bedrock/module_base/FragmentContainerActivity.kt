@@ -1,4 +1,4 @@
-package com.example.module_base
+package com.bedrock.module_base
 
 import android.content.Context
 import android.content.Intent
@@ -20,7 +20,7 @@ class FragmentContainerActivity : AppCompatActivity() {
         /**
          * 使用泛型参数形式传递Class，感觉B格更高
          */
-        inline fun <reified T : Fragment> show(context: Context, title: String, initIntent: (Intent) -> Unit = {}) {
+        inline fun <reified T : Fragment> show(context: Context, title: String?, initIntent: (Intent) -> Unit = {}) {
             context.startActivity(Intent(context, FragmentContainerActivity::class.java).apply {
                 putExtra(TITLE, title)
                 putExtra(FRAGMENT_CLASS, T::class.java)
@@ -30,7 +30,7 @@ class FragmentContainerActivity : AppCompatActivity() {
 
 //        @Deprecated("使用泛型参数更好点")
         @JvmOverloads
-        fun show(context: Context, title: String, fragmentClass: Class<out Fragment>, initIntent: (Intent) -> Unit = { it }) {
+        fun show(context: Context, title: String?, fragmentClass: Class<out Fragment>, initIntent: (Intent) -> Unit = { it }) {
             context.startActivity(Intent(context, FragmentContainerActivity::class.java).apply {
                 putExtra(TITLE, title)
                 putExtra(FRAGMENT_CLASS, fragmentClass)

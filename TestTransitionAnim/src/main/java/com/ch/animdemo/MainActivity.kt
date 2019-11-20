@@ -5,7 +5,6 @@ import com.ch.animdemo.`object`.ObjectActivity
 import com.ch.animdemo.base.BaseActivity
 import com.ch.animdemo.demo.DemoActivity
 import com.ch.animdemo.value.ValueActivity
-import com.example.module_base.MenuActivity
 
 
 /**

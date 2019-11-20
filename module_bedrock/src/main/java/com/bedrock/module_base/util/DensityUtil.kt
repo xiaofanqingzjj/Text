@@ -1,7 +1,6 @@
-package com.example.module_base.util
+package com.bedrock.module_base.util
 
 import android.content.Context
-import com.example.module_base.util.DensityUtil.px2dip
 
 object DensityUtil {
 
