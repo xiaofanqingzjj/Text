@@ -1,11 +1,10 @@
-package com.qmuiteam.qmui.widget.dialog
+package com.example.module_base.dialog
 
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
-import com.example.test.R
-import com.tencent.story.base.dialog.BaseStyleDialog
+import com.example.module_base.R
 
 
 /**

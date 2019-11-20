@@ -2,7 +2,8 @@ package com.airbnb.lottie.animation.content;
 
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.LottieProperty;
@@ -40,7 +41,8 @@ public class PolystarContent
   @Nullable private final BaseKeyframeAnimation<?, Float> innerRoundednessAnimation;
   private final BaseKeyframeAnimation<?, Float> outerRoundednessAnimation;
 
-  @Nullable private TrimPathContent trimPath;
+  @Nullable
+  private TrimPathContent trimPath;
   private boolean isPathValid;
 
   public PolystarContent(LottieDrawable lottieDrawable, BaseLayer layer,

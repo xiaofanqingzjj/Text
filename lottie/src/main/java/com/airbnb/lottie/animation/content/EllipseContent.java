@@ -2,7 +2,8 @@ package com.airbnb.lottie.animation.content;
 
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.LottieProperty;
@@ -29,7 +30,8 @@ public class EllipseContent
   private final BaseKeyframeAnimation<?, PointF> positionAnimation;
   private final CircleShape circleShape;
 
-  @Nullable private TrimPathContent trimPath;
+  @Nullable
+  private TrimPathContent trimPath;
   private boolean isPathValid;
 
   public EllipseContent(LottieDrawable lottieDrawable, BaseLayer layer, CircleShape circleShape) {

@@ -1,15 +1,17 @@
 package com.airbnb.lottie.value;
 
 import android.graphics.PointF;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
 import android.view.animation.Interpolator;
+
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieComposition;
 
 public class Keyframe<T> {
   @Nullable private final LottieComposition composition;
-  @Nullable public final T startValue;
+  @Nullable
+  public final T startValue;
   @Nullable public final T endValue;
   @Nullable public final Interpolator interpolator;
   public final float startFrame;

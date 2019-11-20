@@ -1,10 +1,12 @@
 package com.airbnb.lottie.model.animatable;
 
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 public class AnimatableTextProperties {
 
-  @Nullable public final AnimatableColorValue color;
+  @Nullable
+  public final AnimatableColorValue color;
   @Nullable public final AnimatableColorValue stroke;
   @Nullable public final AnimatableFloatValue strokeWidth;
   @Nullable public final AnimatableFloatValue tracking;

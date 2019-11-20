@@ -32,6 +32,8 @@
 
         <activity android:name=".card.CardViewActivity" />
 
+        <activity android:name=".TestLottie" />
+
 
     </application>
 

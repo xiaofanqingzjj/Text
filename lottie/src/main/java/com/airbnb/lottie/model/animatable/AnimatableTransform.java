@@ -1,7 +1,8 @@
 package com.airbnb.lottie.model.animatable;
 
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.animation.content.Content;
@@ -19,7 +20,8 @@ public class AnimatableTransform implements ModifierContent, ContentModel {
 
   // Used for repeaters
   @Nullable private final AnimatableFloatValue startOpacity;
-  @Nullable private final AnimatableFloatValue endOpacity;
+  @Nullable
+  private final AnimatableFloatValue endOpacity;
 
   public AnimatableTransform() {
     this(

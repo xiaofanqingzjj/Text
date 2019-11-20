@@ -12,13 +12,14 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IntDef;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntDef;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.manager.FontAssetManager;
 import com.airbnb.lottie.manager.ImageAssetManager;
@@ -64,7 +65,8 @@ public class LottieDrawable extends Drawable implements Drawable.Callback, Anima
 
   private final Set<ColorFilterData> colorFilterData = new HashSet<>();
   private final ArrayList<LazyCompositionTask> lazyCompositionTasks = new ArrayList<>();
-  @Nullable private ImageAssetManager imageAssetManager;
+  @Nullable
+  private ImageAssetManager imageAssetManager;
   @Nullable private String imageAssetsFolder;
   @Nullable private ImageAssetDelegate imageAssetDelegate;
   @Nullable private FontAssetManager fontAssetManager;

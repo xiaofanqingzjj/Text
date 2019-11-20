@@ -1,6 +1,6 @@
 package com.airbnb.lottie.model;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import androidx.core.util.Pair;
 
 /**
@@ -8,7 +8,8 @@ import androidx.core.util.Pair;
  * @param <T>
  */
 public class MutablePair<T> {
-  @Nullable T first;
+  @Nullable
+  T first;
   @Nullable T second;
 
   public void set(T first, T second) {

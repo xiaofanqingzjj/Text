@@ -1,9 +1,8 @@
 package com.tencent.permissionsrequestor
 
 import android.os.Bundle
-import androidx.core.app.Fragment
 import android.util.Log
-import java.lang.Exception
+import androidx.fragment.app.Fragment
 
 
 /**

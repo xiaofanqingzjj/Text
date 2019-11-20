@@ -21,6 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 
+import com.example.test.R;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -216,9 +218,9 @@ public class ColorDrawable extends Drawable {
             throws XmlPullParserException, IOException {
         super.inflate(r, parser, attrs, theme);
 
-        final TypedArray a = obtainAttributes(r, theme, attrs, R.styleable.ColorDrawable);
-        updateStateFromTypedArray(a);
-        a.recycle();
+//        final TypedArray a = obtainAttributes(r, theme, attrs, R.styleable.ColorDrawable);
+//        updateStateFromTypedArray(a);
+//        a.recycle();
 
         updateLocalState(r);
     }

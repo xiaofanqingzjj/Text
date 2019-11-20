@@ -54,6 +54,8 @@ class WX2Fragment : Fragment() {
         list.add("http://img5.imgtn.bdimg.com/it/u=551944592,1654216059&fm=26&gp=0.jpg")
         list.add("http://img1.imgtn.bdimg.com/it/u=2550323596,2167297465&fm=200&gp=0.jpg")
         list.add("http://img4.imgtn.bdimg.com/it/u=952962361,1269259737&fm=26&gp=0.jpg")
+        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573973055383&di=328cc5ac025755ec16e63b560b1baa59&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F43efd35d1e9cadc6d8ff5cdc5faccec06f1082bb4efc4-o8K27E_fw658")
+        list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574178712873&di=3ccd28777ee4c8a88bbdc0027b4949a7&imgtype=0&src=http%3A%2F%2Fwx2.sinaimg.cn%2Forj360%2F006vctjzly1g6opgjmgk7j30hs50nnjx.jpg")
 
         wxAdapter = WxAdapter(list)
 

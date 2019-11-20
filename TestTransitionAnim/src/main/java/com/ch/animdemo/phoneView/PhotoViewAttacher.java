@@ -21,6 +21,8 @@ import android.graphics.Matrix.ScaleToFit;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import androidx.core.view.MotionEventCompat;
+
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,6 +42,8 @@ import android.widget.OverScroller;
  */
 public class PhotoViewAttacher implements View.OnTouchListener,
         View.OnLayoutChangeListener {
+
+    static final String TAG = "PhotoViewAttacher";
 
     private static float DEFAULT_MAX_SCALE = 3.0f;
     private static float DEFAULT_MID_SCALE = 1.75f;
@@ -65,6 +69,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     // Gesture Detectors
     private GestureDetector mGestureDetector;
+
+    /**
+     * 放大和拖拽手势检测器
+     */
     private CustomGestureDetector mScaleDragDetector;
 
     // These are set so we don't keep allocating them on the heap
@@ -102,6 +110,8 @@ public class PhotoViewAttacher implements View.OnTouchListener,
             if (mOnViewDragListener != null) {
                 mOnViewDragListener.onDrag(dx, dy);
             }
+
+            Log.d(TAG, "onDrag:" + dx + ", " + dy);
             mSuppMatrix.postTranslate(dx, dy);
             checkAndDisplayMatrix();
 
@@ -115,10 +125,12 @@ public class PhotoViewAttacher implements View.OnTouchListener,
          * the edge, aka 'overscrolling', let the parent take over).
          */
             ViewParent parent = mImageView.getParent();
-            if (mAllowParentInterceptOnEdge && !mScaleDragDetector.isScaling() && !mBlockParentIntercept) {
+            if (mAllowParentInterceptOnEdge && !mScaleDragDetector.isScaling() && !mBlockParentIntercept && getScale() <= 1) {
                 if (mScrollEdge == EDGE_BOTH
                         || (mScrollEdge == EDGE_LEFT && dx >= 1f)
                         || (mScrollEdge == EDGE_RIGHT && dx <= -1f)) {
+
+                    Log.e(TAG, "requestDisallowInterceptTouchEvent false， allowOnEdge:" + mAllowParentInterceptOnEdge + ", isScaling:" + mScaleDragDetector.isScaling() + ", block:" + mBlockParentIntercept + "， scale:" + getScale());
                     if (parent != null) {
                         parent.requestDisallowInterceptTouchEvent(false);
                     }
@@ -152,7 +164,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     public PhotoViewAttacher(ImageView imageView) {
         mImageView = imageView;
+
+        // 设置了一个onTouchListener
         imageView.setOnTouchListener(this);
+
         imageView.addOnLayoutChangeListener(this);
 
         if (imageView.isInEditMode()) {
@@ -341,9 +356,14 @@ public class PhotoViewAttacher implements View.OnTouchListener,
         }
     }
 
+    private int mode = 0;
+
     @Override
     public boolean onTouch(View v, MotionEvent ev) {
         boolean handled = false;
+
+
+
 
         if (mZoomEnabled && Util.hasDrawable((ImageView) v)) {
             switch (ev.getAction()) {
@@ -402,6 +422,32 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
         }
 
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+                mode = 1;
+                break;
+            }
+            case MotionEvent.ACTION_UP:
+                mode = 0;
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN :
+                mode += 1;
+                break;
+            case MotionEvent.ACTION_POINTER_UP :
+                mode -= 1;
+                break;
+
+        }
+
+//        Log.w(TAG, "onTouch: mode: " + mode);
+
+        if (mode > 1) {
+
+            ViewParent parent = v.getParent();
+            if (parent != null) {
+                parent.requestDisallowInterceptTouchEvent(true);
+            }
+        }
         return handled;
     }
 

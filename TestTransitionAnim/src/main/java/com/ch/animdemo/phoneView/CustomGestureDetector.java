@@ -16,6 +16,7 @@
 package com.ch.animdemo.phoneView;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.VelocityTracker;
@@ -26,6 +27,8 @@ import android.view.ViewConfiguration;
  * Does a whole lot of gesture detecting.
  */
 class CustomGestureDetector {
+
+    static final String TAG = "CustomGestureDetector";
 
     private static final int INVALID_POINTER_ID = -1;
 
@@ -54,6 +57,8 @@ class CustomGestureDetector {
             public boolean onScale(ScaleGestureDetector detector) {
                 float scaleFactor = detector.getScaleFactor();
 
+                Log.e(TAG, "onScale:" + scaleFactor);
+
                 if (Float.isNaN(scaleFactor) || Float.isInfinite(scaleFactor))
                     return false;
 
@@ -64,12 +69,15 @@ class CustomGestureDetector {
 
             @Override
             public boolean onScaleBegin(ScaleGestureDetector detector) {
+
+                Log.d(TAG, "onScaleBegin:");
                 return true;
             }
 
             @Override
             public void onScaleEnd(ScaleGestureDetector detector) {
                 // NO-OP
+                Log.d(TAG, "onScaleEnd:");
             }
         };
         mDetector = new ScaleGestureDetector(context, mScaleListener);
@@ -101,8 +109,13 @@ class CustomGestureDetector {
 
     public boolean onTouchEvent(MotionEvent ev) {
         try {
-            mDetector.onTouchEvent(ev);
-            return processTouchEvent(ev);
+            boolean dr = mDetector.onTouchEvent(ev);
+            boolean isProcess =  processTouchEvent(ev);
+
+//            Log.d(TAG, "isProcess:" + isProcess + ", isDrag:" + mIsDragging + ", dr:" + dr);
+
+            return isProcess;
+//            return true;
         } catch (IllegalArgumentException e) {
             // Fix for support lib bug, happening when onDestroy is called
             return true;
@@ -134,6 +147,8 @@ class CustomGestureDetector {
                     // touch slop
                     mIsDragging = Math.sqrt((dx * dx) + (dy * dy)) >= mTouchSlop;
                 }
+
+                Log.d(TAG, "processTouchEvent:" + mIsDragging);
 
                 if (mIsDragging) {
                     mListener.onDrag(dx, dy);

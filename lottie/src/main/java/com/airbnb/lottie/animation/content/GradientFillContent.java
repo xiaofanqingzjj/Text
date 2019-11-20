@@ -10,8 +10,9 @@ import android.graphics.PointF;
 import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.support.annotation.Nullable;
-import androidx.core.util.LongSparseArray;
+
+import androidx.annotation.Nullable;
+import androidx.collection.LongSparseArray;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieDrawable;
@@ -50,7 +51,8 @@ public class GradientFillContent
   private final BaseKeyframeAnimation<Integer, Integer> opacityAnimation;
   private final BaseKeyframeAnimation<PointF, PointF> startPointAnimation;
   private final BaseKeyframeAnimation<PointF, PointF> endPointAnimation;
-  @Nullable private BaseKeyframeAnimation<ColorFilter, ColorFilter> colorFilterAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<ColorFilter, ColorFilter> colorFilterAnimation;
   private final LottieDrawable lottieDrawable;
   private final int cacheSteps;
 

@@ -1,10 +1,11 @@
 package com.airbnb.lottie.parser;
 
 import android.graphics.Color;
-import android.support.annotation.IntRange;
 import android.util.JsonReader;
 import android.util.JsonToken;
 import android.util.Log;
+
+import androidx.annotation.IntRange;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.model.content.GradientColor;

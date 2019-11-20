@@ -1,7 +1,8 @@
 package com.airbnb.lottie;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,8 @@ import java.util.Map;
 public class TextDelegate {
 
   private final Map<String, String> stringMap = new HashMap<>();
-  @Nullable private final LottieAnimationView animationView;
+  @Nullable
+  private final LottieAnimationView animationView;
   @Nullable private final LottieDrawable drawable;
   private boolean cacheText = true;
 

@@ -1,8 +1,8 @@
 package com.airbnb.lottie.value;
 
 
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
 
 import com.airbnb.lottie.animation.keyframe.BaseKeyframeAnimation;
 
@@ -18,7 +18,8 @@ public class LottieValueCallback<T> {
    * This can be set with {@link #setValue(Object)} to use a value instead of deferring
    * to the callback.
    **/
-  @Nullable protected T value = null;
+  @Nullable
+  protected T value = null;
 
   public LottieValueCallback() {
   }

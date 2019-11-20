@@ -1,10 +1,11 @@
 package com.airbnb.lottie.utils;
 
 import android.animation.ValueAnimator;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
 import android.view.Choreographer;
+
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import com.airbnb.lottie.LottieComposition;
 
@@ -21,8 +22,10 @@ public class LottieValueAnimator extends BaseLottieAnimator implements Choreogra
   private int repeatCount = 0;
   private float minFrame = Integer.MIN_VALUE;
   private float maxFrame = Integer.MAX_VALUE;
-  @Nullable private LottieComposition composition;
-  @VisibleForTesting protected boolean isRunning = false;
+  @Nullable
+  private LottieComposition composition;
+  @VisibleForTesting
+  protected boolean isRunning = false;
 
   public LottieValueAnimator() {
   }

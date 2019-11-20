@@ -45,6 +45,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(":module_base")
+    implementation project(":lottie")
 
 
     implementation 'androidx.core:core-ktx:1.0.0'

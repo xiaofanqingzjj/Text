@@ -9,10 +9,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.os.Build;
-import android.support.annotation.CallSuper;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.CallSuper;
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieComposition;
@@ -34,8 +35,8 @@ import java.util.List;
 
 public abstract class BaseLayer
     implements DrawingContent, BaseKeyframeAnimation.AnimationListener, KeyPathElement {
-  private static final int SAVE_FLAGS = Canvas.CLIP_SAVE_FLAG | Canvas.CLIP_TO_LAYER_SAVE_FLAG |
-      Canvas.MATRIX_SAVE_FLAG;
+//  private static final int SAVE_FLAGS = Canvas.CLIP_SAVE_FLAG | Canvas.CLIP_TO_LAYER_SAVE_FLAG |
+//      Canvas.MATRIX_SAVE_FLAG;
 
   @Nullable
   static BaseLayer forModel(
@@ -161,7 +162,8 @@ public abstract class BaseLayer
     animations.add(newAnimation);
   }
 
-  @CallSuper @Override public void getBounds(RectF outBounds, Matrix parentMatrix) {
+  @CallSuper
+  @Override public void getBounds(RectF outBounds, Matrix parentMatrix) {
     boundsMatrix.set(parentMatrix);
     boundsMatrix.preConcat(transform.getMatrix());
   }
@@ -220,7 +222,9 @@ public abstract class BaseLayer
     if (hasMatteOnThisLayer()) {
       L.beginSection("Layer#drawMatte");
       L.beginSection("Layer#saveLayer");
-      canvas.saveLayer(rect, mattePaint, SAVE_FLAGS);
+
+
+      canvas.saveLayer(rect, mattePaint);
       L.endSection("Layer#saveLayer");
       clearCanvas(canvas);
       //noinspection ConstantConditions
@@ -369,7 +373,7 @@ public abstract class BaseLayer
     if (Build.VERSION.SDK_INT >= 28) {
       canvas.saveLayer(rect, paint, Canvas.ALL_SAVE_FLAG);
     } else {
-      canvas.saveLayer(rect, paint, SAVE_FLAGS);
+      canvas.saveLayer(rect, paint); //, SAVE_FLAGS);
     }
 
 

@@ -1,6 +1,7 @@
 package com.airbnb.lottie;
 
-import android.support.annotation.RestrictTo;
+
+import androidx.annotation.RestrictTo;
 
 /**
  * Data class describing an image asset exported by bodymovin.

@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.TextureView
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import kotlinx.android.synthetic.main.dialog_menu_buttom_item_menu.view.*
 
 
 /**

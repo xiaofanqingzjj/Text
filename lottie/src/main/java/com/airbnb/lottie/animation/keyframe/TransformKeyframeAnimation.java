@@ -2,12 +2,13 @@ package com.airbnb.lottie.animation.keyframe;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
 
-import com.airbnb.lottie.value.LottieValueCallback;
-import com.airbnb.lottie.value.ScaleXY;
+import androidx.annotation.Nullable;
+
 import com.airbnb.lottie.model.animatable.AnimatableTransform;
 import com.airbnb.lottie.model.layer.BaseLayer;
+import com.airbnb.lottie.value.LottieValueCallback;
+import com.airbnb.lottie.value.ScaleXY;
 
 import static com.airbnb.lottie.LottieProperty.TRANSFORM_ANCHOR_POINT;
 import static com.airbnb.lottie.LottieProperty.TRANSFORM_END_OPACITY;
@@ -27,7 +28,8 @@ public class TransformKeyframeAnimation {
   private final BaseKeyframeAnimation<Integer, Integer> opacity;
 
   // Used for repeaters
-  @Nullable private final BaseKeyframeAnimation<?, Float> startOpacity;
+  @Nullable
+  private final BaseKeyframeAnimation<?, Float> startOpacity;
   @Nullable private final BaseKeyframeAnimation<?, Float> endOpacity;
 
   public TransformKeyframeAnimation(AnimatableTransform animatableTransform) {

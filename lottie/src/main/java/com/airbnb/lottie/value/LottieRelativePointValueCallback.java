@@ -1,7 +1,8 @@
 package com.airbnb.lottie.value;
 
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.airbnb.lottie.utils.MiscUtils;
 

@@ -3,9 +3,10 @@ package com.airbnb.lottie.model.layer;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
-import androidx.core.util.LongSparseArray;
+
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
+import androidx.collection.LongSparseArray;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieComposition;
@@ -27,7 +28,8 @@ public class CompositionLayer extends BaseLayer {
   private final RectF newClipRect = new RectF();
 
   @Nullable private Boolean hasMatte;
-  @Nullable private Boolean hasMasks;
+  @Nullable
+  private Boolean hasMasks;
 
   public CompositionLayer(LottieDrawable lottieDrawable, Layer layerModel, List<Layer> layerModels,
       LottieComposition composition) {

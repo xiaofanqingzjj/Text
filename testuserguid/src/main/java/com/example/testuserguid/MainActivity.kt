@@ -3,8 +3,8 @@ package com.example.testuserguid
 import android.animation.ObjectAnimator
 import android.graphics.Path
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 

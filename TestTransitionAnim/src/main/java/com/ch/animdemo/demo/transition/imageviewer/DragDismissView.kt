@@ -9,6 +9,8 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.customview.widget.ViewDragHelper
 import com.example.module_base.util.DensityUtil
+import android.R.attr.mode
+import com.example.module_base.util.dip2px
 
 
 /**
@@ -51,7 +53,7 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
      *
      * 这个距离是把图片滑动到最小的距离
      */
-    val maxScoll = DensityUtil.dip2px(context, 300f)
+    val maxScoll = 300f.dip2px(context)
 
 
     /**
@@ -60,7 +62,7 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
     var onScrollChangeListener : ((top: Int, maxRange: Int)->Unit)? = null
 
     init {
-        viewDragHelper = ViewDragHelper.create(this, 1f, object : ViewDragHelper.Callback() {
+        viewDragHelper = ViewDragHelper.create(this, 0.15f, object : ViewDragHelper.Callback() {
 
             /**
              * 判断哪个View可以拖动
@@ -140,7 +142,7 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
                         s = 0f
                     }
                     val scale  = 0.5f + s * 0.5f
-                    Log.d(TAG, "top: $top, dy:$dy scale:$scale")
+//                    Log.d(TAG, "top: $top, dy:$dy scale:$scale")
                     dragView?.run {
                         scaleX = scale
                         scaleY = scale
@@ -178,14 +180,42 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
         }
     }
 
+    var mode = 0
+
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
+
+        when (ev.getAction() and MotionEvent.ACTION_MASK) {
+            MotionEvent.ACTION_DOWN -> mode = 1
+            MotionEvent.ACTION_UP -> mode = 0
+
+            MotionEvent.ACTION_POINTER_DOWN -> mode += 1
+            MotionEvent.ACTION_POINTER_UP -> mode -= 1
+
+        }
+
+
+
+
         val drag =  viewDragHelper.shouldInterceptTouchEvent(ev)
-//        Log.d(TAG, "shouldInterceptTouchEvent:${drag}")
+        Log.d(TAG, "onInterceptTouchEvent:$mode， shouldDrag:$drag, :action:${ev.action and MotionEvent.ACTION_MASK}")
         return drag
     }
 
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        when (event.getAction() and MotionEvent.ACTION_MASK) {
+            MotionEvent.ACTION_DOWN -> mode = 1
+            MotionEvent.ACTION_UP -> mode = 0
+
+            MotionEvent.ACTION_POINTER_DOWN -> mode += 1
+            MotionEvent.ACTION_POINTER_UP -> mode -= 1
+
+        }
+
+
+        Log.e(TAG, "onTouchEvent:$mode， :action:${event.action and MotionEvent.ACTION_MASK}")
+
         viewDragHelper.processTouchEvent(event)
         return true
     }

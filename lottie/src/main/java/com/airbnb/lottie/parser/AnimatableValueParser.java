@@ -1,10 +1,10 @@
 package com.airbnb.lottie.parser;
 
-import android.support.annotation.Nullable;
 import android.util.JsonReader;
 
+import androidx.annotation.Nullable;
+
 import com.airbnb.lottie.LottieComposition;
-import com.airbnb.lottie.value.Keyframe;
 import com.airbnb.lottie.model.animatable.AnimatableColorValue;
 import com.airbnb.lottie.model.animatable.AnimatableFloatValue;
 import com.airbnb.lottie.model.animatable.AnimatableGradientColorValue;
@@ -14,6 +14,7 @@ import com.airbnb.lottie.model.animatable.AnimatableScaleValue;
 import com.airbnb.lottie.model.animatable.AnimatableShapeValue;
 import com.airbnb.lottie.model.animatable.AnimatableTextFrame;
 import com.airbnb.lottie.utils.Utils;
+import com.airbnb.lottie.value.Keyframe;
 
 import java.io.IOException;
 import java.util.List;
@@ -74,8 +75,9 @@ public class AnimatableValueParser {
   /**
    * Will return null if the animation can't be played such as if it has expressions.
    */
-  @Nullable private static <T> List<Keyframe<T>> parse(JsonReader reader,
-      LottieComposition composition, ValueParser<T> valueParser) throws IOException {
+  @Nullable
+  private static <T> List<Keyframe<T>> parse(JsonReader reader,
+                                             LottieComposition composition, ValueParser<T> valueParser) throws IOException {
     return KeyframesParser.parse(reader, composition, 1, valueParser);
   }
 

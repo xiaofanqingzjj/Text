@@ -1,17 +1,18 @@
 package com.airbnb.lottie.parser;
 
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
-import androidx.core.util.SparseArrayCompat;
-import androidx.core.view.animation.PathInterpolatorCompat;
 import android.util.JsonReader;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
+import androidx.annotation.Nullable;
+import androidx.collection.SparseArrayCompat;
+import androidx.core.view.animation.PathInterpolatorCompat;
+
 import com.airbnb.lottie.LottieComposition;
-import com.airbnb.lottie.value.Keyframe;
 import com.airbnb.lottie.utils.MiscUtils;
 import com.airbnb.lottie.utils.Utils;
+import com.airbnb.lottie.value.Keyframe;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;

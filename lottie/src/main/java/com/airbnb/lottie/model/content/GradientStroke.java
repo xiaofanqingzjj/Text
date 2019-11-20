@@ -1,6 +1,6 @@
 package com.airbnb.lottie.model.content;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.animation.content.Content;
@@ -25,7 +25,8 @@ public class GradientStroke implements ContentModel {
   private final ShapeStroke.LineCapType capType;
   private final ShapeStroke.LineJoinType joinType;
   private final List<AnimatableFloatValue> lineDashPattern;
-  @Nullable private final AnimatableFloatValue dashOffset;
+  @Nullable
+  private final AnimatableFloatValue dashOffset;
 
   public GradientStroke(String name, GradientType gradientType,
       AnimatableGradientColorValue gradientColor,

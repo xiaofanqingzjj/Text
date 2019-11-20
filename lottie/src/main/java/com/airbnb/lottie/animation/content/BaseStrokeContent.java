@@ -8,8 +8,9 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
-import android.support.annotation.CallSuper;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.CallSuper;
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieDrawable;
@@ -46,7 +47,8 @@ public abstract class BaseStrokeContent
   private final BaseKeyframeAnimation<?, Integer> opacityAnimation;
   private final List<BaseKeyframeAnimation<?, Float>> dashPatternAnimations;
   @Nullable private final BaseKeyframeAnimation<?, Float> dashPatternOffsetAnimation;
-  @Nullable private BaseKeyframeAnimation<ColorFilter, ColorFilter> colorFilterAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<ColorFilter, ColorFilter> colorFilterAnimation;
 
   BaseStrokeContent(final LottieDrawable lottieDrawable, BaseLayer layer, Paint.Cap cap,
       Paint.Join join, AnimatableIntegerValue opacity, AnimatableFloatValue width,

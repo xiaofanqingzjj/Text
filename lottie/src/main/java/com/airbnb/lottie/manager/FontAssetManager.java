@@ -3,9 +3,10 @@ package com.airbnb.lottie.manager;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.FontAssetDelegate;
 import com.airbnb.lottie.L;
@@ -22,7 +23,8 @@ public class FontAssetManager {
   /** Map of font families to their fonts. Necessary to create a font with a different style */
   private final Map<String, Typeface> fontFamilies = new HashMap<>();
   private final AssetManager assetManager;
-  @Nullable private FontAssetDelegate delegate;
+  @Nullable
+  private FontAssetDelegate delegate;
   private String defaultFontFileExtension = ".ttf";
 
   public FontAssetManager(Drawable.Callback callback, @Nullable FontAssetDelegate delegate) {

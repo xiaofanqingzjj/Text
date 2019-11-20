@@ -10,17 +10,18 @@ import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.FloatRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
-import android.support.annotation.VisibleForTesting;
-import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.JsonReader;
 import android.util.Log;
 import android.util.SparseArray;
+
+import androidx.annotation.FloatRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
+import androidx.annotation.VisibleForTesting;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import com.airbnb.lottie.model.KeyPath;
 import com.airbnb.lottie.value.LottieFrameInfo;
@@ -83,7 +84,8 @@ import java.util.Map;
   private final LottieDrawable lottieDrawable = new LottieDrawable();
   private CacheStrategy defaultCacheStrategy;
   private String animationName;
-  private @RawRes int animationResId;
+  private @RawRes
+  int animationResId;
   private boolean wasAnimatingWhenDetached = false;
   private boolean autoPlay = false;
   private boolean useHardwareLayer = false;
@@ -259,7 +261,8 @@ import java.util.Map;
     super.onDetachedFromWindow();
   }
 
-  @VisibleForTesting void recycleBitmaps() {
+  @VisibleForTesting
+  void recycleBitmaps() {
     // AppCompatImageView constructor will set the image when set from xml
     // before LottieDrawable has been initialized
     if (lottieDrawable != null) {

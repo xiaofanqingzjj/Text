@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.AsyncTask;
-import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
-import android.support.annotation.RestrictTo;
-import androidx.core.util.LongSparseArray;
-import androidx.core.util.SparseArrayCompat;
 import android.util.JsonReader;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
+import androidx.annotation.RestrictTo;
+import androidx.collection.LongSparseArray;
+import androidx.collection.SparseArrayCompat;
 
 import com.airbnb.lottie.model.Font;
 import com.airbnb.lottie.model.FontCharacter;
@@ -56,9 +57,9 @@ public class LottieComposition {
   private float frameRate;
 
   public void init(Rect bounds, float startFrame, float endFrame, float frameRate,
-      List<Layer> layers, LongSparseArray<Layer> layerMap, Map<String,
+                   List<Layer> layers, LongSparseArray<Layer> layerMap, Map<String,
       List<Layer>> precomps, Map<String, LottieImageAsset> images,
-      SparseArrayCompat<FontCharacter> characters, Map<String, Font> fonts) {
+                   SparseArrayCompat<FontCharacter> characters, Map<String, Font> fonts) {
     this.bounds = bounds;
     this.startFrame = startFrame;
     this.endFrame = endFrame;
@@ -178,7 +179,7 @@ public class LottieComposition {
      * Loads a composition from a file stored in res/raw.
      */
      public static Cancellable fromRawFile(
-         Context context, @RawRes int resId, OnCompositionLoadedListener listener) {
+             Context context, @RawRes int resId, OnCompositionLoadedListener listener) {
       return fromInputStream(context.getResources().openRawResource(resId), listener);
     }
 

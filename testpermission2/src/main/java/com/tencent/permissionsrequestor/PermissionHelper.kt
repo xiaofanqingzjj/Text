@@ -1,6 +1,6 @@
 package com.tencent.permissionsrequestor
 
-import androidx.core.app.Fragment
+import androidx.fragment.app.Fragment
 import java.lang.ref.WeakReference
 
 
@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference
  * 一个处理权限的辅助类
  * @author fortunexiao
  */
-internal class PermissionHelper( var fragment:  Fragment, var callback: Callback) {
+internal class PermissionHelper(var fragment: Fragment, var callback: Callback) {
 
     companion object {
         const val REQUEST_CODE_PERMISSION = 999

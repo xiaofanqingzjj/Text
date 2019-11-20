@@ -1,7 +1,8 @@
 package com.airbnb.lottie.model.content;
 
 import android.graphics.Path;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.animation.content.Content;
@@ -22,7 +23,8 @@ public class GradientFill implements ContentModel {
   private final AnimatablePointValue endPoint;
   private final String name;
   @Nullable private final AnimatableFloatValue highlightLength;
-  @Nullable private final AnimatableFloatValue highlightAngle;
+  @Nullable
+  private final AnimatableFloatValue highlightAngle;
 
   public GradientFill(String name, GradientType gradientType, Path.FillType fillType,
       AnimatableGradientColorValue gradientColor,

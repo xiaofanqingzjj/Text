@@ -3,7 +3,8 @@ package com.airbnb.lottie.animation.content;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Matrix;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.LottieProperty;
@@ -19,7 +20,8 @@ public class StrokeContent extends BaseStrokeContent {
 
   private final String name;
   private final BaseKeyframeAnimation<Integer, Integer> colorAnimation;
-  @Nullable private BaseKeyframeAnimation<ColorFilter, ColorFilter> colorFilterAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<ColorFilter, ColorFilter> colorFilterAnimation;
 
   public StrokeContent(final LottieDrawable lottieDrawable, BaseLayer layer, ShapeStroke stroke) {
     super(lottieDrawable, layer, stroke.getCapType().toPaintCap(),

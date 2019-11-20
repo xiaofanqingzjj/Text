@@ -5,6 +5,7 @@ import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.transition.Transition
@@ -22,6 +23,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.target.Target
 import com.ch.animdemo.R
@@ -135,7 +137,7 @@ class ImageViewerActivity2 : FragmentActivity() {
 
 
         // 延迟共享动画的执行
-        postponeEnterTransition()
+//        postponeEnterTransition()
 
         intent?.run {
             val list = intent.getSerializableExtra(PARAM_IMAGES) as ArrayList<Image>
@@ -276,15 +278,19 @@ class ImageViewerActivity2 : FragmentActivity() {
      */
     private fun loadImage(context: Context, imageView: ImageView, progressBar: ProgressBar?, image: Image, isAnim: Boolean) {
         image.run {
-            progressBar?.visibility = View.VISIBLE
+//            progressBar?.visibility = View.VISIBLE
 
             // 先加载thumb
             if (thumbUrl != null) {
                 loadImageInner(thumbUrl, imageView, null, object : ImageListenerStub() {
-                    override fun onImageLoaded(p0: String?, p1: Bitmap?) {
+                    override fun onImageLoaded(p0: String?, p1: Drawable?) {
                         if (!isAnim) {
                             loadImageInner(url, imageView, progressBar)
                         } else {
+
+                            runUIThread(100) {
+                                (context as Activity).startPostponedEnterTransition()
+                            }
                             (context as Activity).startPostponedEnterTransition()
                         }
                     }
@@ -292,8 +298,12 @@ class ImageViewerActivity2 : FragmentActivity() {
             } else {
                 loadImageInner(thumbUrl, imageView, progressBar)
             }
+
         }
     }
+
+
+
 
     private fun loadImageInner(url: String?,
                                imageView: ImageView,
@@ -302,25 +312,41 @@ class ImageViewerActivity2 : FragmentActivity() {
 
         Log.d(TAG, "beginLoad:$url")
 
+
+        Glide.with(this).load(url).into(imageView)
         Glide.with(this)
-                .asBitmap()
+//                .asBitmap()
                 .load(url)
 
-                .into(object : SimpleTarget<Bitmap>() {
-                    override fun onResourceReady(resource: Bitmap, transition: com.bumptech.glide.request.transition.Transition<in Bitmap>?) {
-                        imageView.setImageBitmap(resource)
+                .into(object : AnimableTarget(imageView) {
+
+                    override fun onResourceReady(resource: Drawable, transition: com.bumptech.glide.request.transition.Transition<in Drawable>?) {
+                        super.onResourceReady(resource, transition)
                         progressBar?.visibility = View.GONE
                         l?.onImageLoaded(url, resource)
                     }
 
+//                    private var animatable: Animatable? = null
 
+//                    override fun onResourceReady(resource: Drawable, transition: com.bumptech.glide.request.transition.Transition<in Drawable>?) {
+//                        imageView.setImageDrawable(resource)
+//                        progressBar?.visibility = View.GONE
+//                        l?.onImageLoaded(url, resource)
+//                    }
+//
+////                    override fun onResourceReady(resource: Bitmap, transition: com.bumptech.glide.request.transition.Transition<in Bitmap>?) {
+////
+////                    }
+//
+//
                     override fun onLoadFailed(errorDrawable: Drawable?) {
                         super.onLoadFailed(errorDrawable)
+                        progressBar?.visibility = View.GONE
                     }
-
-                    override fun onLoadStarted(placeholder: Drawable?) {
-                        super.onLoadStarted(placeholder)
-                    }
+//
+//                    override fun onLoadStarted(placeholder: Drawable?) {
+//                        super.onLoadStarted(placeholder)
+//                    }
 
                 })
 
@@ -384,7 +410,7 @@ class ImageViewerActivity2 : FragmentActivity() {
         open fun onImageFailed(p0: String?, p1: java.lang.Exception?) {
         }
 
-        open fun onImageLoaded(p0: String?, p1: Bitmap?) {
+        open fun onImageLoaded(p0: String?, p1: Drawable?) {
 
         }
 

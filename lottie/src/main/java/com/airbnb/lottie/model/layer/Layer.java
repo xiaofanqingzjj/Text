@@ -1,15 +1,15 @@
 package com.airbnb.lottie.model.layer;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieComposition;
-import com.airbnb.lottie.value.Keyframe;
 import com.airbnb.lottie.model.animatable.AnimatableFloatValue;
 import com.airbnb.lottie.model.animatable.AnimatableTextFrame;
 import com.airbnb.lottie.model.animatable.AnimatableTextProperties;
 import com.airbnb.lottie.model.animatable.AnimatableTransform;
 import com.airbnb.lottie.model.content.ContentModel;
 import com.airbnb.lottie.model.content.Mask;
+import com.airbnb.lottie.value.Keyframe;
 
 import java.util.List;
 import java.util.Locale;
@@ -39,7 +39,8 @@ public class Layer {
   private final long layerId;
   private final LayerType layerType;
   private final long parentId;
-  @Nullable private final String refId;
+  @Nullable
+  private final String refId;
   private final List<Mask> masks;
   private final AnimatableTransform transform;
   private final int solidWidth;

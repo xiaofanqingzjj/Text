@@ -1,7 +1,8 @@
 package com.airbnb.lottie.animation.content;
 
 import android.graphics.Path;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.animation.keyframe.BaseKeyframeAnimation;
@@ -20,7 +21,8 @@ public class ShapeContent implements PathContent, BaseKeyframeAnimation.Animatio
   private final BaseKeyframeAnimation<?, Path> shapeAnimation;
 
   private boolean isPathValid;
-  @Nullable private TrimPathContent trimPath;
+  @Nullable
+  private TrimPathContent trimPath;
 
   public ShapeContent(LottieDrawable lottieDrawable, BaseLayer layer, ShapePath shape) {
     name = shape.getName();

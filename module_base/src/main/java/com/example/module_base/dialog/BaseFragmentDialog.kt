@@ -1,4 +1,4 @@
-package com.tencent.story.base.dialog
+package com.example.module_base.dialog
 
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment

@@ -1,6 +1,6 @@
 package com.airbnb.lottie;
 
-import androidx.core.util.ArraySet;
+import androidx.collection.ArraySet;
 import androidx.core.util.Pair;
 import android.util.Log;
 

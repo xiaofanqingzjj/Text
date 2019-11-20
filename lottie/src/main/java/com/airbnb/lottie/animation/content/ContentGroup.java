@@ -4,7 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.animation.keyframe.BaseKeyframeAnimation;
@@ -35,7 +36,8 @@ public class ContentGroup implements DrawingContent, PathContent,
     return contents;
   }
 
-  @Nullable static AnimatableTransform findTransform(List<ContentModel> contentModels) {
+  @Nullable
+  static AnimatableTransform findTransform(List<ContentModel> contentModels) {
     for (int i = 0; i < contentModels.size(); i++) {
       ContentModel contentModel = contentModels.get(i);
       if (contentModel instanceof AnimatableTransform) {

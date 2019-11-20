@@ -5,11 +5,12 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Process
+import androidx.collection.SimpleArrayMap
 import androidx.core.app.ActivityCompat
 import androidx.core.app.AppOpsManagerCompat
-import androidx.core.util.SimpleArrayMap
 
 import androidx.core.content.PermissionChecker.checkSelfPermission
+import androidx.fragment.app.Fragment
 
 internal object PermissionUtils {
     // Map of dangerous permissions introduced in later framework versions.
@@ -83,7 +84,7 @@ internal object PermissionUtils {
         return false
     }
 
-    fun shouldShowRequestPermissionRationale(fragment: androidx.core.app.Fragment, vararg permissions: String): Boolean {
+    fun shouldShowRequestPermissionRationale(fragment: Fragment, vararg permissions: String): Boolean {
         for (permission in permissions) {
             if (fragment.shouldShowRequestPermissionRationale(permission)) {
                 return true

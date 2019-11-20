@@ -1,6 +1,7 @@
 package com.airbnb.lottie.model;
 
-import android.support.annotation.ColorInt;
+
+import androidx.annotation.ColorInt;
 
 public class DocumentData {
 
@@ -11,7 +12,8 @@ public class DocumentData {
   public final int tracking;
   @SuppressWarnings("WeakerAccess") final double lineHeight;
   public final double baselineShift;
-  @ColorInt public final int color;
+  @ColorInt
+  public final int color;
   @ColorInt public final int strokeColor;
   public final int strokeWidth;
   public final boolean strokeOverFill;

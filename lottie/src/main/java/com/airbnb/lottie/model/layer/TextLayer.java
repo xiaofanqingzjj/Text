@@ -7,7 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieComposition;
 import com.airbnb.lottie.LottieDrawable;
@@ -43,7 +44,8 @@ public class TextLayer extends BaseLayer {
   private final TextKeyframeAnimation textAnimation;
   private final LottieDrawable lottieDrawable;
   private final LottieComposition composition;
-  @Nullable private BaseKeyframeAnimation<Integer, Integer> colorAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<Integer, Integer> colorAnimation;
   @Nullable private BaseKeyframeAnimation<Integer, Integer> strokeColorAnimation;
   @Nullable private BaseKeyframeAnimation<Float, Float> strokeWidthAnimation;
   @Nullable private BaseKeyframeAnimation<Float, Float> trackingAnimation;

@@ -1,6 +1,7 @@
 package com.airbnb.lottie;
 
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 public interface OnCompositionLoadedListener {
   /**
