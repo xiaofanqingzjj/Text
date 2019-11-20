@@ -48,7 +48,7 @@ object DensityUtil {
 /**
  * dip转px的扩展方法
  */
-fun Float.dip2px(context: Context): Int {
+fun Float.toPx(context: Context): Int {
     val scale = context.resources.displayMetrics.density
     return (this * scale + 0.5f).toInt()
 }

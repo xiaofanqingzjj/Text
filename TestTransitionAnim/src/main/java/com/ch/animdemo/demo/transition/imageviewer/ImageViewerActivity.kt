@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bedrock.module_base.adapter.QuickAdapter
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -28,7 +29,6 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.ch.animdemo.R
 import com.ch.animdemo.demo.transition.Img2Activity
-import com.example.module_base.adapter.QuickAdapter
 import kotlinx.android.synthetic.main.activity_image_viewer.*
 import kotlinx.android.synthetic.main.item_img.view.*
 import java.io.Serializable
@@ -224,7 +224,7 @@ class ImageViewerActivity : FragmentActivity() {
 
 
 
-    class ImageAdapter(context: Context, images: ArrayList<Image>): QuickAdapter<Image> (context, images, R.layout.rv_item_image_viewer) {
+    class ImageAdapter(context: Context, images: ArrayList<Image>): QuickAdapter<Image>(context, images, R.layout.rv_item_image_viewer) {
 
         companion object {
             const val TAG = "ImageAdapter"

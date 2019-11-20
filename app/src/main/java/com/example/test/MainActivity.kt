@@ -2,10 +2,11 @@ package com.example.test
 
 import android.os.Bundle
 import android.transition.Slide
-import com.bedrock.module_base.FragmentContainerActivity
 import com.bedrock.module_base.MenuActivity
 import com.example.test.transition.TestTransitionActivity
 import com.example.test.card.CardViewActivity
+import com.example.test.movementmethod.TestMoveMethod
+import com.example.test.testlottie.TestLottieFragment
 
 
 class MainActivity : MenuActivity() {
@@ -17,15 +18,9 @@ class MainActivity : MenuActivity() {
 
         addMenu("CardVIEW", CardViewActivity::class.java)
 
-        addMenu("Lottie") {
-            FragmentContainerActivity.show(this@MainActivity, "Test Lottie", TestLottie::class.java)
-        }
+        addMenuByFragment("Lottie", TestLottieFragment::class.java)
 
-
-    }
-
-    private fun setupWindowAnimations() {
-        window.exitTransition = Slide()
+        addMenuByFragment("Test MovementMethod", TestMoveMethod::class.java)
     }
 
 }

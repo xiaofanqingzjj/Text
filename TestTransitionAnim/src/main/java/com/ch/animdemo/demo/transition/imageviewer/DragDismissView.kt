@@ -8,9 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import androidx.customview.widget.ViewDragHelper
-import com.example.module_base.util.DensityUtil
-import android.R.attr.mode
-import com.example.module_base.util.dip2px
+import com.bedrock.module_base.util.toPx
 
 
 /**
@@ -53,7 +51,7 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
      *
      * 这个距离是把图片滑动到最小的距离
      */
-    val maxScoll = 300f.dip2px(context)
+    val maxScoll = 300f.toPx(context)
 
 
     /**

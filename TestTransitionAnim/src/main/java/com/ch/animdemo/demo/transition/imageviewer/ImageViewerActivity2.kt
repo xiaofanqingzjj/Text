@@ -4,8 +4,6 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.transition.Transition
@@ -19,16 +17,10 @@ import androidx.core.app.SharedElementCallback
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager.widget.ViewPager
+import com.bedrock.module_base.adapter.CommonPagerAdapter
+import com.bedrock.module_base.util.runUIThread
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.target.Target
 import com.ch.animdemo.R
-import com.example.module_base.adapter.CommonPagerAdapter
-import com.example.module_base.util.runUIThread
 import kotlinx.android.synthetic.main.activity_image_viewer2.*
 import kotlinx.android.synthetic.main.rv_item_image_viewer.view.*
 import java.io.Serializable
@@ -137,7 +129,7 @@ class ImageViewerActivity2 : FragmentActivity() {
 
 
         // 延迟共享动画的执行
-//        postponeEnterTransition()
+        postponeEnterTransition()
 
         intent?.run {
             val list = intent.getSerializableExtra(PARAM_IMAGES) as ArrayList<Image>
