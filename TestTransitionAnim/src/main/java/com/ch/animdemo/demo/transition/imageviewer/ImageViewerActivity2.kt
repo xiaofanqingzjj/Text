@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.transition.Transition
@@ -18,11 +19,15 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager.widget.ViewPager
 import com.bedrock.module_base.adapter.CommonPagerAdapter
+import com.bedrock.module_base.dialog.MenuDialog
 import com.bedrock.module_base.util.runUIThread
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.BaseTarget
+import com.bumptech.glide.request.target.SizeReadyCallback
 import com.ch.animdemo.R
 import kotlinx.android.synthetic.main.activity_image_viewer2.*
 import kotlinx.android.synthetic.main.rv_item_image_viewer.view.*
+import java.io.File
 import java.io.Serializable
 
 
@@ -174,6 +179,8 @@ class ImageViewerActivity2 : FragmentActivity() {
 
 
         window?.sharedElementEnterTransition?.run {
+
+
             addListener(sharedElementTransitionListener)
         }
 
@@ -260,9 +267,15 @@ class ImageViewerActivity2 : FragmentActivity() {
                     finishAfterTransition()
                 }
 
+                imageView.setOnLongClickListener {
+                    true
+                }
+
                 // 加载图片
                 loadImage(this@ImageViewerActivity2, imageView, progressBar, data, false)
             })
+
+
 
 
     /**
@@ -279,7 +292,6 @@ class ImageViewerActivity2 : FragmentActivity() {
                         if (!isAnim) {
                             loadImageInner(url, imageView, progressBar)
                         } else {
-
                             runUIThread(100) {
                                 (context as Activity).startPostponedEnterTransition()
                             }
@@ -294,7 +306,37 @@ class ImageViewerActivity2 : FragmentActivity() {
         }
     }
 
+    private var mSaveImagePath = "/sdcard/aa"
 
+    private fun showSaveMenu(image: Image) {
+        MenuDialog.show(supportFragmentManager, MenuDialog.Menu("保存图片", onClick = {
+           Glide.with(this).asFile().into(object: BaseTarget<File>(){
+               override fun getSize(cb: SizeReadyCallback) {
+               }
+
+               override fun removeCallback(cb: SizeReadyCallback) {
+               }
+
+               override fun onResourceReady(resource: File, transition: com.bumptech.glide.request.transition.Transition<in File>?) {
+
+               }
+
+           })
+
+
+        }))
+    }
+
+
+
+
+    private fun setupSuitableScale(imageView: ImageView, image: Image) {
+
+
+        // 判断是否竖长图
+
+        val imageOrgShouldWidth = image.width * imageView.height / image.height
+    }
 
 
     private fun loadImageInner(url: String?,
@@ -303,13 +345,8 @@ class ImageViewerActivity2 : FragmentActivity() {
                                l: ImageListenerStub? = null) {
 
         Log.d(TAG, "beginLoad:$url")
-
-
-        Glide.with(this).load(url).into(imageView)
         Glide.with(this)
-//                .asBitmap()
                 .load(url)
-
                 .into(object : AnimableTarget(imageView) {
 
                     override fun onResourceReady(resource: Drawable, transition: com.bumptech.glide.request.transition.Transition<in Drawable>?) {
@@ -318,56 +355,27 @@ class ImageViewerActivity2 : FragmentActivity() {
                         l?.onImageLoaded(url, resource)
                     }
 
-//                    private var animatable: Animatable? = null
-
-//                    override fun onResourceReady(resource: Drawable, transition: com.bumptech.glide.request.transition.Transition<in Drawable>?) {
-//                        imageView.setImageDrawable(resource)
-//                        progressBar?.visibility = View.GONE
-//                        l?.onImageLoaded(url, resource)
+//                    override fun setResource(resource: Drawable?) {
+//
+//                        if (resource is BitmapDrawable) {
+//                            val bitmap = resource.bitmap
+//                            bitmap?.run {
+//                                if (height > width && height / width > imageView.height / imageView.height) { // 只有竖图，且图片比屏幕更长，才需要调整
+//
+//                                    val imageOrgShouldWidth = width * imageView.height / imageView.width
+//                                }
+//                            }
+//                        } else {
+//                            super.setResource(resource)
+//                        }
 //                    }
-//
-////                    override fun onResourceReady(resource: Bitmap, transition: com.bumptech.glide.request.transition.Transition<in Bitmap>?) {
-////
-////                    }
-//
-//
+
                     override fun onLoadFailed(errorDrawable: Drawable?) {
                         super.onLoadFailed(errorDrawable)
                         progressBar?.visibility = View.GONE
                     }
-//
-//                    override fun onLoadStarted(placeholder: Drawable?) {
-//                        super.onLoadStarted(placeholder)
-//                    }
-
                 })
-
-//        Vangogh.loadBitmap(url, object : AsyncImageListener<Bitmap> {
-//            override fun onImageStarted(p0: String?) {
-//                l?.onImageStarted(p0)
-//            }
-//
-//            override fun onImageFailed(p0: String?, p1: Exception?) {
-//                l?.onImageFailed(p0, p1)
-//                Log.d(TAG, "onImageFailed:$p0")
-//            }
-//
-//            override fun onImageLoaded(p0: String?, p1: Bitmap?) {
-//                imageView.setImageBitmap(p1)
-//                l?.onImageLoaded(p0, p1)
-//                Log.d(TAG, "onImageLoaded:$p0")
-//
-//                progressBar?.visibility = View.GONE
-//            }
-//
-//            override fun onImageProgress(p0: String?, p1: Float) {
-//                l?.onImageProgress(p0, p1)
-//            }
-//        })
     }
-
-
-
 
 
     /**

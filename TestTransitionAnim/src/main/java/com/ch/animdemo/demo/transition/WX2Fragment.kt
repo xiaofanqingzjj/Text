@@ -1,7 +1,5 @@
 package com.ch.animdemo.demo.transition
 
-import android.app.ActivityOptions
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.ch.animdemo.R
-import com.ch.animdemo.demo.transition.imageviewer.ImageViewerActivity
 import com.ch.animdemo.demo.transition.imageviewer.ImageViewerActivity2
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder

@@ -3,6 +3,7 @@ package com.tencent.permissionsrequestor
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
+import com.bedrock.permissionrequestor.PermissionsRequestor
 
 
 /**
@@ -22,7 +23,7 @@ class PermissionProxyFragment : Fragment() {
      */
     private var isInOnRequestPermissionsResulting = false
 
-    private var permissionHelper: PermissionHelper? = null
+    private var permissionHelper: com.bedrock.permissionrequestor.PermissionHelper? = null
 
     var permissions: Array<String>? = null
     var isShowRationale: Boolean = false
@@ -35,7 +36,7 @@ class PermissionProxyFragment : Fragment() {
 //    var onDenyAndNeverAskAgain: (()->Unit)? = null
 
 
-    private val callback = object : PermissionHelper.Callback {
+    private val callback = object : com.bedrock.permissionrequestor.PermissionHelper.Callback {
         override fun onShowPermissionsRational(request: PermissionsRequestor.PermissionRequest) {
             onShowRationale?.invoke(request)
         }
@@ -104,7 +105,7 @@ class PermissionProxyFragment : Fragment() {
         }
 
         if (permissionHelper == null) {
-            permissionHelper = PermissionHelper(this, callback)
+            permissionHelper = com.bedrock.permissionrequestor.PermissionHelper(this, callback)
         }
         permissionHelper?.requestPermissions(permissions!!)
     }

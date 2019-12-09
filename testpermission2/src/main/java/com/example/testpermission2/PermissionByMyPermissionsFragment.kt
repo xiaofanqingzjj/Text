@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.tencent.permissionsrequestor.PermissionsRequestor
+import com.bedrock.permissionrequestor.PermissionsRequestor
 
 
 /**

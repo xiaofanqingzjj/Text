@@ -1,6 +1,8 @@
 package com.tencent.permissionsrequestor
 
 import androidx.fragment.app.Fragment
+import com.bedrock.permissionrequestor.PermissionUtils
+import com.bedrock.permissionrequestor.PermissionsRequestor
 import java.lang.ref.WeakReference
 
 

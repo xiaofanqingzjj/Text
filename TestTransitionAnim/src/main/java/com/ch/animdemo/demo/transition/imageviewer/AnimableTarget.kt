@@ -78,7 +78,7 @@ open class AnimableTarget(var imageView: ImageView) : SimpleTarget<Drawable>() {
         }
     }
 
-    protected fun setResource( resource: Drawable?) {
+    protected open fun setResource( resource: Drawable?) {
         imageView?.setImageDrawable(resource)
     }
 }

@@ -5,8 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import com.tencent.permissionsrequestor.PermissionHelper
-import com.tencent.permissionsrequestor.PermissionsRequestor
+import com.bedrock.permissionrequestor.PermissionHelper
+import com.bedrock.permissionrequestor.PermissionsRequestor
 
 
 /**

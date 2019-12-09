@@ -13,9 +13,8 @@
         <TextView
             android:id="@+id/textview"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:textIsSelectable="true"
             android:text="曲曲折折的荷塘上面，
         弥望⑷的是田田⑸的叶子。叶子出水很高，
         像亭亭的舞女的裙。层层的叶子中间，

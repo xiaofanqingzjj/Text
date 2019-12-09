@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="DownloadProgressBarButton">
+        <attr name="dpbb_buttonTextSize" format="dimension|reference"/>
+        <attr name="dpbb_cornerRadius" format="float|dimension|reference" />
+        <attr name="dpbb_progressColor" format="color|reference" />
+        <attr name="dpbb_progressBgColor" format="color|reference" />
+
+        <attr name="dpbb_progressTextColor" format="color|reference" />
+        <attr name="dpbb_leftProgressTextColor" format="color|reference" />
+        <attr name="dpbb_right_border_bend" format="boolean" />
+    </declare-styleable>
+    
+</resources>

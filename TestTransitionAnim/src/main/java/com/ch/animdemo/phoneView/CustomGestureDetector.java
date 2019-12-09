@@ -22,6 +22,8 @@ import android.view.ScaleGestureDetector;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 
+import com.ch.animdemo.testscalegesturedetector.MutiTouchDetector;
+
 
 /**
  * Does a whole lot of gesture detecting.
@@ -43,6 +45,12 @@ class CustomGestureDetector {
     private final float mTouchSlop;
     private final float mMinimumVelocity;
     private OnGestureListener mListener;
+
+    private MutiTouchDetector mutiTouchDetector;
+
+    public boolean isMutiTouch() {
+        return mutiTouchDetector.isMutiTouch();
+    }
 
     CustomGestureDetector(Context context, OnGestureListener listener) {
         final ViewConfiguration configuration = ViewConfiguration
@@ -81,6 +89,8 @@ class CustomGestureDetector {
             }
         };
         mDetector = new ScaleGestureDetector(context, mScaleListener);
+
+        mutiTouchDetector = new MutiTouchDetector();
     }
 
     private float getActiveX(MotionEvent ev) {
@@ -113,6 +123,8 @@ class CustomGestureDetector {
             boolean isProcess =  processTouchEvent(ev);
 
 //            Log.d(TAG, "isProcess:" + isProcess + ", isDrag:" + mIsDragging + ", dr:" + dr);
+
+            mutiTouchDetector.onTouch(ev);
 
             return isProcess;
 //            return true;

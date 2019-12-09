@@ -3,7 +3,6 @@ package com.ch.animdemo.testscalegesturedetector
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -33,7 +32,7 @@ class TestScaleGestureDecectorFragment : Fragment() {
         val dector = ScaleGestureDetector(context, object : ScaleGestureDetector.OnScaleGestureListener {
             override fun onScaleBegin(detector: ScaleGestureDetector?): Boolean {
                 Log.d(TAG, "onScaleBegin")
-                return true
+                return false
             }
 
             override fun onScaleEnd(detector: ScaleGestureDetector?) {
@@ -48,9 +47,13 @@ class TestScaleGestureDecectorFragment : Fragment() {
 
         })
 
-        tv_demo.setOnTouchListener { v, event ->
 
+        val mutiTouchDetector = MutiTouchDetector()
+
+        tv_demo.setOnTouchListener { v, event ->
             dector.onTouchEvent(event)
+            mutiTouchDetector.onTouch(event)
+
             true
         }
     }

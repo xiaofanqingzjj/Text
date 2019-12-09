@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.customview.widget.ViewDragHelper
 import com.bedrock.module_base.util.toPx
+import com.ch.animdemo.phoneView.PhotoView
 
 
 /**
@@ -178,6 +179,10 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
         }
     }
 
+    private fun isDragViewMutiTouch(): Boolean {
+        return (dragView as? PhotoView)?.attacher?.isMutiTouch == true
+    }
+
     var mode = 0
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
@@ -195,7 +200,13 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
 
 
         val drag =  viewDragHelper.shouldInterceptTouchEvent(ev)
-        Log.d(TAG, "onInterceptTouchEvent:$mode， shouldDrag:$drag, :action:${ev.action and MotionEvent.ACTION_MASK}")
+
+        val isDragViewIsMutiTouch = isDragViewMutiTouch()
+        Log.d(TAG, "onInterceptTouchEvent:$mode， shouldDrag:$drag, :action:${ev.action and MotionEvent.ACTION_MASK}，isDragViewIsMutiTouch：$isDragViewIsMutiTouch")
+
+        if (isDragViewMutiTouch()) { // 如果当前的View上是多点触控，则不拦截
+            return false
+        }
         return drag
     }
 

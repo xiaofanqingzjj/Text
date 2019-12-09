@@ -11,7 +11,7 @@ class MyApplication : Application() {
 
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
+            // You should not init your context in this process.
             return;
         }
 //
@@ -19,7 +19,7 @@ class MyApplication : Application() {
 //                .listenerServiceClass()
 //                .buildAndInstall()
 //        LeakCanary.install(this);
-//        // Normal app init code...
+//        // Normal context init code...
 
     }
 }

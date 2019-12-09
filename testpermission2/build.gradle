@@ -58,7 +58,7 @@ dependencies {
 //    implementation("com.github.hotchemi:permissionsdispatcher:${permission_version}")
 ////    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:${permission_version}"
 //    kapt "com.github.hotchemi:permissionsdispatcher-processor:${permission_version}"
-    compile("com.github.hotchemi:permissionsdispatcher:${permission_version}") {
+    implementation("com.github.hotchemi:permissionsdispatcher:${permission_version}") {
         exclude module: "support-v13"
     }
     kapt "com.github.hotchemi:permissionsdispatcher-processor:${permission_version}"

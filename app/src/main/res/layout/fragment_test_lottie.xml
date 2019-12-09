@@ -24,10 +24,10 @@
 <!--    <com.airbnb.lottie.LottieAnimationView-->
 <!--        android:layout_width="44dp"-->
 <!--        android:layout_height="47dp"-->
-<!--        app:lottie_imageAssetsFolder="lucky_bag_entrance_timer/images"-->
-<!--        app:lottie_fileName="lucky_bag_entrance_timer/data.json"-->
-<!--        app:lottie_loop="true"-->
-<!--        app:lottie_autoPlay="true"/>-->
+<!--        context:lottie_imageAssetsFolder="lucky_bag_entrance_timer/images"-->
+<!--        context:lottie_fileName="lucky_bag_entrance_timer/data.json"-->
+<!--        context:lottie_loop="true"-->
+<!--        context:lottie_autoPlay="true"/>-->
 
 
     <FrameLayout

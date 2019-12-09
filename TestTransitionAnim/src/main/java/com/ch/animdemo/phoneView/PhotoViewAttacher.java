@@ -45,10 +45,11 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     static final String TAG = "PhotoViewAttacher";
 
-    private static float DEFAULT_MAX_SCALE = 3.0f;
-    private static float DEFAULT_MID_SCALE = 1.75f;
+    private static float DEFAULT_MAX_SCALE = 4.0f;
+    private static float DEFAULT_MID_SCALE = 2.0f;
     private static float DEFAULT_MIN_SCALE = 1.0f;
-    private static int DEFAULT_ZOOM_DURATION = 200;
+
+    private static int DEFAULT_ZOOM_DURATION = 150;
 
     private static final int EDGE_NONE = -1;
     private static final int EDGE_LEFT = 0;
@@ -272,6 +273,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
                 return false;
             }
         });
+    }
+
+    public boolean isMutiTouch() {
+        return mScaleDragDetector.isMutiTouch();
     }
 
     public void setOnDoubleTapListener(GestureDetector.OnDoubleTapListener newOnDoubleTapListener) {

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/selector_btn_comment"/>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:paddingLeft="1.5dp"
+            android:paddingTop="1.5dp"
+            android:paddingRight="1.5dp"
+            android:paddingBottom="6.5dp"
+            android:background="@drawable/selector_btn_comment">
+
+            <com.example.test.DownloadProgressBarButton
+                android:id="@+id/dpbb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:dpbb_progressBgColor="#00000000"
+                app:dpbb_progressColor="@color/SC1A50"
+                app:dpbb_progressTextColor="@color/SC2"
+                app:dpbb_leftProgressTextColor="@color/SC2"/>
+
+
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

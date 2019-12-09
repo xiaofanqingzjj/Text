@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ch.animdemo.R
-import com.ch.animdemo.demo.transition.imageviewer.ImageViewerActivity
+import com.ch.animdemo.demo.transition.imageviewer.ImageViewerActivity2
 
 class WX2Activity : AppCompatActivity() {
 
@@ -27,7 +27,7 @@ class WX2Activity : AppCompatActivity() {
 
             val backView = fragment?.getExitView(exitPos)
             backView?.run {
-                ImageViewerActivity.setAnimBackView(this@WX2Activity, backView)
+                ImageViewerActivity2.setAnimBackView(this@WX2Activity, backView)
             }
         }
     }
