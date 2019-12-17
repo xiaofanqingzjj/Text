@@ -26,13 +26,17 @@ public class AnimationsActivity1 extends BaseDetailActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bindData();
+
         setupWindowAnimations();
+
         setupLayout();
         setupToolbar();
     }
 
     private void setupWindowAnimations() {
-        getWindow().setReenterTransition(new Fade());
+
+        getWindow().setEnterTransition(new Fade());
+//        getWindow().setReenterTransition(new Fade());
     }
 
     private void bindData() {

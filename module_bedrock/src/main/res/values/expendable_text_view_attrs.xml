@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ExpandableTextView">
+
+        <attr name="etv_expend_btn_color" format="color|reference"/>
+        <attr name="etv_expend_text" format="string|reference" />
+        <attr name="etv_close_text" format="string|reference" />
+    </declare-styleable>
+</resources>

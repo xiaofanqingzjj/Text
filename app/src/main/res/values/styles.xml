@@ -13,4 +13,26 @@
 
     </style>
 
+
+    <style name="SplashActivityAnimation" parent="ActivityAnim">
+        <item name="android:activityOpenEnterAnimation">@anim/home_fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_none</item>
+
+        <!--<item name="android:activityCloseEnterAnimation">@anim/activity_none</item>-->
+        <!--<item name="android:activityCloseExitAnimation">@anim/home_fade_out</item>-->
+
+        <item name="android:activityCloseEnterAnimation">@anim/activity_none</item>
+        <!--<item name="android:activityCloseExitAnimation">@anim/home_fade_out</item>-->
+    </style>
+
+
+    <style name="ActivityAnim" parent="Theme.AppCompat.Light" >
+        <item name="android:activityOpenEnterAnimation">@anim/activity_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_none</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_none</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_right_out</item>
+
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
 </resources>

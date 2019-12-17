@@ -51,14 +51,25 @@
 
         <activity android:name=".SomeLeakActivity" />
 
-        <activity android:name=".transition.TestTransitionActivity"  />
+        <activity android:name=".transition.TestTransitionActivity"
+            />
+
         <activity android:name=".transition.ImgeViewerActivity" />
 
-        <activity android:name=".card.CardViewActivity" />
+        <activity android:name=".card.CardViewActivity"
+            android:theme="@style/SplashActivityAnimation"/>
 
 
         <activity android:name=".install.InstallApkSessionApi"
             android:launchMode="singleTop"/>
+
+        <receiver android:name=".alarm.TipReadAlarmBroadcastReceiver"
+            android:process=":alarm">
+
+            <intent-filter >
+                <action android:name="com.tencent.story.alarm"/>
+            </intent-filter>
+        </receiver>
 
 
 

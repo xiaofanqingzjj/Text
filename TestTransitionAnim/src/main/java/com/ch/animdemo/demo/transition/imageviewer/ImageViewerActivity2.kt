@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.transition.Transition
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -25,6 +26,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.BaseTarget
 import com.bumptech.glide.request.target.SizeReadyCallback
 import com.ch.animdemo.R
+import com.ch.animdemo.phoneView.PhotoView
 import kotlinx.android.synthetic.main.activity_image_viewer2.*
 import kotlinx.android.synthetic.main.rv_item_image_viewer.view.*
 import java.io.File
@@ -123,12 +125,19 @@ class ImageViewerActivity2 : FragmentActivity() {
 
     private var ivAnimImageView: ImageView? = null
 
+
+    // 屏幕高宽
+    private var sw = 0
+    private var sh = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //设置状态栏颜色
 //        StatusBarUtil.transparencyBar(this)
 
+
+        getScreenSize()
 
         setContentView(R.layout.activity_image_viewer2)
 
@@ -188,6 +197,14 @@ class ImageViewerActivity2 : FragmentActivity() {
         setupScaleAnim()
 
     }
+
+    private fun getScreenSize() {
+        val outMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getRealMetrics(outMetrics)
+        sw = outMetrics.widthPixels
+        sh = outMetrics.heightPixels
+    }
+
 
     private val sharedElementTransitionListener = object : TransitionListenerStub() {
         override fun onTransitionEnd(transition: Transition?) {
@@ -277,6 +294,31 @@ class ImageViewerActivity2 : FragmentActivity() {
 
 
 
+    private fun setupImageInitScale(photoImageView: PhotoView?, imageWith: Int, imageHeight: Int) {
+        if (photoImageView == null) return
+        if (imageWith == 0 || imageHeight == 0 || sw == 0 || sh == 0) return
+
+        runUIThread {
+            if (imageHeight / imageWith > sh / sw) { // 图片宽高比比屏幕宽高比小，放大图片到屏幕的宽度
+                val baseScale = photoImageView.attacher.baseScale // 图片本来的scale
+                if (baseScale != 0f) {
+                    val targetScale = sw.toFloat() / imageWith.toFloat() // 图片两端对齐屏幕时应该要放大的系数
+                    val initScale = targetScale / baseScale  // 除以图片本来要放大的系数
+
+                    if (initScale > photoImageView.maximumScale) { // 如果超出了PhotoImageView最大系数，则修改最大系数
+                        photoImageView.maximumScale = initScale
+                    }
+                    Log.d(TAG, "initScale:$initScale")
+                    photoImageView.setScale(initScale, 0f, 0f, false)
+                }
+            }
+        }
+
+    }
+
+
+
+
 
     /**
      * 下载图片
@@ -287,20 +329,33 @@ class ImageViewerActivity2 : FragmentActivity() {
 
             // 先加载thumb
             if (thumbUrl != null) {
-                loadImageInner(thumbUrl, imageView, null, object : ImageListenerStub() {
-                    override fun onImageLoaded(p0: String?, p1: Drawable?) {
-                        if (!isAnim) {
-                            loadImageInner(url, imageView, progressBar)
-                        } else {
-                            runUIThread(100) {
-                                (context as Activity).startPostponedEnterTransition()
+                loadImageInner(
+                        url = thumbUrl,
+                        imageView = imageView,
+                        progressBar = null,
+                        isOrgImage = false,
+                        l = object : ImageListenerStub() {
+                            override fun onImageLoaded(p0: String?, p1: Drawable?) {
+                                if (!isAnim) {
+                                    loadImageInner(
+                                            url = url,
+                                            imageView = imageView,
+                                            progressBar = progressBar,
+                                            isOrgImage = true)
+                                } else {
+                                    runUIThread(100) {
+                                        (context as Activity).startPostponedEnterTransition()
+                                    }
+                                    (context as Activity).startPostponedEnterTransition()
+                                }
                             }
-                            (context as Activity).startPostponedEnterTransition()
-                        }
-                    }
-                })
+                        })
             } else {
-                loadImageInner(thumbUrl, imageView, progressBar)
+                loadImageInner(
+                        url = url,
+                        imageView = imageView,
+                        progressBar = progressBar,
+                        isOrgImage =  true)
             }
 
         }
@@ -342,6 +397,7 @@ class ImageViewerActivity2 : FragmentActivity() {
     private fun loadImageInner(url: String?,
                                imageView: ImageView,
                                progressBar: ProgressBar?,
+                               isOrgImage: Boolean = false,
                                l: ImageListenerStub? = null) {
 
         Log.d(TAG, "beginLoad:$url")
@@ -353,6 +409,11 @@ class ImageViewerActivity2 : FragmentActivity() {
                         super.onResourceReady(resource, transition)
                         progressBar?.visibility = View.GONE
                         l?.onImageLoaded(url, resource)
+
+
+                        if (isOrgImage) {
+                            setupImageInitScale(imageView as? PhotoView, resource.intrinsicWidth, resource.intrinsicHeight)
+                        }
                     }
 
 //                    override fun setResource(resource: Drawable?) {

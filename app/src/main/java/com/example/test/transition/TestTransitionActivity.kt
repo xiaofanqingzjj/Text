@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Fade
 import androidx.core.app.ActivityCompat
 import androidx.core.app.SharedElementCallback
 import androidx.core.view.ViewCompat
@@ -23,8 +24,6 @@ class TestTransitionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         setContentView(R.layout.activity_test_transition)
 
         btn_test.setOnClickListener {
@@ -41,7 +40,6 @@ class TestTransitionActivity : AppCompatActivity() {
             })
         }
 
-        setupWindowAnimations()
 
         val context = this
         image_view?.setOnClickListener {
@@ -51,6 +49,8 @@ class TestTransitionActivity : AppCompatActivity() {
             context.startActivity(intent,
                     ActivityOptions.makeSceneTransitionAnimation(context as Activity, it, context.getString(R.string.imageTransitionName)).toBundle())
         }
+
+        setupWindowAnimations()
     }
 
     override fun onActivityReenter(resultCode: Int, data: Intent?) {
@@ -78,7 +78,10 @@ class TestTransitionActivity : AppCompatActivity() {
     }
 
     private fun setupWindowAnimations() {
-//        window.enterTransition = Fade()
+        window.enterTransition = Fade().apply {
+            duration = 500
+        }
+        window.exitTransition = Fade()
     }
 
 }

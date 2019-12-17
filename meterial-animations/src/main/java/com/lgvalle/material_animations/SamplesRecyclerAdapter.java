@@ -39,7 +39,16 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
             public void onClick(View v) {
                 switch (viewHolder.getAdapterPosition()) {
                     case 0:
-                        transitionToActivity(TransitionActivity1.class, sample);
+
+                        Intent intent = new Intent(activity, TransitionActivity1.class);
+                        intent.putExtra("sample", sample);
+
+                        ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity);
+//                        activity.startActivity(intent, transitionActivityOptions.toBundle());
+
+                        activity.startActivity(intent);
+
+//                        transitionToActivity(TransitionActivity1.class, sample);
                         break;
                     case 1:
                         transitionToActivity(SharedElementActivity.class, viewHolder, sample);
@@ -63,14 +72,14 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
 
     private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample, int transitionName) {
         final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, false,
-                new Pair<>(viewHolder.binding.sampleIcon, activity.getString(transitionName)));
+                new Pair<View, String>(viewHolder.binding.sampleIcon, activity.getString(transitionName)));
         startActivity(target, pairs, sample);
     }
 
     private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample) {
         final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, false,
-                new Pair<>(viewHolder.binding.sampleIcon, activity.getString(R.string.square_blue_name)),
-                new Pair<>(viewHolder.binding.sampleName, activity.getString(R.string.sample_blue_title)));
+                new Pair<View, String>(viewHolder.binding.sampleIcon, activity.getString(R.string.square_blue_name)),
+                new Pair<View, String>(viewHolder.binding.sampleName, activity.getString(R.string.sample_blue_title)));
         startActivity(target, pairs, sample);
     }
 

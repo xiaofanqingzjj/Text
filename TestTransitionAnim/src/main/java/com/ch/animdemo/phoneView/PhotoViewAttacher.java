@@ -349,6 +349,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
         return (float) Math.sqrt((float) Math.pow(getValue(mSuppMatrix, Matrix.MSCALE_X), 2) + (float) Math.pow(getValue(mSuppMatrix, Matrix.MSKEW_Y), 2));
     }
 
+    public float getBaseScale() {
+        return (float) Math.sqrt((float) Math.pow(getValue(mBaseMatrix, Matrix.MSCALE_X), 2) + (float) Math.pow(getValue(mBaseMatrix, Matrix.MSKEW_Y), 2));
+    }
+
     public ScaleType getScaleType() {
         return mScaleType;
     }
@@ -641,7 +645,9 @@ public class PhotoViewAttacher implements View.OnTouchListener,
      */
     private void checkAndDisplayMatrix() {
         if (checkMatrixBounds()) {
-            setImageViewMatrix(getDrawMatrix());
+            Matrix m = getDrawMatrix();
+            Log.e("PhotoViewAttacher", "checkAndDisplayMatrix:" + m);
+            setImageViewMatrix(m);
         }
     }
 
@@ -802,6 +808,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
             mCurrentFlingRunnable.cancelFling();
             mCurrentFlingRunnable = null;
         }
+    }
+
+    public Matrix getBaseMatrix() {
+        return mBaseMatrix;
     }
 
     private class AnimatedZoomRunnable implements Runnable {

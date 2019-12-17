@@ -18,7 +18,9 @@ public class TransitionActivity1 extends BaseDetailActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bindData();
-        setupWindowAnimations();
+
+//        setupWindowAnimations();
+
         setupLayout();
         setupToolbar();
     }
@@ -30,8 +32,12 @@ public class TransitionActivity1 extends BaseDetailActivity {
     }
 
     private void setupWindowAnimations() {
-        Visibility enterTransition = buildEnterTransition();
-        getWindow().setEnterTransition(enterTransition);
+
+//        Visibility enterTransition = buildEnterTransition();
+//        getWindow().setEnterTransition(enterTransition);
+
+        getWindow().setEnterTransition(new Fade());
+
     }
 
 

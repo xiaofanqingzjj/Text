@@ -2,10 +2,13 @@ package com.example.test
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Fade
 import android.transition.Slide
 import com.bedrock.module_base.MenuActivity
+import com.example.test.alarm.TestAlarm
 import com.example.test.transition.TestTransitionActivity
 import com.example.test.card.CardViewActivity
+import com.example.test.expendtextview.TextExpendTextView
 import com.example.test.install.InstallApkSessionApi
 import com.example.test.movementmethod.TestMoveMethod
 import com.example.test.testlottie.TestLottieFragment
@@ -31,6 +34,19 @@ class MainActivity : MenuActivity() {
         }
 
         addMenuByFragment("Btn bg", BtnBg::class.java)
+
+        addMenuByFragment("Alarm", TestAlarm::class.java)
+
+        addMenuByFragment("ExpendTextView", TextExpendTextView::class.java)
+
+
+
+        setupWindowAnimations()
     }
 
+
+    private fun setupWindowAnimations() {
+        window.enterTransition = Fade()
+        window.exitTransition = Fade()
+    }
 }

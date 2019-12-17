@@ -9,6 +9,14 @@
     tools:context=".MainActivity">
 
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/test2"
+        android:layout_width="54dp"
+        android:layout_height="60dp"
+        app:lottie_fileName="lucky_bag/login_anim.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"/>
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lav_luck_bag_entrance"
