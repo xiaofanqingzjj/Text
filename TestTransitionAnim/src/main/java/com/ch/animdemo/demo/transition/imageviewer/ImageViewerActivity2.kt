@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.transition.Transition
@@ -18,15 +17,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.SharedElementCallback
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.FragmentActivity
-import androidx.viewpager.widget.ViewPager
-import com.bedrock.module_base.adapter.CommonPagerAdapter
 import com.bedrock.module_base.dialog.MenuDialog
-import com.bedrock.module_base.util.runUIThread
+import com.fortunexiao.tktx.runUIThread
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.BaseTarget
 import com.bumptech.glide.request.target.SizeReadyCallback
 import com.ch.animdemo.R
+import com.ch.animdemo.demo.transition.imageviewer.viewpager.FollowViewPager
 import com.ch.animdemo.phoneView.PhotoView
+import com.tencent.story.common.widget.followviewpager.CommonPagerAdapter
 import kotlinx.android.synthetic.main.activity_image_viewer2.*
 import kotlinx.android.synthetic.main.rv_item_image_viewer.view.*
 import java.io.File
@@ -105,7 +104,7 @@ class ImageViewerActivity2 : FragmentActivity() {
                 }
             })
 
-            runUIThread(0) {
+            com.fortunexiao.tktx.runUIThread(0) {
                 activity.startPostponedEnterTransition()
             }
         }
@@ -120,7 +119,7 @@ class ImageViewerActivity2 : FragmentActivity() {
     private var feedKey: String? = null
 
     private var tvIndicator: TextView? =null
-    private var mViewPager: ViewPager? = null
+    private var mViewPager: FollowViewPager? = null
     private var ivBg: ImageView? = null
 
     private var ivAnimImageView: ImageView? = null
@@ -173,7 +172,7 @@ class ImageViewerActivity2 : FragmentActivity() {
 
         mViewPager?.setCurrentItem(enterPosition, false)
 
-        mViewPager?.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener(){
+        mViewPager?.addOnPageChangeListener(object : FollowViewPager.SimpleOnPageChangeListener(){
             override fun onPageSelected(position: Int) {
 
                 currentPosition = position
@@ -212,7 +211,7 @@ class ImageViewerActivity2 : FragmentActivity() {
 
             Log.d(TAG, "onTransitionEnd")
 
-            runUIThread {
+            com.fortunexiao.tktx.runUIThread {
                 mViewPager?.visibility = View.VISIBLE
                 ivAnimImageView?.visibility = View.INVISIBLE
             }
@@ -298,7 +297,7 @@ class ImageViewerActivity2 : FragmentActivity() {
         if (photoImageView == null) return
         if (imageWith == 0 || imageHeight == 0 || sw == 0 || sh == 0) return
 
-        runUIThread {
+        com.fortunexiao.tktx.runUIThread {
             if (imageHeight / imageWith > sh / sw) { // 图片宽高比比屏幕宽高比小，放大图片到屏幕的宽度
                 val baseScale = photoImageView.attacher.baseScale // 图片本来的scale
                 if (baseScale != 0f) {
@@ -343,7 +342,7 @@ class ImageViewerActivity2 : FragmentActivity() {
                                             progressBar = progressBar,
                                             isOrgImage = true)
                                 } else {
-                                    runUIThread(100) {
+                                    com.fortunexiao.tktx.runUIThread(100) {
                                         (context as Activity).startPostponedEnterTransition()
                                     }
                                     (context as Activity).startPostponedEnterTransition()

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 
 
@@ -14,8 +16,13 @@ import androidx.fragment.app.Fragment
  *
  * @author fortune
  */
-open class SimpleFragment(var contentViewId: Int, var onViewCreated:((contentView: View)->Unit)? = null) : Fragment() {
+open class SimpleFragment(var contentViewId: Int = 0, var onViewCreated:((contentView: View)->Unit)? = null) : Fragment() {
 
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(contentViewId, container, false)
@@ -24,7 +31,17 @@ open class SimpleFragment(var contentViewId: Int, var onViewCreated:((contentVie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onViewCreated?.invoke(view)
+
     }
+
+    fun setContentView(@LayoutRes contentViewId: Int) {
+        this.contentViewId = contentViewId
+    }
+
+    fun <T : View?> findViewById(@IdRes id: Int): T? {
+        return view?.findViewById<T>(id)
+    }
+
 
 
 }

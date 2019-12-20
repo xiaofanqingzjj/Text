@@ -16,7 +16,7 @@
         android:background="#000000"/>
 
 
-    <androidx.viewpager.widget.ViewPager
+    <com.ch.animdemo.demo.transition.imageviewer.viewpager.FollowViewPager
         android:id="@+id/view_pager"
         android:visibility="invisible"
         android:layout_width="match_parent"

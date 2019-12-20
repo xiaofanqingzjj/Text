@@ -1,4 +1,4 @@
-package com.bedrock.module_base.adapter;
+package com.bedrock.module_base.recycleradapter;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -11,6 +11,8 @@ import com.example.test.card.CardViewActivity
 import com.example.test.expendtextview.TextExpendTextView
 import com.example.test.install.InstallApkSessionApi
 import com.example.test.movementmethod.TestMoveMethod
+import com.example.test.testattrs.MyThemeActivity
+import com.example.test.testattrs.TestAttributes
 import com.example.test.testlottie.TestLottieFragment
 
 
@@ -39,6 +41,11 @@ class MainActivity : MenuActivity() {
 
         addMenuByFragment("ExpendTextView", TextExpendTextView::class.java)
 
+        addMenuByFragment("TestViewPager", TestViewPager::class.java)
+
+        addMenuByFragment("TestAttrs", TestAttributes::class.java)
+
+        addMenu("TestTheme", MyThemeActivity::class.java)
 
 
         setupWindowAnimations()

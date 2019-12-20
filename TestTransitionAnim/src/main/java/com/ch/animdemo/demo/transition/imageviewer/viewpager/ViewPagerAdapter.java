@@ -1,11 +1,10 @@
-package com.bedrock.module_base.adapter;
+package com.ch.animdemo.demo.transition.imageviewer.viewpager;
 
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,32 +13,46 @@ import java.util.Map;
 /**
  * 一个可以方便创建PagerAdapter的基类
  *
+ * 这个是专门给FollowPagerAdapter
+ *
  *
  * @param <V>
  *
  * @author  fortunexiao
  */
-public abstract class ViewPagerAdapter<V extends View> extends PagerAdapter {
+public abstract class ViewPagerAdapter<V extends View> extends FollowPagerAdapter {
 
     static final String TAG = "ViewPagerAdapter";
 
-    private final Map<V, Integer> instantiatedViews = new HashMap<>();
+    public final Map<V, Integer> instantiatedViews = new HashMap<>();
 
-    public Map<V, Integer> getInstantiatedViews() {
-        return instantiatedViews;
-    }
 
     /**
      * 回收器，回收的时候，会把位置一起存起来，使用的时候优先使用同位置的Item
      *
      */
-    private ViewPagerAdapter.Recycler mRecycler = new ViewPagerAdapter.Recycler();
+    private Recycler mRecycler = new Recycler();
+
+    boolean withRecycler = true;
+
+    public void setWithRecycler(boolean withRecycler) {
+        this.withRecycler = withRecycler;
+    }
 
     @NonNull
     @Override
     public V instantiateItem(@NonNull ViewGroup container, int position) {
+
+
+
+
         // 先从回收器中使用View，看有没有能用的
-        View convertView = mRecycler.from(position);
+        View convertView = null;
+
+        if (withRecycler) {
+            convertView = mRecycler.from(position);
+        }
+
         Log.i(TAG,"instantiateItem, fromRecycer pos:" + position + ", view:" + convertView + ", recyclerSize:" + mRecycler.mRecyclerBin.size());
 
         V view = createView(container, convertView, position);
@@ -64,6 +77,11 @@ public abstract class ViewPagerAdapter<V extends View> extends PagerAdapter {
         }
     }
 
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return super.getItemPosition(object);
+    }
+
     @SuppressWarnings("unchecked")
     // `key` is the object we return in `instantiateItem(ViewGroup container, int position)`
     @Override
@@ -73,7 +91,9 @@ public abstract class ViewPagerAdapter<V extends View> extends PagerAdapter {
         instantiatedViews.remove(view);
 
         // 移除屏幕的View放入回收器中
-        mRecycler.add(position, view);
+        if (withRecycler) {
+            mRecycler.add(position, view);
+        }
 
         Log.d(TAG,"destroyItem, addTopRecycer pos:" + position + ", view:" + view + ", recyclerSize:" + mRecycler.mRecyclerBin.size());
     }
@@ -123,4 +143,3 @@ public abstract class ViewPagerAdapter<V extends View> extends PagerAdapter {
         }
     }
 }
-

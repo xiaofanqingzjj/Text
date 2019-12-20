@@ -112,9 +112,9 @@ public class PhotoViewAttacher implements View.OnTouchListener,
                 mOnViewDragListener.onDrag(dx, dy);
             }
 
-            Log.d(TAG, "onDrag:" + dx + ", " + dy);
+
             mSuppMatrix.postTranslate(dx, dy);
-            checkAndDisplayMatrix();
+            boolean hasTouchEdge = checkAndDisplayMatrix();
 
         /*
          * Here we decide whether to let the ImageView's parent to start taking
@@ -126,10 +126,14 @@ public class PhotoViewAttacher implements View.OnTouchListener,
          * the edge, aka 'overscrolling', let the parent take over).
          */
             ViewParent parent = mImageView.getParent();
-            if (mAllowParentInterceptOnEdge && !mScaleDragDetector.isScaling() && !mBlockParentIntercept && getScale() <= 1) {
-                if (mScrollEdge == EDGE_BOTH
-                        || (mScrollEdge == EDGE_LEFT && dx >= 1f)
-                        || (mScrollEdge == EDGE_RIGHT && dx <= -1f)) {
+            if (mAllowParentInterceptOnEdge && !mScaleDragDetector.isScaling() && !mBlockParentIntercept) { // && getScale() <= 1) {
+
+                Log.d(TAG, "onDrag:" + dx + ", " + dy + ", mScrollEdge:" + mScrollEdge);
+
+
+                if (hasTouchEdge && (mScrollEdge == EDGE_BOTH)
+                        || (mScrollEdge == EDGE_LEFT && dx >= 1f && dx > dy) // 左边滑到了边界
+                        || (mScrollEdge == EDGE_RIGHT && dx <= -1f && dx > dy)) { // 右边滑到了边界
 
                     Log.e(TAG, "requestDisallowInterceptTouchEvent false， allowOnEdge:" + mAllowParentInterceptOnEdge + ", isScaling:" + mScaleDragDetector.isScaling() + ", block:" + mBlockParentIntercept + "， scale:" + getScale());
                     if (parent != null) {
@@ -592,7 +596,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
         matrix.set(mSuppMatrix);
     }
 
-    private Matrix getDrawMatrix() {
+    public Matrix getDrawMatrix() {
         mDrawMatrix.set(mBaseMatrix);
         mDrawMatrix.postConcat(mSuppMatrix);
         return mDrawMatrix;
@@ -643,13 +647,26 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     /**
      * Helper method that simply checks the Matrix, and then displays the result
      */
-    private void checkAndDisplayMatrix() {
-        if (checkMatrixBounds()) {
-            Matrix m = getDrawMatrix();
-            Log.e("PhotoViewAttacher", "checkAndDisplayMatrix:" + m);
-            setImageViewMatrix(m);
-        }
+    private boolean checkAndDisplayMatrix() {
+        boolean hasTouchEdge = checkMatrixBounds();
+        Matrix m = getDrawMatrix();
+//            Log.e(TAG, "checkAndDisplayMatrix:" + m);
+        setImageViewMatrix(m);
+
+        return hasTouchEdge;
+//        if (checkMatrixBounds()) {
+//            Matrix m = getDrawMatrix();
+////            Log.e(TAG, "checkAndDisplayMatrix:" + m);
+//            setImageViewMatrix(m);
+//        }
+//        return true;
     }
+
+
+//    public RectF getDisplayRect() {
+//        return getDisplayRect(getDrawMatrix())l;
+//    }
+
 
     /**
      * Helper method that maps the supplied Matrix to the current Drawable
@@ -657,7 +674,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
      * @param matrix - Matrix to map Drawable against
      * @return RectF - Displayed Rectangle
      */
-    private RectF getDisplayRect(Matrix matrix) {
+    public RectF getDisplayRect(Matrix matrix) {
         Drawable d = mImageView.getDrawable();
         if (d != null) {
             mDisplayRect.set(0, 0, d.getIntrinsicWidth(),
@@ -744,7 +761,9 @@ public class PhotoViewAttacher implements View.OnTouchListener,
             return false;
         }
 
-        final float height = rect.height(), width = rect.width();
+        final float height = rect.height();
+        final float width = rect.width();
+
         float deltaX = 0, deltaY = 0;
 
         final int viewHeight = getImageViewHeight(mImageView);
@@ -766,7 +785,11 @@ public class PhotoViewAttacher implements View.OnTouchListener,
             deltaY = viewHeight - rect.bottom;
         }
 
+
         final int viewWidth = getImageViewWidth(mImageView);
+
+
+
         if (width <= viewWidth) {
             switch (mScaleType) {
                 case FIT_START:
@@ -790,9 +813,15 @@ public class PhotoViewAttacher implements View.OnTouchListener,
             mScrollEdge = EDGE_NONE;
         }
 
+        Log.w(TAG, "checkMatrixBounds:" + rect + ", imageWidth:" + viewWidth + ", " + viewHeight + ", mScrollEde:" + mScrollEdge + ", deltaX:" + deltaX + ", deltaY:" + deltaY);
+
         // Finally actually translate the matrix
-        mSuppMatrix.postTranslate(deltaX, deltaY);
-        return true;
+        if (deltaX != 0 || deltaY != 0) {
+            mSuppMatrix.postTranslate(deltaX, deltaY);
+            return true;
+        }
+        return false;
+//        return true;
     }
 
     private int getImageViewWidth(ImageView imageView) {

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bedrock.module_base.util.ScreenUtil
 import com.bedrock.module_base.util.toPx
-import com.bedrock.module_base.util.runUIThread
+import com.fortunexiao.tktx.runUIThread
 import com.example.test.R
 import kotlinx.android.synthetic.main.fragment_test_lottie.*
 
@@ -32,7 +32,7 @@ class TestLottieFragment : Fragment() {
 
 
 
-        runUIThread(500) {
+        com.fortunexiao.tktx.runUIThread(500) {
             setupEntrancePosition()
         }
 

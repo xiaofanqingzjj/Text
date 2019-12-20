@@ -5,28 +5,23 @@ import android.Manifest
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.IntentSender
 import android.content.pm.PackageInstaller
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.core.content.FileProvider
 
 import androidx.fragment.app.FragmentActivity
 
 import com.bedrock.module_base.util.FileUtils
-import com.bedrock.module_base.util.async
 import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.test.R
+import com.fortunexiao.tktx.async
 
 import java.io.File
 import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
 
 class InstallApkSessionApi : FragmentActivity() {
 
@@ -87,7 +82,8 @@ class InstallApkSessionApi : FragmentActivity() {
 
             async(
                     doBackground = {
-                        val catcheDir = File((externalCacheDir?.absolutePath ?: "") + "/update_files")
+                        val catcheDir = File((externalCacheDir?.absolutePath
+                                ?: "") + "/update_files")
 
                         if (!catcheDir.exists()) {
                             catcheDir.mkdirs()
@@ -103,7 +99,7 @@ class InstallApkSessionApi : FragmentActivity() {
                     postExecute = {
                         Toast.makeText(this@InstallApkSessionApi, "target:$it", Toast.LENGTH_SHORT).show()
 
-                        installApk(this@InstallApkSessionApi, it?.absolutePath ?:"")
+                        installApk(this@InstallApkSessionApi, it?.absolutePath ?: "")
                     }
             )
 

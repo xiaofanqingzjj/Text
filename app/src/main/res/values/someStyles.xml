@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyStyle">
+        <item name="my_attr">#ff00ff</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+
+    <style name="AppTheme.MyTheme">
+
+        <item name="titleColor">#ff00ff</item>
+        <item name="titleSize">40dp</item>
+
+
+    </style>
+
+</resources>

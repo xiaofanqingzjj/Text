@@ -1,29 +1,35 @@
 package com.example.test.movementmethod
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.TextView
+import com.bedrock.module_base.SimpleBaseListFragment
+import com.bedrock.module_base.recycleradapter.quickAdapter
 import com.example.test.R
 import kotlinx.android.synthetic.main.fragment_test_movementmethod.*
 
 
-class TestMoveMethod : Fragment() {
+class TestMoveMethod : SimpleBaseListFragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_test_movementmethod, container, false)
-
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textview.setTextIsSelectable(true)
+        val data = mutableListOf<String>()
+
+        data.add("a")
+        data.add("a")
+        data.add("a")
+        data.add("a")
+
+        mListView.quickAdapter(
+            data =  data,
+            itemLayoutId = R.layout.fragment_test_movementmethod
+        ) {data, itemView ->
+            val textView = itemView?.findViewById<TextView>(R.id.textview)
+            textView?.setTextIsSelectable(true)
+        }
     }
 }

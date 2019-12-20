@@ -2,14 +2,17 @@ package com.ch.animdemo.demo.transition.imageviewer
 
 import android.content.Context
 import android.graphics.Point
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
-import androidx.customview.widget.ViewDragHelper
 import com.bedrock.module_base.util.toPx
+import com.ch.animdemo.demo.transition.imageviewer.helper.ViewDragHelper
 import com.ch.animdemo.phoneView.PhotoView
+import kotlin.math.abs
+import kotlin.math.absoluteValue
 
 
 /**
@@ -69,6 +72,7 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
             override fun tryCaptureView(child: View, pointerId: Int): Boolean {
                 if (child == dragView) {
 
+
                     // 正在执行动画的时候不能拖动
                     return !isAnimming
                 }
@@ -101,7 +105,11 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
                 return top
             }
 
+
             override fun clampViewPositionHorizontal(child: View, left: Int, dx: Int): Int {
+
+
+
                 return left
 //                return super.clampViewPositionHorizontal(child, left, dx)
             }
@@ -127,6 +135,9 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
              * 拖动范围
              */
             override fun getViewVerticalDragRange(child: View): Int {
+
+
+
                 return child.height
             }
 
@@ -154,6 +165,33 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
                 }
             }
 
+            override fun checkTouchSlop(child: View?, dx: Float, dy: Float): Boolean {
+
+
+
+                if (abs(dy) > abs(dx)) { // 竖着滑动
+
+                    val attacher = (dragView as? PhotoView)?.attacher ?: return true
+                    val rect: RectF = attacher.getDisplayRect(attacher.drawMatrix) ?: return true
+
+                    Log.d(TAG, "checkTouchSlop:$dx, $dy, rect:$rect")
+
+                    if (dy > 0) { // 向下滑动
+                        if (rect.top < 0) {
+                            return false
+                        }
+                    } else if (dy < 0) { // 向上滑动
+                        if (rect.bottom > dragView?.height ?: 0) {
+                            return  false
+                        }
+                    }
+
+                    return super.checkTouchSlop(child, dx, dy)
+                }
+
+                return false
+            }
+
         })
     }
 
@@ -179,7 +217,14 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
         }
     }
 
-    private fun isDragViewMutiTouch(): Boolean {
+    private fun isDonNotIntercept(): Boolean {
+
+        val attacher = (dragView as? PhotoView)?.attacher ?: return false
+        val rect: RectF = attacher.getDisplayRect(attacher.drawMatrix) ?: return false
+
+        val height = rect.height()
+        val width = rect.width()
+
         return (dragView as? PhotoView)?.attacher?.isMutiTouch == true
     }
 
@@ -201,10 +246,10 @@ class DragDismissView(context: Context, attrs: AttributeSet? = null) : FrameLayo
 
         val drag =  viewDragHelper.shouldInterceptTouchEvent(ev)
 
-        val isDragViewIsMutiTouch = isDragViewMutiTouch()
+        val isDragViewIsMutiTouch = isDonNotIntercept()
         Log.d(TAG, "onInterceptTouchEvent:$mode， shouldDrag:$drag, :action:${ev.action and MotionEvent.ACTION_MASK}，isDragViewIsMutiTouch：$isDragViewIsMutiTouch")
 
-        if (isDragViewMutiTouch()) { // 如果当前的View上是多点触控，则不拦截
+        if (isDragViewIsMutiTouch) { // 如果当前的View上是多点触控，则不拦截
             return false
         }
         return drag

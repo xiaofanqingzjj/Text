@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <attr name="my_attr" format="color" />
+
+    // 这里定义了2个没有使用分组的属性
+    <attr name="attr1" format="string" />
+    <attr name="attr2" format="color" />
+
+    // 定义了一个属性分组
+    <declare-styleable name="AttrGroup">
+        <attr name="attr3" format="color" />
+        <attr name="attr4" format="color" />
+    </declare-styleable>
+
+
+
+    <declare-styleable name="MyThemeAttrs">
+
+        <attr name="titleColor" format="color|reference" />
+        <attr name="titleSize" format="dimension|reference" />
+
+    </declare-styleable>
+</resources>

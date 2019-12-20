@@ -71,6 +71,9 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".testattrs.MyThemeActivity"
+            android:theme="@style/AppTheme.MyTheme"/>
+
 
 
 

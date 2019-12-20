@@ -44,6 +44,7 @@ class FragmentContainerActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_fragment_container)
 
+
         intent?.apply {
             val title = getStringExtra(TITLE)
             val fragmentClazz = getSerializableExtra(FRAGMENT_CLASS) as Class<out Fragment>
@@ -52,7 +53,7 @@ class FragmentContainerActivity : AppCompatActivity() {
 
             supportFragmentManager.beginTransaction().add(R.id.root,
                     Fragment.instantiate(this@FragmentContainerActivity,
-                            fragmentClazz.canonicalName)).commit()
+                            fragmentClazz.canonicalName!!)).commit()
         }
 
 
