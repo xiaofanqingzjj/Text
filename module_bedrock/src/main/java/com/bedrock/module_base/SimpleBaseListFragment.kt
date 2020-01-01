@@ -24,6 +24,8 @@ open class SimpleBaseListFragment : Fragment() {
     lateinit var mRefreshLayout: SwipeRefreshLayout
     lateinit var mListView: RecyclerView
 
+    var isEnableRefresh = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_simple_base_recycler_view, container, false)
     }
@@ -35,6 +37,7 @@ open class SimpleBaseListFragment : Fragment() {
 
     private fun bindViews() {
         mRefreshLayout = refresh_layout.apply {
+            isEnabled = isEnableRefresh
         }
 
         mListView = recycler_view.apply {
@@ -47,6 +50,8 @@ open class SimpleBaseListFragment : Fragment() {
         mRefreshLayout.setOnRefreshListener {
             onRefresh()
         }
+
+
     }
 
     fun dismissLoading() {

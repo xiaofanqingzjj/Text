@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.example.test.slidedrawer.SlideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slide_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:sl_thumb="@+id/thumb"
+    app:sl_closeSize="300dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff00ff">
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ff0000" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/thumb"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#330000">
+
+            <Button
+                android:id="@+id/btn_tab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tab1"/>
+
+            <Button
+                android:id="@+id/btn_tab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tab2"/>
+        </LinearLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</com.example.test.slidedrawer.SlideLayout>

@@ -27,7 +27,7 @@ class TestMoveMethod : SimpleBaseListFragment() {
         mListView.quickAdapter(
             data =  data,
             itemLayoutId = R.layout.fragment_test_movementmethod
-        ) {data, itemView ->
+        ) {_, data, itemView ->
             val textView = itemView?.findViewById<TextView>(R.id.textview)
             textView?.setTextIsSelectable(true)
         }

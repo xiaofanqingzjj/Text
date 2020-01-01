@@ -9,5 +9,8 @@
         <attr name="sri_corner_radius_top_right" format="dimension" />
         <attr name="sri_corner_radius_bottom_left" format="dimension" />
         <attr name="sri_corner_radius_bottom_right" format="dimension" />
+
+        <attr name="sri_border_color" format="color|reference" />
+        <attr name="sri_border_width" format="dimension|reference" />
     </declare-styleable>
 </resources>

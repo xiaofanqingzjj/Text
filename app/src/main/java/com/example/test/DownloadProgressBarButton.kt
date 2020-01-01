@@ -32,6 +32,8 @@ class DownloadProgressBarButton  @JvmOverloads constructor(context: Context, att
         }
 
 
+
+
         /**
          * 定义一个动画属性
          */

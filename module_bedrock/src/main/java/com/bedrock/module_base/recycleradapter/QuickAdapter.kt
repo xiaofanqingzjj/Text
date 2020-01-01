@@ -23,7 +23,7 @@ open class QuickAdapter<T>
          * @param itemLayoutId ItemLayoutId
          * @param bindData 数据绑定到ItemView上
          */
-        constructor(context: Context, data: List<T>, @LayoutRes private var itemLayoutId: Int, private var bindData: ((data: T, itemView: View?)->Unit)? = null) : BaseViewTypeAdapter<T>(context, data) {
+        constructor(context: Context, data: List<T>, @LayoutRes private var itemLayoutId: Int, private var bindData: ((position: Int, data: T, itemView: View?)->Unit)? = null) : BaseViewTypeAdapter<T>(context, data) {
 
     init {
         setViewTypeViewHolderHook(object : BaseViewTypeAdapter.AbsViewTypeViewHolderHook<T>() {
@@ -39,7 +39,7 @@ open class QuickAdapter<T>
 
 
     open fun bindData(data: T, viewHolder: ViewTypeViewHolder<T>?) {
-        bindData?.invoke(data, viewHolder?.itemView)
+        bindData?.invoke(viewHolder?.currentBindPosition ?: 0, data, viewHolder?.itemView)
     }
 
 
@@ -53,7 +53,7 @@ open class QuickAdapter<T>
 /**
  * 快速给RecyclerView设置一组数据
  */
-fun RecyclerView.quickAdapter(data: List<Any>, @LayoutRes itemLayoutId: Int, bindData: ((data: Any, itemView: View?)->Unit)? = null): RecyclerView.Adapter<*>? {
+fun <T> RecyclerView.quickAdapter(data: List<T>, @LayoutRes itemLayoutId: Int, bindData: ((pos: Int, data: T, itemView: View?)->Unit)? = null): RecyclerView.Adapter<*>? {
 
     this.adapter = QuickAdapter(
         context = context,

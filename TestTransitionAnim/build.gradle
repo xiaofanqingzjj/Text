@@ -85,6 +85,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version" // 依赖kotlin标准库
 
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+//    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
 
 }

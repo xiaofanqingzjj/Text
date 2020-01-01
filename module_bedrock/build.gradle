@@ -45,6 +45,8 @@ dependencies {
 
     api project(":module_tktx")
 
+    implementation 'com.jcodecraeer:xrecyclerview:1.6.0'
+
 
 //    implementation "com.android.support:appcompat-v7:$support_version"
 //    implementation "com.android.support:recyclerview-v7:$support_version"

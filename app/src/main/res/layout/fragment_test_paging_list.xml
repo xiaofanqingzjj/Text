@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+   <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       android:id="@+id/stick_layout"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+
+
+
+      <com.google.android.material.appbar.AppBarLayout
+          android:id="@+id/app_bar_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:elevation="0dp">
+
+
+         <FrameLayout
+             android:id="@+id/fl_header_container"
+             android:layout_width="match_parent"
+             android:layout_height="170dp"
+
+             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+
+         </FrameLayout>
+
+      </com.google.android.material.appbar.AppBarLayout>
+
+
+      <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+          app:layout_behavior="@string/appbar_scrolling_view_behavior"
+          android:id="@+id/refresh_layout"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+
+
+         <com.bedrock.module_base.views.recyclerviews.PagingRecyclerView
+
+             android:id="@+id/prv"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" />
+
+      </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+   </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+</LinearLayout>

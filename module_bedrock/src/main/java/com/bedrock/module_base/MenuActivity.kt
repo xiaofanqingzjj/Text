@@ -27,7 +27,7 @@ open class MenuActivity: AppCompatActivity() {
         recycler_view.quickAdapter(
                 data = menus,
                 itemLayoutId = android.R.layout.simple_expandable_list_item_1,
-                bindData = {data, itemView ->
+                bindData = {_, data, itemView ->
                     itemView?.run {
                         (data as? Menu)?.run {
                             val textView = findViewById<TextView>(android.R.id.text1)
