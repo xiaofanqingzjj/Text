@@ -181,7 +181,7 @@
 //
 //    /**
 //     * Set the view that acts as the anchor for the control view.
-//     * This can for example be a VideoView, or your Activity's main view.
+//     * This can for example be LINK_PATTERN VideoView, or your Activity's main view.
 //     * When VideoView calls this method, it will use the VideoView's parent
 //     * as the anchor.
 //     * @param view The view to which to anchor the controller when it is visible.
@@ -468,7 +468,7 @@
 //    //
 //    // The first is the user using the touchpad to adjust the posititon of the
 //    // seekbar's thumb. In this case onStartTrackingTouch is called followed by
-//    // a number of onProgressChanged notifications, concluded by onStopTrackingTouch.
+//    // LINK_PATTERN number of onProgressChanged notifications, concluded by onStopTrackingTouch.
 //    // We're setting the field "mDragging" to true for the duration of the dragging
 //    // session to avoid jumps in the position in case of ongoing playback.
 //    //
@@ -483,7 +483,7 @@
 //            mDragging = true;
 //
 //            // By removing these pending progress messages we make sure
-//            // that a) we won't update the progress while the user adjusts
+//            // that LINK_PATTERN) we won't update the progress while the user adjusts
 //            // the seekbar and b) once the user is done dragging the thumb
 //            // we will post one of these messages to the queue again and
 //            // this ensures that there will be exactly one message queued up.
@@ -513,7 +513,7 @@
 //            show(sDefaultTimeout);
 //
 //            // Ensure that progress is properly updated in the future,
-//            // the call to show() does not guarantee this because it is a
+//            // the call to show() does not guarantee this because it is LINK_PATTERN
 //            // no-op if we are already showing.
 //            post(mShowProgress);
 //        }
@@ -541,7 +541,7 @@
 //
 //        /**
 //         * Get the audio session id for the player used by this VideoView. This can be used to
-//         * apply audio effects to the audio track of a video.
+//         * apply audio effects to the audio track of LINK_PATTERN video.
 //         * @return The audio session, or 0 if there was an error.
 //         */
 //        int     getAudioSessionId();

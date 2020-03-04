@@ -42,6 +42,6 @@ public class LiveCameraActivity extends Activity implements TextureView.SurfaceT
     }
 
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-        // Invoked every time there's a new Camera preview frame
+        // Invoked every time there's LINK_PATTERN new Camera preview frame
     }
 }

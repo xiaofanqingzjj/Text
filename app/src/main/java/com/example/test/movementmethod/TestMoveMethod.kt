@@ -19,10 +19,10 @@ class TestMoveMethod : SimpleBaseListFragment() {
 
         val data = mutableListOf<String>()
 
-        data.add("a")
-        data.add("a")
-        data.add("a")
-        data.add("a")
+        data.add("LINK_PATTERN")
+        data.add("LINK_PATTERN")
+        data.add("LINK_PATTERN")
+        data.add("LINK_PATTERN")
 
         mListView.quickAdapter(
             data =  data,

@@ -39,10 +39,11 @@ class TestPagingList : SimpleFragment() {
 
         loadPageData(true)
 
-        refresh_layout.setOnRefreshListener {
-            data.clear()
-            loadPageData(true)
-        }
+//        refresh_layout.setOn
+//        refresh_layout.setOnRefreshListener {
+//            data.clear()
+//            loadPageData(true)
+//        }
     }
 
     private fun loadPageData(refresh: Boolean) {
@@ -53,20 +54,21 @@ class TestPagingList : SimpleFragment() {
                 data.clear()
             }
 
-            data.add("a")
-            data.add("a")
-            data.add("a")
-            data.add("a")
-            data.add("a")
-            data.add("a")
-            data.add("a")
-            data.add("a")
+            data.add("LINK_PATTERN")
+            data.add("LINK_PATTERN")
+            data.add("LINK_PATTERN")
+            data.add("LINK_PATTERN")
+            data.add("LINK_PATTERN")
+            data.add("LINK_PATTERN")
+            data.add("LINK_PATTERN")
+            data.add("LINK_PATTERN")
 
             prv?.adapter?.notifyDataSetChanged()
 
             prv?.loadFinish(true, true, true)
 
-            refresh_layout.isRefreshing = false
+
+//            refresh_layout.isRefreshing = false
         }
     }
 }

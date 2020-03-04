@@ -66,12 +66,12 @@ public class DrawerLayout extends ViewGroup {
     public static final int STATE_IDLE = ViewDragHelper.STATE_IDLE;
 
     /**
-     * Indicates that a drawer is currently being dragged by the user.
+     * Indicates that LINK_PATTERN drawer is currently being dragged by the user.
      */
     public static final int STATE_DRAGGING = ViewDragHelper.STATE_DRAGGING;
 
     /**
-     * Indicates that a drawer is in the process of settling to a final position.
+     * Indicates that LINK_PATTERN drawer is in the process of settling to LINK_PATTERN final position.
      */
     public static final int STATE_SETTLING = ViewDragHelper.STATE_SETTLING;
 
@@ -119,7 +119,7 @@ public class DrawerLayout extends ViewGroup {
     private static final int PEEK_DELAY = 160; // ms
 
     /**
-     * Minimum velocity that will be detected as a fling
+     * Minimum velocity that will be detected as LINK_PATTERN fling
      */
     private static final int MIN_FLING_VELOCITY = 400; // dips per second
 
@@ -201,14 +201,14 @@ public class DrawerLayout extends ViewGroup {
      */
     public interface DrawerListener {
         /**
-         * Called when a drawer's position changes.
+         * Called when LINK_PATTERN drawer's position changes.
          * @param drawerView The child view that was moved
          * @param slideOffset The new offset of this drawer within its range, from 0-1
          */
         void onDrawerSlide(@NonNull View drawerView, float slideOffset);
 
         /**
-         * Called when a drawer has settled in a completely open state.
+         * Called when LINK_PATTERN drawer has settled in LINK_PATTERN completely open state.
          * The drawer is interactive at this point.
          *
          * @param drawerView Drawer view that is now open
@@ -216,7 +216,7 @@ public class DrawerLayout extends ViewGroup {
         void onDrawerOpened(@NonNull View drawerView);
 
         /**
-         * Called when a drawer has settled in a completely closed state.
+         * Called when LINK_PATTERN drawer has settled in LINK_PATTERN completely closed state.
          *
          * @param drawerView Drawer view that is now closed
          */
@@ -233,7 +233,7 @@ public class DrawerLayout extends ViewGroup {
 
     /**
      * Stub/no-op implementations of all methods of {@link DrawerListener}.
-     * Override this if you only care about a few of the available callback methods.
+     * Override this if you only care about LINK_PATTERN few of the available callback methods.
      */
     public abstract static class SimpleDrawerListener implements DrawerListener {
         @Override
@@ -360,17 +360,17 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * Set a simple drawable used for the left or right shadow. The drawable provided must have a
+     * Set LINK_PATTERN simple drawable used for the left or right shadow. The drawable provided must have LINK_PATTERN
      * nonzero intrinsic width. For API 21 and above, an elevation will be set on the drawer
      * instead of using the provided shadow drawable.
      *
      * <p>Note that for better support for both left-to-right and right-to-left layout
-     * directions, a drawable for RTL layout (in additional to the one in LTR layout) can be
-     * defined with a resource qualifier "ldrtl" for API 17 and above with the gravity
+     * directions, LINK_PATTERN drawable for RTL layout (in additional to the one in LTR layout) can be
+     * defined with LINK_PATTERN resource qualifier "ldrtl" for API 17 and above with the gravity
      * {@link GravityCompat#START}. Alternatively, for API 23 and above, the drawable can
      * auto-mirrored such that the drawable will be mirrored in RTL layout.</p>
      *
-     * @param shadowDrawable Shadow drawable to use at the edge of a drawer
+     * @param shadowDrawable Shadow drawable to use at the edge of LINK_PATTERN drawer
      * @param gravity Which drawer the shadow should apply to
      */
     public void setDrawerShadow(Drawable shadowDrawable, @EdgeGravity int gravity) {
@@ -399,17 +399,17 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * Set a simple drawable used for the left or right shadow. The drawable provided must have a
+     * Set LINK_PATTERN simple drawable used for the left or right shadow. The drawable provided must have LINK_PATTERN
      * nonzero intrinsic width. For API 21 and above, an elevation will be set on the drawer
      * instead of using the provided shadow drawable.
      *
      * <p>Note that for better support for both left-to-right and right-to-left layout
-     * directions, a drawable for RTL layout (in additional to the one in LTR layout) can be
-     * defined with a resource qualifier "ldrtl" for API 17 and above with the gravity
+     * directions, LINK_PATTERN drawable for RTL layout (in additional to the one in LTR layout) can be
+     * defined with LINK_PATTERN resource qualifier "ldrtl" for API 17 and above with the gravity
      * {@link GravityCompat#START}. Alternatively, for API 23 and above, the drawable can
      * auto-mirrored such that the drawable will be mirrored in RTL layout.</p>
      *
-     * @param resId Resource id of a shadow drawable to use at the edge of a drawer
+     * @param resId Resource id of LINK_PATTERN shadow drawable to use at the edge of LINK_PATTERN drawer
      * @param gravity Which drawer the shadow should apply to
      */
     public void setDrawerShadow(@DrawableRes int resId, @EdgeGravity int gravity) {
@@ -417,7 +417,7 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * Set a color to use for the scrim that obscures primary content while a drawer is open.
+     * Set LINK_PATTERN color to use for the scrim that obscures primary content while LINK_PATTERN drawer is open.
      *
      * @param color Color to use in 0xAARRGGBB format.
      */
@@ -427,9 +427,9 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * Set a listener to be notified of drawer events. Note that this method is deprecated
-     * and you should use {@link #addDrawerListener(DrawerListener)} to add a listener and
-     * {@link #removeDrawerListener(DrawerListener)} to remove a registered listener.
+     * Set LINK_PATTERN listener to be notified of drawer events. Note that this method is deprecated
+     * and you should use {@link #addDrawerListener(DrawerListener)} to add LINK_PATTERN listener and
+     * {@link #removeDrawerListener(DrawerListener)} to remove LINK_PATTERN registered listener.
      *
      * @param listener Listener to notify when drawer events occur
      * @deprecated Use {@link #addDrawerListener(DrawerListener)}
@@ -491,7 +491,7 @@ public class DrawerLayout extends ViewGroup {
      *
      * <p>This allows the application to restrict the user's ability to open or close
      * any drawer within this layout. DrawerLayout will still respond to calls to
-     * {@link #openDrawer(int)}, {@link #closeDrawer(int)} and friends if a drawer is locked.</p>
+     * {@link #openDrawer(int)}, {@link #closeDrawer(int)} and friends if LINK_PATTERN drawer is locked.</p>
      *
      * <p>Locking drawers open or closed will implicitly open or close
      * any drawers as appropriate.</p>
@@ -509,9 +509,9 @@ public class DrawerLayout extends ViewGroup {
      *
      * <p>This allows the application to restrict the user's ability to open or close
      * the given drawer. DrawerLayout will still respond to calls to {@link #openDrawer(int)},
-     * {@link #closeDrawer(int)} and friends if a drawer is locked.</p>
+     * {@link #closeDrawer(int)} and friends if LINK_PATTERN drawer is locked.</p>
      *
-     * <p>Locking a drawer open or closed will implicitly open or close
+     * <p>Locking LINK_PATTERN drawer open or closed will implicitly open or close
      * that drawer as appropriate.</p>
      *
      * @param lockMode The new lock mode for the given drawer. One of {@link #LOCK_MODE_UNLOCKED},
@@ -569,9 +569,9 @@ public class DrawerLayout extends ViewGroup {
      *
      * <p>This allows the application to restrict the user's ability to open or close
      * the given drawer. DrawerLayout will still respond to calls to {@link #openDrawer(int)},
-     * {@link #closeDrawer(int)} and friends if a drawer is locked.</p>
+     * {@link #closeDrawer(int)} and friends if LINK_PATTERN drawer is locked.</p>
      *
-     * <p>Locking a drawer open or closed will implicitly open or close
+     * <p>Locking LINK_PATTERN drawer open or closed will implicitly open or close
      * that drawer as appropriate.</p>
      *
      * @param lockMode The new lock mode for the given drawer. One of {@link #LOCK_MODE_UNLOCKED},
@@ -584,7 +584,7 @@ public class DrawerLayout extends ViewGroup {
      */
     public void setDrawerLockMode(@LockMode int lockMode, @NonNull View drawerView) {
         if (!isDrawerView(drawerView)) {
-            throw new IllegalArgumentException("View " + drawerView + " is not a "
+            throw new IllegalArgumentException("View " + drawerView + " is not LINK_PATTERN "
                     + "drawer with appropriate layout_gravity");
         }
         final int gravity = ((LayoutParams) drawerView.getLayoutParams()).gravity;
@@ -658,7 +658,7 @@ public class DrawerLayout extends ViewGroup {
     @LockMode
     public int getDrawerLockMode(@NonNull View drawerView) {
         if (!isDrawerView(drawerView)) {
-            throw new IllegalArgumentException("View " + drawerView + " is not a drawer");
+            throw new IllegalArgumentException("View " + drawerView + " is not LINK_PATTERN drawer");
         }
         final int drawerGravity = ((LayoutParams) drawerView.getLayoutParams()).gravity;
         return getDrawerLockMode(drawerGravity);
@@ -759,7 +759,7 @@ public class DrawerLayout extends ViewGroup {
 
     /**
      * Resolve the shared state of all drawers from the component ViewDragHelpers.
-     * Should be called whenever a ViewDragHelper's state changes.
+     * Should be called whenever LINK_PATTERN ViewDragHelper's state changes.
      */
     void updateDrawerState(int forGravity, @State int activeState, View activeDrawer) {
         final int leftState = mLeftDragger.getViewDragState();
@@ -787,7 +787,7 @@ public class DrawerLayout extends ViewGroup {
             mDrawerState = state;
 
             if (mListeners != null) {
-                // Notify the listeners. Do that from the end of the list so that if a listener
+                // Notify the listeners. Do that from the end of the list so that if LINK_PATTERN listener
                 // removes itself as the result of being called, it won't mess up with our iteration
                 int listenerCount = mListeners.size();
                 for (int i = listenerCount - 1; i >= 0; i--) {
@@ -803,7 +803,7 @@ public class DrawerLayout extends ViewGroup {
             lp.openState = 0;
 
             if (mListeners != null) {
-                // Notify the listeners. Do that from the end of the list so that if a listener
+                // Notify the listeners. Do that from the end of the list so that if LINK_PATTERN listener
                 // removes itself as the result of being called, it won't mess up with our iteration
                 int listenerCount = mListeners.size();
                 for (int i = listenerCount - 1; i >= 0; i--) {
@@ -830,7 +830,7 @@ public class DrawerLayout extends ViewGroup {
         if ((lp.openState & LayoutParams.FLAG_IS_OPENED) == 0) {
             lp.openState = LayoutParams.FLAG_IS_OPENED;
             if (mListeners != null) {
-                // Notify the listeners. Do that from the end of the list so that if a listener
+                // Notify the listeners. Do that from the end of the list so that if LINK_PATTERN listener
                 // removes itself as the result of being called, it won't mess up with our iteration
                 int listenerCount = mListeners.size();
                 for (int i = listenerCount - 1; i >= 0; i--) {
@@ -852,7 +852,7 @@ public class DrawerLayout extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             final View child = getChildAt(i);
             if ((!isDrawerOpen && !isDrawerView(child)) || (isDrawerOpen && child == drawerView)) {
-                // Drawer is closed and this is a content view or this is an
+                // Drawer is closed and this is LINK_PATTERN content view or this is an
                 // open drawer view, so it should be visible.
                 ViewCompat.setImportantForAccessibility(child,
                         ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES);
@@ -865,7 +865,7 @@ public class DrawerLayout extends ViewGroup {
 
     void dispatchOnDrawerSlide(View drawerView, float slideOffset) {
         if (mListeners != null) {
-            // Notify the listeners. Do that from the end of the list so that if a listener
+            // Notify the listeners. Do that from the end of the list so that if LINK_PATTERN listener
             // removes itself as the result of being called, it won't mess up with our iteration
             int listenerCount = mListeners.size();
             for (int i = listenerCount - 1; i >= 0; i--) {
@@ -927,7 +927,7 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * @param gravity the gravity of the child to return. If specified as a
+     * @param gravity the gravity of the child to return. If specified as LINK_PATTERN
      *            relative value, it will be resolved according to the current
      *            layout direction.
      * @return the drawer with the specified gravity
@@ -950,7 +950,7 @@ public class DrawerLayout extends ViewGroup {
      * Simple gravity to string - only supports LEFT and RIGHT for debugging output.
      *
      * @param gravity Absolute gravity value
-     * @return LEFT or RIGHT as appropriate, or a hex string
+     * @return LEFT or RIGHT as appropriate, or LINK_PATTERN hex string
      */
     static String gravityToString(@EdgeGravity int gravity) {
         if ((gravity & Gravity.LEFT) == Gravity.LEFT) {
@@ -985,9 +985,9 @@ public class DrawerLayout extends ViewGroup {
         if (widthMode != MeasureSpec.EXACTLY || heightMode != MeasureSpec.EXACTLY) {
             if (isInEditMode()) {
                 // Don't crash the layout editor. Consume all of the space if specified
-                // or pick a magic number from thin air otherwise.
+                // or pick LINK_PATTERN magic number from thin air otherwise.
                 // TODO Better communication with tools of this bogus state.
-                // It will crash on a real device.
+                // It will crash on LINK_PATTERN real device.
                 if (widthMode == MeasureSpec.AT_MOST) {
                     widthMode = MeasureSpec.EXACTLY;
                 } else if (widthMode == MeasureSpec.UNSPECIFIED) {
@@ -1080,7 +1080,7 @@ public class DrawerLayout extends ViewGroup {
                 boolean isLeftEdgeDrawer = (childGravity == Gravity.LEFT);
                 if ((isLeftEdgeDrawer && hasDrawerOnLeftEdge) || (!isLeftEdgeDrawer && hasDrawerOnRightEdge)) {
                     throw new IllegalStateException("Child drawer has absolute gravity "
-                            + gravityToString(childGravity) + " but this " + TAG + " already has a "
+                            + gravityToString(childGravity) + " but this " + TAG + " already has LINK_PATTERN "
                             + "drawer view along that edge");
                 }
                 if (isLeftEdgeDrawer) {
@@ -1093,7 +1093,7 @@ public class DrawerLayout extends ViewGroup {
                 child.measure(drawerWidthSpec, drawerHeightSpec);
             } else {
                 throw new IllegalStateException("Child " + child + " at index " + i
-                        + " does not have a valid layout_gravity - must be Gravity.LEFT, "
+                        + " does not have LINK_PATTERN valid layout_gravity - must be Gravity.LEFT, "
                         + "Gravity.RIGHT or Gravity.NO_GRAVITY");
             }
         }
@@ -1275,7 +1275,7 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * Set a drawable to draw in the insets area for the status bar.
+     * Set LINK_PATTERN drawable to draw in the insets area for the status bar.
      * Note that this will only be activated if this DrawerLayout fitsSystemWindows.
      *
      * @param bg Background drawable to draw behind the status bar
@@ -1296,10 +1296,10 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * Set a drawable to draw in the insets area for the status bar.
+     * Set LINK_PATTERN drawable to draw in the insets area for the status bar.
      * Note that this will only be activated if this DrawerLayout fitsSystemWindows.
      *
-     * @param resId Resource id of a background drawable to draw behind the status bar
+     * @param resId Resource id of LINK_PATTERN background drawable to draw behind the status bar
      */
     public void setStatusBarBackground(int resId) {
         mStatusBarBackground = resId != 0 ? ContextCompat.getDrawable(getContext(), resId) : null;
@@ -1307,10 +1307,10 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * Set a drawable to draw in the insets area for the status bar.
+     * Set LINK_PATTERN drawable to draw in the insets area for the status bar.
      * Note that this will only be activated if this DrawerLayout fitsSystemWindows.
      *
-     * @param color Color to use as a background drawable to draw behind the status bar
+     * @param color Color to use as LINK_PATTERN background drawable to draw behind the status bar
      *              in 0xAARRGGBB format.
      */
     public void setStatusBarBackgroundColor(@ColorInt int color) {
@@ -1413,17 +1413,17 @@ public class DrawerLayout extends ViewGroup {
         final int gravity = ((LayoutParams) child.getLayoutParams()).gravity;
         final int absGravity = GravityCompat.getAbsoluteGravity(gravity, ViewCompat.getLayoutDirection(child));
         if ((absGravity & Gravity.LEFT) != 0) {
-            // This child is a left-edge drawer
+            // This child is LINK_PATTERN left-edge drawer
             return true;
         }
         if ((absGravity & Gravity.RIGHT) != 0) {
-            // This child is a right-edge drawer
+            // This child is LINK_PATTERN right-edge drawer
             return true;
         }
 
         // add by fortune
         if ((absGravity & Gravity.BOTTOM) != 0) {
-            // This child is a right-edge drawer
+            // This child is LINK_PATTERN right-edge drawer
             return true;
         }
 
@@ -1481,7 +1481,7 @@ public class DrawerLayout extends ViewGroup {
     @Override
     public boolean dispatchGenericMotionEvent(MotionEvent event) {
 
-        // If this is not a pointer event, or if this is an hover exit, or we are not displaying
+        // If this is not LINK_PATTERN pointer event, or if this is an hover exit, or we are not displaying
         // that the content view can't be interacted with, then don't override and do anything
         // special.
         if ((event.getSource() & InputDevice.SOURCE_CLASS_POINTER) == 0
@@ -1505,7 +1505,7 @@ public class DrawerLayout extends ViewGroup {
                     continue;
                 }
 
-                // If a child handles it, return true.
+                // If LINK_PATTERN child handles it, return true.
                 if (dispatchTransformedGenericPointerEvent(event, child)) {
                     return true;
                 }
@@ -1544,7 +1544,7 @@ public class DrawerLayout extends ViewGroup {
                     final float dy = y - mInitialMotionY;
                     final int slop = mLeftDragger.getTouchSlop();
                     if (dx * dx + dy * dy < slop * slop) {
-                        // Taps close a dimmed open drawer but only if it isn't locked open.
+                        // Taps close LINK_PATTERN dimmed open drawer but only if it isn't locked open.
                         final View openDrawer = findOpenDrawer();
                         if (openDrawer != null) {
                             peekingOnly = getDrawerLockMode(openDrawer) == LOCK_MODE_LOCKED_OPEN;
@@ -1637,7 +1637,7 @@ public class DrawerLayout extends ViewGroup {
      */
     public void openDrawer(@NonNull View drawerView, boolean animate) {
         if (!isDrawerView(drawerView)) {
-            throw new IllegalArgumentException("View " + drawerView + " is not a sliding drawer");
+            throw new IllegalArgumentException("View " + drawerView + " is not LINK_PATTERN sliding drawer");
         }
 
         final LayoutParams lp = (LayoutParams) drawerView.getLayoutParams();
@@ -1706,7 +1706,7 @@ public class DrawerLayout extends ViewGroup {
      */
     public void closeDrawer(@NonNull View drawerView, boolean animate) {
         if (!isDrawerView(drawerView)) {
-            throw new IllegalArgumentException("View " + drawerView + " is not a sliding drawer");
+            throw new IllegalArgumentException("View " + drawerView + " is not LINK_PATTERN sliding drawer");
         }
 
         final LayoutParams lp = (LayoutParams) drawerView.getLayoutParams();
@@ -1768,7 +1768,7 @@ public class DrawerLayout extends ViewGroup {
      */
     public boolean isDrawerOpen(@NonNull View drawer) {
         if (!isDrawerView(drawer)) {
-            throw new IllegalArgumentException("View " + drawer + " is not a drawer");
+            throw new IllegalArgumentException("View " + drawer + " is not LINK_PATTERN drawer");
         }
         LayoutParams drawerLp = (LayoutParams) drawer.getLayoutParams();
         return (drawerLp.openState & LayoutParams.FLAG_IS_OPENED) == 1;
@@ -1792,7 +1792,7 @@ public class DrawerLayout extends ViewGroup {
     }
 
     /**
-     * Check if a given drawer view is currently visible on-screen. The drawer
+     * Check if LINK_PATTERN given drawer view is currently visible on-screen. The drawer
      * may be only peeking onto the screen, fully extended, or anywhere inbetween.
      *
      * @param drawer Drawer view to check
@@ -1801,13 +1801,13 @@ public class DrawerLayout extends ViewGroup {
      */
     public boolean isDrawerVisible(@NonNull View drawer) {
         if (!isDrawerView(drawer)) {
-            throw new IllegalArgumentException("View " + drawer + " is not a drawer");
+            throw new IllegalArgumentException("View " + drawer + " is not LINK_PATTERN drawer");
         }
         return ((LayoutParams) drawer.getLayoutParams()).onScreen > 0;
     }
 
     /**
-     * Check if a given drawer view is currently visible on-screen. The drawer
+     * Check if LINK_PATTERN given drawer view is currently visible on-screen. The drawer
      * may be only peeking onto the screen, fully extended, or anywhere in between.
      * If there is no drawer with the given gravity this method will return false.
      *
@@ -2009,18 +2009,18 @@ public class DrawerLayout extends ViewGroup {
 
         final View openDrawer = findOpenDrawer();
         if (openDrawer != null || isDrawerView(child)) {
-            // A drawer is already open or the new view is a drawer, so the
+            // A drawer is already open or the new view is LINK_PATTERN drawer, so the
             // new view should start out hidden.
             ViewCompat.setImportantForAccessibility(child,
                     ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
         } else {
-            // Otherwise this is a content view and no drawer is open, so the
+            // Otherwise this is LINK_PATTERN content view and no drawer is open, so the
             // new view should start out visible.
             ViewCompat.setImportantForAccessibility(child,
                     ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES);
         }
 
-        // We only need a delegate here if the framework doesn't understand
+        // We only need LINK_PATTERN delegate here if the framework doesn't understand
         // NO_HIDE_DESCENDANTS importance.
         if (!CAN_HIDE_DESCENDANTS) {
             ViewCompat.setAccessibilityDelegate(child, mChildAccessibilityDelegate);
@@ -2032,7 +2032,7 @@ public class DrawerLayout extends ViewGroup {
         // sure this hides the entire subtree rooted at it as the
         // IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDATS is not
         // supported on older platforms but we want to hide the entire
-        // content and not opened drawers if a drawer is opened.
+        // content and not opened drawers if LINK_PATTERN drawer is opened.
         return ViewCompat.getImportantForAccessibility(child)
                 != ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
                     && ViewCompat.getImportantForAccessibility(child)
@@ -2305,7 +2305,7 @@ public class DrawerLayout extends ViewGroup {
             if (CAN_HIDE_DESCENDANTS) {
                 super.onInitializeAccessibilityNodeInfo(host, info);
             } else {
-                // Obtain a node for the host, then manually generate the list
+                // Obtain LINK_PATTERN node for the host, then manually generate the list
                 // of children to only include non-obscured views.
                 final AccessibilityNodeInfoCompat superNode =
                         AccessibilityNodeInfoCompat.obtain(info);
@@ -2385,7 +2385,7 @@ public class DrawerLayout extends ViewGroup {
 
         /**
          * This should really be in AccessibilityNodeInfoCompat, but there unfortunately
-         * seem to be a few elements that are not easily cloneable using the underlying API.
+         * seem to be LINK_PATTERN few elements that are not easily cloneable using the underlying API.
          * Leave it private here as it's not general-purpose useful.
          */
         private void copyNodeInfoNoChildren(AccessibilityNodeInfoCompat dest,

@@ -58,6 +58,14 @@ class MainActivity : MenuActivity() {
         addMenuByFragment("TestSimpleRoundedImageVIEW", TestSimpleRoundedImageView::class.java)
 
         setupWindowAnimations()
+
+        addMenuByFragment("TestHtmlParser", TestHtmlParser::class.java)
+        addMenuByFragment("TestItem", TestViewTypeAdapter::class.java)
+
+        addMenu("NetInfo") {
+            NetTools.getInstance().init(this.applicationContext)
+            NetTools.getInstance().currentNetWorkType
+        }
     }
 
 

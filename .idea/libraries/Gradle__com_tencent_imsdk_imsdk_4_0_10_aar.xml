@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.tencent.imsdk:imsdk:4.0.10@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-imsdk-4.0.10.aar/e220b0ad66039ece3664d7e86e823334/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-imsdk-4.0.10.aar/e220b0ad66039ece3664d7e86e823334/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tencent.imsdk/imsdk/4.0.10/95b7608e796579210de16c837db94c351c7b377a/imsdk-4.0.10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
