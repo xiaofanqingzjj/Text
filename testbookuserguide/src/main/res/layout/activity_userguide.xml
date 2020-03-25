@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/SC1">
+
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:alpha="0"
+        android:src="@drawable/img_user_guide_bg"/>
+
+
+    <!-- 屏幕中间的一个点，用来做相对定位用的 -->
+    <View
+        android:id="@+id/v_center"
+        android:layout_width="1px"
+        android:layout_height="1px"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/iv_select_category_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lav_cat1"
+        android:layout_alignLeft="@+id/lav_cat1"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="-40dp"
+        android:alpha="0"
+        android:src="@drawable/ic_user_guide_select_category_tip"/>
+
+    <ImageView
+        android:id="@+id/iv_select_category_tip2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lav_cat1"
+        android:layout_alignLeft="@+id/lav_cat1"
+        android:layout_marginTop="-120dp"
+        android:layout_marginLeft="-40dp"
+        android:alpha="0"
+        android:src="@drawable/ic_user_guide_select_category_tip2"/>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_cat1"
+        android:layout_width="234dp"
+        android:layout_height="137dp"
+        app:lottie_imageAssetsFolder="lotties/userguide/cat_1/images"
+        app:lottie_fileName="lotties/userguide/cat_1/cat_1.json"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_above="@+id/v_center"/>
+
+
+
+    <com.tencent.story.userguide.CategoryLayout
+        android:id="@+id/category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_center"
+        android:paddingTop="60dp"
+        android:layout_marginTop="-50dp"
+        android:gravity="center"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_cat2"
+        android:layout_width="360dp"
+        android:layout_height="543dp"
+        android:layout_marginTop="-102dp"
+        android:visibility="invisible"
+        app:lottie_autoPlay="false"
+        android:layout_alignTop="@+id/lav_cat1"
+        app:lottie_imageAssetsFolder="lotties/userguide/cat_2/images"
+        app:lottie_fileName="lotties/userguide/cat_2/cat_2.json"
+        android:layout_centerHorizontal="true" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_cat3"
+        android:layout_width="360dp"
+        android:layout_height="543dp"
+        android:layout_marginTop="-102dp"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/lav_cat1"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        app:lottie_imageAssetsFolder="lotties/userguide/cat_3/images"
+        app:lottie_fileName="lotties/userguide/cat_3/cat_3.json"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+    <ImageView
+        android:id="@+id/btn_next"
+        android:layout_below="@+id/category_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:alpha="0"
+        android:background="@drawable/ic_user_guide_btn_confirm"
+        android:text="确认"/>
+
+
+    <ImageView
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:alpha="0"
+        android:background="@drawable/ic_user_guide_btn_skip"
+        />
+
+
+
+</RelativeLayout>

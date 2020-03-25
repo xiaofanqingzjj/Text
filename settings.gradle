@@ -3,3 +3,4 @@ include ':app', ':testpermission', ':testpermission2', ':testimsdk', ':testuserg
 include ':TestTransitionAnim'
 
 include ':meterial-animations'
+include ':testbookuserguide'
