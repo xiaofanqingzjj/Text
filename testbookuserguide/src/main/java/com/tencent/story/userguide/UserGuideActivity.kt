@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.fortunexiao.testbookuserguide.R
+import com.fortunexiao.tktx.dp2px
 import com.fortunexiao.tktx.runUIThread
 import com.tencent.story.userguide.util.AnimListenerStub
 import com.tencent.story.userguide.util.AnimUtil
@@ -98,7 +99,6 @@ class UserGuideActivity : AppCompatActivity() {
             }
         })
 
-        // 隐藏确定按钮
         runUIThread(4000) {
             AnimUtil.alphaVisibility(iv_select_category_tip2, isShow =  true)
         }
@@ -108,6 +108,46 @@ class UserGuideActivity : AppCompatActivity() {
             iv_bg.visibility = View.VISIBLE
             AnimUtil.alphaVisibility(iv_bg, duration =  800, isShow =  true)
         }
+
+        animPanel()
+    }
+
+    private fun animPanel() {
+        // 小提示
+        AnimatorSet().apply {
+            val starAnims = mutableListOf<ObjectAnimator>().apply {
+                addAll(AnimUtil.scale(fl_panel, 0.5f,  1f))
+                add(AnimUtil.alpha(fl_panel, 0f, 1f))
+
+                add(ObjectAnimator.ofFloat(fl_panel, View.TRANSLATION_Y,
+                        (-30).dp2px(this@UserGuideActivity).toFloat(),
+                        (-100).dp2px(this@UserGuideActivity).toFloat(),
+                        0f))
+
+            }
+            playTogether(*starAnims.toTypedArray())
+            duration = 600
+            startDelay = 3000
+        }.start()
+
+        // 猫爪子
+        AnimatorSet().apply {
+            val starAnims = mutableListOf<ObjectAnimator>().apply {
+                add(AnimUtil.alpha(iv_foot1, 0.5f, 1f))
+                add(AnimUtil.alpha(iv_foot2, 0.5f, 1f))
+
+                add(ObjectAnimator.ofFloat(iv_foot1, View.TRANSLATION_Y,
+                        (-5).dp2px(this@UserGuideActivity).toFloat(),
+                        0f))
+                add(ObjectAnimator.ofFloat(iv_foot2, View.TRANSLATION_Y,
+                        (-5).dp2px(this@UserGuideActivity).toFloat(),
+                        0f))
+
+            }
+            playTogether(*starAnims.toTypedArray())
+            duration = 200
+            startDelay = 4000
+        }.start()
     }
 
 

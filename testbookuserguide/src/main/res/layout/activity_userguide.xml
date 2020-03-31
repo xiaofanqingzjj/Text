@@ -50,7 +50,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lav_cat1"
         android:layout_width="234dp"
-        android:layout_height="137dp"
+        android:layout_height="136.6dp"
         app:lottie_imageAssetsFolder="lotties/userguide/cat_1/images"
         app:lottie_fileName="lotties/userguide/cat_1/cat_1.json"
         android:layout_centerHorizontal="true"
@@ -74,11 +74,12 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lav_cat2"
-        android:layout_width="360dp"
-        android:layout_height="543dp"
-        android:layout_marginTop="-102dp"
+        android:layout_width="214.6dp"
+        android:layout_height="236dp"
+        android:layout_marginTop="-83dp"
         android:visibility="invisible"
         app:lottie_autoPlay="false"
+        android:layout_marginRight="10dp"
         android:layout_alignTop="@+id/lav_cat1"
         app:lottie_imageAssetsFolder="lotties/userguide/cat_2/images"
         app:lottie_fileName="lotties/userguide/cat_2/cat_2.json"
@@ -86,9 +87,9 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lav_cat3"
-        android:layout_width="360dp"
-        android:layout_height="543dp"
-        android:layout_marginTop="-102dp"
+        android:layout_width="225dp"
+        android:layout_height="236dp"
+        android:layout_marginTop="-89dp"
         android:visibility="invisible"
         android:layout_alignTop="@+id/lav_cat1"
         app:lottie_autoPlay="false"
@@ -98,6 +99,40 @@
         android:layout_centerHorizontal="true" />
 
 
+
+    <FrameLayout
+        android:id="@+id/fl_panel"
+        android:layout_marginTop="20dp"
+        android:layout_width="343dp"
+        android:layout_height="401dp"
+        android:alpha="0"
+        android:clipChildren="false"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/lav_cat1"
+        android:background="@drawable/ic_user_guide_panel">
+
+        <ImageView
+            android:id="@+id/iv_foot1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:alpha="0"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="60dp"
+            android:src="@drawable/ic_cat_foot" />
+
+
+        <ImageView
+            android:id="@+id/iv_foot2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:alpha="0"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="60dp"
+            android:src="@drawable/ic_cat_foot" />
+
+    </FrameLayout>
 
 
     <ImageView
