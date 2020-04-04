@@ -3,3 +3,5 @@
 /.gradle
 Text.iml
 **.iml
+build
+**/build

@@ -3,9 +3,9 @@ package com.example.testpermission2
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import androidx.core.app.ActivityCompat
-import androidx.core.app.FragmentActivity
 import android.util.Log
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentActivity
 
 
 /**
@@ -99,9 +99,9 @@ class PermissionBySystemApiActivity : FragmentActivity() {
     //        startActivityForResult(intent, REQUEST_CODE_WRITE_SETTINGS)
     //    }
 
-
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == REQUEST_CODE_WRITE_SETTINGS) {
             if (Settings.System.canWrite(this)) {
                 Log.i(TAG, "onActivityResult write settings granted")
@@ -112,6 +112,19 @@ class PermissionBySystemApiActivity : FragmentActivity() {
             }
         }
     }
+
+//    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == REQUEST_CODE_WRITE_SETTINGS) {
+//            if (Settings.System.canWrite(this)) {
+//                Log.i(TAG, "onActivityResult write settings granted")
+//            }
+//        } else if (requestCode == REQUEST_CODE) {
+//            if (Settings.canDrawOverlays(this)) {
+//                Log.i(TAG, "onActivityResult granted")
+//            }
+//        }
+//    }
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

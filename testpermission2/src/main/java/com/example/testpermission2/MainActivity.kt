@@ -2,6 +2,7 @@ package com.example.testpermission2
 
 import android.content.Intent
 import android.os.Bundle
+import com.bedrock.module_base.MenuActivity
 
 class MainActivity : MenuActivity() {
 

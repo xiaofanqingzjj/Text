@@ -3,6 +3,8 @@ package com.airbnb.lottie;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.graphics.Rect;
+import android.util.LongSparseArray;
+
 import androidx.core.util.LongSparseArray;
 import androidx.core.util.SparseArrayCompat;
 

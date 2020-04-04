@@ -31,8 +31,10 @@ class TestHtmlParser : SimpleFragment() {
 
 //        val txt = "adasfsad"
 
-        text1.movementMethod = LinkMovementMethod.getInstance()
+//        text1.movementMethod = LinkMovementMethod.getInstance()
+//        text1.setOnTouchListener(ClickT)
         text1.text = RichTextHelper.buildSpannedText(txt, context!!)
+        text1.setOnTouchListener(ClickableSpanTouchListener)
 
         // 1.调用该方法支持富文本输入
 //        edit_text.supportRichInput()

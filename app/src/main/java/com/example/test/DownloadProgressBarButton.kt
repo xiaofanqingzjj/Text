@@ -2,8 +2,11 @@ package com.example.test
 
 import android.content.Context
 import android.graphics.*
+import android.text.*
+import android.text.style.TextAppearanceSpan
 import android.util.*
 import android.view.View
+import com.fortunexiao.tktx.platforms.dp2px
 
 
 /**
@@ -51,7 +54,7 @@ class DownloadProgressBarButton  @JvmOverloads constructor(context: Context, att
     }
 
 
-    var mNormalText: String = "下载"
+    var mNormalText: CharSequence = "下载"
         set(value) {
             field = value
             invalidate()
@@ -103,7 +106,7 @@ class DownloadProgressBarButton  @JvmOverloads constructor(context: Context, att
 
 
     private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val mTextPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val mTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
 
     private var mContentRect: Rect = Rect()
 
@@ -232,7 +235,10 @@ class DownloadProgressBarButton  @JvmOverloads constructor(context: Context, att
             canvas.restore()
 
             val text = when (mState) {
-                STATE_DOWNLOADING -> "下载中(${String.format("%.1f", mProgress)}%)"
+                STATE_DOWNLOADING -> SpannableStringBuilder().apply {
+                    append("下载中")
+                    append("(${String.format("%.1f", mProgress)}%)", textSpan, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
                 STATE_PENDING -> "请稍候..."
                 else -> "继续"
             }
@@ -254,15 +260,39 @@ class DownloadProgressBarButton  @JvmOverloads constructor(context: Context, att
         }
     }
 
+    val textSpan = TextAppearanceSpan(null, 0, (mTextSize - 3.dp2px(context)).toInt(), null, null )
+
     /**
      * 在View的中心绘制文字
      */
-    private fun drawText(canvas: Canvas, text: String, paint: Paint) {
-        paint.textAlign = Paint.Align.CENTER
-        val x = mContentRect.width() / 2
-        val lineHeight = paint.descent() - paint.ascent()
-        val y = (mContentRect.height() - lineHeight) / 2 - paint.ascent()
-        canvas.drawText(text, x.toFloat(), y, paint)
+    private fun drawText(canvas: Canvas, text: CharSequence, paint: TextPaint) {
+
+        canvas.save()
+//
+//        val layout = StaticLayout.Builder.obtain(text, 0, text.length, paint, width).apply {
+//            setMaxLines(1)
+//        }.build()
+
+//        val layout = BoringLayout.make(text,
+//                paint,
+//                width,
+//                Layout.Alignment.ALIGN_CENTER,
+//                0f,
+//                0f, paint.fontMetrics, false)
+        val layout = StaticLayout(text, paint, width, Layout.Alignment.ALIGN_CENTER, 0f, 0f, false)
+
+        // 垂直居中
+        canvas.translate(0f, (height - layout.height)  / 2f)
+
+        layout.draw(canvas)
+
+        canvas.restore()
+
+//        paint.textAlign = Paint.Align.CENTER
+//        val x = mContentRect.width() / 2
+//        val lineHeight = paint.descent() - paint.ascent()
+//        val y = (mContentRect.height() - lineHeight) / 2 - paint.ascent()
+//        canvas.drawText(text, x.toFloat(), y, paint)
     }
 
 }

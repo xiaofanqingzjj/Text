@@ -1,7 +1,7 @@
 package com.example.testpermission2
 
 import android.os.Bundle
-import androidx.core.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 
 
 /**
