@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.transition.Fade
 import com.bedrock.module_base.MenuActivity
 import com.example.test.alarm.TestAlarm
+import com.example.test.bookranklist.BookRankingFragment
 import com.example.test.transition.TestTransitionActivity
 import com.example.test.card.CardViewActivity
 import com.example.test.expendtextview.TextExpendTextView
 import com.example.test.install.InstallApkSessionApi
+import com.example.test.layout.TestLayoutFragment
 import com.example.test.movementmethod.TestMoveMethod
 import com.example.test.slidedrawer.TestSlideMenu
 import com.example.test.testattrs.MyThemeActivity
@@ -36,7 +38,7 @@ class MainActivity : MenuActivity() {
             })
         }
 
-        addMenuByFragment("Btn bg", BtnBg::class.java)
+        addMenuByFragment("Btn bg", TestDownloadProgressButtom::class.java)
 
         addMenuByFragment("Alarm", TestAlarm::class.java)
 
@@ -58,6 +60,20 @@ class MainActivity : MenuActivity() {
         addMenuByFragment("TestSimpleRoundedImageVIEW", TestSimpleRoundedImageView::class.java)
 
         setupWindowAnimations()
+
+        addMenuByFragment("TestHtmlParser", TestHtmlParser::class.java)
+        addMenuByFragment("TestItem", TestViewTypeAdapter::class.java)
+
+        addMenu("NetInfo") {
+            NetTools.getInstance().init(this.applicationContext)
+            NetTools.getInstance().currentNetWorkType
+        }
+
+        addMenuByFragment("Test Focus change", TestFocusableInput::class.java)
+
+        addMenuByFragment("Test Text Layout", TestLayoutFragment::class.java)
+
+        addMenuByFragment("Test Book Ranking", BookRankingFragment::class.java)
     }
 
 

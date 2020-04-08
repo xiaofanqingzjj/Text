@@ -1,6 +1,16 @@
-include ':app', ':testpermission', ':testpermission2', ':testimsdk', ':testuserguid', ':module_bedrock', ':module_tktx', 'lottie'
+include ':app',
+        ':testpermission',
+        ':testpermission2',
+        ':testimsdk',
+        ':testuserguid',
+        ':module_bedrock',
+        ':module_tktx',
+        'lottie'
 
 include ':TestTransitionAnim'
 
 include ':meterial-animations'
 include ':testbookuserguide'
+
+//include ':lib_permissions_requestor'
+include ':test_gradle'

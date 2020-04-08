@@ -59,3 +59,7 @@ private val handler = Handler(Looper.getMainLooper())
         action?.invoke()
     }, delay)
 }
+
+@JvmOverloads fun runUIThread(runnable: Runnable, delay: Long = 0) {
+    handler.postDelayed(runnable, delay)
+}

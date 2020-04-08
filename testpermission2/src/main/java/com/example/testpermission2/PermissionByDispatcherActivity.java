@@ -3,10 +3,10 @@ package com.example.testpermission2;
 import android.Manifest;
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import permissions.dispatcher.NeedsPermission;

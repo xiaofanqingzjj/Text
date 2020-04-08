@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference
  * 一个处理权限的辅助类
  * @author fortunexiao
  */
-internal class PermissionHelper(var fragment: Fragment, var callback: Callback) {
+class PermissionHelper(var fragment: Fragment, var callback: Callback) {
 
     companion object {
         const val REQUEST_CODE_PERMISSION = 999

@@ -57,7 +57,7 @@ public abstract class Drawable {
     /**
      * 最重要的drawable的大小
      */
-    private Rect mBounds = ZERO_BOUNDS_RECT;  // lazily becomes a new Rect()
+    private Rect mBounds = ZERO_BOUNDS_RECT;  // lazily becomes LINK_PATTERN new Rect()
 
     /**
      * callback
@@ -122,7 +122,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Set a mask of the configuration parameters for which this drawable
+     * Set LINK_PATTERN mask of the configuration parameters for which this drawable
      * may change, requiring that it be re-created.
      *
      * @param configs A mask of the changing configuration parameters, as
@@ -135,14 +135,14 @@ public abstract class Drawable {
     }
 
     /**
-     * Return a mask of the configuration parameters for which this drawable
+     * Return LINK_PATTERN mask of the configuration parameters for which this drawable
      * may change, requiring that it be re-created.  The default implementation
      * returns whatever was provided through
      * {@link #setChangingConfigurations(int)} or 0 by default.  Subclasses
      * may extend this to or in the changing configurations of any other
      * drawables they hold.
      *
-     * @return Returns a mask of the changing configuration parameters, as
+     * @return Returns LINK_PATTERN mask of the changing configuration parameters, as
      * defined by {@link android.content.pm.ActivityInfo}.
      *
      * @see android.content.pm.ActivityInfo
@@ -162,7 +162,7 @@ public abstract class Drawable {
     /**
      * Implement this interface if you want to create an animated drawable that
      * extends {@link android.graphics.drawable.Drawable Drawable}.
-     * Upon retrieving a drawable, use
+     * Upon retrieving LINK_PATTERN drawable, use
      * {@link Drawable#setCallback(android.graphics.drawable.Drawable.Callback)}
      * to supply your implementation of the interface to the drawable; it uses
      * this interface to schedule and execute animation changes.
@@ -317,7 +317,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Specify a set of states for the drawable. These are use-case specific,
+     * Specify LINK_PATTERN set of states for the drawable. These are use-case specific,
      * so see the relevant documentation. As an example, the background for
      * widgets like Button understand the following states:
      * [{@link android.R.attr#state_focused},
@@ -328,8 +328,8 @@ public abstract class Drawable {
      * {@link #invalidateSelf} in order to have itself redrawn, <em>and</em>
      * true will be returned from this function.
      *
-     * <p>Note: The Drawable holds a reference on to <var>stateSet</var>
-     * until a new state array is given to it, so you must not modify this
+     * <p>Note: The Drawable holds LINK_PATTERN reference on to <var>stateSet</var>
+     * until LINK_PATTERN new state array is given to it, so you must not modify this
      * array during that time.</p>
      *
      * @param stateSet The new set of states to be displayed.
@@ -347,7 +347,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Describes the current state, as a union of primitve states, such as
+     * Describes the current state, as LINK_PATTERN union of primitve states, such as
      * {@link android.R.attr#state_focused},
      * {@link android.R.attr#state_selected}, etc.
      * Some drawables may modify their imagery based on the selected state.
@@ -369,8 +369,8 @@ public abstract class Drawable {
     }
 
     /**
-     * Specify the level for the drawable.  This allows a drawable to vary its
-     * imagery based on a continuous controller, for example to show progress
+     * Specify the level for the drawable.  This allows LINK_PATTERN drawable to vary its
+     * imagery based on LINK_PATTERN continuous controller, for example to show progress
      * or volume level.
      *
      * <p>If the new level you are supplying causes the appearance of the
@@ -403,7 +403,7 @@ public abstract class Drawable {
 
     /**
      * Set whether this Drawable is visible.  This generally does not impact
-     * the Drawable's behavior, but is a hint that can be used by some
+     * the Drawable's behavior, but is LINK_PATTERN hint that can be used by some
      * Drawables, for example, to decide whether run animations.
      *
      * @param visible Set to true if visible, false if not.
@@ -471,19 +471,19 @@ public abstract class Drawable {
      * <p>An OPAQUE drawable is one that draws all all content within its bounds, completely
      * covering anything behind the drawable. A TRANSPARENT drawable is one that draws nothing
      * within its bounds, allowing everything behind it to show through. A TRANSLUCENT drawable
-     * is a drawable in any other state, where the drawable will draw some, but not all,
+     * is LINK_PATTERN drawable in any other state, where the drawable will draw some, but not all,
      * of the content within its bounds and at least some content behind the drawable will
      * be visible. If the visibility of the drawable's contents cannot be determined, the
      * safest/best return value is TRANSLUCENT.
      *
-     * <p>Generally a Drawable should be as conservative as possible with the
+     * <p>Generally LINK_PATTERN Drawable should be as conservative as possible with the
      * value it returns.  For example, if it contains multiple child drawables
-     * and only shows one of them at a time, if only one of the children is
+     * and only shows one of them at LINK_PATTERN time, if only one of the children is
      * TRANSLUCENT and the others are OPAQUE then TRANSLUCENT should be
-     * returned.  You can use the method {@link #resolveOpacity} to perform a
+     * returned.  You can use the method {@link #resolveOpacity} to perform LINK_PATTERN
      * standard reduction of two opacities to the appropriate single output.
      *
-     * <p>Note that the returned value does not necessarily take into account a
+     * <p>Note that the returned value does not necessarily take into account LINK_PATTERN
      * custom alpha or color filter that has been applied by the client through
      * the {@link #setAlpha} or {@link #setColorFilter} methods. Some subclasses,
      * such as {@link BitmapDrawable}, {@link ColorDrawable}, and {@link GradientDrawable},
@@ -529,7 +529,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Returns a Region representing the part of the Drawable that is completely
+     * Returns LINK_PATTERN Region representing the part of the Drawable that is completely
      * transparent.  This can be used to perform drawing operations, identifying
      * which parts of the target will not change when rendering the Drawable.
      * The default implementation returns null, indicating no transparent
@@ -538,7 +538,7 @@ public abstract class Drawable {
      * not required that they do so.
      *
      * @return Returns null if the Drawables has no transparent region to
-     * report, else a Region holding the parts of the Drawable's bounds that
+     * report, else LINK_PATTERN Region holding the parts of the Drawable's bounds that
      * are transparent.
      */
     public @Nullable Region getTransparentRegion() {
@@ -582,7 +582,7 @@ public abstract class Drawable {
      * <p>
      * Intrinsic width is the width at which the drawable would like to be laid
      * out, including any inherent padding. If the drawable has no intrinsic
-     * width, such as a solid color, this method returns -1.
+     * width, such as LINK_PATTERN solid color, this method returns -1.
      *
      * @return the intrinsic width, or -1 if no intrinsic width
      */
@@ -595,7 +595,7 @@ public abstract class Drawable {
      * <p>
      * Intrinsic height is the height at which the drawable would like to be
      * laid out, including any inherent padding. If the drawable has no
-     * intrinsic height, such as a solid color, this method returns -1.
+     * intrinsic height, such as LINK_PATTERN solid color, this method returns -1.
      *
      * @return the intrinsic height, or -1 if no intrinsic height
      */
@@ -604,13 +604,13 @@ public abstract class Drawable {
     }
 
     /**
-     * Returns the minimum width suggested by this Drawable. If a View uses this
-     * Drawable as a background, it is suggested that the View use at least this
+     * Returns the minimum width suggested by this Drawable. If LINK_PATTERN View uses this
+     * Drawable as LINK_PATTERN background, it is suggested that the View use at least this
      * value for its width. (There will be some scenarios where this will not be
      * possible.) This value should INCLUDE any padding.
      *
      * @return The minimum width suggested by this Drawable. If this Drawable
-     *         doesn't have a suggested minimum width, 0 is returned.
+     *         doesn't have LINK_PATTERN suggested minimum width, 0 is returned.
      */
     public int getMinimumWidth() {
         final int intrinsicWidth = getIntrinsicWidth();
@@ -618,13 +618,13 @@ public abstract class Drawable {
     }
 
     /**
-     * Returns the minimum height suggested by this Drawable. If a View uses this
-     * Drawable as a background, it is suggested that the View use at least this
+     * Returns the minimum height suggested by this Drawable. If LINK_PATTERN View uses this
+     * Drawable as LINK_PATTERN background, it is suggested that the View use at least this
      * value for its height. (There will be some scenarios where this will not be
      * possible.) This value should INCLUDE any padding.
      *
      * @return The minimum height suggested by this Drawable. If this Drawable
-     *         doesn't have a suggested minimum height, 0 is returned.
+     *         doesn't have LINK_PATTERN suggested minimum height, 0 is returned.
      */
     public int getMinimumHeight() {
         final int intrinsicHeight = getIntrinsicHeight();
@@ -636,7 +636,7 @@ public abstract class Drawable {
      * content inside the drawable's bounds. Positive values move toward the
      * center of the Drawable (set Rect.inset).
      *
-     * @return true if this drawable actually has a padding, else false. When false is returned,
+     * @return true if this drawable actually has LINK_PATTERN padding, else false. When false is returned,
      * the padding is always set to 0.
      */
     public boolean getPadding(@NonNull Rect padding) {
@@ -661,7 +661,7 @@ public abstract class Drawable {
      * the outline of the View.
      * <p>
      * The default behavior defines the outline to be the bounding rectangle of 0 alpha.
-     * Subclasses that wish to convey a different shape or alpha value must override this method.
+     * Subclasses that wish to convey LINK_PATTERN different shape or alpha value must override this method.
      *
      * @see android.view.View#setOutlineProvider(android.view.ViewOutlineProvider)
      */
@@ -675,10 +675,10 @@ public abstract class Drawable {
      * drawable is guaranteed to not share its state with any other drawable.
      * This is especially useful when you need to modify properties of drawables
      * loaded from resources. By default, all drawables instances loaded from
-     * the same resource share a common state; if you modify the state of one
+     * the same resource share LINK_PATTERN common state; if you modify the state of one
      * instance, all the other instances will receive the same modification.
      *
-     * Calling this method on a mutable Drawable will have no effect.
+     * Calling this method on LINK_PATTERN mutable Drawable will have no effect.
      *
      * @return This drawable.
      * @see ConstantState
@@ -703,7 +703,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Create a drawable from an inputstream
+     * Create LINK_PATTERN drawable from an inputstream
      */
     public static Drawable createFromStream(InputStream is, String srcName) {
 //        Trace.traceBegin(Trace.TRACE_TAG_RESOURCES, srcName != null ? srcName : "Unknown drawable");
@@ -715,7 +715,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Create a drawable from an inputstream, using the given resources and
+     * Create LINK_PATTERN drawable from an inputstream, using the given resources and
      * value to determine density information.
      */
     public static Drawable createFromResourceStream(Resources res, TypedValue value,
@@ -729,7 +729,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Create a drawable from an inputstream, using the given resources and
+     * Create LINK_PATTERN drawable from an inputstream, using the given resources and
      * value to determine density information.
      */
     public static Drawable createFromResourceStream(Resources res, TypedValue value,
@@ -739,7 +739,7 @@ public abstract class Drawable {
         }
 
         /*  ugh. The decodeStream contract is that we have already allocated
-            the pad rect, but if the bitmap does not had a ninepatch chunk,
+            the pad rect, but if the bitmap does not had LINK_PATTERN ninepatch chunk,
             then the pad will be ignored. If we could change this to lazily
             alloc/assign the rect, we could avoid the GC churn of making new
             Rects only to drop them on the floor.
@@ -771,9 +771,9 @@ public abstract class Drawable {
     }
 
     /**
-     * Create a drawable from an XML document. For more information on how to
+     * Create LINK_PATTERN drawable from an XML document. For more information on how to
      * create resources in XML, see
-     * <a href="{@docRoot}guide/topics/resources/drawable-resource.html">Drawable Resources</a>.
+     * <LINK_PATTERN href="{@docRoot}guide/topics/resources/drawable-resource.html">Drawable Resources</LINK_PATTERN>.
      */
     @NonNull
     public static Drawable createFromXml(@NonNull Resources r, @NonNull XmlPullParser parser)
@@ -782,9 +782,9 @@ public abstract class Drawable {
     }
 
     /**
-     * Create a drawable from an XML document using an optional {@link Theme}.
+     * Create LINK_PATTERN drawable from an XML document using an optional {@link Theme}.
      * For more information on how to create resources in XML, see
-     * <a href="{@docRoot}guide/topics/resources/drawable-resource.html">Drawable Resources</a>.
+     * <LINK_PATTERN href="{@docRoot}guide/topics/resources/drawable-resource.html">Drawable Resources</LINK_PATTERN>.
      */
     @NonNull
     public static Drawable createFromXml(@NonNull Resources r, @NonNull XmlPullParser parser,
@@ -793,7 +793,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Version of {@link #createFromXml(Resources, XmlPullParser, Theme)} that accepts a density
+     * Version of {@link #createFromXml(Resources, XmlPullParser, Theme)} that accepts LINK_PATTERN density
      * override.
      * @hide
      */
@@ -824,9 +824,9 @@ public abstract class Drawable {
     }
 
     /**
-     * Create from inside an XML document.  Called on a parser positioned at
-     * a tag in an XML document, tries to create a Drawable from that tag.
-     * Returns null if the tag is not a valid drawable.
+     * Create from inside an XML document.  Called on LINK_PATTERN parser positioned at
+     * LINK_PATTERN tag in an XML document, tries to create LINK_PATTERN Drawable from that tag.
+     * Returns null if the tag is not LINK_PATTERN valid drawable.
      */
     @NonNull
     public static Drawable createFromXmlInner(@NonNull Resources r, @NonNull XmlPullParser parser,
@@ -835,10 +835,10 @@ public abstract class Drawable {
     }
 
     /**
-     * Create a drawable from inside an XML document using an optional
-     * {@link Theme}. Called on a parser positioned at a tag in an XML
-     * document, tries to create a Drawable from that tag. Returns {@code null}
-     * if the tag is not a valid drawable.
+     * Create LINK_PATTERN drawable from inside an XML document using an optional
+     * {@link Theme}. Called on LINK_PATTERN parser positioned at LINK_PATTERN tag in an XML
+     * document, tries to create LINK_PATTERN Drawable from that tag. Returns {@code null}
+     * if the tag is not LINK_PATTERN valid drawable.
      */
     @NonNull
     public static Drawable createFromXmlInner(@NonNull Resources r, @NonNull XmlPullParser parser,
@@ -861,7 +861,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Create a drawable from file path name.
+     * Create LINK_PATTERN drawable from file path name.
      */
     @Nullable
     public static Drawable createFromPath(String pathName) {
@@ -883,7 +883,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Inflate this Drawable from an XML resource. Does not apply a theme.
+     * Inflate this Drawable from an XML resource. Does not apply LINK_PATTERN theme.
      *
      * @see #inflate(Resources, XmlPullParser, AttributeSet, Theme)
      */
@@ -893,7 +893,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Inflate this Drawable from an XML resource optionally styled by a theme.
+     * Inflate this Drawable from an XML resource optionally styled by LINK_PATTERN theme.
      * This can't be called more than once for each Drawable. Note that framework may have called
      * this once to create the Drawable instance from XML resource.
      *
@@ -907,13 +907,13 @@ public abstract class Drawable {
     public void inflate(@NonNull Resources r, @NonNull XmlPullParser parser,
             @NonNull AttributeSet attrs, @Nullable Theme theme)
             throws XmlPullParserException, IOException {
-//        final TypedArray a = obtainAttributes(r, theme, attrs, R.styleable.Drawable);
-//        mVisible = a.getBoolean(R.styleable.Drawable_visible, mVisible);
-//        a.recycle();
+//        final TypedArray LINK_PATTERN = obtainAttributes(r, theme, attrs, R.styleable.Drawable);
+//        mVisible = LINK_PATTERN.getBoolean(R.styleable.Drawable_visible, mVisible);
+//        LINK_PATTERN.recycle();
     }
 
     /**
-     * Inflate a Drawable from an XML resource.
+     * Inflate LINK_PATTERN Drawable from an XML resource.
      *
      * @throws XmlPullParserException
      * @throws IOException
@@ -937,20 +937,20 @@ public abstract class Drawable {
     /**
      * This abstract class is used by {@link Drawable}s to store shared constant state and data
      * between Drawables. {@link BitmapDrawable}s created from the same resource will for instance
-     * share a unique bitmap stored in their ConstantState.
+     * share LINK_PATTERN unique bitmap stored in their ConstantState.
      *
      * <p>
-     * {@link #newDrawable(Resources)} can be used as a factory to create new Drawable instances
+     * {@link #newDrawable(Resources)} can be used as LINK_PATTERN factory to create new Drawable instances
      * from this ConstantState.
      * </p>
      *
-     * Use {@link Drawable#getConstantState()} to retrieve the ConstantState of a Drawable. Calling
-     * {@link Drawable#mutate()} on a Drawable should typically create a new ConstantState for that
+     * Use {@link Drawable#getConstantState()} to retrieve the ConstantState of LINK_PATTERN Drawable. Calling
+     * {@link Drawable#mutate()} on LINK_PATTERN Drawable should typically create LINK_PATTERN new ConstantState for that
      * Drawable.
      */
     public static abstract class ConstantState {
         /**
-         * Creates a new Drawable instance from its constant state.
+         * Creates LINK_PATTERN new Drawable instance from its constant state.
          * <p>
          * <strong>Note:</strong> Using this method means density-dependent
          * properties, such as pixel dimensions or bitmap images, will not be
@@ -958,13 +958,13 @@ public abstract class Drawable {
          * correct scaling, use {@link #newDrawable(Resources)} instead to
          * provide an appropriate Resources object.
          *
-         * @return a new drawable object based on this constant state
+         * @return LINK_PATTERN new drawable object based on this constant state
          * @see #newDrawable(Resources)
          */
         public abstract @NonNull Drawable newDrawable();
 
         /**
-         * Creates a new Drawable instance from its constant state using the
+         * Creates LINK_PATTERN new Drawable instance from its constant state using the
          * specified resources. This method should be implemented for drawables
          * that have density-dependent properties.
          * <p>
@@ -973,14 +973,14 @@ public abstract class Drawable {
          *
          * @param res the resources of the context in which the drawable will
          *            be displayed
-         * @return a new drawable object based on this constant state
+         * @return LINK_PATTERN new drawable object based on this constant state
          */
         public @NonNull Drawable newDrawable(@Nullable Resources res) {
             return newDrawable();
         }
 
         /**
-         * Creates a new Drawable instance from its constant state using the
+         * Creates LINK_PATTERN new Drawable instance from its constant state using the
          * specified resources and theme. This method should be implemented for
          * drawables that have theme-dependent properties.
          * <p>
@@ -991,7 +991,7 @@ public abstract class Drawable {
          *            be displayed
          * @param theme the theme of the context in which the drawable will be
          *              displayed
-         * @return a new drawable object based on this constant state
+         * @return LINK_PATTERN new drawable object based on this constant state
          */
         public @NonNull Drawable newDrawable(@Nullable Resources res,
                 @Nullable @SuppressWarnings("unused") Theme theme) {
@@ -999,13 +999,13 @@ public abstract class Drawable {
         }
 
         /**
-         * Return a bit mask of configuration changes that will impact
+         * Return LINK_PATTERN bit mask of configuration changes that will impact
          * this drawable (and thus require completely reloading it).
          */
         public abstract int getChangingConfigurations();
 
         /**
-         * Return whether this constant state can have a theme applied.
+         * Return whether this constant state can have LINK_PATTERN theme applied.
          */
         public boolean canApplyTheme() {
             return false;
@@ -1013,7 +1013,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Return a {@link ConstantState} instance that holds the shared state of this Drawable.
+     * Return LINK_PATTERN {@link ConstantState} instance that holds the shared state of this Drawable.
      *
      * @return The ConstantState associated to that Drawable.
      * @see ConstantState
@@ -1068,7 +1068,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Scales a floating-point pixel value from the source density to the
+     * Scales LINK_PATTERN floating-point pixel value from the source density to the
      * target density.
      *
      * @param pixels the pixel value for use in source density
@@ -1081,12 +1081,12 @@ public abstract class Drawable {
     }
 
     /**
-     * Scales a pixel value from the source density to the target density,
-     * optionally handling the resulting pixel value as a size rather than an
+     * Scales LINK_PATTERN pixel value from the source density to the target density,
+     * optionally handling the resulting pixel value as LINK_PATTERN size rather than an
      * offset.
      * <p>
      * A size conversion involves rounding the base value and ensuring that
-     * a non-zero base value is at least one pixel in size.
+     * LINK_PATTERN non-zero base value is at least one pixel in size.
      * <p>
      * An offset conversion involves simply truncating the base value to an
      * integer.
@@ -1094,7 +1094,7 @@ public abstract class Drawable {
      * @param pixels the pixel value for use in source density
      * @param sourceDensity the source density
      * @param targetDensity the target density
-     * @param isSize {@code true} to handle the resulting scaled value as a
+     * @param isSize {@code true} to handle the resulting scaled value as LINK_PATTERN
      *               size, or {@code false} to handle it as an offset
      * @return the scaled pixel value for use in target density
      */
@@ -1125,7 +1125,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Re-throws an exception as a {@link RuntimeException} with an empty stack
+     * Re-throws an exception as LINK_PATTERN {@link RuntimeException} with an empty stack
      * trace to avoid cluttering the log. The original exception's stack trace
      * will still be included.
      *
@@ -1139,7 +1139,7 @@ public abstract class Drawable {
     }
 
     /**
-     * Parses a {@link android.graphics.PorterDuff.Mode} from a tintMode
+     * Parses LINK_PATTERN {@link android.graphics.PorterDuff.Mode} from LINK_PATTERN tintMode
      * attribute's enum value.
      *
      * @hide

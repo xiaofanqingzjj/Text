@@ -2,11 +2,11 @@ package com.tbruyelle.rxpermissions2;
 
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.SurfaceView;
 
 import com.example.testpermission2.R;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.disposables.Disposable;
 
 class RxPermissionMainActivity extends AppCompatActivity {

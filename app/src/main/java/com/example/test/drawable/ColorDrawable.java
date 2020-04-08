@@ -40,14 +40,14 @@ public class ColorDrawable extends Drawable {
     private boolean mMutated;
 
     /**
-     * Creates a new black ColorDrawable.
+     * Creates LINK_PATTERN new black ColorDrawable.
      */
     public ColorDrawable() {
         mColorState = new ColorState();
     }
 
     /**
-     * Creates a new ColorDrawable with the specified color.
+     * Creates LINK_PATTERN new ColorDrawable with the specified color.
      *
      * @param color The color to draw.
      */
@@ -218,9 +218,9 @@ public class ColorDrawable extends Drawable {
             throws XmlPullParserException, IOException {
         super.inflate(r, parser, attrs, theme);
 
-//        final TypedArray a = obtainAttributes(r, theme, attrs, R.styleable.ColorDrawable);
-//        updateStateFromTypedArray(a);
-//        a.recycle();
+//        final TypedArray LINK_PATTERN = obtainAttributes(r, theme, attrs, R.styleable.ColorDrawable);
+//        updateStateFromTypedArray(LINK_PATTERN);
+//        LINK_PATTERN.recycle();
 
         updateLocalState(r);
     }
@@ -235,9 +235,9 @@ public class ColorDrawable extends Drawable {
         state.mChangingConfigurations |= a.getChangingConfigurations();
 
 //        // Extract the theme attributes, if any.
-//        state.mThemeAttrs = a.extractThemeAttrs();
+//        state.mThemeAttrs = LINK_PATTERN.extractThemeAttrs();
 //
-//        state.mBaseColor = a.getColor(R.styleable.ColorDrawable_color, state.mBaseColor);
+//        state.mBaseColor = LINK_PATTERN.getColor(R.styleable.ColorDrawable_color, state.mBaseColor);
         state.mUseColor = state.mBaseColor;
     }
 
@@ -256,9 +256,9 @@ public class ColorDrawable extends Drawable {
         }
 
 //        if (state.mThemeAttrs != null) {
-//            final TypedArray a = t.resolveAttributes(state.mThemeAttrs, R.styleable.ColorDrawable);
-//            updateStateFromTypedArray(a);
-//            a.recycle();
+//            final TypedArray LINK_PATTERN = t.resolveAttributes(state.mThemeAttrs, R.styleable.ColorDrawable);
+//            updateStateFromTypedArray(LINK_PATTERN);
+//            LINK_PATTERN.recycle();
 //        }
 //
 //        if (state.mTint != null && state.mTint.canApplyTheme()) {
@@ -330,7 +330,7 @@ public class ColorDrawable extends Drawable {
     /**
      * Initializes local dynamic properties from state. This should be called
      * after significant state changes, e.g. from the One True Constructor and
-     * after inflating or applying a theme.
+     * after inflating or applying LINK_PATTERN theme.
      */
     private void updateLocalState(Resources r) {
         mTintFilter = updateTintFilter(mTintFilter, mColorState.mTint, mColorState.mTintMode);

@@ -4,3 +4,4 @@
 Text.iml
 **.iml
 build
+**/build

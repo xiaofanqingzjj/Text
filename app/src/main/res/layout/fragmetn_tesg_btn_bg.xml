@@ -24,7 +24,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:paddingLeft="1.5dp"
             android:paddingTop="1.5dp"
             android:paddingRight="1.5dp"
@@ -38,7 +38,7 @@
                 app:dpbb_progressBgColor="#00000000"
                 app:dpbb_progressColor="@color/SC1A50"
                 app:dpbb_progressTextColor="@color/SC2"
-                app:dpbb_leftProgressTextColor="@color/SC2"/>
+                app:dpbb_leftProgressTextColor="@color/SC1"/>
 
 
 

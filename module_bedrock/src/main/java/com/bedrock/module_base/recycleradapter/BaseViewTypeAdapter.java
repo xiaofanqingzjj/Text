@@ -2,11 +2,13 @@ package com.bedrock.module_base.recycleradapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -237,6 +239,22 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
         }
     }
 
+    @Override
+    public void onViewAttachedToWindow(@NonNull RecyclerView.ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+
+        final StubViewHolder svh = (StubViewHolder)holder;
+        svh.viewTypeViewHolder.onAttachToWindow();
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull RecyclerView.ViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+
+        final StubViewHolder svh = (StubViewHolder)holder;
+        svh.viewTypeViewHolder.onDetachFromWindow();
+    }
+
     public List<T> getDatas() {
         return mData;
     }
@@ -253,6 +271,9 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
 
     @Override
     public final StubViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+//        addRecyclerViewScrollListener(parent);
+
         Class<? extends ViewTypeViewHolder> viewHolderClazz = mItems.get(viewType);
 
         if (viewHolderClazz == null) {
@@ -286,6 +307,43 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
         }
 
         return holder.viewHolder;
+    }
+
+
+
+    private boolean hasRecyclerViewAddedScrollListener = false;
+
+    private boolean isScrolling = false;
+
+    private void addRecyclerViewScrollListener(ViewGroup parent) {
+        if (!hasRecyclerViewAddedScrollListener && parent instanceof RecyclerView) {
+            RecyclerView rv = (RecyclerView) parent;
+
+            rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
+//                    Log.d(TAG, "onScrollStateChanged:" + newState);
+
+                    // State的三种状态：SCROLL_STATE_IDLE（静止）、SCROLL_STATE_DRAGGING（上升）、SCROLL_STATE_SETTLING（下落）
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE || newState == RecyclerView.SCROLL_STATE_DRAGGING) { // 滚动静止时才加载图片资源，极大提升流畅度
+                        isScrolling = false;
+                        //简单的形式可以使用  notify调用后onBindViewHolder会响应调用
+                        notifyDataSetChanged();
+
+//                        notifyItemRangeChanged();
+                    } else {
+                        isScrolling = true;
+                    }
+                }
+
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+                }
+            });
+            hasRecyclerViewAddedScrollListener = true;
+        }
     }
 
     @Override
@@ -539,11 +597,11 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
          * ViewHolder被添加到窗口上
          */
         protected void onAttachToWindow() {
-
+            isAttachToWindow = true;
         }
 
         public void onRecycled() {
-
+            isAttachToWindow = false;
         }
 
         /**
@@ -600,19 +658,19 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
 
             viewHolder = new StubViewHolder<>(view, this);
 
-            viewHolder.itemView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-                @Override
-                public void onViewAttachedToWindow(View v) {
-                    isAttachToWindow = true;
-                    onAttachToWindow();
-                }
-
-                @Override
-                public void onViewDetachedFromWindow(View v) {
-                    isAttachToWindow = false;
-                    onDetachFromWindow();
-                }
-            });
+//            viewHolder.itemView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+//                @Override
+//                public void onViewAttachedToWindow(View v) {
+//                    isAttachToWindow = true;
+//                    onAttachToWindow();
+//                }
+//
+//                @Override
+//                public void onViewDetachedFromWindow(View v) {
+//                    isAttachToWindow = false;
+//                    onDetachFromWindow();
+//                }
+//            });
 
 
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -700,7 +758,7 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
          * 返回当前ViewHolder bind的Data对象
          * @return 当前绑定的数据对象
          */
-        protected U getCurrentBindData() {
+        public U getCurrentBindData() {
             return currentBindData;
         }
 

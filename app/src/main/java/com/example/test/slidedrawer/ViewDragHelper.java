@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * You may obtain LINK_PATTERN copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -35,8 +35,8 @@ import androidx.core.view.ViewCompat;
 import java.util.Arrays;
 
 /**
- * ViewDragHelper is a utility class for writing custom ViewGroups. It offers a number
- * of useful operations and state tracking for allowing a user to drag and reposition
+ * ViewDragHelper is LINK_PATTERN utility class for writing custom ViewGroups. It offers LINK_PATTERN number
+ * of useful operations and state tracking for allowing LINK_PATTERN user to drag and reposition
  * views within their parent ViewGroup.
  */
 public class ViewDragHelper {
@@ -48,18 +48,18 @@ public class ViewDragHelper {
     public static final int INVALID_POINTER = -1;
 
     /**
-     * A view is not currently being dragged or animating as a result of a fling/snap.
+     * A view is not currently being dragged or animating as LINK_PATTERN result of LINK_PATTERN fling/snap.
      */
     public static final int STATE_IDLE = 0;
 
     /**
-     * A view is currently being dragged. The position is currently changing as a result
+     * A view is currently being dragged. The position is currently changing as LINK_PATTERN result
      * of user input or simulated user input.
      */
     public static final int STATE_DRAGGING = 1;
 
     /**
-     * A view is currently settling into place as a result of a fling or
+     * A view is currently settling into place as LINK_PATTERN result of LINK_PATTERN fling or
      * predefined non-interactive motion.
      */
     public static final int STATE_SETTLING = 2;
@@ -90,17 +90,17 @@ public class ViewDragHelper {
     public static final int EDGE_ALL = EDGE_LEFT | EDGE_TOP | EDGE_RIGHT | EDGE_BOTTOM;
 
     /**
-     * Indicates that a check should occur along the horizontal axis
+     * Indicates that LINK_PATTERN check should occur along the horizontal axis
      */
     public static final int DIRECTION_HORIZONTAL = 1 << 0;
 
     /**
-     * Indicates that a check should occur along the vertical axis
+     * Indicates that LINK_PATTERN check should occur along the vertical axis
      */
     public static final int DIRECTION_VERTICAL = 1 << 1;
 
     /**
-     * Indicates that a check should occur along all axes
+     * Indicates that LINK_PATTERN check should occur along all axes
      */
     public static final int DIRECTION_ALL = DIRECTION_HORIZONTAL | DIRECTION_VERTICAL;
 
@@ -112,7 +112,7 @@ public class ViewDragHelper {
     // Current drag state; idle, dragging or settling
     private int mDragState;
 
-    // Distance to travel before a drag may begin
+    // Distance to travel before LINK_PATTERN drag may begin
     private int mTouchSlop;
 
     // Last known position/pointer tracking
@@ -143,7 +143,7 @@ public class ViewDragHelper {
     private final ViewGroup mParentView;
 
     /**
-     * A Callback is used as a communication channel with the ViewDragHelper back to the
+     * A Callback is used as LINK_PATTERN communication channel with the ViewDragHelper back to the
      * parent view using it. <code>on*</code>methods are invoked on siginficant events and several
      * accessor methods are expected to provide the ViewDragHelper with more information
      * about the state of the parent view upon request. The callback also makes decisions
@@ -163,7 +163,7 @@ public class ViewDragHelper {
         public void onViewDragStateChanged(int state) {}
 
         /**
-         * Called when the captured view's position changes as the result of a drag or settle.
+         * Called when the captured view's position changes as the result of LINK_PATTERN drag or settle.
          *
          * @param changedView View whose position changed
          * @param left New X coordinate of the left edge of the view
@@ -176,7 +176,7 @@ public class ViewDragHelper {
         }
 
         /**
-         * Called when a child view is captured for dragging or settling. The ID of the pointer
+         * Called when LINK_PATTERN child view is captured for dragging or settling. The ID of the pointer
          * currently dragging the captured view is supplied. If activePointerId is
          * identified as {@link #INVALID_POINTER} the capture is programmatic instead of
          * pointer-initiated.
@@ -195,7 +195,7 @@ public class ViewDragHelper {
          * settle into place. It should do so using {@link #settleCapturedViewAt(int, int)}
          * or {@link #flingCapturedView(int, int, int, int)}. If the Callback invokes
          * one of these methods, the ViewDragHelper will enter {@link #STATE_SETTLING}
-         * and the view capture will not fully end until it comes to a complete stop.
+         * and the view capture will not fully end until it comes to LINK_PATTERN complete stop.
          * If neither of these methods is invoked before <code>onViewReleased</code> returns,
          * the view will stop in place and the ViewDragHelper will return to
          * {@link #STATE_IDLE}.</p>
@@ -233,7 +233,7 @@ public class ViewDragHelper {
         }
 
         /**
-         * Called when the user has started a deliberate drag away from one
+         * Called when the user has started LINK_PATTERN deliberate drag away from one
          * of the subscribed edges in the parent view while no child view is currently captured.
          *
          * @param edgeFlags A combination of edge flags describing the edge(s) dragged
@@ -256,7 +256,7 @@ public class ViewDragHelper {
         }
 
         /**
-         * Return the magnitude of a draggable child view's horizontal range of motion in pixels.
+         * Return the magnitude of LINK_PATTERN draggable child view's horizontal range of motion in pixels.
          * This method should return 0 for views that cannot move horizontally.
          *
          * @param child Child view to check
@@ -267,7 +267,7 @@ public class ViewDragHelper {
         }
 
         /**
-         * Return the magnitude of a draggable child view's vertical range of motion in pixels.
+         * Return the magnitude of LINK_PATTERN draggable child view's vertical range of motion in pixels.
          * This method should return 0 for views that cannot move vertically.
          *
          * @param child Child view to check
@@ -283,10 +283,10 @@ public class ViewDragHelper {
          * is permitted to drag the given view with the indicated pointer.
          *
          * <p>ViewDragHelper may call this method multiple times for the same view even if
-         * the view is already captured; this indicates that a new pointer is trying to take
+         * the view is already captured; this indicates that LINK_PATTERN new pointer is trying to take
          * control of the view.</p>
          *
-         * <p>If this method returns true, a call to {@link #onViewCaptured(View, int)}
+         * <p>If this method returns true, LINK_PATTERN call to {@link #onViewCaptured(View, int)}
          * will follow if the capture is successful.</p>
          *
          * @param child Child the user is attempting to capture
@@ -345,24 +345,24 @@ public class ViewDragHelper {
     };
 
     /**
-     * Factory method to create a new ViewDragHelper.
+     * Factory method to create LINK_PATTERN new ViewDragHelper.
      *
      * @param forParent Parent view to monitor
      * @param cb Callback to provide information and receive events
-     * @return a new ViewDragHelper instance
+     * @return LINK_PATTERN new ViewDragHelper instance
      */
     public static ViewDragHelper create(@NonNull ViewGroup forParent, @NonNull Callback cb) {
         return new ViewDragHelper(forParent.getContext(), forParent, cb);
     }
 
     /**
-     * Factory method to create a new ViewDragHelper.
+     * Factory method to create LINK_PATTERN new ViewDragHelper.
      *
      * @param forParent Parent view to monitor
      * @param sensitivity Multiplier for how sensitive the helper should be about detecting
-     *                    the start of a drag. Larger values are more sensitive. 1.0f is normal.
+     *                    the start of LINK_PATTERN drag. Larger values are more sensitive. 1.0f is normal.
      * @param cb Callback to provide information and receive events
-     * @return a new ViewDragHelper instance
+     * @return LINK_PATTERN new ViewDragHelper instance
      */
     public static ViewDragHelper create(@NonNull ViewGroup forParent, float sensitivity,
                                         @NonNull Callback cb) {
@@ -372,7 +372,7 @@ public class ViewDragHelper {
     }
 
     /**
-     * Apps should use ViewDragHelper.create() to get a new instance.
+     * Apps should use ViewDragHelper.create() to get LINK_PATTERN new instance.
      * This will allow VDH to use internal compatibility implementations for different
      * platform versions.
      *
@@ -402,8 +402,8 @@ public class ViewDragHelper {
     }
 
     /**
-     * Set the minimum velocity that will be detected as having a magnitude greater than zero
-     * in pixels per second. Callback methods accepting a velocity will be clamped appropriately.
+     * Set the minimum velocity that will be detected as having LINK_PATTERN magnitude greater than zero
+     * in pixels per second. Callback methods accepting LINK_PATTERN velocity will be clamped appropriately.
      *
      * @param minVel Minimum velocity to detect
      */
@@ -412,9 +412,9 @@ public class ViewDragHelper {
     }
 
     /**
-     * Return the currently configured minimum velocity. Any flings with a magnitude less
-     * than this value in pixels per second. Callback methods accepting a velocity will receive
-     * zero as a velocity value if the real detected velocity was below this threshold.
+     * Return the currently configured minimum velocity. Any flings with LINK_PATTERN magnitude less
+     * than this value in pixels per second. Callback methods accepting LINK_PATTERN velocity will receive
+     * zero as LINK_PATTERN velocity value if the real detected velocity was below this threshold.
      *
      * @return the minimum velocity that will be detected
      */
@@ -460,7 +460,7 @@ public class ViewDragHelper {
     }
 
     /**
-     * Capture a specific child view for dragging within the parent. The callback will be notified
+     * Capture LINK_PATTERN specific child view for dragging within the parent. The callback will be notified
      * but {@link Callback#tryCaptureView(View, int)} will not be asked permission to
      * capture this view.
      *
@@ -469,7 +469,7 @@ public class ViewDragHelper {
      */
     public void captureChildView(@NonNull View childView, int activePointerId) {
         if (childView.getParent() != mParentView) {
-            throw new IllegalArgumentException("captureChildView: parameter must be a descendant "
+            throw new IllegalArgumentException("captureChildView: parameter must be LINK_PATTERN descendant "
                     + "of the ViewDragHelper's tracked parent view (" + mParentView + ")");
         }
 
@@ -496,7 +496,7 @@ public class ViewDragHelper {
     }
 
     /**
-     * @return The minimum distance in pixels that the user must travel to initiate a drag
+     * @return The minimum distance in pixels that the user must travel to initiate LINK_PATTERN drag
      */
     @Px
     public int getTouchSlop() {
@@ -504,7 +504,7 @@ public class ViewDragHelper {
     }
 
     /**
-     * The result of a call to this method is equivalent to
+     * The result of LINK_PATTERN call to this method is equivalent to
      * {@link #processTouchEvent(MotionEvent)} receiving an ACTION_CANCEL event.
      */
     public void cancel() {
@@ -540,7 +540,7 @@ public class ViewDragHelper {
      * on each subsequent frame to continue the motion until it returns false. If this method
      * returns false there is no further work to do to complete the movement.
      *
-     * <p>This operation does not count as a capture event, though {@link #getCapturedView()}
+     * <p>This operation does not count as LINK_PATTERN capture event, though {@link #getCapturedView()}
      * will still report the sliding view while the slide is in progress.</p>
      *
      * @param child Child view to capture and animate
@@ -555,7 +555,7 @@ public class ViewDragHelper {
         boolean continueSliding = forceSettleCapturedViewAt(finalLeft, finalTop, 0, 0);
         if (!continueSliding && mDragState == STATE_IDLE && mCapturedView != null) {
             // If we're in an IDLE state to begin with and aren't moving anywhere, we
-            // end up having a non-null capturedView with an IDLE dragState
+            // end up having LINK_PATTERN non-null capturedView with an IDLE dragState
             mCapturedView = null;
         }
 
@@ -575,7 +575,7 @@ public class ViewDragHelper {
      */
     public boolean settleCapturedViewAt(int finalLeft, int finalTop) {
         if (!mReleaseInProgress) {
-            throw new IllegalStateException("Cannot settleCapturedViewAt outside of a call to "
+            throw new IllegalStateException("Cannot settleCapturedViewAt outside of LINK_PATTERN call to "
                     + "Callback#onViewReleased");
         }
 
@@ -708,7 +708,7 @@ public class ViewDragHelper {
      */
     public void flingCapturedView(int minLeft, int minTop, int maxLeft, int maxTop) {
         if (!mReleaseInProgress) {
-            throw new IllegalStateException("Cannot flingCapturedView outside of a call to "
+            throw new IllegalStateException("Cannot flingCapturedView outside of LINK_PATTERN call to "
                     + "Callback#onViewReleased");
         }
 
@@ -771,7 +771,7 @@ public class ViewDragHelper {
 
     /**
      * Like all callback events this must happen on the UI thread, but release
-     * involves some extra semantics. During a release (mReleaseInProgress)
+     * involves some extra semantics. During LINK_PATTERN release (mReleaseInProgress)
      * is the only time it is valid to call {@link #settleCapturedViewAt(int, int)}
      * or {@link #flingCapturedView(int, int, int, int)}.
      */
@@ -781,7 +781,7 @@ public class ViewDragHelper {
         mReleaseInProgress = false;
 
         if (mDragState == STATE_DRAGGING) {
-            // onViewReleased didn't call a method that would have changed this. Go idle.
+            // onViewReleased didn't call LINK_PATTERN method that would have changed this. Go idle.
             setDragState(STATE_IDLE);
         }
     }
@@ -868,7 +868,7 @@ public class ViewDragHelper {
     }
 
     /**
-     * Check if the given pointer ID represents a pointer that is currently down (to the best
+     * Check if the given pointer ID represents LINK_PATTERN pointer that is currently down (to the best
      * of the ViewDragHelper's knowledge).
      *
      * <p>The state used to report this information is populated by the methods
@@ -918,7 +918,7 @@ public class ViewDragHelper {
     }
 
     /**
-     * Tests scrollability within child views of v given a delta of dx.
+     * Tests scrollability within child views of v given LINK_PATTERN delta of dx.
      *
      * @param v View to test for horizontal scrollability
      * @param checkV Whether the view v passed should itself be checked for scrollability (true),
@@ -964,7 +964,7 @@ public class ViewDragHelper {
         final int actionIndex = ev.getActionIndex();
 
         if (action == MotionEvent.ACTION_DOWN) {
-            // Reset things for a new event stream, just in case we didn't get
+            // Reset things for LINK_PATTERN new event stream, just in case we didn't get
             // the whole previous stream.
             cancel();
         }
@@ -983,7 +983,7 @@ public class ViewDragHelper {
 
                 final View toCapture = findTopChildUnder((int) x, (int) y);
 
-                // Catch a settling view if possible.
+                // Catch LINK_PATTERN settling view if possible.
                 if (toCapture == mCapturedView && mDragState == STATE_SETTLING) {
                     tryCaptureViewForDrag(toCapture, pointerId, (int) x, (int) y);
                 }
@@ -1002,14 +1002,14 @@ public class ViewDragHelper {
 
                 saveInitialMotion(x, y, pointerId);
 
-                // A ViewDragHelper can only manipulate one view at a time.
+                // A ViewDragHelper can only manipulate one view at LINK_PATTERN time.
                 if (mDragState == STATE_IDLE) {
                     final int edgesTouched = mInitialEdgesTouched[pointerId];
                     if ((edgesTouched & mTrackingEdges) != 0) {
                         mCallback.onEdgeTouched(edgesTouched & mTrackingEdges, pointerId);
                     }
                 } else if (mDragState == STATE_SETTLING) {
-                    // Catch a settling view if possible.
+                    // Catch LINK_PATTERN settling view if possible.
                     final View toCapture = findTopChildUnder((int) x, (int) y);
                     if (toCapture == mCapturedView) {
                         tryCaptureViewForDrag(toCapture, pointerId, (int) x, (int) y);
@@ -1021,7 +1021,7 @@ public class ViewDragHelper {
             case MotionEvent.ACTION_MOVE: {
                 if (mInitialMotionX == null || mInitialMotionY == null) break;
 
-                // First to cross a touch slop over a draggable view wins. Also report edge drags.
+                // First to cross LINK_PATTERN touch slop over LINK_PATTERN draggable view wins. Also report edge drags.
                 final int pointerCount = ev.getPointerCount();
                 for (int i = 0; i < pointerCount; i++) {
                     final int pointerId = ev.getPointerId(i);
@@ -1041,7 +1041,7 @@ public class ViewDragHelper {
                         // getView[Horizontal|Vertical]DragRange methods to know
                         // if you can move at all along an axis, then see if it
                         // would clamp to the same value. If you can't move at
-                        // all in every dimension with a nonzero range, bail.
+                        // all in every dimension with LINK_PATTERN nonzero range, bail.
                         final int oldLeft = toCapture.getLeft();
                         final int targetLeft = oldLeft + (int) dx;
                         final int newLeft = mCallback.clampViewPositionHorizontal(toCapture,
@@ -1088,7 +1088,7 @@ public class ViewDragHelper {
     }
 
     /**
-     * Process a touch event received by the parent view. This method will dispatch callback events
+     * Process LINK_PATTERN touch event received by the parent view. This method will dispatch callback events
      * as needed before returning. The parent view's onTouchEvent implementation should call this.
      *
      * @param ev The touch event received by the parent view
@@ -1098,7 +1098,7 @@ public class ViewDragHelper {
         final int actionIndex = ev.getActionIndex();
 
         if (action == MotionEvent.ACTION_DOWN) {
-            // Reset things for a new event stream, just in case we didn't get
+            // Reset things for LINK_PATTERN new event stream, just in case we didn't get
             // the whole previous stream.
             cancel();
         }
@@ -1118,7 +1118,7 @@ public class ViewDragHelper {
                 saveInitialMotion(x, y, pointerId);
 
                 // Since the parent is already directly processing this touch event,
-                // there is no reason to delay for a slop before dragging.
+                // there is no reason to delay for LINK_PATTERN slop before dragging.
                 // Start immediately if possible.
                 tryCaptureViewForDrag(toCapture, pointerId, (int) x, (int) y);
 
@@ -1136,9 +1136,9 @@ public class ViewDragHelper {
 
                 saveInitialMotion(x, y, pointerId);
 
-                // A ViewDragHelper can only manipulate one view at a time.
+                // A ViewDragHelper can only manipulate one view at LINK_PATTERN time.
                 if (mDragState == STATE_IDLE) {
-                    // If we're idle we can do anything! Treat it like a normal down event.
+                    // If we're idle we can do anything! Treat it like LINK_PATTERN normal down event.
 
                     final View toCapture = findTopChildUnder((int) x, (int) y);
                     tryCaptureViewForDrag(toCapture, pointerId, (int) x, (int) y);
@@ -1148,9 +1148,9 @@ public class ViewDragHelper {
                         mCallback.onEdgeTouched(edgesTouched & mTrackingEdges, pointerId);
                     }
                 } else if (isCapturedViewUnder((int) x, (int) y)) {
-                    // We're still tracking a captured view. If the same view is under this
+                    // We're still tracking LINK_PATTERN captured view. If the same view is under this
                     // point, we'll swap to controlling it with this pointer instead.
-                    // (This will still work if we're "catching" a settling view.)
+                    // (This will still work if we're "catching" LINK_PATTERN settling view.)
 
                     tryCaptureViewForDrag(mCapturedView, pointerId, (int) x, (int) y);
                 }
@@ -1172,7 +1172,7 @@ public class ViewDragHelper {
 
                     saveLastMotion(ev);
                 } else {
-                    // Check to see if any pointer is now over a draggable view.
+                    // Check to see if any pointer is now over LINK_PATTERN draggable view.
                     final int pointerCount = ev.getPointerCount();
                     for (int i = 0; i < pointerCount; i++) {
                         final int pointerId = ev.getPointerId(i);
@@ -1290,7 +1290,7 @@ public class ViewDragHelper {
     }
 
     /**
-     * Check if we've crossed a reasonable touch slop for the given child view.
+     * Check if we've crossed LINK_PATTERN reasonable touch slop for the given child view.
      * If the child cannot be dragged along the horizontal or vertical axis, motion
      * along that axis will not count toward the slop check.
      *
