@@ -5,3 +5,5 @@ Text.iml
 **.iml
 build
 **/build
+
+local.properties
