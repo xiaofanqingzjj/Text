@@ -15,3 +15,9 @@ include ':testbookuserguide'
 //include ':lib_permissions_requestor'
 include ':test_gradle'
 include ':lib_testJava'
+
+
+include ':testuserguid'
+project(':testuserguid').projectDir = new File("demos/testuserguid")
+
+include ':ndkdemo'

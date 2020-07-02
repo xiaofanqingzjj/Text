@@ -14,7 +14,7 @@ buildscript {
     dependencies {
 
 
-        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.android.tools.build:gradle:3.6.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // 这里要引入kotlin插件
 
         classpath 'net.yrom:shrinker:0.2.9'
@@ -47,7 +47,7 @@ ext {
 
     compile_sdk_version = 29
     target_sdk_version = 28
-    min_sdk_version = 24
+    min_sdk_version = 22
 
 //    build_tools_version = ""
     support_version = "27.0.2"

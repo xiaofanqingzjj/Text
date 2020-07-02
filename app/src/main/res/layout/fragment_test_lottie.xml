@@ -23,8 +23,8 @@
         android:layout_width="54dp"
         android:layout_height="60dp"
         android:layout_marginTop="420dp"
-        app:lottie_imageAssetsFolder="lucky_bag_entrance_get_gift/images"
-        app:lottie_fileName="lucky_bag_entrance_get_gift/data.json"
+        app:lottie_imageAssetsFolder="playLoading/images"
+        app:lottie_fileName="playLoading/data.json"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"/>
 

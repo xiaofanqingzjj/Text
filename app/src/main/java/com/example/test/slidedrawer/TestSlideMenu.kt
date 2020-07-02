@@ -38,7 +38,6 @@ class TestSlideMenu : SimpleFragment() {
 //
         createTabs(view_pager, mutableListOf<Tab>().apply {
             add(Tab.create("嗷嗷", SimpleEmptyFragment()))
-            add(Tab.create("嗷嗷", SomeListFragment()))
         })
 
         view_pager?.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {

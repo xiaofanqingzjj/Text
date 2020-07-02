@@ -2,6 +2,7 @@ package com.example.test
 
 import android.content.Context
 import android.graphics.*
+import android.os.Build
 import android.text.*
 import android.text.style.TextAppearanceSpan
 import android.util.*
@@ -267,32 +268,20 @@ class DownloadProgressBarButton  @JvmOverloads constructor(context: Context, att
      */
     private fun drawText(canvas: Canvas, text: CharSequence, paint: TextPaint) {
 
-        canvas.save()
-//
-//        val layout = StaticLayout.Builder.obtain(text, 0, text.length, paint, width).apply {
-//            setMaxLines(1)
-//        }.build()
-
-//        val layout = BoringLayout.make(text,
-//                paint,
-//                width,
-//                Layout.Alignment.ALIGN_CENTER,
-//                0f,
-//                0f, paint.fontMetrics, false)
-        val layout = StaticLayout(text, paint, width, Layout.Alignment.ALIGN_CENTER, 0f, 0f, false)
-
-        // 垂直居中
-        canvas.translate(0f, (height - layout.height)  / 2f)
-
-        layout.draw(canvas)
-
-        canvas.restore()
-
-//        paint.textAlign = Paint.Align.CENTER
-//        val x = mContentRect.width() / 2
-//        val lineHeight = paint.descent() - paint.ascent()
-//        val y = (mContentRect.height() - lineHeight) / 2 - paint.ascent()
-//        canvas.drawText(text, x.toFloat(), y, paint)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            canvas.save()
+            val layout = StaticLayout(text, paint, width, Layout.Alignment.ALIGN_CENTER, 0f, 0f, false)
+            // 垂直居中
+            canvas.translate(0f, (height - layout.height) / 2f)
+            layout.draw(canvas)
+            canvas.restore()
+        } else {
+            paint.textAlign = Paint.Align.CENTER
+            val x = mContentRect.width() / 2
+            val lineHeight = paint.descent() - paint.ascent()
+            val y = (mContentRect.height() - lineHeight) / 2 - paint.ascent()
+            canvas.drawText(text.toString(), x.toFloat(), y, paint)
+        }
     }
 
 }

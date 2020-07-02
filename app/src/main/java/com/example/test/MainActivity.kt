@@ -38,7 +38,7 @@ class MainActivity : MenuActivity() {
             })
         }
 
-        addMenuByFragment("Btn bg", TestDownloadProgressButtom::class.java)
+        addMenuByFragment("DownloadProgressButtom", TestDownloadProgressButtom::class.java)
 
         addMenuByFragment("Alarm", TestAlarm::class.java)
 
@@ -74,6 +74,12 @@ class MainActivity : MenuActivity() {
         addMenuByFragment("Test Text Layout", TestLayoutFragment::class.java)
 
         addMenuByFragment("Test Book Ranking", BookRankingFragment::class.java)
+
+        addMenuByFragment("Test Drawer Layout", TestDrawerLayout::class.java)
+
+        addMenuByFragment("Test Center Drawable", TestCenterDrawable::class.java)
+
+        addMenuByFragment("Test StickLayout", TestStickLayout::class.java)
     }
 
 

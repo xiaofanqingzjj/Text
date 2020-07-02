@@ -16,6 +16,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.InputDevice;
 import android.view.KeyEvent;
@@ -882,6 +883,17 @@ public class DrawerLayout extends ViewGroup {
 
         lp.onScreen = slideOffset;
         dispatchOnDrawerSlide(drawerView, slideOffset);
+
+        int offsetSize = (int) (slideOffset * drawerView.getWidth());
+
+        Log.e(TAG, "setDrawerViewOffset:" + slideOffset + ", offsetSize:" + offsetSize);
+
+
+        if (mContent != null) {
+            mContent.scrollTo(-offsetSize, 0);
+//            mContent.offsetLeftAndRight();
+//            mContent.offsetLeftAndRight((int)(slideOffset * drawerView.getWidth()));
+        }
     }
 
     float getDrawerViewOffset(View drawerView) {
@@ -1158,6 +1170,8 @@ public class DrawerLayout extends ViewGroup {
         return true;
     }
 
+    private View mContent;
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         mInLayout = true;
@@ -1173,10 +1187,13 @@ public class DrawerLayout extends ViewGroup {
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
 
             if (isContentView(child)) {
+                mContent = child;
                 child.layout(lp.leftMargin, lp.topMargin,
                         lp.leftMargin + child.getMeasuredWidth(),
                         lp.topMargin + child.getMeasuredHeight());
             } else { // Drawer, if it wasn't onMeasure would have thrown an exception.
+
+
                 final int childWidth = child.getMeasuredWidth();
                 final int childHeight = child.getMeasuredHeight();
                 int childLeft;
