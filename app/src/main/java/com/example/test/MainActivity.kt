@@ -1,9 +1,11 @@
 package com.example.test
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.transition.Fade
 import com.bedrock.module_base.MenuActivity
+import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.test.alarm.TestAlarm
 import com.example.test.bookranklist.BookRankingFragment
 import com.example.test.transition.TestTransitionActivity
@@ -12,17 +14,22 @@ import com.example.test.expendtextview.TextExpendTextView
 import com.example.test.install.InstallApkSessionApi
 import com.example.test.layout.TestLayoutFragment
 import com.example.test.movementmethod.TestMoveMethod
+import com.example.test.record.TestAudioPlay
+import com.example.test.record.TestRecord
 import com.example.test.slidedrawer.TestSlideMenu
 import com.example.test.testattrs.MyThemeActivity
 import com.example.test.testattrs.TestAttributes
 import com.example.test.testconstraint.TestConstraintLayout
 import com.example.test.testlottie.TestLottieFragment
+import dalvik.system.DexFile
 
 
 class MainActivity : MenuActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        PermissionsRequestor(this).request(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO, Manifest.permission.INSTALL_PACKAGES))
 
         addMenu("过度动画", TestTransitionActivity::class.java)
 
@@ -80,10 +87,19 @@ class MainActivity : MenuActivity() {
         addMenuByFragment("Test Center Drawable", TestCenterDrawable::class.java)
 
         addMenuByFragment("Test StickLayout", TestStickLayout::class.java)
+
+        addMenuByFragment("Test MP3", TestAudioPlay::class.java)
+
+        addMenuByFragment("Test Record", TestRecord::class.java)
+
+        addMenuByFragment("Test Gif", TestGif::class.java)
+
+        addMenuByFragment("Test ViewPager2", TestViewPager2::class.java)
     }
 
 
     private fun setupWindowAnimations() {
+
         window.enterTransition = Fade()
         window.exitTransition = Fade()
     }
