@@ -4,13 +4,17 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.transition.Fade
+import com.bedrock.Test
+import test.MyTestJava
 import com.bedrock.module_base.MenuActivity
 import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.test.alarm.TestAlarm
 import com.example.test.bookranklist.BookRankingFragment
 import com.example.test.transition.TestTransitionActivity
 import com.example.test.card.CardViewActivity
+import com.example.test.db.TestDbFragment
 import com.example.test.expendtextview.TextExpendTextView
+import com.example.test.image.TestImages
 import com.example.test.install.InstallApkSessionApi
 import com.example.test.layout.TestLayoutFragment
 import com.example.test.movementmethod.TestMoveMethod
@@ -21,7 +25,7 @@ import com.example.test.testattrs.MyThemeActivity
 import com.example.test.testattrs.TestAttributes
 import com.example.test.testconstraint.TestConstraintLayout
 import com.example.test.testlottie.TestLottieFragment
-import dalvik.system.DexFile
+import com.example.test.webview.WebViewFragmentSytem
 
 
 class MainActivity : MenuActivity() {
@@ -95,6 +99,24 @@ class MainActivity : MenuActivity() {
         addMenuByFragment("Test Gif", TestGif::class.java)
 
         addMenuByFragment("Test ViewPager2", TestViewPager2::class.java)
+
+        addMenuByFragment("Test Db", TestDbFragment::class.java)
+
+        addMenuByFragment("WebView", WebViewFragmentSytem::class.java)
+
+
+        addMenu("WebVie2") {
+            startActivity(Intent(this@MainActivity, WebViewActivity::class.java).apply {
+                putExtra(WebViewActivity.URL, "http://dev.story.qq.com/dialogue_drama/index.html#/author?bookId=100040&chapterId=5&isRoot=true")
+            })
+        }
+
+        addMenuByFragment("Images", TestImages::class.java)
+
+//        MyTestJava.test()
+
+        Test.test()
+
     }
 
 

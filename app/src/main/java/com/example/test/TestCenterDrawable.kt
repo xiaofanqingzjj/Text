@@ -1,5 +1,6 @@
 package com.example.test
 
+import android.content.Intent
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
@@ -27,6 +28,9 @@ class TestCenterDrawable : SimpleFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val bundle: Bundle;
+        val intent: Intent
 
 
         iv1.setImageDrawable(get())

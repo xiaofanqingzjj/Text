@@ -42,7 +42,7 @@ class WebViewActivity : Activity() {
             override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
                 super.onReceivedError(view, request, error)
 
-//                Log.d(TAG, "onReceivedError:${request?.url}, error:${error.toString()}")
+                Log.d(TAG, "onReceivedError:${request?.url}, error:${error.toString()}")
             }
 
 
