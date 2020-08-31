@@ -23,3 +23,4 @@ class SomeView(context: Context, attrs: AttributeSet? = null): TextView(context,
         t.recycle()
     }
 }
+

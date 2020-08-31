@@ -20,6 +20,7 @@ import com.example.test.layout.TestLayoutFragment
 import com.example.test.movementmethod.TestMoveMethod
 import com.example.test.record.TestAudioPlay
 import com.example.test.record.TestRecord
+import com.example.test.shortcut.ShortcutUtil
 import com.example.test.slidedrawer.TestSlideMenu
 import com.example.test.testattrs.MyThemeActivity
 import com.example.test.testattrs.TestAttributes
@@ -112,6 +113,11 @@ class MainActivity : MenuActivity() {
         }
 
         addMenuByFragment("Images", TestImages::class.java)
+
+
+        addMenu("快捷方式") {
+            ShortcutUtil.createShortCut(this)
+        }
 
 //        MyTestJava.test()
 
