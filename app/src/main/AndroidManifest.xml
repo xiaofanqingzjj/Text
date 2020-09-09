@@ -151,6 +151,11 @@
 
         </activity>
 
+        <service android:name=".ipc.RemoteService"
+            android:process=":remoteservice"
+            />
+
+
 
 
 

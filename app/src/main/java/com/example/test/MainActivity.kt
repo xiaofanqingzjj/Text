@@ -16,6 +16,7 @@ import com.example.test.db.TestDbFragment
 import com.example.test.expendtextview.TextExpendTextView
 import com.example.test.image.TestImages
 import com.example.test.install.InstallApkSessionApi
+import com.example.test.ipc.TestIPCFragment
 import com.example.test.layout.TestLayoutFragment
 import com.example.test.movementmethod.TestMoveMethod
 import com.example.test.record.TestAudioPlay
@@ -123,6 +124,8 @@ class MainActivity : MenuActivity() {
 //        MyTestJava.test()
 
         addMenuByFragment("XLog", TestXLog::class.java)
+
+        addMenuByFragment("ipc", TestIPCFragment::class.java)
 
     }
 
