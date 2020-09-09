@@ -27,6 +27,7 @@ import com.example.test.testattrs.TestAttributes
 import com.example.test.testconstraint.TestConstraintLayout
 import com.example.test.testlottie.TestLottieFragment
 import com.example.test.webview.WebViewFragmentSytem
+import com.example.test.xlog.XLogInitor
 
 
 class MainActivity : MenuActivity() {
@@ -121,8 +122,14 @@ class MainActivity : MenuActivity() {
 
 //        MyTestJava.test()
 
-        Test.test()
+        addMenuByFragment("XLog", TestXLog::class.java)
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        XLogInitor.close()
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.test
 
 import android.app.Application
+import com.example.test.xlog.XLogInitor
 import com.squareup.leakcanary.LeakCanary
 
 class MyApplication : Application() {
@@ -20,6 +21,9 @@ class MyApplication : Application() {
 //                .buildAndInstall()
 //        LeakCanary.install(this);
 //        // Normal context init code...
+
+
+        XLogInitor.init(this)
 
     }
 }
