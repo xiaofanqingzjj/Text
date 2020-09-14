@@ -1,23 +1,49 @@
-include ':app',
-        ':testpermission',
-        ':testpermission2',
-        ':testimsdk',
-        ':testuserguid',
-        ':module_bedrock',
-        ':module_tktx',
-        'lottie'
-
-include ':TestTransitionAnim'
-
-include ':meterial-animations'
-include ':testbookuserguide'
-
-//include ':lib_permissions_requestor'
-include ':test_gradle'
-include ':lib_testJava'
 
 
-include ':testuserguid'
-project(':testuserguid').projectDir = new File("demos/testuserguid")
 
-include ':ndkdemo'
+
+/**
+ * 添加某个目录下的多个module
+ * @param dirName
+ * @param projects
+ */
+void includes(String dirName, ArrayList<String> projects) {
+    include projects as String[]
+    projects.each {
+        project(it).projectDir = new File("$dirName/${it.substring(1)}")
+    }
+}
+
+
+
+
+include ':app'
+
+
+
+include ':treeservice'
+
+
+
+includes("components", [
+        ":module_bedrock",
+        ":module_tktx"
+])
+
+
+includes("demos", [
+        ":testuserguide1",
+        ":lottie",
+        ":meterial-animations",
+        ":test_gradle",
+        ":testbookuserguide",
+        ":testimsdk",
+        ":testpermission",
+        ":testpermission2",
+        ":TestTransitionAnim",
+
+        ":lib_testJava"
+])
+
+
+

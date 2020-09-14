@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
 import android.util.Log
+import com.fortunexiao.tktx.async
 
 
 /**
@@ -27,6 +28,8 @@ class RemoteServiceManager(private var context: Context)  {
             }
             return instance!!
         }
+
+        val lock = java.lang.Object()
     }
 
     /**
@@ -38,6 +41,11 @@ class RemoteServiceManager(private var context: Context)  {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             Log.d(TAG, "onServiceConnected")
             mRemoteServiceInterface = IRemoteServiceInterface.Stub.asInterface(service)
+
+            synchronized(lock) {
+                Log.d(TAG, "onServiceConnected thread:${Thread.currentThread()}")
+                lock.notifyAll()
+            }
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -54,15 +62,22 @@ class RemoteServiceManager(private var context: Context)  {
 
 
 
+//    private fun
+
 
 
     private fun bindService(context: Context) {
-        Log.d(TAG, "Begin BindService")
-        val service = Intent(context, RemoteService::class.java)
-        context.bindService(service, remoteServiceConnection, Context.BIND_AUTO_CREATE)
+        async {
+            Log.d(TAG, "Begin BindService")
+            val service = Intent(context, RemoteService::class.java)
+            context.bindService(service, remoteServiceConnection, Context.BIND_AUTO_CREATE)
+            Log.d(TAG, "after bindService")
+        }
 
-        Log.d(TAG, "after bindService")
     }
+
+
+
 
 
     private val requestBooksCallback = object : IRequestBooksCallback.Stub() {
@@ -73,6 +88,9 @@ class RemoteServiceManager(private var context: Context)  {
 
 
     fun setBookName() {
+
+        checkConnectionState()
+
         val book = Book(1, "b")
         mRemoteServiceInterface?.setBookName(book, null, null, "bbb")
         Log.d(TAG, "afterSet:$book")
@@ -80,6 +98,8 @@ class RemoteServiceManager(private var context: Context)  {
 
 
     fun getAllBooks() {
+
+        checkConnectionState()
 
         // 这里是不能想正常的异步调用那样传递匿名对象的
 
@@ -104,6 +124,31 @@ class RemoteServiceManager(private var context: Context)  {
 
     }
 
+
+
+    private fun checkConnectionState() {
+        if (!isServiceAlive(mRemoteServiceInterface?.asBinder())) {
+            // 如果连接不存在，则重新bind下服务
+            bindService(context)
+
+            while (!isServiceAlive(mRemoteServiceInterface?.asBinder())) {
+
+                Log.d(TAG, "remoteServiceInterface:$mRemoteServiceInterface")
+
+                synchronized(lock) {
+                    Log.d(TAG, "checkConnectionState thread:${Thread.currentThread()}")
+                    lock.wait(300L)
+                }
+            }
+
+        }
+    }
+
+
+    private fun isServiceAlive(binder: IBinder?): Boolean {
+        Log.d(TAG, "isServiceAlive:$binder")
+        return binder != null && binder.isBinderAlive && binder.pingBinder()
+    }
 
 
 

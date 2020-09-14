@@ -26,6 +26,7 @@ import com.example.test.slidedrawer.TestSlideMenu
 import com.example.test.testattrs.MyThemeActivity
 import com.example.test.testattrs.TestAttributes
 import com.example.test.testconstraint.TestConstraintLayout
+import com.example.test.testj2v8.TestJ2V8
 import com.example.test.testlottie.TestLottieFragment
 import com.example.test.webview.WebViewFragmentSytem
 import com.example.test.xlog.XLogInitor
@@ -126,6 +127,8 @@ class MainActivity : MenuActivity() {
         addMenuByFragment("XLog", TestXLog::class.java)
 
         addMenuByFragment("ipc", TestIPCFragment::class.java)
+
+        addMenuByFragment("J2V8", TestJ2V8::class.java)
 
     }
 
