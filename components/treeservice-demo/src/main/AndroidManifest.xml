@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tencent.bible.ts.demo">
+
+    <application
+        android:name=".DemoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.tencent.bible.ts.demo.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.tencent.bible.ts.demo.AnotherActivity" android:exported="false" android:process=":another"/>
+        <activity android:name="com.tencent.bible.ts.demo.ThirdActivity" android:exported="false" android:theme="@style/NoTitleTranslucentTheme"/>
+        <service android:name="com.tencent.bible.ts.TreeService" android:exported="false" android:process=":another"/>
+    </application>
+
+</manifest>

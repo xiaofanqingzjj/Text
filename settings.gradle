@@ -27,7 +27,10 @@ include ':treeservice'
 
 includes("components", [
         ":module_bedrock",
-        ":module_tktx"
+        ":module_tktx",
+
+        ":treeservice",
+        ":treeservice-demo"
 ])
 
 
