@@ -10,18 +10,18 @@
     >
 
 
-    <com.bedrock.module_base.views.SimpleRoundedImageView
+    <com.tencent.widget.superimageview.SimpleRoundedImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/timg"
         android:background="#330000"
         android:scaleType="centerCrop"
-        app:sri_border_width="2dp"
-        app:sri_border_color="#ff00ff"
-        app:sri_corner_radius_top_left="20dp"
-        app:sri_corner_radius_top_right="4dp"
-        app:sri_corner_radius_bottom_left="10dp"
-        app:sri_corner_radius_bottom_right="30dp"/>
+        app:siv_border_width="2dp"
+        app:siv_border_color="#ff00ff"
+        app:siv_corner_radius_top_left="20dp"
+        app:siv_corner_radius_top_right="4dp"
+        app:siv_corner_radius_bottom_left="10dp"
+        app:siv_corner_radius_bottom_right="30dp"/>
 
 
 

@@ -1,4 +1,4 @@
-package com.bedrock.module_base.views
+package com.tencent.widget.superimageview
 
 
 import android.annotation.SuppressLint
@@ -23,7 +23,9 @@ class SimpleRoundedImageView(context: Context, attrs: AttributeSet? = null) : Ap
 
     @SuppressLint("MissingSuperCall")
     override fun draw(canvas: Canvas?) {
-        roundedImageHelper.draw(canvas)
+        roundedImageHelper.draw(canvas) {
+            super@SimpleRoundedImageView.draw(canvas)
+        }
     }
 }
 

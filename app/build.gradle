@@ -56,6 +56,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':module_bedrock')
+    implementation project(':module_widgets')
+
     implementation project(":lottie")
 
 
@@ -86,5 +88,7 @@ dependencies {
     implementation 'com.tencent.mars:mars-xlog:1.2.4'
 
     compile 'com.eclipsesource.j2v8:j2v8:4.5.0@aar'
+
+
 
 }

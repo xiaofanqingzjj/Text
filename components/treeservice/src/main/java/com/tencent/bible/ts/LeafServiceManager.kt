@@ -46,6 +46,7 @@ object LeafServiceManager {
     /**
      * 注册对外接口
      *
+     * @param leafServiceClass
      *
      */
     fun <LeafService> registeLeafService(

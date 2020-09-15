@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion compile_sdk_version
+
+
+
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        defaultConfig {
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+
+    implementation 'androidx.core:core-ktx:1.2.0'
+
+    api project(":module_tktx")
+
+    implementation 'com.jcodecraeer:xrecyclerview:1.6.0'
+
+
+//    implementation "com.android.support:appcompat-v7:$support_version"
+//    implementation "com.android.support:recyclerview-v7:$support_version"
+//    implementation "com.android.support:design:$support_version"
+}
