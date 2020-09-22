@@ -7,6 +7,10 @@ apply plugin: 'kotlin-kapt'
 //...
 apply plugin: 'net.yrom.shrinker'
 
+
+apply plugin: com.tencent.bible.tunnel.plugin.BibleTunnelPlugin
+
+
 android {
 
 
@@ -53,6 +57,9 @@ android {
 }
 
 dependencies {
+
+
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':module_bedrock')
@@ -61,7 +68,7 @@ dependencies {
     implementation project(":lottie")
 
 
-    implementation 'androidx.core:core-ktx:1.2.0'
+    bbeCompile 'androidx.core:core-ktx:1.2.0'
 
     implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
 

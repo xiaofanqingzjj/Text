@@ -2,15 +2,15 @@ package com.example.testpermission.ad
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import android.util.AttributeSet
 import android.util.Property
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.example.testpermission.DensityUtil
+import com.google.android.material.appbar.AppBarLayout
 
 
 /**
@@ -52,7 +52,7 @@ class AppBarZoomBehavior(var context: Context, attrs: AttributeSet) : AppBarLayo
 
     private var initOffset = 0
 
-    override fun onLayoutChild(parent: CoordinatorLayout?, abl: AppBarLayout, layoutDirection: Int): Boolean {
+    override fun onLayoutChild(parent: CoordinatorLayout, abl: AppBarLayout, layoutDirection: Int): Boolean {
         val handled = super.onLayoutChild(parent, abl, layoutDirection)
         init(abl)
 
@@ -95,7 +95,7 @@ class AppBarZoomBehavior(var context: Context, attrs: AttributeSet) : AppBarLayo
 //        notifyOffset(topAndBottomOffset)
     }
 
-    override fun onTouchEvent(parent: CoordinatorLayout?, child: AppBarLayout?, ev: MotionEvent): Boolean {
+    override fun onTouchEvent(parent: CoordinatorLayout, child: AppBarLayout, ev: MotionEvent): Boolean {
         val superResult =   super.onTouchEvent(parent, child, ev)
 
         when (ev.actionMasked) {

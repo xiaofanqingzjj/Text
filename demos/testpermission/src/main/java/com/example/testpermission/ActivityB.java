@@ -1,9 +1,9 @@
 package com.example.testpermission;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
-import androidx.core.app.FragmentActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 
 public class ActivityB extends FragmentActivity {

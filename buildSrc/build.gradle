@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+
+// 这里要重新声明仓库
+repositories {
+    jcenter()
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation localGroovy()
+    implementation gradleApi()
+
+    implementation "com.android.tools.build:gradle:3.6.4"
+
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

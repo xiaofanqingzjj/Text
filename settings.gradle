@@ -48,6 +48,4 @@ includes("demos", [
 
         ":lib_testJava"
 ])
-
-
-
+//include ':buildSrc'

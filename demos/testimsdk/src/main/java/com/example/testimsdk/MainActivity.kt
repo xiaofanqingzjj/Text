@@ -1,7 +1,7 @@
 package com.example.testimsdk
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.tencent.imsdk.*
 import com.tencent.imsdk.ext.message.TIMMessageRevokedListener
 import com.tencent.imsdk.ext.message.TIMUserConfigMsgExt
