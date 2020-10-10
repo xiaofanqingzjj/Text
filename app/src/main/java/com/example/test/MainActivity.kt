@@ -30,6 +30,7 @@ import com.example.test.testj2v8.TestJ2V8
 import com.example.test.testlottie.TestLottieFragment
 import com.example.test.webview.WebViewFragmentSytem
 import com.example.test.xlog.XLogInitor
+import io.flutter.app.FlutterActivity
 
 
 class MainActivity : MenuActivity() {
@@ -129,6 +130,10 @@ class MainActivity : MenuActivity() {
         addMenuByFragment("ipc", TestIPCFragment::class.java)
 
         addMenuByFragment("J2V8", TestJ2V8::class.java)
+
+        addMenu("Flutter") {
+//            startActivity(FlutterActivity.cr)
+        }
 
     }
 

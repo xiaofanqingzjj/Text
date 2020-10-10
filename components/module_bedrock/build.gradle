@@ -43,7 +43,9 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.2.0'
 
-    api project(":module_tktx")
+//    api project(":module_tktx")
+
+    implementation 'com.fortune:tktx:1.0.4'
 
     implementation 'com.jcodecraeer:xrecyclerview:1.6.0'
 

@@ -54,6 +54,10 @@ android {
 
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -96,6 +100,11 @@ dependencies {
 
     compile 'com.eclipsesource.j2v8:j2v8:4.5.0@aar'
 
+
+    implementation 'com.fortune:tktx:1.0.4'
+
+
+//    implementation project(path: ':flutter_module3')
 
 
 }

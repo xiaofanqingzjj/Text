@@ -9,6 +9,7 @@
  */
 void includes(String dirName, ArrayList<String> projects) {
     include projects as String[]
+
     projects.each {
         project(it).projectDir = new File("$dirName/${it.substring(1)}")
     }
@@ -49,3 +50,13 @@ includes("demos", [
         ":lib_testJava"
 ])
 //include ':buildSrc'
+
+//include ':flutter_module3'
+//project(':flutter_module3').projectDir = new File('../../flutterWorkspace/flutter_module3')
+//
+//
+//setBinding(new Binding([gradle: this]))
+//evaluate(new File(
+//        settingsDir,
+//        '../../flutterWorkspace/flutter_module3/.android/include_flutter.groovy'
+//))
