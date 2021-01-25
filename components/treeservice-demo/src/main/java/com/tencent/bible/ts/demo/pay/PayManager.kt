@@ -17,3 +17,4 @@ object PayManager : IPayManager {
         return "channelIdxx1"
     }
 }
+

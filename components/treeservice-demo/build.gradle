@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
     defaultConfig {
+        minSdkVersion 21
         applicationId "com.tencent.bible.treeservice"
         targetSdkVersion 29
         versionCode 1
@@ -22,7 +22,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(":treeservice")
+    api project(":treeservice")
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 //    implementation 'com.android.support:appcompat-v7:27.0.2'

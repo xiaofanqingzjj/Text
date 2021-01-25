@@ -32,6 +32,8 @@ class PayModule : ModuleLauncherDelegate() {
                 }
 
                 override fun provideClientProxy(binder: IBinder?): IPayManager {
+
+                    // 这个方法是在新进程里跑， 负责把Binder转成对应的业务接口
                     return object : IPayManager {
                         private var service: IPayService? =
                             if (binder == null) null else IPayService.Stub.asInterface(binder)

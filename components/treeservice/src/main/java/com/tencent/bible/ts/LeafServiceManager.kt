@@ -2,16 +2,20 @@ package com.tencent.bible.ts
 
 import android.os.IBinder
 
-/**
- * Created by hugozhong on 2020-01-10
- */
 
 
 /**
- *
+ * 在实现端注册
  */
 interface LeafServiceProvider<LeafService> {
+    /**
+     *
+     */
     fun provideBinder(): IBinder
+
+    /**
+     *
+     */
     fun provideClientProxy(binder: IBinder?): LeafService
 }
 
@@ -31,22 +35,31 @@ internal object LeafServiceManagerServer {
     }
 
 
-
+    /**
+     *
+     */
     fun getLeafServiceBinder(leafServiceName: String): IBinder? {
         return leafServiceProviderMap[leafServiceName]?.provideBinder()
     }
 }
 
 
+/**
+ *
+ * 获取
+ *
+ */
 object LeafServiceManager {
 
-    private val leafServiceProviderMap = mutableMapOf<String, LeafServiceProvider<*>>()
+    // 当前进程的
+    private val nativeServiceProviderMap = mutableMapOf<String, LeafServiceProvider<*>>()
 
 
     /**
      * 注册对外接口
      *
-     * @param leafServiceClass
+     * @param leafServiceClass 指定要导出的接口对象
+     * @param leafServiceProvider 获取binder，以及把Binder转成LeafService
      *
      */
     fun <LeafService> registeLeafService(
@@ -54,25 +67,27 @@ object LeafServiceManager {
         leafServiceProvider: LeafServiceProvider<LeafService>
     ) {
 
+
         LeafServiceManagerServer.registeLeafService(leafServiceClass, leafServiceProvider)
 
-
-        leafServiceProviderMap[leafServiceClass.name] = leafServiceProvider
+        // 注册一个到本地
+        nativeServiceProviderMap[leafServiceClass.name] = leafServiceProvider
     }
 
 
     /**
-     * 获取对象
+     * 获取
      *
      */
     fun <LeafService> getLeafService(leafServiceClass: Class<LeafService>): LeafService? {
 
         // 先从内存中获取一次
-        val provider: LeafServiceProvider<LeafService>? = leafServiceProviderMap[leafServiceClass.name] as? LeafServiceProvider<LeafService>
+        val provider: LeafServiceProvider<LeafService>? = nativeServiceProviderMap[leafServiceClass.name] as? LeafServiceProvider<LeafService>
 
         //
-        val binder = TreeServiceManager.getLeafServiceBinder(leafServiceClass.name)
+        val binder = RemoteServiceManager.getLeafServiceBinder(leafServiceClass.name)
 
+        // 根据
         if (binder != null) {
             return provider?.provideClientProxy(binder)
         }

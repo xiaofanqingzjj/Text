@@ -2,10 +2,11 @@ package com.tencent.bible.ts.demo
 
 import android.app.Application
 import android.content.res.Configuration
-import com.tencent.bible.ts.TreeServiceManager
+import com.tencent.bible.ts.RemoteServiceManager
 import com.tencent.bible.ts.demo.login.LoginModule
-import com.tencent.bible.ts.demo.pay.PayManager
 import com.tencent.bible.ts.demo.pay.PayModule
+import com.tencent.bible.ts.demo.usermanager.UserManager
+import com.tencent.bible.ts.demo.usermanager.UserManagerInitor
 
 /**
  * Created by hugozhong on 2020-01-10
@@ -19,7 +20,10 @@ class DemoApplication : Application() {
         LoginModule().onCreate(this)
         PayModule().onCreate(this)
 
-        TreeServiceManager.start(this)
+        RemoteServiceManager.start(this)
+
+
+        UserManagerInitor.init();
 
 
     }

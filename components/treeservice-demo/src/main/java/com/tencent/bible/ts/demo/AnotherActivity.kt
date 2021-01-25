@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tencent.bible.ts.LeafServiceManager
 import com.tencent.bible.ts.demo.login.ILoginmanager
 import com.tencent.bible.ts.demo.pay.IPayManager
+import com.tencent.bible.ts.demo.usermanager.IUserManager
 import kotlinx.android.synthetic.main.activity_another.*
 
 /**
@@ -34,6 +35,11 @@ class AnotherActivity : AppCompatActivity() {
         }
         third_activity.setOnClickListener {
             startActivity(Intent(this,ThirdActivity::class.java))
+        }
+
+        btn_getUserInfo.setOnClickListener {
+            val userInfo = LeafServiceManager.getLeafService(IUserManager::class.java)?.getUserInfo();
+            tv.text = userInfo?.toString();
         }
     }
 }

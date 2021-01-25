@@ -20,7 +20,7 @@
 
         <activity android:name="com.tencent.bible.ts.demo.AnotherActivity" android:exported="false" android:process=":another"/>
         <activity android:name="com.tencent.bible.ts.demo.ThirdActivity" android:exported="false" android:theme="@style/NoTitleTranslucentTheme"/>
-        <service android:name="com.tencent.bible.ts.TreeService" android:exported="false" android:process=":another"/>
+        <service android:name="com.tencent.bible.ts.RemoteService" android:exported="false" android:process=":another"/>
     </application>
 
 </manifest>

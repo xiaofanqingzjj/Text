@@ -8,20 +8,26 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.util.Log
 
+
 /**
- * Created by hugozhong on 2020-01-10
+ *
+ *
  */
-object TreeServiceManager {
+object RemoteServiceManager {
 
     private const val TAG = "TreeServiceManager"
 
     private lateinit var context: Context
 
     private var serviceBinder: ITreeService? = null
-    private var treeServiceClass: Class<out TreeService> = TreeService::class.java
+    private var treeServiceClass: Class<out RemoteService> = RemoteService::class.java
 
     private val SERVICE_LOCK = Object() // 服务连接同步锁
 
+
+    /**
+     * 获取远程
+     */
     fun getLeafServiceBinder(serviceName: String?, retryOnFail: Boolean = true): IBinder? {
         try {
             return obtainServiceManager()?.getLeafServiceBinder(serviceName)
@@ -40,9 +46,12 @@ object TreeServiceManager {
         obtainServiceManager()?.sayHello()
     }
 
+    /**
+     * 启动通讯服务
+     */
     fun start(
         context: Context,
-        treeServiceClass: Class<out TreeService> = TreeService::class.java
+        treeServiceClass: Class<out RemoteService> = RemoteService::class.java
     ) {
         // zhc ue
         this.context = context.applicationContext
@@ -81,6 +90,10 @@ object TreeServiceManager {
         }
     }
 
+
+    /**
+     * 获取远程的RemoteService对象
+     */
     private fun obtainServiceManager(): ITreeService? {
         if (!isServiceManagerAlive()) {
             var count = 0
@@ -92,6 +105,8 @@ object TreeServiceManager {
                         //                        throw new IllegalStateException("failed to bind TreeService(reach max retry times).");
                         break
                     }
+
+
                     synchronized(SERVICE_LOCK) {
                         try {
                             SERVICE_LOCK.wait(300L)
@@ -112,6 +127,7 @@ object TreeServiceManager {
 
     private fun isServiceManagerAlive(): Boolean {
         var isAlive = serviceBinder != null && serviceBinder!!.asBinder().isBinderAlive
+
         if (isAlive) {
             // test again
             try {
