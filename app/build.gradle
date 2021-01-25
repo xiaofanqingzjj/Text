@@ -101,7 +101,7 @@ dependencies {
     compile 'com.eclipsesource.j2v8:j2v8:4.5.0@aar'
 
 
-    implementation 'com.fortune:tktx:1.0.4'
+//    implementation 'com.fortune:tktx:1.0.4'
 
 
 //    implementation project(path: ':flutter_module3')

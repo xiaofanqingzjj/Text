@@ -1,7 +1,4 @@
 
-
-
-
 /**
  * 添加某个目录下的多个module
  * @param dirName
@@ -49,6 +46,12 @@ includes("demos", [
 
         ":lib_testJava"
 ])
+
+includes("test-apt", [":bindview-annotation", ":bindview-compiler",
+                      ":test-apt-app", ":bindview-api",
+        ":lib_flutter_plugin_annotation"
+])
+
 //include ':buildSrc'
 
 //include ':flutter_module3'

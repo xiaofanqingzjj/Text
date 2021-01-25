@@ -30,7 +30,6 @@ import com.example.test.testj2v8.TestJ2V8
 import com.example.test.testlottie.TestLottieFragment
 import com.example.test.webview.WebViewFragmentSytem
 import com.example.test.xlog.XLogInitor
-import io.flutter.app.FlutterActivity
 
 
 class MainActivity : MenuActivity() {
