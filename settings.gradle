@@ -1,3 +1,70 @@
+import com.my.plugins.SettingsExtPlugin
+
+//import MyPl
+
+//apply from: 'base_setting.gradle'
+
+//apply plugin: SettingsExtPlugin
+
+
+//println("\next.includeDir:" + includeDir)
+
+//System.out.println("\n\n--------- init Settings.gradle ---------\n\n")
+
+
+
+/**
+ * 添加某个目录下的所有子目录作为子工程
+ */
+void includeDir(String dirName) {
+
+    println("rootDir:$rootDir")
+
+    dirName = "$rootDir/$dirName"
+
+    final File file = new File("$dirName")
+    println("includeDir:$dirName, ${file.exists()}, isDir:${file.isDirectory()}")
+    if (file.exists() && file.isDirectory()) {
+        final subs = file.list()
+
+        println("subs:$subs")
+
+
+        ArrayList subProj = new ArrayList();
+        subs.each {
+            final subFile = new File("$dirName/$it")
+            if (subFile.isDirectory()) {
+                subProj.add(":$it")
+            }
+        }
+
+        println("sub:$subProj")
+
+        include subProj as String[]
+        subProj.each {
+//            def proj = project(it);
+//            println("proj:$proj")
+//            project(":a")
+            project(it as String).projectDir = new File("$dirName/${it.substring(1)}")
+        }
+
+    }
+
+//    project(":aa")
+}
+
+
+includeDir('components')
+includeDir("demos")
+includeDir("test-apt")
+
+includeDir("gradlePlugins")
+//
+//
+//
+//include ':app'
+
+
 
 /**
  * 添加某个目录下的多个module
@@ -5,9 +72,14 @@
  * @param projects
  */
 void includes(String dirName, ArrayList<String> projects) {
+
+    println("projects:$projects")
+
     include projects as String[]
 
+
     projects.each {
+
         project(it).projectDir = new File("$dirName/${it.substring(1)}")
     }
 }
@@ -17,40 +89,40 @@ void includes(String dirName, ArrayList<String> projects) {
 
 include ':app'
 
-
-
-include ':treeservice'
-
-
-
-includes("components", [
-        ":module_bedrock",
-        ":module_tktx",
-        ":module_widgets",
-
-        ":treeservice",
-        ":treeservice-demo"
-])
-
-
-includes("demos", [
-        ":testuserguide1",
-        ":lottie",
-        ":meterial-animations",
-        ":test_gradle",
-        ":testbookuserguide",
-        ":testimsdk",
-        ":testpermission",
-        ":testpermission2",
-        ":TestTransitionAnim",
-
-        ":lib_testJava"
-])
-
-includes("test-apt", [":bindview-annotation", ":bindview-compiler",
-                      ":test-apt-app", ":bindview-api",
-        ":lib_flutter_plugin_annotation"
-])
+//
+//
+//include ':treeservice'
+//
+//
+//
+//includes("components", [
+//        ":module_bedrock",
+//        ":module_tktx",
+//        ":module_widgets",
+//
+//        ":treeservice",
+//        ":treeservice-demo"
+//])
+//
+//
+//includes("demos", [
+//        ":testuserguide1",
+//        ":lottie",
+//        ":meterial-animations",
+//        ":test_gradle",
+//        ":testbookuserguide",
+//        ":testimsdk",
+//        ":testpermission",
+//        ":testpermission2",
+//        ":TestTransitionAnim",
+//
+//        ":lib_testJava"
+//])
+//
+//includes("test-apt", [":bindview-annotation", ":bindview-compiler",
+//                      ":test-apt-app", ":bindview-api",
+//                      ":lib_flutter_plugin_annotation"
+//])
 
 //include ':buildSrc'
 
@@ -63,3 +135,10 @@ includes("test-apt", [":bindview-annotation", ":bindview-compiler",
 //        settingsDir,
 //        '../../flutterWorkspace/flutter_module3/.android/include_flutter.groovy'
 //))
+
+//def proj = project(":lottie")
+//println("proj:$proj")
+
+ext {
+
+}

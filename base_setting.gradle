@@ -1,0 +1,106 @@
+
+
+print("------- apply base_setting.gradle ----")
+
+class MyPlugin implements Plugin<Settings> {
+
+    @Override
+    void apply(Settings target) {
+
+        target.extensions.extraProperties.set("includeDir", this.&includeDir)
+
+//        target.extensions.extraProperties =
+    }
+
+    /**
+     * 添加某个目录下的所有子目录作为子工程
+     */
+    void includeDir(String dirName) {
+        final File file = new File(dirName);
+        if (file.exists() && file.isDirectory()) {
+            final subs = file.list()
+            ArrayList subProj = new ArrayList();
+            subs.each {
+                final subFile = new File("$dirName/$it")
+                if (subFile.isDirectory()) {
+                    subProj.add(":$it")
+                }
+            }
+
+            include( subProj as String[])
+            subProj.each {
+                project(it).projectDir = new File("$dirName/${it.substring(1)}")
+            }
+        }
+    }
+}
+
+/**
+ * 添加某个目录下的所有子目录作为子工程
+ */
+void includeDir(String dirName) {
+    final File file = new File(dirName);
+    if (file.exists() && file.isDirectory()) {
+        final subs = file.list()
+        ArrayList subProj = new ArrayList();
+        subs.each {
+            final subFile = new File("$dirName/$it")
+            if (subFile.isDirectory()) {
+                subProj.add(":$it")
+            }
+        }
+
+        include( subProj as String[])
+        subProj.each {
+            def proj = project(it);
+            println("proj:$proj")
+            proj.projectDir = new File("$dirName/${it.substring(1)}")
+        }
+
+    }
+}
+
+
+
+/**
+ * 脚本中可以直接定义Groovy函数
+ *
+ * 添加某个目录下的多个module
+ *
+ * @param dirName
+ * @param projects
+ */
+void includes(String dirName, ArrayList<String> projects) {
+
+    // Settings的include方法可以添加多个工程到构建，参数为工程路径，这个路径不是真实的物理路径，而是一个已冒号作为分割的逻辑工程路径
+    include projects as String[]
+
+    projects.each {
+        // 当你通过include添加Project到构建后，会创建一个ProjectDescriptor，你可以通过Settings.project(path)来获取这个ProjectDescriptor对象
+        // 你可以通过这个对象来修改对应的属性，比如设置Project真实的物理路径
+        project(it).projectDir = new File("$dirName/${it.substring(1)}")
+    }
+}
+
+
+class MyExtension {
+    String foo
+
+    MyExtension(String foo) {
+        this.foo = foo
+    }
+}
+
+extensions.create("custom", MyExtension, "BAR")
+
+// extensions appear as properties on the target object by the given name
+assert custom instanceof MyExtension
+assert custom.foo == "BAR"
+
+
+
+//// 给apply当前文件的对象添加扩展属性
+ext {
+    // 把方法作为Setting对象的一个属性
+    includeDir = this.&includeDir
+}

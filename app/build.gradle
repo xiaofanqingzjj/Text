@@ -7,6 +7,8 @@ apply plugin: 'kotlin-kapt'
 //...
 apply plugin: 'net.yrom.shrinker'
 
+apply plugin: 'com.test_plugins.plugin_first'
+
 
 apply plugin: com.tencent.bible.tunnel.plugin.BibleTunnelPlugin
 
@@ -24,10 +26,10 @@ android {
         }
     }
 
-    compileSdkVersion compile_sdk_version
+    compileSdkVersion 29
 
     defaultConfig {
-        applicationId "com.example.test"
+        applicationId "com.example.test2"
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
 //        versionCode 1
@@ -84,6 +86,11 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     implementation 'com.google.android.material:material:1.1.0'
+
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version" // 依赖kotlin标准库

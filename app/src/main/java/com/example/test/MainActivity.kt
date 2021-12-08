@@ -90,6 +90,8 @@ class MainActivity : MenuActivity() {
 
         addMenuByFragment("Test Book Ranking", BookRankingFragment::class.java)
 
+        addMenuByFragment("TestGif ", TestGif::class.java)
+
         addMenuByFragment("Test Drawer Layout", TestDrawerLayout::class.java)
 
         addMenuByFragment("Test Center Drawable", TestCenterDrawable::class.java)
