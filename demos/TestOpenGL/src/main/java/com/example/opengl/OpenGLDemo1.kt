@@ -5,7 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.opengl.base.BaseGLActivity
 
-class GLDemo1 : BaseGLActivity() {
+
+/**
+ * 绘制一个简单的三角形
+ */
+class OpenGLDemo1 : BaseGLActivity() {
 
     override fun createSurfaceView(): GLSurfaceView {
         return MyGLSurfaceView(this)

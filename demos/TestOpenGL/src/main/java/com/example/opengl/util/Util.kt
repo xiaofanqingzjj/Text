@@ -18,7 +18,7 @@ fun FloatArray.toFloatBuffer(): FloatBuffer {
 /**
  * 数组转Buffer
  */
-fun IntArray.toShortBuffer(): IntBuffer {
+fun IntArray.toIntBuffer(): IntBuffer {
     return  ByteBuffer.allocateDirect(this.size * 4)
             .order(ByteOrder.nativeOrder())
             .asIntBuffer()

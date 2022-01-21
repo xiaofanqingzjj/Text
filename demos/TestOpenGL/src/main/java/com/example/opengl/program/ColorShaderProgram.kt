@@ -4,11 +4,19 @@ import android.content.Context
 import android.opengl.GLES20
 import com.example.opengl.R
 import com.example.opengl.program.ShaderProgram
+import com.example.opengl.util.getRawFileContent
 
 class ColorShaderProgram(context: Context) : ShaderProgram(
-        context,
-        R.raw.simple_vertex_shader, R.raw.simple_fragment_shader
+        context.getRawFileContent(R.raw.simple_vertex_shader)!!,
+        context.getRawFileContent(R.raw.simple_fragment_shader)!!
 ) {
+
+
+    companion object {
+        const val U_MATRIX = "u_Matrix";
+        const val A_POSITION = "a_Position";
+        const val A_COLOR = "a_Color";
+    }
 
     private var uMatrixLocation = 0
 

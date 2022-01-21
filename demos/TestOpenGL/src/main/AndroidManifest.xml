@@ -8,6 +8,7 @@
     <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
     <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
 
 
     <application
@@ -27,9 +28,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".GLDemo1" />
-        <activity android:name=".GLDemo2" />
-        <activity android:name=".GLDemo3" />
+        <activity android:name=".OpenGLDemo1" />
+        <activity android:name=".OpenGLDemo2" />
+        <activity android:name=".OpenGLDemo3" />
+        <activity android:name=".OpenGLDemo4" />
+
+        <activity android:name="com.examble.textureview.DisplayCameraByTextureView" />
+        <activity android:name="com.examble.textureview.DisplayCameraBySurfaceTextureOpenGL" />
     </application>
 
 </manifest>

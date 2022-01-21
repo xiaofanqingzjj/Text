@@ -42,7 +42,7 @@ class MyRenderer3(var context: Context) : GLSurfaceView.Renderer {
         mallet = Mallet()
 
 
-
+        // 创建纹理着色器
         textureProgram = TextureShaderProgram(context)
 
         colorProgram = ColorShaderProgram(context)
@@ -59,9 +59,14 @@ class MyRenderer3(var context: Context) : GLSurfaceView.Renderer {
     override fun onDrawFrame(gl: GL10?) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
 
+        // 应用程序
         this.textureProgram.useProgram();
 
-        this.textureProgram.setUniforms(this.projectionMatrix, this.texture);
+        this.textureProgram.setMatrix(projectionMatrix)
+        this.textureProgram.setTexture(texture)
+
+//        //
+//        this.textureProgram.setUniforms(this.projectionMatrix, this.texture);
 
         this.table.bindData(this.textureProgram);
 

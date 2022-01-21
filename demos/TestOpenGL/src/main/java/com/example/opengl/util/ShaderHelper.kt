@@ -27,7 +27,7 @@ object ShaderHelper {
     /**
      * 根据着色器代码创建编译好的
      */
-    private fun compileShader(type: Int, shaderCode: String): Int {
+    fun compileShader(type: Int, shaderCode: String): Int {
         // 创建着色器
         // 类型为顶点着色器类型(GLES20.GL_VERTEX_SHADER)
         // 或者是片段着色器类型 (GLES20.GL_FRAGMENT_SHADER)
@@ -65,11 +65,10 @@ object ShaderHelper {
     /**
      * 根据着色器代码创建程序对象
      */
-    fun buildProgram(vertexShaderSource: String?, fragmentShaderSource: String?): Int {
-        val program: Int
-        val vertexShader = compileVertexShader(vertexShaderSource!!)
-        val fragmentShader = compileFragmentShader(fragmentShaderSource!!)
-        program = linkProgram(vertexShader, fragmentShader)
+    fun buildProgram(vertexShaderSource: String, fragmentShaderSource: String): Int {
+        val vertexShader = compileVertexShader(vertexShaderSource)
+        val fragmentShader = compileFragmentShader(fragmentShaderSource)
+        val program = linkProgram(vertexShader, fragmentShader)
         validateProgram(program)
         return program
     }

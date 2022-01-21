@@ -44,9 +44,9 @@ class Triangle() {
         )
 
         var color = floatArrayOf(
-                1.0f, 0f, 0f, 1.0f,
-                0f, 1.0f, 0f, 1.0f,
-                0f, 0f, 1.0f, 1.0f
+                1.0f, 0f, 0f, 1.0f
+//                0f, 1.0f, 0f, 1.0f,
+//                0f, 0f, 1.0f, 1.0f
         )
 
 
@@ -177,7 +177,7 @@ class Triangle() {
 
 
         // 禁用顶点数组
-//        GLES20.glDisableVertexAttribArray(mPositionHandle);
+        GLES20.glDisableVertexAttribArray(mPositionHandle);
     }
 
 

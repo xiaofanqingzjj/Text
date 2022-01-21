@@ -5,10 +5,13 @@ import com.example.opengl.base.BaseGLActivity
 import com.example.opengl.base.MGLSurfaceView
 
 
-class GLDemo2 : BaseGLActivity() {
+/**
+ * 绘制一个简单的图形
+ */
+class OpenGLDemo2 : BaseGLActivity() {
     override fun createSurfaceView(): GLSurfaceView {
         val glSurfaceView = MGLSurfaceView(this)
-        glSurfaceView.setRenderer(MyRenderer(this))
+        glSurfaceView.setRenderer(MyRenderer2(this))
         return glSurfaceView
     }
 
