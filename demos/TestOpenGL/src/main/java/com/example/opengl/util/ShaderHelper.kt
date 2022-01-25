@@ -6,7 +6,7 @@ import android.util.Log
 
 object ShaderHelper {
 
-    const val TAG = "ShaderHelper"
+    private const val TAG = "ShaderHelper"
 
 
     /**

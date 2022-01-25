@@ -12,6 +12,9 @@ import javax.microedition.khronos.opengles.GL10
 
 /**
  * 一个简单的GLSurfaceView Demo
+ *
+ * 官方Demo
+ *
  */
 class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
 
