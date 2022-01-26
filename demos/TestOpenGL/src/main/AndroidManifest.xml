@@ -33,8 +33,9 @@
         <activity android:name=".OpenGLDemo3" />
         <activity android:name=".OpenGLDemo4" />
 
-        <activity android:name="com.examble.textureview.DisplayCameraByTextureView" />
-        <activity android:name="com.examble.textureview.DisplayCameraBySurfaceTextureOpenGL" />
+        <activity android:name="com.example.camera.DisplayCameraByTextureView" />
+        <activity android:name="com.example.camera.DisplayCameraBySurfaceTextureOpenGL" />
+        <activity android:name="com.example.camera.DisplayCameraBySurfaceView" />
     </application>
 
 </manifest>

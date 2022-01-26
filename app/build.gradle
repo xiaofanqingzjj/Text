@@ -7,7 +7,7 @@ apply plugin: 'kotlin-kapt'
 //...
 apply plugin: 'net.yrom.shrinker'
 
-apply plugin: 'com.test_plugins.plugin_first'
+//apply plugin: 'com.test_plugins.plugin_first'
 
 
 apply plugin: com.tencent.bible.tunnel.plugin.BibleTunnelPlugin

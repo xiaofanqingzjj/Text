@@ -1,4 +1,4 @@
-import com.my.plugins.SettingsExtPlugin
+//import com.my.plugins.SettingsExtPlugin
 
 //import MyPl
 
@@ -11,7 +11,7 @@ import com.my.plugins.SettingsExtPlugin
 
 //System.out.println("\n\n--------- init Settings.gradle ---------\n\n")
 
-
+println("Config setting.gradle")
 
 /**
  * 添加某个目录下的所有子目录作为子工程

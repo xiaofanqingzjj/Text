@@ -3,6 +3,7 @@ package com.bedrock.module_base
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -29,11 +30,15 @@ open class MenuActivity: AppCompatActivity() {
                 itemLayoutId = android.R.layout.simple_expandable_list_item_1,
                 bindData = {_, data, itemView ->
                     itemView?.run {
-                        (data as? Menu)?.run {
+                        (data as? Menu)?.let {menu->
                             val textView = findViewById<TextView>(android.R.id.text1)
-                            textView.text = name
+                            textView.text = menu.name
+
+//                            setOnClickListener(View.OnClickListener {
+//                                click?.invoke()
+//                            })
                             setOnClickListener {
-                                click?.invoke()
+                                menu.click?.invoke()
                             }
                         }
                     }

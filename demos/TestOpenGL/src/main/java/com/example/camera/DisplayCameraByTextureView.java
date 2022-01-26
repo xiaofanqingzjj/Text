@@ -1,12 +1,10 @@
-package com.examble.textureview;
+package com.example.camera;
 
 import android.app.Activity;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.TextureView;
-
-import java.io.IOException;
 
 
 /**
@@ -33,14 +31,8 @@ public class DisplayCameraByTextureView extends Activity implements TextureView.
      * SurfaceTexture
      */
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-        mCamera = Camera.open();
-        try {
-            //  使用SurfaceTexture接收图像流数据
-            mCamera.setPreviewTexture(surface);
-            mCamera.startPreview();
-        } catch (IOException ioe) {
-            // Something bad happened
-        }
+        // 直接通过SurfaceTexture接收头像数据即可，TextureView会负责把纹理合成到View树上
+        mCamera = CameraHelper.INSTANCE.openAndPreview(surface);
     }
 
     public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {

@@ -4,8 +4,9 @@ import android.Manifest
 import android.os.Bundle
 import com.bedrock.module_base.MenuActivity
 import com.bedrock.permissionrequestor.PermissionsRequestor
-import com.examble.textureview.DisplayCameraBySurfaceTextureOpenGL
-import com.examble.textureview.DisplayCameraByTextureView
+import com.example.camera.DisplayCameraBySurfaceTextureOpenGL
+import com.example.camera.DisplayCameraBySurfaceView
+import com.example.camera.DisplayCameraByTextureView
 
 class MainActivity : MenuActivity() {
 
@@ -24,6 +25,8 @@ class MainActivity : MenuActivity() {
         addMenu("CameraPreviewByTextureView", DisplayCameraByTextureView::class.java)
 
         addMenu("CameraPreviewBySurfaceTexture", DisplayCameraBySurfaceTextureOpenGL::class.java)
+
+        addMenu("CameraPreviewBySurfaceView", DisplayCameraBySurfaceView::class.java)
 
 
         // 读取相机权限

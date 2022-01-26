@@ -1,4 +1,4 @@
-package com.examble.textureview
+package com.example.camera
 
 import android.app.Activity
 import android.graphics.SurfaceTexture
@@ -10,7 +10,6 @@ import android.os.Bundle
 import com.example.opengl.base.MGLSurfaceView
 import com.example.opengl.util.ShaderHelper
 import com.example.opengl.util.toFloatBuffer
-import java.io.IOException
 import java.nio.FloatBuffer
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
@@ -19,9 +18,7 @@ import javax.microedition.khronos.opengles.GL10
 /**
  * 使用SurfaceTexture渲染相机数据
  *
- * 使用SurfaceTexture接收相机数据
- *
- * 然后通过OpenGL渲染SurfaceTexture
+ * 使用SurfaceTexture接收相机数据, 然后通过OpenGL渲染SurfaceTexture中的纹理
  *
  */
 class DisplayCameraBySurfaceTextureOpenGL : Activity() {
@@ -193,27 +190,30 @@ class DisplayCameraBySurfaceTextureOpenGL : Activity() {
             }
 
 
-            // 获取相机对象，并设置参数
-            mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK)
-            mCamera.setDisplayOrientation(90)
 
-            val parameters = mCamera.getParameters()
-            parameters["orientation"] = "portrait"
-            parameters.focusMode = Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE
-            parameters.setPreviewSize(1280, 720)
-            mCamera.setParameters(parameters)
+            CameraHelper.openAndPreview(surfaceTexture!!)
 
-            // 开始读取相机里的数据
-            // SurfaceTexture对象可以把相机里的每一帧Buffer数据转换成纹理数据
-
-            // 开始读取相机里的数据
-            // SurfaceTexture对象可以把相机里的每一帧Buffer数据转换成纹理数据
-            try {
-                mCamera.setPreviewTexture(surfaceTexture)
-                mCamera.startPreview()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
+//            // 获取相机对象，并设置参数
+//            mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK)
+//            mCamera.setDisplayOrientation(90)
+//
+//            val parameters = mCamera.getParameters()
+//            parameters["orientation"] = "portrait"
+//            parameters.focusMode = Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE
+//            parameters.setPreviewSize(1280, 720)
+//            mCamera.setParameters(parameters)
+//
+//            // 开始读取相机里的数据
+//            // SurfaceTexture对象可以把相机里的每一帧Buffer数据转换成纹理数据
+//
+//            // 开始读取相机里的数据
+//            // SurfaceTexture对象可以把相机里的每一帧Buffer数据转换成纹理数据
+//            try {
+//                mCamera.setPreviewTexture(surfaceTexture)
+//                mCamera.startPreview()
+//            } catch (e: IOException) {
+//                e.printStackTrace()
+//            }
 
 
         }
