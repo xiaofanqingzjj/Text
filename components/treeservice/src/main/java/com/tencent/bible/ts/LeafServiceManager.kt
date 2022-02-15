@@ -25,7 +25,7 @@ internal object LeafServiceManagerServer {
 
 
     /**
-     *
+     * 在实现端注册
      */
     fun <LeafService> registeLeafService(
         leafServiceClass: Class<LeafService>,
@@ -34,13 +34,17 @@ internal object LeafServiceManagerServer {
         leafServiceProviderMap[leafServiceClass.name] = leafServiceProvider
     }
 
-
-    /**
-     *
-     */
-    fun getLeafServiceBinder(leafServiceName: String): IBinder? {
-        return leafServiceProviderMap[leafServiceName]?.provideBinder()
+    fun  getLeafServiceProvider(leafServiceName: String): LeafServiceProvider<*>? {
+        return leafServiceProviderMap[leafServiceName] as LeafServiceProvider<*>?;
     }
+
+
+//    /**
+//     * 在远端调用
+//     */
+//    fun getLeafServiceBinder(leafServiceName: String): IBinder? {
+//        return leafServiceProviderMap[leafServiceName]?.provideBinder()
+//    }
 }
 
 
@@ -50,9 +54,9 @@ internal object LeafServiceManagerServer {
  *
  */
 object LeafServiceManager {
-
-    // 当前进程的
-    private val nativeServiceProviderMap = mutableMapOf<String, LeafServiceProvider<*>>()
+//
+//    // 当前进程的
+//    private val nativeServiceProviderMap = mutableMapOf<String, LeafServiceProvider<*>>()
 
 
     /**
@@ -66,23 +70,18 @@ object LeafServiceManager {
         leafServiceClass: Class<LeafService>,
         leafServiceProvider: LeafServiceProvider<LeafService>
     ) {
-
-
         LeafServiceManagerServer.registeLeafService(leafServiceClass, leafServiceProvider)
-
-        // 注册一个到本地
-        nativeServiceProviderMap[leafServiceClass.name] = leafServiceProvider
     }
 
 
     /**
-     * 获取
+     * 在远端调用
      *
      */
     fun <LeafService> getLeafService(leafServiceClass: Class<LeafService>): LeafService? {
 
         // 先从内存中获取一次
-        val provider: LeafServiceProvider<LeafService>? = nativeServiceProviderMap[leafServiceClass.name] as? LeafServiceProvider<LeafService>
+        val provider: LeafServiceProvider<LeafService>? = LeafServiceManagerServer.getLeafServiceProvider(leafServiceClass.name) as LeafServiceProvider<LeafService>?; // nativeServiceProviderMap[leafServiceClass.name] as? LeafServiceProvider<LeafService>
 
         //
         val binder = RemoteServiceManager.getLeafServiceBinder(leafServiceClass.name)

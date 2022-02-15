@@ -17,11 +17,8 @@ class RemoteService : Service() {
 
             }
 
-            override fun getLeafServiceBinder(serviceName: String?): IBinder? {
-                if (serviceName != null) {
-                    return LeafServiceManagerServer.getLeafServiceBinder(serviceName)
-                }
-                return null
+            override fun getLeafServiceBinder(serviceName: String): IBinder? {
+                return LeafServiceManagerServer.getLeafServiceProvider(serviceName)?.provideBinder()
             }
         }
     }

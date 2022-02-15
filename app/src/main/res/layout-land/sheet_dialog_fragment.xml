@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000" />
+
+    <FrameLayout
+        android:id="@+id/root"
+        android:layout_gravity="right"
+        android:layout_width="380dp"
+        android:layout_height="match_parent">
+
+        <com.example.test.test_float_comment.DragDismissView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/drag_dismiss_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/fr_content_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                />
+
+
+        </com.example.test.test_float_comment.DragDismissView>
+    </FrameLayout>
+
+
+</FrameLayout>

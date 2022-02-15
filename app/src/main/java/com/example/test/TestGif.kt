@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import com.bedrock.module_base.SimpleFragment
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_test_gif.*
+import com.example.test.R;
 import com.bumptech.glide.load.Transformation
 import com.bumptech.glide.load.engine.Resource
 import com.bumptech.glide.load.resource.gif.GifDrawable
@@ -32,32 +34,32 @@ class TestGif : SimpleFragment() {
 
 //        GifDrawable
 
-        Glide
-                .with(context!!)
-//                .applyDefaultRequestOptions()
-
-                .asDrawable()
-
-                .apply(RequestOptions.bitmapTransform(object : Transformation<Bitmap> {
-                    override fun updateDiskCacheKey(messageDigest: MessageDigest) {
-                    }
-
-                    override fun transform(context: Context, resource: Resource<Bitmap>, outWidth: Int, outHeight: Int): Resource<Bitmap> {
-                        Log.d(TAG, "transform: resource size:${resource.size}")
-
-                        return resource
-                    }
-
-                }).apply {
-                    override(100, 100)
-                })
-
-
-//                .transition()
-                .load("https://bookmomentcon-1251775003.image.myqcloud.com/58183739/107/4f9db00fc1045b0477d95423f060f422.gif")
-
-
-                .into(iv)
+//        Glide
+//                .with(context!!)
+////                .applyDefaultRequestOptions()
+//
+//                .asDrawable()
+//
+//                .apply(RequestOptions.bitmapTransform(object : Transformation<Bitmap> {
+//                    override fun updateDiskCacheKey(messageDigest: MessageDigest) {
+//                    }
+//
+//                    override fun transform(context: Context, resource: Resource<Bitmap>, outWidth: Int, outHeight: Int): Resource<Bitmap> {
+//                        Log.d(TAG, "transform: resource size:${resource.size}")
+//
+//                        return resource
+//                    }
+//
+//                }).apply {
+//                    override(100, 100)
+//                })
+//
+//
+////                .transition()
+//                .load("https://bookmomentcon-1251775003.image.myqcloud.com/58183739/107/4f9db00fc1045b0477d95423f060f422.gif")
+//
+//
+//                .into(iv)
 
     }
 

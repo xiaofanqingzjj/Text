@@ -4,14 +4,13 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.transition.Fade
-import com.bedrock.Test
-import test.MyTestJava
 import com.bedrock.module_base.MenuActivity
 import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.test.alarm.TestAlarm
 import com.example.test.bookranklist.BookRankingFragment
 import com.example.test.transition.TestTransitionActivity
 import com.example.test.card.CardViewActivity
+import com.example.test.coroutine.TestCoroutine
 import com.example.test.db.TestDbFragment
 import com.example.test.expendtextview.TextExpendTextView
 import com.example.test.image.TestImages
@@ -23,6 +22,8 @@ import com.example.test.record.TestAudioPlay
 import com.example.test.record.TestRecord
 import com.example.test.shortcut.ShortcutUtil
 import com.example.test.slidedrawer.TestSlideMenu
+import com.example.test.test_float_comment.CommentListFragment
+import com.example.test.test_float_comment.SheetDialogFragment
 import com.example.test.testattrs.MyThemeActivity
 import com.example.test.testattrs.TestAttributes
 import com.example.test.testconstraint.TestConstraintLayout
@@ -38,6 +39,12 @@ class MainActivity : MenuActivity() {
         super.onCreate(savedInstanceState)
 
         PermissionsRequestor(this).request(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO, Manifest.permission.INSTALL_PACKAGES))
+
+        addMenu("CommentList") {
+            SheetDialogFragment.show(this, CommentListFragment());
+        }
+
+        addMenuByFragment("协程", TestCoroutine::class.java)
 
         addMenu("过度动画", TestTransitionActivity::class.java)
 

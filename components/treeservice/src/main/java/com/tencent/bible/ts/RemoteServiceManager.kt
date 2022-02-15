@@ -61,11 +61,9 @@ object RemoteServiceManager {
 
 
     private val serviceConnection = object : ServiceConnection {
-
         override fun onServiceDisconnected(name: ComponentName) {
             serviceBinder = null
         }
-
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             serviceBinder = ITreeService.Stub.asInterface(service)
             synchronized(SERVICE_LOCK) {
@@ -73,7 +71,6 @@ object RemoteServiceManager {
             }
         }
     }
-
     private fun bindService(): Boolean {
         return context.bindService(
             Intent(context, treeServiceClass),

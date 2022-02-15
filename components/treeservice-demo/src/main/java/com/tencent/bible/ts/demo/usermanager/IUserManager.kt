@@ -5,21 +5,33 @@ import com.tencent.bible.ts.LeafServiceManager
 import com.tencent.bible.ts.LeafServiceProvider
 
 
+/**
+ * ipc接口
+ */
 interface IUserManager {
     fun getUserInfo():UserInfo?
 }
 
+/**
+ * ipc接口的实现
+ */
 object UserManager : IUserManager{
     override fun getUserInfo(): UserInfo? {
         return UserInfo(name = "Xiao", age = 10)
     }
 }
 
+
+/**
+ * 使用IPC实现
+ *
+ */
 class  UserManagerStubImpl : com.tencent.bible.treeservice.UserManager.Stub() {
     override fun getUserInfo(): UserInfo? {
         return UserManager.getUserInfo();
     }
 }
+
 
 object UserManagerInitor {
     fun init() {
@@ -40,5 +52,12 @@ object UserManagerInitor {
                 }
             }
         })
+    }
+}
+
+object  Client {
+    fun test() {
+        val userManager = LeafServiceManager.getLeafService(IUserManager::class.java);
+        userManager?.getUserInfo()
     }
 }

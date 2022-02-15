@@ -13,6 +13,12 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
     }
     buildTypes {
         release {
@@ -31,10 +37,10 @@ dependencies {
     implementation project(':bindview-annotation')
     implementation project(':bindview-api')
 
-    annotationProcessor project(':bindview-compiler')
+    kapt project(':bindview-compiler')
 
     implementation project(':lib_flutter_plugin_annotation')
-    annotationProcessor project(':lib_flutter_plugin_annotation')
+//    annotationProcessor project(':lib_flutter_plugin_annotation')
     kapt project(':lib_flutter_plugin_annotation')
 
 }

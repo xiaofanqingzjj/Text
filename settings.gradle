@@ -86,6 +86,8 @@ void includes(String dirName, ArrayList<String> projects) {
 
 
 
+println("------------ settings.gradle -------------")
+
 
 include ':app'
 
