@@ -7,8 +7,11 @@ import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.camera.DisplayCameraBySurfaceTextureOpenGL
 import com.example.camera.DisplayCameraBySurfaceView
 import com.example.camera.DisplayCameraByTextureView
+import com.example.opengl.base.SimpleThreadController
 
 class MainActivity : MenuActivity() {
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +30,18 @@ class MainActivity : MenuActivity() {
         addMenu("CameraPreviewBySurfaceTexture", DisplayCameraBySurfaceTextureOpenGL::class.java)
 
         addMenu("CameraPreviewBySurfaceView", DisplayCameraBySurfaceView::class.java)
+
+        val c = SimpleThreadController()
+        addMenu("Start") {
+            c.start()
+        }
+
+        addMenu("Pause") {
+            c.parse()
+        }
+        addMenu("Resume") {
+            c.resume()
+        }
 
 
         // 读取相机权限

@@ -2,10 +2,8 @@ package com.example.opengl
 
 import android.content.Context
 import android.opengl.GLES20
-import android.opengl.GLSurfaceView
 import android.opengl.Matrix
-import android.util.Log
-import com.example.opengl.program.ColorShaderProgram
+import com.example.opengl.glsurfaceview.MyBaseGLSurfaceView
 import com.example.opengl.program.TextureShaderProgram
 import com.example.opengl.util.TextureHelper
 import com.example.opengl.util.toFloatBuffer
@@ -14,14 +12,17 @@ import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
 
-class MyRender4(var context: Context) : GLSurfaceView.Renderer {
+/**
+ * 渲染一张纹理图片在界面上
+ */
+class MyRender4(var context: Context) : MyBaseGLSurfaceView.Renderer {
 
     companion object {
         const val TAG = "MyRender4"
     }
 
 
-    private lateinit var textureProgram: TextureShaderProgram;
+    private lateinit var textureProgram: TextureShaderProgram
     private var textureId: Int = 0
 
     //相机矩阵
@@ -40,18 +41,28 @@ class MyRender4(var context: Context) : GLSurfaceView.Renderer {
         GLES20.glClearColor(0f, 0f, 0f, 1f);
 
         // 纹理着色程序
-        textureProgram = TextureShaderProgram(context)
+        textureProgram = TextureShaderProgram()
+
+
         // 加载纹理
-        textureId = TextureHelper.loadTexture(context, R.drawable.test_texture1);
+        textureId = TextureHelper.loadTexture(context, R.drawable.heart0);
     }
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
         GLES20.glViewport(0, 0, width, height)
+
+        //图片的宽高
         val w = 580f
         val h = 472f
+
+        // 图片宽高比
         val sWH = w / h
+
+        // 屏幕的宽高比
         val sWidthHeight = width.toFloat() / height.toFloat()
-        if (width > height) {
+
+
+        if (width > height) { // 横图
             if (sWH > sWidthHeight) {
                 Matrix.orthoM(mProjectMatrix, 0, -sWidthHeight * sWH,
                         sWidthHeight * sWH, -1f, 1f, 3f, 7f);
@@ -80,10 +91,16 @@ class MyRender4(var context: Context) : GLSurfaceView.Renderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
 
         textureProgram.useProgram()
+
+        // 设置相机视图
         textureProgram.setMatrix(mMVPMatrix)
+        // 设置要渲染的纹理
         textureProgram.setTexture(textureId)
 
+        // 设置顶点数据和纹理坐标数据
         image.bind(textureProgram)
+
+        // 绘制
         image.draw()
     }
 

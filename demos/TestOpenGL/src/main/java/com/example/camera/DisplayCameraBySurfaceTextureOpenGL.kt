@@ -8,6 +8,7 @@ import android.opengl.GLES20
 import android.opengl.GLSurfaceView
 import android.os.Bundle
 import com.example.opengl.base.MGLSurfaceView
+import com.example.opengl.glsurfaceview.MyBaseGLSurfaceView
 import com.example.opengl.util.ShaderHelper
 import com.example.opengl.util.toFloatBuffer
 import java.nio.FloatBuffer
@@ -23,7 +24,7 @@ import javax.microedition.khronos.opengles.GL10
  */
 class DisplayCameraBySurfaceTextureOpenGL : Activity() {
 
-    lateinit var glSurfaceView: GLSurfaceView
+    lateinit var glSurfaceView: MyBaseGLSurfaceView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,7 +54,7 @@ class DisplayCameraBySurfaceTextureOpenGL : Activity() {
     /**
      * 渲染器
      */
-    class MyRenderer(var glSurfaceView: GLSurfaceView) : GLSurfaceView.Renderer {
+    class MyRenderer(var glSurfaceView: MyBaseGLSurfaceView) : MyBaseGLSurfaceView.Renderer {
 
         companion object {
             const val VERTEXT_SHADER = """
@@ -224,6 +225,9 @@ class DisplayCameraBySurfaceTextureOpenGL : Activity() {
         }
 
         override fun onDrawFrame(gl: GL10?) {
+//
+//            var canvas: Canvas
+//            canvas.drawBitmap()
 
             //todo 执行渲染工作
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)

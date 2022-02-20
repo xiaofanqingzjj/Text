@@ -6,6 +6,7 @@ import android.opengl.GLSurfaceView
 import android.opengl.Matrix
 import android.os.SystemClock
 import android.view.MotionEvent
+import com.example.opengl.glsurfaceview.MyBaseGLSurfaceView
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
@@ -16,7 +17,7 @@ import javax.microedition.khronos.opengles.GL10
  * 官方Demo
  *
  */
-class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
+class MyGLSurfaceView(context: Context) : MyBaseGLSurfaceView(context) {
 
     private var render: MyRender
 
@@ -67,7 +68,7 @@ class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
 }
 
 
-class  MyRender : GLSurfaceView.Renderer {
+class  MyRender : MyBaseGLSurfaceView.Renderer {
 
     lateinit var triangle: Triangle
     lateinit var  square: Square
@@ -110,15 +111,15 @@ class  MyRender : GLSurfaceView.Renderer {
 
         // 这个投影矩阵被应用于对象坐标在onDrawFrame（）方法中
         //
-        // 创建投影矩阵
-        Matrix.frustumM(mProjectionMatrix, // 接收投影的矩阵
+        // 创建投影矩阵 orthoM/frustumM
+        Matrix.orthoM(mProjectionMatrix, // 接收投影的矩阵
                 0, // 变换投影的起始位置
                 -ratio,  // 相对观测点近面的左距离
                 ratio, // 相对观测点近面的右距离
                 -1f,
                 1f,
-                1f, // 相对观测点近面距离
-                7f)
+                -1f, // 相对观测点近面距离
+                1f)
     }
 
     override fun onDrawFrame(gl: GL10?) {
@@ -135,7 +136,7 @@ class  MyRender : GLSurfaceView.Renderer {
                 0,
                 0f,
                 0f,
-                2.5f, // 眼睛的位置
+                1f, // 眼睛的位置
                 0f,
                 0f,
                 0f,
@@ -167,7 +168,7 @@ class  MyRender : GLSurfaceView.Renderer {
 
         // Draw shape
         // 把矩阵给绘制
-        triangle.draw(scratch);
+        triangle.draw(mMVPMatrix);
 
     }
 

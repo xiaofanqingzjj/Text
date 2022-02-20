@@ -25,7 +25,11 @@ object ShaderHelper {
 
 
     /**
-     * 根据着色器代码创建编译好的
+     * 根据着色器代码创建编译好的着色器对象
+     *
+     * @param type 着色器类型：GL_VERTEX_SHADER、GL_FRAGMENT_SHADER
+     * @param shaderCode 着色器代码GLSL
+     * @return 返回着色器对象的句柄
      */
     fun compileShader(type: Int, shaderCode: String): Int {
         // 创建着色器
@@ -41,7 +45,10 @@ object ShaderHelper {
     }
 
     /**
-     * 根据着色器创建gl程序
+     * 根据着色器创建gl程序对象
+     * @param vertexShaderId 顶点着色器对象
+     * @param fragmentShaderId 片段着色器对象
+     * @return 返回链接好的程序对象
      */
     fun linkProgram(vertexShaderId: Int, fragmentShaderId: Int): Int {
         val program = GLES20.glCreateProgram()
@@ -64,6 +71,9 @@ object ShaderHelper {
 
     /**
      * 根据着色器代码创建程序对象
+     * @param vertexShaderSource 顶点着色器
+     * @param fragmentShaderSource 片段着色器
+     * @return  程序id
      */
     fun buildProgram(vertexShaderSource: String, fragmentShaderSource: String): Int {
         val vertexShader = compileVertexShader(vertexShaderSource)

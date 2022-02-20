@@ -2,8 +2,8 @@ package com.example.opengl
 
 import android.content.Context
 import android.opengl.GLES20
-import android.opengl.GLSurfaceView
 import android.util.Log
+import com.example.opengl.glsurfaceview.MyBaseGLSurfaceView
 import com.example.opengl.util.ShaderHelper
 import com.example.opengl.util.getRawFileContent
 import com.example.opengl.util.toFloatBuffer
@@ -14,13 +14,16 @@ import javax.microedition.khronos.opengles.GL10
 
 /**
  * 一个简单的渲染器
+ * 在屏幕上渲染一个三角形
  */
-class MyRenderer2(var context: Context) : GLSurfaceView.Renderer {
+class MyRenderer2(var context: Context) : MyBaseGLSurfaceView.Renderer {
 
     companion object {
 
+          const val TAG = "MyRender2"
+
         // 顶点数据
-        private var vertexArray = floatArrayOf( //两个三角形和三角形的颜色分量
+        private var vertexArray = floatArrayOf(
 
                 0f, 0f, 0f,
                 -0.5f, -0.5f, 0f,
@@ -85,16 +88,20 @@ class MyRenderer2(var context: Context) : GLSurfaceView.Renderer {
         val vertexShaderSource: String? = context.getRawFileContent(R.raw.simple_vertex_shader)
         val fragmentShaderSource: String? = context.getRawFileContent(R.raw.simple_fragment_shader)
 
-        Log.d("MyRenderer", "vertex:$vertexShaderSource")
-        Log.d("MyRenderer", "fragment:$fragmentShaderSource")
+        Log.d(TAG, "vertex:$vertexShaderSource")
+        Log.d(TAG, "fragment:$fragmentShaderSource")
 
         // 创建着色器
-        val vertexShader = ShaderHelper.compileShader(GLES20.GL_VERTEX_SHADER, vertexShaderSource!!)
-        val fragmentShader = ShaderHelper.compileShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderSource!!)
 
-        // 创建GL程序，并链接着色器
-        val program = ShaderHelper.linkProgram(vertexShader, fragmentShader)
-        ShaderHelper.validateProgram(program)
+        val program = ShaderHelper.buildProgram(vertexShaderSource!!, fragmentShaderSource!!)
+////        // 顶点着色器
+////        val vertexShader = ShaderHelper.compileShader(GLES20.GL_VERTEX_SHADER, vertexShaderSource!!)
+////        // 片段着色器
+////        val fragmentShader = ShaderHelper.compileShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderSource!!)
+////
+////        // 创建GL程序，并链接着色器
+////        val program = ShaderHelper.linkProgram(vertexShader, fragmentShader)
+//        ShaderHelper.validateProgram(program)
 
         // 将程序添加OpenGL
         GLES20.glUseProgram(program)

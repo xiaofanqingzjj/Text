@@ -11,8 +11,10 @@ import com.example.opengl.util.ShaderHelper
  *
  * 这个类返回的programId是可以直接被使用的，只需在绘制的时候调用glUseProgram(programId)
  *
+ * @param vertexShaderCode 顶点着色器脚本
+ * @param fragmentShaderCode 片段着色器脚本
  */
-open class ShaderProgram(
+open class ShaderProgram constructor(
         vertexShaderCode: String,
         fragmentShaderCode: String) {
 

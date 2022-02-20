@@ -2,8 +2,8 @@ package com.example.opengl
 
 import android.content.Context
 import android.opengl.GLES20
-import android.opengl.GLSurfaceView
 import android.util.Log
+import com.example.opengl.glsurfaceview.MyBaseGLSurfaceView
 import com.example.opengl.program.ColorShaderProgram
 import com.example.opengl.util.TextureHelper
 import com.example.opengl.program.TextureShaderProgram
@@ -13,7 +13,7 @@ import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
 
-class MyRenderer3(var context: Context) : GLSurfaceView.Renderer {
+class MyRenderer3(var context: Context) : MyBaseGLSurfaceView.Renderer {
 
 
     private val projectionMatrix = FloatArray(16)
@@ -43,7 +43,7 @@ class MyRenderer3(var context: Context) : GLSurfaceView.Renderer {
 
 
         // 创建纹理着色器
-        textureProgram = TextureShaderProgram(context)
+        textureProgram = TextureShaderProgram()
 
         colorProgram = ColorShaderProgram(context)
 

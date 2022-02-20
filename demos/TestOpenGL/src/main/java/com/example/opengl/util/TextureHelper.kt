@@ -19,9 +19,10 @@ object TextureHelper {
     private const val TAG = "TextureHelper";
 
     /**
-     * 获取一张图片作为纹理
+     * 根据图片返回一个创建好的纹理id
      *
      * @param resourceId 图片资源id
+     * @return 返回加载后的纹理
      */
     fun loadTexture(context: Context, resourceId: Int): Int {
 

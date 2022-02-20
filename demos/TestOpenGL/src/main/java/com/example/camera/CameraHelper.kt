@@ -15,7 +15,7 @@ object CameraHelper {
         parameters.apply {
             this["orientation"] = "portrait"
             focusMode = Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE
-            setPreviewSize(1280, 720)
+//            setPreviewSize( 720, 1280)
         }
         mCamera.parameters = parameters
         return mCamera
@@ -39,6 +39,7 @@ object CameraHelper {
         return mCamera
     }
 
+    
     fun openAndPreview(surfaceTexture: SurfaceHolder): Camera {
         // 获取相机对象，并设置参数
         val mCamera = initCamera();

@@ -1,14 +1,14 @@
 package com.example.opengl.base
 
 import android.content.Context
-import android.opengl.GLSurfaceView
 import android.view.MotionEvent
+import com.example.opengl.glsurfaceview.MyBaseGLSurfaceView
 
 
 /**
  * 一个简单的GLSurfaceView Demo
  */
-class MGLSurfaceView(context: Context) : GLSurfaceView(context) {
+class MGLSurfaceView(context: Context) : MyBaseGLSurfaceView(context) {
 
     interface TouchAble {
         fun onTouchEvent(e: MotionEvent): Boolean

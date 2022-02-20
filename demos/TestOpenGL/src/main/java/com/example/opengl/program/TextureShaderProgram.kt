@@ -1,19 +1,19 @@
 package com.example.opengl.program
 
-import android.content.Context
 import android.opengl.GLES20
-import com.example.opengl.R
-import com.example.opengl.program.ShaderProgram
-import com.example.opengl.util.getRawFileContent
 import java.nio.FloatBuffer
 
 /**
  * 纹理着色器程序
  *
+ * 需要设置要渲染的顶点数据，纹理id，纹理坐标，以及相机视图
+ *
+ * 用法如下：
+ *
  *
  *
  */
-class TextureShaderProgram(context: Context)
+class TextureShaderProgram()
     : ShaderProgram(
         VERTEX_SHADER_SCRIPT,
         FRAGMENT_SHADER_SCRIPT) {
@@ -123,9 +123,6 @@ class TextureShaderProgram(context: Context)
         buffer.position(0)
     }
 
-    fun draw() {
-
-    }
 
 
 }
