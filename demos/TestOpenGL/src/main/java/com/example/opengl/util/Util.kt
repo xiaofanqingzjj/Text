@@ -4,6 +4,10 @@ import android.content.Context
 import java.nio.*
 
 
+fun <T> List<T>.next() {
+
+}
+
 /**
  * float数组转成FloatBuffer
  */

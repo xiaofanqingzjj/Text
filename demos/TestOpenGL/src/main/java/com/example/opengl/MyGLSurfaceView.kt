@@ -112,14 +112,26 @@ class  MyRender : MyBaseGLSurfaceView.Renderer {
         // 这个投影矩阵被应用于对象坐标在onDrawFrame（）方法中
         //
         // 创建投影矩阵 orthoM/frustumM
-        Matrix.orthoM(mProjectionMatrix, // 接收投影的矩阵
-                0, // 变换投影的起始位置
-                -ratio,  // 相对观测点近面的左距离
-                ratio, // 相对观测点近面的右距离
-                -1f,
-                1f,
-                -1f, // 相对观测点近面距离
-                1f)
+
+//        // 正交投影
+//        Matrix.orthoM(mProjectionMatrix, // 接收投影的矩阵
+//                0, // 变换投影的起始位置
+//                -ratio,  // 相对观测点近面的左距离
+//                ratio, // 相对观测点近面的右距离
+//                -1f,
+//                1f,
+//                1f, // 相对观测点近面距离
+//                2f)
+
+        // 透视投影
+        Matrix.frustumM(mProjectionMatrix, // 接收投影的矩阵
+            0, // 变换投影的起始位置
+            -ratio,  // 相对观测点近面的左距离
+            ratio, // 相对观测点近面的右距离
+            -1f,
+            1f,
+            1f,
+            1000f)
     }
 
     override fun onDrawFrame(gl: GL10?) {
@@ -136,11 +148,14 @@ class  MyRender : MyBaseGLSurfaceView.Renderer {
                 0,
                 0f,
                 0f,
-                1f, // 眼睛的位置
+            // 眼睛的位置,投影的near和far是相对z轴的距离，所以绘制物必须在视觉锥体内，否则看不到东西
+            // 比如，三角形的顶点的z轴值为0，如果设置透视的near为3，far为7，则视锥的前后会7和3，那么原点平面
+            // 绘制的内容就在视锥外，则不可见了
+                100f,
                 0f,
                 0f,
                 0f,
-                0f,
+                0f,  // 这3个分量表示相机位置头顶的方向
                 1.0f,
                 0.0f);
 

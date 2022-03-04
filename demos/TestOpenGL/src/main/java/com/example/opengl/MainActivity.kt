@@ -31,6 +31,8 @@ class MainActivity : MenuActivity() {
 
         addMenu("CameraPreviewBySurfaceView", DisplayCameraBySurfaceView::class.java)
 
+        addMenu("Anim", AnimActivity::class.java)
+
         val c = SimpleThreadController()
         addMenu("Start") {
             c.start()

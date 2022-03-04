@@ -36,6 +36,7 @@
         <activity android:name="com.example.camera.DisplayCameraByTextureView" />
         <activity android:name="com.example.camera.DisplayCameraBySurfaceTextureOpenGL" />
         <activity android:name="com.example.camera.DisplayCameraBySurfaceView" />
+        <activity android:name=".AnimActivity" />
     </application>
 
 </manifest>

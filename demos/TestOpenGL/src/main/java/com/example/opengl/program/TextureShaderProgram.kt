@@ -22,8 +22,8 @@ class TextureShaderProgram()
 
         // 顶点着色器脚本
         const val VERTEX_SHADER_SCRIPT = """
-            uniform mat4 u_Matrix;
-            attribute vec4 a_Position;
+            uniform mat4 u_Matrix; // 定义一个4x4的浮点数矩阵变量，
+            attribute vec4 a_Position; // 定义一个4维的浮点数向量，为啥传进来的是一组数组呢？
             attribute vec2 a_TextureCoordinates;
             varying vec2 v_TextureCoordinates;
             
@@ -65,6 +65,8 @@ class TextureShaderProgram()
         // 获取角色器脚本中变量的句柄
         this.uMatrixLocation = GLES20.glGetUniformLocation(program, U_MATRIX);
         this.uTextureUnitLocation = GLES20.glGetUniformLocation(program, U_TEXTURE_UNIT);
+
+
         this.aPositionLocation = GLES20.glGetAttribLocation(program, A_POSITION);
 
         // 纹理向量变量 vec2 a_TextureCoordinates
@@ -94,15 +96,20 @@ class TextureShaderProgram()
     /**
      * 设置需要绘制的顶点Buffer
      */
-    fun setVertexPosition(buffer: FloatBuffer, offset: Int, componentCount: Int, stride: Int) {
-        buffer.position(0)
+    fun setVertexPosition(buffer: FloatBuffer,
+                          offset : Int = 0,
+                          componentCount: Int, stride: Int) {
+        buffer.position(offset)
+
+        // 这是持续不断的给a_Position变量赋值的吗？
         GLES20.glVertexAttribPointer(aPositionLocation,
-                componentCount,
+                componentCount, // 数组中分量的大小
                 GLES20.GL_FLOAT,
                 false,
-                stride,
+                stride, // 步长
                 buffer
         )
+        // 启用顶点数据
         GLES20.glEnableVertexAttribArray(aPositionLocation)
         buffer.position(0)
     }

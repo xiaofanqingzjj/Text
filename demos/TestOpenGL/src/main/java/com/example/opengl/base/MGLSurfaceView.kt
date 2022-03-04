@@ -18,6 +18,7 @@ class MGLSurfaceView(context: Context) : MyBaseGLSurfaceView(context) {
 
     init {
         setEGLContextClientVersion(2)
+
     }
 
     override fun setRenderer(renderer: Renderer?) {

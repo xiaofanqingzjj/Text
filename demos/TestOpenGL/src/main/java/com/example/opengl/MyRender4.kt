@@ -36,6 +36,8 @@ class MyRender4(var context: Context) : MyBaseGLSurfaceView.Renderer {
 
     private val image = Image()
 
+    // 动画帧的纹理id
+    private val frameTextures = mutableListOf<Int>()
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
         GLES20.glClearColor(0f, 0f, 0f, 1f);
@@ -45,8 +47,31 @@ class MyRender4(var context: Context) : MyBaseGLSurfaceView.Renderer {
 
 
         // 加载纹理
-        textureId = TextureHelper.loadTexture(context, R.drawable.heart0);
+//        textureId = TextureHelper.loadTexture(context, R.drawable.heart0);
+        loadFramesTexture()
     }
+
+    private fun loadFramesTexture() {
+
+         val t1 = TextureHelper.loadTexture(context, R.drawable.heart0);
+        val t2 = TextureHelper.loadTexture(context, R.drawable.heart1);
+        val t3 = TextureHelper.loadTexture(context, R.drawable.heart2);
+        val t4 = TextureHelper.loadTexture(context, R.drawable.heart3);
+        val t5 = TextureHelper.loadTexture(context, R.drawable.heart4);
+        val t6 = TextureHelper.loadTexture(context, R.drawable.heart5);
+
+        frameTextures.add(t1);
+        frameTextures.add(t2);
+        frameTextures.add(t3);
+        frameTextures.add(t4);
+        frameTextures.add(t5);
+        frameTextures.add(t6);
+
+
+
+    }
+
+
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
         GLES20.glViewport(0, 0, width, height)
@@ -62,29 +87,58 @@ class MyRender4(var context: Context) : MyBaseGLSurfaceView.Renderer {
         val sWidthHeight = width.toFloat() / height.toFloat()
 
 
+        var left: Float
+        var right: Float
+        var top: Float
+        var bottom: Float
+
         if (width > height) { // 横图
             if (sWH > sWidthHeight) {
-                Matrix.orthoM(mProjectMatrix, 0, -sWidthHeight * sWH,
-                        sWidthHeight * sWH, -1f, 1f, 3f, 7f);
+                left = -sWidthHeight * sWH
+                right = sWidthHeight * sWH
+                bottom = -1f
+                top = 1f
             } else {
-                Matrix.orthoM(mProjectMatrix, 0, -sWidthHeight / sWH,
-                        sWidthHeight / sWH, -1f, 1f, 3f, 7f);
+                left = -sWidthHeight / sWH
+                right = sWidthHeight / sWH
+                bottom = -1f
+                top = 1f
             }
         } else {
             if (sWH > sWidthHeight) {
-                Matrix.orthoM(mProjectMatrix, 0, -1f, 1f,
-                        -1 / sWidthHeight * sWH,
-                        1 / sWidthHeight * sWH, 3f, 7f);
+                left = -1f
+                right = 1f
+                bottom = -1 / sWidthHeight * sWH
+                top = 1 / sWidthHeight * sWH
             } else {
-                Matrix.orthoM(mProjectMatrix, 0, -1f,
-                        1f, -sWH / sWidthHeight, sWH / sWidthHeight, 3f, 7f);
+                left = -1f
+                right = 1f
+                bottom = -sWH / sWidthHeight
+                top = sWH / sWidthHeight
+
             }
         }
+
+        Matrix.orthoM(mProjectMatrix, 0, left,
+            right,
+            bottom, top, -1f, 1f);
+
+
         //设置相机位置
         Matrix.setLookAtM(mViewMatrix, 0, 0f, 0f,
-                7.0f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+                -1.0f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
         //计算变换矩阵
         Matrix.multiplyMM(mMVPMatrix, 0, mProjectMatrix, 0, mViewMatrix, 0);
+    }
+
+    var currentIndex = 0;
+
+    fun nextFrame(): Int {
+        currentIndex ++;
+        if (currentIndex >= frameTextures.size) {
+            currentIndex = 0
+        }
+        return currentIndex
     }
 
     override fun onDrawFrame(gl: GL10?) {
@@ -94,14 +148,19 @@ class MyRender4(var context: Context) : MyBaseGLSurfaceView.Renderer {
 
         // 设置相机视图
         textureProgram.setMatrix(mMVPMatrix)
+
+
         // 设置要渲染的纹理
-        textureProgram.setTexture(textureId)
+        textureProgram.setTexture(frameTextures[nextFrame()])
 
         // 设置顶点数据和纹理坐标数据
         image.bind(textureProgram)
 
         // 绘制
         image.draw()
+
+//        Sync.sync(5)
+        Thread.sleep(100)
     }
 
 }
@@ -168,7 +227,7 @@ class Image {
         GLES20.glDrawElements(GLES20.GL_TRIANGLES,
                 VERTEX_INDEX.size,
                 GLES20.GL_UNSIGNED_SHORT,
-                vertexIndexBuffer);
+                vertexIndexBuffer); //指定每个三角形顶点在顶点数据的下标
 
 //        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, 3)
 
