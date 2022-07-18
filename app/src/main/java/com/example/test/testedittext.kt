@@ -13,13 +13,13 @@ import android.widget.EditText
 import android.widget.TextView
 
 
-open class EditText @JvmOverloads constructor(context: Context?,
+open class MEditText @JvmOverloads constructor(context: Context?,
                                               attrs: AttributeSet? = null,
                                               defStyleAttr: Int = 0, defStyleRes: Int = 0) :
-        TextView(context,
+        androidx.appcompat.widget.AppCompatTextView(context,
                 attrs,
-                defStyleAttr,
-                defStyleRes) {
+                defStyleAttr
+                ) {
 
     override fun getFreezesText(): Boolean {
         return true

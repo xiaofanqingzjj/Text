@@ -1,12 +1,16 @@
 package com.example.test
 
 import android.Manifest
+import android.animation.ValueAnimator
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.transition.Fade
+import android.util.Log
 import com.bedrock.module_base.MenuActivity
 import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.test.alarm.TestAlarm
+import com.example.test.anim.AnimationHandler
 import com.example.test.bookranklist.BookRankingFragment
 import com.example.test.transition.TestTransitionActivity
 import com.example.test.card.CardViewActivity
@@ -31,9 +35,25 @@ import com.example.test.testj2v8.TestJ2V8
 import com.example.test.testlottie.TestLottieFragment
 import com.example.test.webview.WebViewFragmentSytem
 import com.example.test.xlog.XLogInitor
+//import android.animation.AnimationHandl
 
 
 class MainActivity : MenuActivity() {
+
+    companion object {
+        const val  TAG = "MainActivityTag";
+    }
+
+    var animFrame: AnimationHandler.AnimationFrameCallback = object : AnimationHandler.AnimationFrameCallback {
+        override fun doAnimationFrame(frameTime: Long): Boolean {
+            Log.d(TAG, "doAnimFrame:$frameTime")
+            return false;
+        }
+
+        override fun commitAnimationFrame(frameTime: Long) {
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +63,17 @@ class MainActivity : MenuActivity() {
         addMenu("CommentList") {
             SheetDialogFragment.show(this, CommentListFragment());
         }
+
+        addMenu("AddAnimFrame") {
+
+            AnimationHandler.getInstance().addAnimationFrameCallback(animFrame, 0)
+        }
+
+        addMenu("removeAnimFrame") {
+            AnimationHandler.getInstance().removeCallback(animFrame)
+        }
+
+        addMenuByFragment("RecyclverView", TestRecyclerView::class.java)
 
         addMenuByFragment("协程", TestCoroutine::class.java)
 
@@ -141,6 +172,10 @@ class MainActivity : MenuActivity() {
 
         addMenu("Flutter") {
 //            startActivity(FlutterActivity.cr)
+        }
+
+        addMenu("Build.model") {
+            Log.d(TAG, "MODEL:" + Build.MODEL)
         }
 
     }

@@ -153,7 +153,7 @@ class  MyRender : MyBaseGLSurfaceView.Renderer {
             // 绘制的内容就在视锥外，则不可见了
                 100f,
                 0f,
-                0f,
+                0f, //旋转缩放
                 0f,
                 0f,  // 这3个分量表示相机位置头顶的方向
                 1.0f,

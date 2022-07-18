@@ -21,10 +21,6 @@ class TestViewPager2 : SimpleFragment() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.fragment_viewpager2)
-
-
-
-
     }
 
     val list = mutableListOf<String>().apply {
@@ -36,22 +32,13 @@ class TestViewPager2 : SimpleFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val vp: ViewPager2
-
         view_pager2.adapter = QuickAdapter<String>(context!!, list, R.layout.item_card_layout) {position, data, itemView ->
-
             itemView?.findViewById<TextView>(R.id.label_center)?.text = data
-//            itemView?.label_center.text = data
         }
-//        view_pager2.adapter = CardViewAdapter()
-
     }
 
 
     class CardViewAdapter : RecyclerView.Adapter<CardViewHolder>() {
-
-
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
             return CardViewHolder(CardView(LayoutInflater.from(parent.context), parent))
@@ -72,8 +59,6 @@ class TestViewPager2 : SimpleFragment() {
             cardView.bind(card)
         }
     }
-
-
 }
 
 
@@ -127,13 +112,9 @@ class Card private constructor(val suit: String, val value: String) {
 class CardView(layoutInflater: LayoutInflater, container: ViewGroup?) {
     val view: View = layoutInflater.inflate(R.layout.item_card_layout, container, false)
     private val textSuite: TextView
-    private val textCorner1: TextView
-    private val textCorner2: TextView
 
     init {
         textSuite = view.findViewById(R.id.label_center)
-        textCorner1 = view.findViewById(R.id.label_top)
-        textCorner2 = view.findViewById(R.id.label_bottom)
     }
 
     /**
@@ -144,8 +125,6 @@ class CardView(layoutInflater: LayoutInflater, container: ViewGroup?) {
         view.setBackgroundResource(getColorRes(card))
 
         val cornerLabel = card.cornerLabel
-        textCorner1.text = cornerLabel
-        textCorner2.text = cornerLabel
     }
 
     @ColorRes
