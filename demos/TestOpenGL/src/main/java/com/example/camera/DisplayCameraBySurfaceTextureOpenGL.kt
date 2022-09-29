@@ -189,34 +189,7 @@ class DisplayCameraBySurfaceTextureOpenGL : Activity() {
                 // 监听到帧后更新纹理
                 glSurfaceView.requestRender()
             }
-
-
-
             CameraHelper.openAndPreview(surfaceTexture!!)
-
-//            // 获取相机对象，并设置参数
-//            mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK)
-//            mCamera.setDisplayOrientation(90)
-//
-//            val parameters = mCamera.getParameters()
-//            parameters["orientation"] = "portrait"
-//            parameters.focusMode = Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE
-//            parameters.setPreviewSize(1280, 720)
-//            mCamera.setParameters(parameters)
-//
-//            // 开始读取相机里的数据
-//            // SurfaceTexture对象可以把相机里的每一帧Buffer数据转换成纹理数据
-//
-//            // 开始读取相机里的数据
-//            // SurfaceTexture对象可以把相机里的每一帧Buffer数据转换成纹理数据
-//            try {
-//                mCamera.setPreviewTexture(surfaceTexture)
-//                mCamera.startPreview()
-//            } catch (e: IOException) {
-//                e.printStackTrace()
-//            }
-
-
         }
 
         override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
@@ -225,13 +198,8 @@ class DisplayCameraBySurfaceTextureOpenGL : Activity() {
         }
 
         override fun onDrawFrame(gl: GL10?) {
-//
-//            var canvas: Canvas
-//            canvas.drawBitmap()
-
             //todo 执行渲染工作
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
-
             surfaceTexture?.updateTexImage()
             GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, mPosCoordinate.size / 2)
         }

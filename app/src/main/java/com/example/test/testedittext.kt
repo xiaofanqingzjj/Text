@@ -13,7 +13,7 @@ import android.widget.EditText
 import android.widget.TextView
 
 
-open class MEditText @JvmOverloads constructor(context: Context?,
+open class MEditText @JvmOverloads constructor(context: Context,
                                               attrs: AttributeSet? = null,
                                               defStyleAttr: Int = 0, defStyleRes: Int = 0) :
         androidx.appcompat.widget.AppCompatTextView(context,

@@ -77,7 +77,7 @@ class MyColorDrawable(color: Int) : ColorDrawable(color) {
 }
 
 
-class MyDrawable(val bitmapDrawable: BitmapDrawable): Drawable() {
+class MyDrawable(private val bitmapDrawable: BitmapDrawable): Drawable() {
 
     companion object {
         const val TAG = "MyDrawable"

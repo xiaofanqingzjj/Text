@@ -55,9 +55,9 @@ class MyRenderer2(var context: Context) : MyBaseGLSurfaceView.Renderer {
 
         // 颜色
         private var colorArray = floatArrayOf(
-                1f, 0f, 0f, 1f
-//                0f, 1f, 0f, 1f,
-//                0f, 0f, 1f, 1f
+                1f, 0f, 0f, 1f,
+                0f, 1f, 0f, 1f,
+                0f, 0f, 1f, 1f
 //                1f, 0f, 1f, 0.5f,
 //                1f, 1f, 0f, 0.5f
         )
@@ -111,7 +111,7 @@ class MyRenderer2(var context: Context) : MyBaseGLSurfaceView.Renderer {
 
         // 设置顶点数据
 
-        // 获取GLSL中a_Position变量的句柄
+        // 获取顶点GLSL中a_Position变量的句柄
         this.aPositionLocation = GLES20.glGetAttribLocation(program, A_POSITION);
         // 设置buffer的position为0
         this.vertexBuffer.position(0)
@@ -149,8 +149,9 @@ class MyRenderer2(var context: Context) : MyBaseGLSurfaceView.Renderer {
     override fun onDrawFrame(gl: GL10?) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
 
-        // 绘制顶点
+        // 绘制顶点，这里才开始为每个顶点开始执行顶点着色器
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, vertexArray.size / VERTEX_COMPONENT_COUNT)
+
 //        GLES20.glDrawArrays(GLES20.GL_LINES, 6, 2);
 //        GLES20.glDrawArrays(GLES20.GL_POINTS, 8, 1);
 //        GLES20.glDrawArrays(GLES20.GL_POINTS, 9, 1);

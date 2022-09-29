@@ -66,6 +66,8 @@ class MainActivity : MenuActivity() {
 
         addMenu("AddAnimFrame") {
 
+            var vv: ValueAnimator
+
             AnimationHandler.getInstance().addAnimationFrameCallback(animFrame, 0)
         }
 
