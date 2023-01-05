@@ -30,14 +30,14 @@ class OpenGLDemo5 : Activity() {
 
         }
 
-        override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture?, width: Int, height: Int) {
+        override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture, width: Int, height: Int) {
         }
 
-        override fun onSurfaceTextureDestroyed(surface: SurfaceTexture?): Boolean {
+        override fun onSurfaceTextureDestroyed(surface: SurfaceTexture): Boolean {
             return true;
         }
 
-        override fun onSurfaceTextureUpdated(surface: SurfaceTexture?) {
+        override fun onSurfaceTextureUpdated(surface: SurfaceTexture) {
         }
 
     }

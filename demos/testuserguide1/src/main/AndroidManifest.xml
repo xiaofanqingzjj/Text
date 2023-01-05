@@ -13,7 +13,8 @@
         <meta-data android:name="notch.config" android:value="portrait|landscape"/>
         <meta-data android:name="android.notch_support" android:value="true"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -16,10 +16,9 @@
 
 package com.tencent.strinker
 
-import com.google.common.collect.ImmutableList
 
-import org.apache.commons.io.IOUtils
-import org.apache.commons.io.output.ByteArrayOutputStream
+import com.tencent.strinker.util.ByteArrayOutputStream
+import com.tencent.strinker.util.IOUtils
 
 import java.io.ByteArrayInputStream
 import java.io.EOFException
@@ -121,7 +120,7 @@ object JarProcessor {
     private fun readZipEntries(src: Path): List<Pair<String, ByteArray>> {
 
 
-        val list = ImmutableList.builder<Pair<String, ByteArray>>()
+        val list = mutableListOf<Pair<String, ByteArray>>()
 
         ZipInputStream(ByteArrayInputStream(Files.readAllBytes(src))).use { zip ->
 
@@ -143,7 +142,7 @@ object JarProcessor {
                 entry = zip.nextEntry
             }
         }
-        return list.build()
+        return list
     }
 
     @Throws(IOException::class)

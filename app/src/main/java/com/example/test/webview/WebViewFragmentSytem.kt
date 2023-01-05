@@ -205,7 +205,7 @@ open class WebViewFragmentSytem : Fragment() {
 //        DLog.d(TAG, "webView begin load url:$mUrl, orgUrl:$mOrgUrl")
 
 
-        mWebView?.loadUrl(mUrl)
+        mWebView?.loadUrl(mUrl ?: "")
     }
 
     private fun reload() {
@@ -384,7 +384,7 @@ open class WebViewFragmentSytem : Fragment() {
             }
         }
 
-        mWebView.settings?.run {
+        mWebView.settings.run {
             cacheMode = WebSettings.LOAD_DEFAULT
             javaScriptEnabled = true
             allowFileAccess = true
@@ -399,12 +399,12 @@ open class WebViewFragmentSytem : Fragment() {
             displayZoomControls = false
             loadWithOverviewMode = true
 
-            setAppCacheEnabled(true)
+//            setAppCacheEnabled(true)
             databaseEnabled = true
             domStorageEnabled = true
 
             setGeolocationEnabled(true)
-            setAppCacheMaxSize(Long.MAX_VALUE)
+//            setAppCacheMaxSize(Long.MAX_VALUE)
 
             pluginState = WebSettings.PluginState.ON_DEMAND
             setRenderPriority(WebSettings.RenderPriority.HIGH)

@@ -27,7 +27,7 @@ class TestSurfaceView : Activity() {
         val ts = TextureView(this);
 
         surfaceView.holder.addCallback(object : SurfaceHolder.Callback2 {
-            override fun surfaceCreated(holder: SurfaceHolder?) {
+            override fun surfaceCreated(holder: SurfaceHolder) {
                 val canvas = holder?.lockCanvas()
 
 
@@ -35,17 +35,17 @@ class TestSurfaceView : Activity() {
             }
 
             override fun surfaceChanged(
-                holder: SurfaceHolder?,
+                holder: SurfaceHolder,
                 format: Int,
                 width: Int,
                 height: Int
             ) {
             }
 
-            override fun surfaceDestroyed(holder: SurfaceHolder?) {
+            override fun surfaceDestroyed(holder: SurfaceHolder) {
             }
 
-            override fun surfaceRedrawNeeded(holder: SurfaceHolder?) {
+            override fun surfaceRedrawNeeded(holder: SurfaceHolder) {
             }
 
         })

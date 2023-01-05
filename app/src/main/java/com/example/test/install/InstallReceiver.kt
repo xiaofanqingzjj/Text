@@ -18,7 +18,7 @@ class InstallReceiver : BroadcastReceiver() {
         val activityIntent =
           intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)
 
-        context.startActivity(activityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        context.startActivity(activityIntent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
       }
       PackageInstaller.STATUS_SUCCESS ->
         ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100)

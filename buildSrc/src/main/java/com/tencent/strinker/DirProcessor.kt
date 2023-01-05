@@ -1,6 +1,5 @@
 package com.tencent.strinker
 
-import com.google.common.collect.ImmutableList
 import java.io.IOException
 import java.io.UncheckedIOException
 import java.nio.file.*
@@ -55,7 +54,7 @@ object DirProcessor {
     }
 
     private fun resolveSources(src: Path): List<Path> {
-        val list = ImmutableList.builder<Path>()
+        val list = mutableListOf<Path>() //ImmutableList.builder<Path>()
         try {
             Files.newDirectoryStream(src, CLASS_TRANSFORM_FILTER).use { dir ->
                 for (file in dir) {
@@ -68,6 +67,6 @@ object DirProcessor {
             throw UncheckedIOException(e)
         }
 
-        return list.build()
+        return list
     }
 }

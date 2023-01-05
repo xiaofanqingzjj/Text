@@ -3,9 +3,9 @@ apply plugin: 'groovy'
 
 dependencies {
     //gradle sdk
-    compile gradleApi()
+    implementation gradleApi()
     //groovy sdk
-    compile localGroovy()
+    implementation localGroovy()
 }
 
 apply plugin: 'maven-publish'

@@ -37,17 +37,18 @@ class MyVideoPlayer(context: Context, attrs: AttributeSet? = null) : FrameLayout
     }
 
     private val surfaceTextureListener = object :TextureView.SurfaceTextureListener{
-        override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture?, width: Int, height: Int) {
+
+        override fun onSurfaceTextureAvailable(p0: SurfaceTexture, p1: Int, p2: Int) {
         }
 
-        override fun onSurfaceTextureUpdated(surface: SurfaceTexture?) {
+        override fun onSurfaceTextureSizeChanged(p0: SurfaceTexture, p1: Int, p2: Int) {
         }
 
-        override fun onSurfaceTextureDestroyed(surface: SurfaceTexture?): Boolean {
-            return false
+        override fun onSurfaceTextureDestroyed(p0: SurfaceTexture): Boolean {
+            return  false;
         }
 
-        override fun onSurfaceTextureAvailable(surface: SurfaceTexture?, width: Int, height: Int) {
+        override fun onSurfaceTextureUpdated(p0: SurfaceTexture) {
         }
     }
 }

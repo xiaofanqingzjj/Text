@@ -1,7 +1,10 @@
 package com.example.opengl
 
 import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import com.bedrock.module_base.MenuActivity
 import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.camera.DisplayCameraBySurfaceTextureOpenGL
@@ -11,6 +14,12 @@ import com.example.opengl.base.SimpleThreadController
 
 class MainActivity : MenuActivity() {
 
+    companion object {
+        private const val AUTHORITY = "com.jrmf360.studentProvider"
+
+        //
+        private val STUDENT_URI = Uri.parse("content://$AUTHORITY/student")
+    }
 
 
 
@@ -44,6 +53,12 @@ class MainActivity : MenuActivity() {
         addMenu("Resume") {
             c.resume()
         }
+
+
+        addMenu("TestContentProvider") {
+            startActivity(Intent(this, TestContentProvider::class.java))
+        }
+
 
 
         // 读取相机权限

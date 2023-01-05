@@ -1,13 +1,21 @@
 package com.example.test
 
 import android.app.Application
+import android.util.Log
 import com.example.test.xlog.XLogInitor
 import com.squareup.leakcanary.LeakCanary
 
 class MyApplication : Application() {
 
+    companion object {
+        const val  TAG = "MyApplication"
+    }
+
     override fun onCreate() {
         super.onCreate()
+
+
+        Log.d(TAG, "onCreate")
 
 
         if (LeakCanary.isInAnalyzerProcess(this)) {

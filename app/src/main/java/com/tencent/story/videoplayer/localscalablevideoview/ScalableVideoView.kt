@@ -73,23 +73,24 @@ class ScalableVideoView @JvmOverloads constructor(context: Context, attrs: Attri
     }
 
     private val surfaceTextureListener = object : SurfaceTextureListener {
-        override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture?, width: Int, height: Int) {
+        override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture, width: Int, height: Int) {
         }
 
-        override fun onSurfaceTextureUpdated(surface: SurfaceTexture?) {
+        override fun onSurfaceTextureUpdated(surface: SurfaceTexture) {
         }
 
-        override fun onSurfaceTextureDestroyed(surface: SurfaceTexture?): Boolean {
+        override fun onSurfaceTextureDestroyed(surface: SurfaceTexture): Boolean {
             return false
         }
 
-        override fun onSurfaceTextureAvailable(surface: SurfaceTexture?, width: Int, height: Int) {
+        override fun onSurfaceTextureAvailable(surface: SurfaceTexture, width: Int, height: Int) {
             // 把当前的surfaceTexture作为多媒体播放器的显示界面
             Log.d(TAG, "onSurfaceTextureAvailable w:$width, h:$height")
 
             val surface = Surface(surfaceTexture)
             mMediaPlayer?.setSurface(surface)
         }
+
 
     }
 

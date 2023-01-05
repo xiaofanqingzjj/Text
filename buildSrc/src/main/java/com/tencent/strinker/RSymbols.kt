@@ -2,7 +2,6 @@ package com.tencent.strinker
 
 import com.android.build.api.transform.DirectoryInput
 import com.android.build.api.transform.TransformInput
-import com.google.common.collect.Maps
 import org.objectweb.asm.*
 import java.io.IOException
 import java.io.UncheckedIOException
@@ -56,10 +55,10 @@ class RSymbols() {
                 // use parallel here!
 
                 stream = paths.parallelStream()
-                symbols.symbols = Maps.newConcurrentMap()
+                symbols.symbols = mutableMapOf()
             } else {
                 stream = paths.stream()
-                symbols.symbols = Maps.newHashMap()
+                symbols.symbols = mutableMapOf()
             }
 
             // 找到所有R相关的类
@@ -147,10 +146,10 @@ class RSymbols() {
                                     val old = symbols.styleables[name]
                                     if (old != null && old.size != current!!.size && !Arrays.equals(old, current)) {
                                         throw IllegalStateException("Value of styleable." + name + " mismatched! "
-                                                + "Excepted " + Arrays.toString(old)
                                                 + " but was " + Arrays.toString(current))
                                     } else {
-                                        symbols.styleables[name] = current
+                                        if (current != null)
+                                            symbols.styleables[name] = current!!
                                     }
                                     current = null
                                     intStack.clear()
@@ -185,7 +184,7 @@ class RSymbols() {
     /**
      * 比如R.styleables.b = int[] {1, 2}，保存在map里应该为[styleables.b] = int[] {1, 2}
      */
-    private val styleables = Maps.newHashMap<String, IntArray>()
+    private val styleables = mutableMapOf<String, IntArray>()
 
     val isEmpty: Boolean
         get() = symbols.isEmpty() && styleables.isEmpty()

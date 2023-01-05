@@ -48,7 +48,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version" // 依赖kotlin标准库
 
-    api 'com.tencent.imsdk:imsdk:4.0.10'
 
     implementation project(":module_bedrock")
 }

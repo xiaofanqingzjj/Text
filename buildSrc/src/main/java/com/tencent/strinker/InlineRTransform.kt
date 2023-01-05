@@ -2,9 +2,8 @@ package com.tencent.strinker
 
 import com.android.build.api.transform.*
 import com.android.build.api.transform.QualifiedContent.DefaultContentType.CLASSES
-import com.google.common.collect.ImmutableSet
-import com.google.common.collect.Sets
-import org.apache.commons.io.FileUtils
+import com.tencent.strinker.util.FileUtils
+//import com.tencent.strinker.util.FileUtils
 import java.io.File
 import java.io.IOException
 import java.io.UncheckedIOException
@@ -27,7 +26,7 @@ class InlineRTransform(private val config: ShrinkerConfig) : Transform() {
     // 输入的数据类型为Class
     override fun getInputTypes(): Set<QualifiedContent.ContentType> {
         // 输入类型为class
-        return ImmutableSet.of<QualifiedContent.ContentType>(CLASSES)
+        return mutableSetOf<QualifiedContent.ContentType>(CLASSES)
     }
 
 
@@ -44,8 +43,8 @@ class InlineRTransform(private val config: ShrinkerConfig) : Transform() {
      */
     override fun getScopes(): MutableSet<in QualifiedContent.Scope> {
         return if (!config.enableShrink)
-            ImmutableSet.of<QualifiedContent.Scope>()
-        else Sets.immutableEnumSet<QualifiedContent.Scope>(
+            mutableSetOf<QualifiedContent.Scope>()
+        else mutableSetOf<QualifiedContent.Scope>(
                 QualifiedContent.Scope.PROJECT,
                 QualifiedContent.Scope.SUB_PROJECTS,
                 QualifiedContent.Scope.EXTERNAL_LIBRARIES)
@@ -59,9 +58,9 @@ class InlineRTransform(private val config: ShrinkerConfig) : Transform() {
      */
     override fun getReferencedScopes(): MutableSet<in QualifiedContent.Scope> {
         return if (config.enableShrink)
-            ImmutableSet.of<QualifiedContent.Scope>()
+            mutableSetOf<QualifiedContent.Scope>()
         else
-            Sets.immutableEnumSet<QualifiedContent.Scope>(QualifiedContent.Scope.PROJECT)
+            mutableSetOf<QualifiedContent.Scope>(QualifiedContent.Scope.PROJECT)
     }
 
     override fun isIncremental(): Boolean {

@@ -22,23 +22,21 @@ class DisplayCameraBySurfaceView : Activity() {
         surfaceView = SurfaceView(this)
 
         surfaceView.holder.addCallback(object: SurfaceHolder.Callback {
-            override fun surfaceCreated(holder: SurfaceHolder?) {
+            override fun surfaceCreated(holder: SurfaceHolder) {
 //                holder.lockCanvas()
-                if (holder != null) {
-                    camera = CameraHelper.openAndPreview(holder);
-                    holder.lockHardwareCanvas()
-                }
+                camera = CameraHelper.openAndPreview(holder);
+                holder.lockHardwareCanvas()
             }
 
             override fun surfaceChanged(
-                holder: SurfaceHolder?,
+                holder: SurfaceHolder,
                 format: Int,
                 width: Int,
                 height: Int
             ) {
             }
 
-            override fun surfaceDestroyed(holder: SurfaceHolder?) {
+            override fun surfaceDestroyed(holder: SurfaceHolder) {
                 camera?.stopPreview()
                 camera?.release()
             }

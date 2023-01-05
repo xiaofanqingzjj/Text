@@ -3,10 +3,12 @@ package com.example.test
 import android.Manifest
 import android.animation.ValueAnimator
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import android.os.Bundle
 import android.transition.Fade
 import android.util.Log
+import android.view.Choreographer
 import com.bedrock.module_base.MenuActivity
 import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.test.alarm.TestAlarm
@@ -14,11 +16,13 @@ import com.example.test.anim.AnimationHandler
 import com.example.test.bookranklist.BookRankingFragment
 import com.example.test.transition.TestTransitionActivity
 import com.example.test.card.CardViewActivity
+import com.example.test.contentprovider.TestContentProvider
 import com.example.test.coroutine.TestCoroutine
 import com.example.test.db.TestDbFragment
 import com.example.test.expendtextview.TextExpendTextView
 import com.example.test.image.TestImages
 import com.example.test.install.InstallApkSessionApi
+import com.example.test.intentservice.IntentServiceActivity
 import com.example.test.ipc.TestIPCFragment
 import com.example.test.layout.TestLayoutFragment
 import com.example.test.movementmethod.TestMoveMethod
@@ -57,6 +61,10 @@ class MainActivity : MenuActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var ss: Choreographer
+
+        var am: AnimationDrawable
 
         PermissionsRequestor(this).request(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO, Manifest.permission.INSTALL_PACKAGES))
 
@@ -178,6 +186,14 @@ class MainActivity : MenuActivity() {
 
         addMenu("Build.model") {
             Log.d(TAG, "MODEL:" + Build.MODEL)
+        }
+
+        addMenu("IntentSerivce") {
+            startActivity(Intent(this, IntentServiceActivity::class.java))
+        }
+
+        addMenu("ContentProvider") {
+            startActivity(Intent(this, TestContentProvider::class.java))
         }
 
     }

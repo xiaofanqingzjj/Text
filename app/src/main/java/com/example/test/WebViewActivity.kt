@@ -55,7 +55,7 @@ class WebViewActivity : Activity() {
 
 
         val url = intent?.getStringExtra(URL)
-        webView.loadUrl(url)
+        webView.loadUrl(url ?: "")
     }
 
 

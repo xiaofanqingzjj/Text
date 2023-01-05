@@ -176,16 +176,16 @@ object AnimUtil {
 
 
 abstract class AnimListenerStub: Animator.AnimatorListener{
-     override fun onAnimationRepeat(animation: Animator?) {
+     override fun onAnimationRepeat(animation: Animator) {
      }
 
-     override fun onAnimationEnd(animation: Animator?) {
+     override fun onAnimationEnd(animation: Animator) {
      }
 
-     override fun onAnimationCancel(animation: Animator?) {
+     override fun onAnimationCancel(animation: Animator) {
      }
 
-     override fun onAnimationStart(animation: Animator?) {
+     override fun onAnimationStart(animation: Animator) {
      }
 }
 
@@ -194,7 +194,7 @@ abstract class AnimListenerStub: Animator.AnimatorListener{
  */
 fun Animator.addEndListener(onAnimationEnd: ()->Unit) {
     addListener(object : AnimListenerStub() {
-        override fun onAnimationEnd(animation: Animator?) {
+        override fun onAnimationEnd(animation: Animator) {
             onAnimationEnd.invoke()
         }
     })

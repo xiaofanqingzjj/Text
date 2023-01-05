@@ -70,6 +70,9 @@
     <uses-permission android:name="telecom.mdesk.permission.WRITE_SETTINGS" />
     <uses-permission android:name="dianxin.permission.ACCESS_LAUNCHER_DATA" />
 
+    <permission android:name="com.student.PROVIDER" />
+    <permission android:name="ckt.permission.READ_ITBOOK" />
+    <permission android:name="ckt.permission.WRITE_ITBOOK" />
 
     <!-- end -->
 
@@ -79,6 +82,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
         android:name=".MyApplication"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
@@ -105,7 +109,8 @@
             />
 
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -131,8 +136,13 @@
         <activity android:name=".install.InstallApkSessionApi"
             android:launchMode="singleTop"/>
 
+        <activity android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
+            android:exported="true"
+            />
+
         <receiver android:name=".alarm.TipReadAlarmBroadcastReceiver"
-            android:process=":alarm">
+            android:process=":alarm"
+            android:exported="true">
 
             <intent-filter >
                 <action android:name="com.tencent.story.alarm"/>
@@ -161,6 +171,25 @@
         <service android:name=".ipc.RemoteService"
             android:process=":remoteservice"
             />
+
+
+        <activity android:name=".intentservice.IntentServiceActivity" />
+
+        <service android:name=".intentservice.MyIntentService" />
+
+
+        <activity android:name=".contentprovider.TestContentProvider" />
+
+        <provider
+            android:authorities="com.example.test.studentProvider"
+            android:name="com.example.test.contentprovider.StudentContentProvider"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:process=":provider"
+            android:enabled="true">
+
+
+        </provider>
 
 
 
