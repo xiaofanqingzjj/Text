@@ -144,3 +144,4 @@ include ':app'
 ext {
 
 }
+include ':testyunguang'

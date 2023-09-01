@@ -39,10 +39,10 @@ PRIV_KEY = "145aa7717bf9745b91e9569b80bbf1eedaa6cc6cd0e26317d810e35710f44cf8"
 PUB_KEY = "572d1e2710ae5fbca54c76a382fdd44050b3a675cb2bf39feebe85ef63d947aff0fa4943f1112e8b6af34bebebbaefa1a0aae055d9259b89a1858f7cc9af9df1"
 
 def tea_decipher(v, k):
-    op = 0xffffffffL
+    op = 0xffffffff
     v0, v1 = struct.unpack('=LL', v[0:8])
     k1, k2, k3, k4 = struct.unpack('=LLLL', k[0:16])
-    delta = 0x9E3779B9L
+    delta = 0x9E3779B9
     s = (delta << 4) & op
     for i in xrange(16):
         v1 = (v1 - (((v0<<4) + k3) ^ (v0 + s) ^ ((v0>>5) + k4))) & op

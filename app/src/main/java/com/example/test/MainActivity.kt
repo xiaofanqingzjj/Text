@@ -39,6 +39,8 @@ import com.example.test.testj2v8.TestJ2V8
 import com.example.test.testlottie.TestLottieFragment
 import com.example.test.webview.WebViewFragmentSytem
 import com.example.test.xlog.XLogInitor
+import com.tencent.common.log.TLog
+
 //import android.animation.AnimationHandl
 
 
@@ -70,6 +72,11 @@ class MainActivity : MenuActivity() {
 
         addMenu("CommentList") {
             SheetDialogFragment.show(this, CommentListFragment());
+        }
+
+        addMenu("TLog") {
+//            TLog.d(TAG, "test TLog")
+            com.tencent.mars.xlog.Log.d(TAG, "xlog")
         }
 
         addMenu("AddAnimFrame") {

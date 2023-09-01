@@ -325,6 +325,7 @@ class PagingRecyclerView @JvmOverloads constructor(context: Context?, attrs: Att
                         container?.visibility = View.GONE
                     }
                 }
+                else -> {}
             }
             currentState = state
         }

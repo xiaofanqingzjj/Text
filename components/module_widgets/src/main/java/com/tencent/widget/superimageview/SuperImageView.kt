@@ -40,6 +40,7 @@ open class SuperImageView @JvmOverloads constructor(context: Context, attrs: Att
                 ScaleType.CROP_LEFT_CENTER,
                 ScaleType.CROP_RIGHT_CENTER ->  // View in the middle of the screen
                     return (viewHeight - postDrawabeHeigth) / 2f
+                else -> {}
             }
 
             // All other cases we don't need to translate
@@ -60,6 +61,7 @@ open class SuperImageView @JvmOverloads constructor(context: Context, attrs: Att
                     ScaleType.FIT_TOP_CENTER,
                     ScaleType.FIT_BOTTOM_CENTER ->  // View in the middle of the screen
                         return (viewWidth - postDrawableWidth) / 2f
+                    else -> {}
                 }
             }
 
