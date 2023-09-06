@@ -7,6 +7,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply from: 'test_plugins.gradle'
+
 //...
 //apply plugin: 'net.yrom.shrinker'
 
@@ -16,7 +18,7 @@ apply plugin: 'kotlin-kapt'
 //apply plugin: 'com.test_plugins.plugin_first'
 
 
-apply plugin: com.tencent.bible.tunnel.plugin.BibleTunnelPlugin
+//apply plugin: com.tencent.bible.tunnel.plugin.BibleTunnelPlugin
 
 
 //shrinkerConfig {
@@ -26,6 +28,13 @@ apply plugin: com.tencent.bible.tunnel.plugin.BibleTunnelPlugin
 //    ]
 //}
 
+println("app build gradle:${gradle}");
+
+/// ------------- 测试Plugin ---------------
+// 最简单的
+//class  TestPlubin
+
+/// ------------- 测试Plugin ---------------
 
 android {
 
@@ -164,3 +173,5 @@ dependencies {
     implementation 'androidx.ui:ui-material:0.1.0-dev02'
 
 }
+
+

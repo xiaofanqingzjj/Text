@@ -1,0 +1,272 @@
+import org.gradle.api.internal.tasks.DefaultTaskContainer
+
+import java.util.function.Consumer
+import java.util.function.Function
+
+
+//class  Log {
+//    void d(String tag, String msg) {
+//        println("$tag, $msg")
+//    }
+//}
+
+class TestSettingPlugin implements Plugin<Settings> {
+
+    static  final String TAG = "TestSettingPlugin";
+
+    void log(String tag, String msg) {
+        println("$tag: $msg")
+    }
+
+    @Override
+    void apply(Settings settings) {
+        println("apply setting plugin")
+
+        addBuildListener(settings.gradle)
+    }
+
+
+    void addBuildListener(Gradle g) {
+
+        g.addBuildListener(new BuildListener() {
+
+            @Override
+            void beforeSettings(Settings settings) {
+                super.beforeSettings(settings)
+                log(TAG, "------------------------beforeSettings------------------------")
+            }
+
+            @Override
+            void settingsEvaluated(Settings settings) {
+                // setting文件执行完毕
+                log(TAG, "------------------------settingsEvaluated------------------------")
+
+//                // 在projectsLoaded 之前没办法获取
+//                log(TAG, "-------- settingsEvaluated allProjects-------")
+//                settings.gradle.allprojects(new Action<Project>() {
+//                    @Override
+//                    void execute(Project o) {
+//                        log(TAG, "project:${o.name}")
+//                    }
+//                })
+            }
+
+            @Override
+            void projectsLoaded(Gradle gradle) {
+                log(TAG, "------------------------projectsLoaded------------------------")
+
+                Project rootProject = gradle.rootProject
+                log(TAG, "rootProject:$rootProject")
+                log(TAG, "rootProject.parent:${rootProject.parent}")
+                log(TAG, "rootProject.project:${rootProject.project}")
+                log(TAG, "rootProject.project('sss'):${rootProject.project("app")}")
+
+                /**
+                 * root 的all和sub的区别，好像只是all包含了自己，sub没有包含自己
+                 */
+                var subProjects = rootProject.subprojects;
+                var allProjects = rootProject.allprojects;
+                log(TAG, "rootProject count:${subProjects.size()} subPorjects:$subProjects")
+                log(TAG, "rootProject count:${allProjects.size()} allPorjects:$allProjects")
+
+
+                log(TAG, "------------------------projectsLoaded end ------------------------")
+            }
+
+            @Override
+            void projectsEvaluated(Gradle gradle) {
+                log(TAG, "------------------------projectsEvaluated------------------------")
+            }
+
+            @Override
+            void buildFinished(BuildResult buildResult) {
+                log(TAG, "------------------------buildFinished------------------------")
+            }
+        })
+
+        /**
+         * 监听Settings
+         */
+        g.beforeSettings {
+            log(TAG, "beforeSettings:$it")
+        }
+
+        g.settingsEvaluated {
+            log(TAG, "settingsEvaluated:${it.getClass()}")
+        }
+
+        /**
+         * 初始化完成，Project树构建完成
+         */
+        g.projectsLoaded {
+            log(TAG, "projectsLoaded:${it}")
+        }
+
+
+
+        // 后面是配置每个Project，也就是执行每个Project的build.gradle的配置文件
+
+        /**
+         * 下面3种方式都可以监听每个Project的evaluate
+         */
+
+        /**
+         * beforeProject和afterProject可以监听每个Project的配置
+         */
+        g.beforeProject { // groovy 必包默认参数名也是it
+            log(TAG, "beforeProject:${it}")
+        }
+
+        g.afterProject {
+            log(TAG, "afterProject:${it}")
+        }
+
+        // 监听每个Project的配置阶段
+        g.addProjectEvaluationListener(new ProjectEvaluationListener() {
+            @Override
+            void beforeEvaluate(Project project) {
+                log(TAG, "beforeEvaluate:${project}")
+            }
+
+            @Override
+            void afterEvaluate(Project project, ProjectState projectState) {
+                log(TAG, "afterEvaluate:${project}")
+            }
+        })
+
+        g.addListener(new ProjectEvaluationListener() {
+            @Override
+            void beforeEvaluate(Project project) {
+                log(TAG, "addListener beforeEvaluate:${project}")
+            }
+
+            @Override
+            void afterEvaluate(Project project, ProjectState projectState) {
+                log(TAG, "addListener afterEvaluate:${project}")
+            }
+        })
+
+
+        // 所有的工程evaluated, 配置 阶段完成
+        g.projectsEvaluated {
+            log(TAG, "projectsEvaluated:${it}")
+        }
+
+
+
+
+        /**
+         * 任务
+         */
+        g.addListener(new TaskExecutionGraphListener() {
+
+            @Override
+            void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
+                log(TAG, "graphPopulated:${taskExecutionGraph}")
+
+                taskExecutionGraph.whenReady {
+                    log(TAG, "taskExecutionGraph.whenReady:${taskExecutionGraph}")
+                }
+
+                g.taskGraph.whenReady {
+                    log(TAG, "1 g.taskGraph.whenReady:${taskExecutionGraph}")
+
+                }
+
+
+                log(TAG, "isEqual:${g.taskGraph == taskExecutionGraph}")
+
+
+            }
+        })
+
+
+
+        g.taskGraph.whenReady {
+            log(TAG, "2 g.taskGraph.whenReady:$it")
+            TaskExecutionGraph taskGraph = it
+
+
+            /**
+             * 根据当前执行的Task生成Task的依赖图生成所有的Task
+             *
+             * 执行不同的gradle命令时，生成的task是不一样的
+             */
+
+            var allTasks = taskGraph.allTasks;
+            log(TAG, "allTaskSize:${allTasks.size()} allTask:$allTasks")
+
+
+
+            /**
+             * 到这里配置阶段完成，Task依赖图创建完成
+             */
+
+            allTasks.forEach(new Consumer<Task>() {
+                @Override
+                void accept(Task task) {
+                    log(TAG, "task:${task.project.name}.$task.name} , dep:${dependsOn(task)}, ${task.dependsOn}")
+                }
+            })
+
+
+            /**
+             * 监听每个Task的执行
+             */
+            taskGraph.addTaskExecutionListener(new TaskExecutionListener() {
+                @Override
+                void beforeExecute(Task task) {
+                    log(TAG, "beforeExcute:$task")
+
+                    DefaultTaskContainer t;
+                }
+
+                @Override
+                void afterExecute(Task task, TaskState taskState) {
+                    log(TAG, "afterExecute:$task")
+                }
+            })
+        }
+
+
+
+
+    }
+
+    private List<String> dependsOn(Task task) {
+        var deps = task.dependsOn
+        ArrayList<String> r = [];
+        deps.forEach(new Consumer<Object>() {
+            @Override
+            void accept(Object o) {
+                log(TAG, "o:${o.getClass()}")
+                if (o instanceof Task) {
+                    r.add("${o.project.name}.${o.name}");
+                }
+            }
+        });
+        return r;
+//        return deps.stream().map(new Function<Object, String>() {
+//            @Override
+//            String apply(Object o) {
+//                log(TAG, "o:${o.getClass()}")
+//                if (o instanceof Task) {
+//                    return "${o.project.name}.${o.name}"
+//                }
+//                return null
+//            }
+//        }).toArray().toList()
+    }
+
+
+}
+
+
+apply plugin: TestSettingPlugin
+
+
+
+
+
+
+

@@ -12,12 +12,16 @@ buildscript {
         jcenter()
         maven { url 'https://jitpack.io' }
 
-        maven {
-            url '/Users/xiaofanqing/Documents/localMavenRep'
-        }
+//        maven {
+//            url '/Users/xiaofanqing/Documents/localMavenRep'
+//        }
 
         maven {
             url 'https://mirrors.tencent.com/repository/maven/thirdparty/'
+        }
+
+        maven {
+            url 'repo'
         }
 
 //        // To download the required version of the Kotlin-Gradle plugin,
@@ -36,7 +40,9 @@ buildscript {
 
         classpath 'com.novoda:bintray-release:0.9.1'
 
-//        classpath 'com.test.plugin:ynplugin:1.0.0'
+
+        // 一个自定义的插件
+        classpath 'com.test.plugin:ynplugin:1.0.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -46,6 +52,8 @@ buildscript {
 }
 
 println("------- root project build --------")
+
+apply plugin: 'com.test_plugins.plugin_first'
 
 allprojects {
     repositories {

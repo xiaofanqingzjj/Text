@@ -4,6 +4,8 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 
 class StandAlonePlugin implements Plugin<Project> {
+
+
     void apply(Project project) {
         note()
 

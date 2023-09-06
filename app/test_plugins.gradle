@@ -1,0 +1,20 @@
+
+println("test_plugins...........")
+
+
+
+//class  Test2Plugin implements  Plugin<org.apache.maven.settings.Settings>
+
+/**
+ * 直接定义插件
+ */
+class TestPlugin implements Plugin<Project> {
+    @Override
+    void apply(Project project) {
+
+        println("TestPlugin apply project:$project")
+        //do something
+    }
+}
+
+apply plugin: TestPlugin

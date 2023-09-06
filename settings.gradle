@@ -11,137 +11,82 @@
 
 //System.out.println("\n\n--------- init Settings.gradle ---------\n\n")
 
-println("Config setting.gradle")
-
-/**
- * 添加某个目录下的所有子目录作为子工程
- */
-void includeDir(String dirName) {
-
-    println("rootDir:$rootDir")
-
-    dirName = "$rootDir/$dirName"
-
-    final File file = new File("$dirName")
-    println("includeDir:$dirName, ${file.exists()}, isDir:${file.isDirectory()}")
-    if (file.exists() && file.isDirectory()) {
-        final subs = file.list()
-
-        println("subs:$subs")
+buildscript {
 
 
-        ArrayList subProj = new ArrayList();
-        subs.each {
-            final subFile = new File("$dirName/$it")
-            if (subFile.isDirectory()) {
-                subProj.add(":$it")
-            }
+    println("------- setting project buildscript --------")
+
+
+    repositories {
+        maven {
+            url 'repo'
         }
-
-        println("sub:$subProj")
-
-        include subProj as String[]
-        subProj.each {
-//            def proj = project(it);
-//            println("proj:$proj")
-//            project(":a")
-            project(it as String).projectDir = new File("$dirName/${it.substring(1)}")
-        }
-
     }
+    dependencies {
+        // 一个自定义的插件
+        classpath 'com.test.plugin:ynplugin:1.0.0'
+    }
+}
 
-//    project(":aa")
+//includeBuild('buildSrc')
+
+
+println("-------------Config setting.gradle -------------")
+
+println("setting gradle:${gradle}");
+
+apply from: 'setting_plugins.gradle'
+
+
+final String TAG = "Settings";
+
+void log(String tag, String msg) {
+    println("$tag, $msg")
 }
 
 
-includeDir('components')
-includeDir("demos")
-includeDir("test-apt")
 
-includeDir("gradlePlugins")
-//
-//
-//
-//include ':app'
-
-
+//apply plugin: 'com.test_plugin.setting_ext'
 
 /**
- * 添加某个目录下的多个module
- * @param dirName
- * @param projects
+ * include某个目录下的所有目录
+ * @param dirName 目录名
+ * @param filter 过滤条件，如果为null，表示不过滤
  */
-void includes(String dirName, ArrayList<String> projects) {
-
-    println("projects:$projects")
-
-    include projects as String[]
-
-
-    projects.each {
-
+void includes(String dirName, Closure<Boolean> filter = null) {
+    ArrayList<String> ps = new ArrayList<>()
+    var dir = new File(dirName)
+    if (dir.isDirectory()) {
+        var files = dir.list()
+        if (files != null) {
+            files.each {
+                var file = new File("$dir/$it")
+                if (file.isDirectory()) {
+                    if (filter != null) {
+                        if (filter(it)) {
+                            ps.add(":$it")
+                        }
+                    } else {
+                        ps.add(":$it")
+                    }
+                }
+            }
+        }
+    }
+    include ps as String[]
+    ps.each {
         project(it).projectDir = new File("$dirName/${it.substring(1)}")
     }
 }
 
 
 
-println("------------ settings.gradle -------------")
-
-
+includes('components')
+includes("demos")
+includes("test-apt")
+includes("gradlePlugins")
 include ':app'
-
-//
-//
-//include ':treeservice'
-//
-//
-//
-//includes("components", [
-//        ":module_bedrock",
-//        ":module_tktx",
-//        ":module_widgets",
-//
-//        ":treeservice",
-//        ":treeservice-demo"
-//])
-//
-//
-//includes("demos", [
-//        ":testuserguide1",
-//        ":lottie",
-//        ":meterial-animations",
-//        ":test_gradle",
-//        ":testbookuserguide",
-//        ":testimsdk",
-//        ":testpermission",
-//        ":testpermission2",
-//        ":TestTransitionAnim",
-//
-//        ":lib_testJava"
-//])
-//
-//includes("test-apt", [":bindview-annotation", ":bindview-compiler",
-//                      ":test-apt-app", ":bindview-api",
-//                      ":lib_flutter_plugin_annotation"
-//])
-
-//include ':buildSrc'
-
-//include ':flutter_module3'
-//project(':flutter_module3').projectDir = new File('../../flutterWorkspace/flutter_module3')
-//
-//
-//setBinding(new Binding([gradle: this]))
-//evaluate(new File(
-//        settingsDir,
-//        '../../flutterWorkspace/flutter_module3/.android/include_flutter.groovy'
-//))
-
-//def proj = project(":lottie")
-//println("proj:$proj")
-
-ext {
-
-}
 include ':testyunguang'
+
+
+

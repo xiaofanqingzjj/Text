@@ -28,7 +28,7 @@ publishing {
     repositories {
         maven {
             // change to point to your repo, e.g. http://my.org/repo
-            url uri('/Users/xiaofanqing/Documents/localMavenRep')
+            url uri('../../repo')
         }
     }
 }
