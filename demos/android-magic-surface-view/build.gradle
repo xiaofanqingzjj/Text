@@ -3,6 +3,8 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 25
 
+    namespace 'com.gplibs.magicsurfaceview'
+
     defaultConfig {
         minSdkVersion 9
         versionCode 111

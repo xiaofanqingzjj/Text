@@ -7,6 +7,8 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compile_sdk_version
 
+    namespace 'com.gplibs.magic_surface_view_sample'
+
     defaultConfig {
         applicationId "com.lgvalle.material_animations"
         minSdkVersion min_sdk_version

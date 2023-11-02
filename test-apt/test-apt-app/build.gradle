@@ -5,6 +5,8 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
+
+    namespace 'com.mingwei.aptdemo'
     compileSdkVersion 33
 //
 //    defaultConfig {

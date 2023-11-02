@@ -10,6 +10,7 @@ android {
     compileSdkVersion compile_sdk_version
 
 
+    namespace 'com.bedrock.module_base'
 
     defaultConfig {
         minSdkVersion min_sdk_version

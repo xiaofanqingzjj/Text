@@ -38,6 +38,7 @@ println("app build gradle:${gradle}");
 
 android {
 
+    namespace 'com.example.test2'
 
 
     signingConfigs {
@@ -51,6 +52,7 @@ android {
 
     buildFeatures {
         compose true
+        aidl true
     }
 
     composeOptions {
@@ -92,11 +94,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
+        sourceCompatibility = 11
+        targetCompatibility = 11
     }
 
     ndkVersion "21.0.6113669"
+    namespace 'com.example.test'
 }
 
 dependencies {

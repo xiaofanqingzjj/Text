@@ -6,6 +6,7 @@ android {
     compileSdkVersion compile_sdk_version //Integer.parseInt(compile_sdk_version)
 
 
+    namespace 'com.example.testuserguid'
 
     defaultConfig {
         applicationId "com.example.testuserguid"

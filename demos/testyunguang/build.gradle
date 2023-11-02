@@ -6,6 +6,8 @@ plugins {
 android {
     compileSdk 33
 
+    namespace 'com.example.testyunguang'
+
     defaultConfig {
         applicationId "com.example.testyunguang"
         minSdk 22

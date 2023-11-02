@@ -6,6 +6,7 @@ android {
     compileSdkVersion compile_sdk_version
 
 
+    namespace 'com.tencent.widget'
 
     defaultConfig {
         minSdkVersion min_sdk_version

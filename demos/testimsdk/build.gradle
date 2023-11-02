@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion compile_sdk_version
 
-
+    namespace 'com.example.testimsdk'
 
     defaultConfig {
         applicationId "com.example.testimsdk"

@@ -8,6 +8,7 @@ android {
     compileSdkVersion compile_sdk_version
 
 
+    namespace 'com.example.testpermission2'
 
     defaultConfig {
         applicationId "com.example.testpermission2"

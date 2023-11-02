@@ -5,6 +5,8 @@ android {
   compileSdkVersion compile_sdk_version
   resourcePrefix 'lottie_'
 
+  namespace 'com.airbnb.lottie'
+
   defaultConfig {
     minSdkVersion min_sdk_version
     targetSdkVersion target_sdk_version

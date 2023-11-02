@@ -6,6 +6,8 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 android {
     compileSdkVersion compile_sdk_version
 
+    namespace 'com.gplibs.magic_surface_view_sample'
+
     defaultConfig {
         applicationId "com.gplibs.magic_surface_view_sample"
         minSdkVersion min_sdk_version

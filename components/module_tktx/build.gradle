@@ -7,6 +7,7 @@ apply from: "${rootDir}/public2jcenter.gradle"
 android {
     compileSdkVersion compile_sdk_version
 
+    namespace 'com.fortunexiao.tktx'
 
     defaultConfig {
         minSdkVersion min_sdk_version

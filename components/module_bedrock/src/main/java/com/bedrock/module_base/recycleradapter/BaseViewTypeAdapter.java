@@ -276,16 +276,22 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
 
         Class<? extends ViewTypeViewHolder> viewHolderClazz = mItems.get(viewType);
 
-        if (viewHolderClazz == null) {
-            viewHolderClazz = EmptyViewHolder.class;
+        ViewTypeViewHolder holder;
+        if (viewHolderClazz != null) {
+//            viewHolderClazz = EmptyViewHolder.class;
+            try {
+                holder = viewHolderClazz.newInstance();
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (InstantiationException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            holder = new EmptyViewHolder();
         }
 
-        ViewTypeViewHolder holder;
-        try {
-            holder = viewHolderClazz.newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
+
 
         onViewHolderInstance(holder);
 
@@ -932,24 +938,5 @@ public class BaseViewTypeAdapter<T> extends RecyclerView.Adapter {
         int getViewType();
     }
 
-    /**
-     * 当数据源返回一个没有配置的ViewType的时候，该Item隐藏
-     *
-     * PS:这个类还不能设置成private，因为通过Class.newInstance来创建对象
-     */
-    public final static class EmptyViewHolder<T> extends ViewTypeViewHolder<T> {
 
-        @Override
-        protected void onCreate() {
-            super.onCreate();
-            View emptyView = new View(getContext());
-            emptyView.setLayoutParams(new RecyclerView.LayoutParams(1, 0));
-            setContentView(emptyView);
-        }
-
-        @Override
-        public void bindData(int position, T data) {
-            // do nothing
-        }
-    }
 }

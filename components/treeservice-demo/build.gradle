@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+
+    namespace 'com.tencent.bible.ts.demo'
+
     compileSdkVersion 29
     defaultConfig {
         minSdkVersion 21
@@ -17,6 +20,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        aidl true
     }
 }
 

@@ -4,6 +4,8 @@ android {
     compileSdkVersion 28
     buildToolsVersion "23.0.3"
 
+    namespace 'com.mingwei.japapi'
+
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 28
