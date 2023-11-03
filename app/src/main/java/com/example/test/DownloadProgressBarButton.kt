@@ -8,6 +8,7 @@ import android.text.style.TextAppearanceSpan
 import android.util.*
 import android.view.View
 import com.fortunexiao.tktx.platforms.dp2px
+import com.tencent.gamehelper.flutter_plugin.annotation.FlutterPlugin
 
 
 /**
@@ -17,6 +18,7 @@ import com.fortunexiao.tktx.platforms.dp2px
  *
  * @author fortunexiao
  */
+@FlutterPlugin("test2")
 class DownloadProgressBarButton  @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
 
 

@@ -32,6 +32,12 @@ class RSymbols() {
         fun collectAllRFiles(inputs: Collection<TransformInput>): RSymbols {
             val symbols = RSymbols()
 
+//            inputs.map {
+//                it.directoryInputs
+//            }.flatMap {
+//                it.in
+//            }
+
             val paths = inputs.stream()
                     // 所有依赖的包都会在主工程下生成一个对应的R文件
                     .map {

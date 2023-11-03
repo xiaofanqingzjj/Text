@@ -1,15 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion compile_sdk_version
 
     namespace 'com.gplibs.magicsurfaceview'
 
-    defaultConfig {
-        minSdkVersion 9
-        versionCode 111
-        versionName "1.1.1"
-    }
     buildTypes {
         release {
             minifyEnabled false

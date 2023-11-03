@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.*
 import android.view.View
+import com.tencent.gamehelper.flutter_plugin.annotation.FlutterPlugin
 
 
 /**
@@ -13,6 +14,7 @@ import android.view.View
  *
  * @author fortunexiao
  */
+@FlutterPlugin("test")
 class DownloadButtom(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
 
 

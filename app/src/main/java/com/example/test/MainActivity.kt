@@ -40,10 +40,12 @@ import com.example.test.testlottie.TestLottieFragment
 import com.example.test.webview.WebViewFragmentSytem
 import com.example.test.xlog.XLogInitor
 import com.tencent.common.log.TLog
+import com.tencent.gamehelper.flutter_plugin.annotation.FlutterPlugin
 
 //import android.animation.AnimationHandl
 
 
+@FlutterPlugin("test3")
 class MainActivity : MenuActivity() {
 
     companion object {

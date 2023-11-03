@@ -1,11 +1,9 @@
-package com.tencent.gamehelper.flutter_plugin.apt;
+package com.tencent.nativechannel.processor;
 
 
 import com.google.auto.service.AutoService;
-import com.tencent.gamehelper.flutter_plugin.annotation.FlutterPlugin;
+import com.tencent.nativechannel.annotation.FlutterPlugin;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -20,25 +18,19 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 
 
-/**
- * 注解处理器
- */
 @AutoService(Processor.class)
 public class MyAnnotationProcessor extends AbstractProcessor {
 
-    static  final  String TAG = "MyAnnotationProcessor";
+    static  final  String TAG = "BindViewProcessor";
 
     /**
      * 文件相关的辅助类
-     * 用来写入文件
      */
     private Filer mFiler;
-
     /**
      * 元素相关的辅助类
      */
     private Elements mElementUtils;
-
     /**
      * 日志相关的辅助类
      */
@@ -53,7 +45,9 @@ public class MyAnnotationProcessor extends AbstractProcessor {
         mMessager = processingEnv.getMessager();
         mFiler = processingEnv.getFiler();
 
-        System.out.println("APT --------------------------------------------" + TAG + ": init --------------------------------------------------");
+        System.out.println("APT ------------------------" + TAG + ": init ----------------------------");
+        System.out.println("APT ------------------------" + TAG + ": init ----------------------------");
+        System.out.println("APT ------------------------" + TAG + ": init ----------------------------");
     }
 
     @Override
@@ -69,14 +63,9 @@ public class MyAnnotationProcessor extends AbstractProcessor {
     }
 
 
-    /**
-     * @param annotations 要处理的
-     * @param roundEnv
-     * @return
-     */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        System.out.println(TAG + ": process, annotations:" + annotations);
+        System.out.println(TAG + "APT-------- : process, annotations size:" + annotations);
         FlutterPluginAnnotationHandler.handle(roundEnv, mFiler, mElementUtils, mMessager);
         return true;
     }
