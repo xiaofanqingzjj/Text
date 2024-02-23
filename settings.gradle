@@ -83,7 +83,7 @@ void includes(String dirName, Closure<Boolean> filter = null) {
 
 includes('components')
 includes("demos")
-includes("test-apt")
+//includes("test-apt")
 includes("gradlePlugins")
 include ':app'
 include ':testyunguang'

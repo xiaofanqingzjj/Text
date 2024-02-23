@@ -1,0 +1,47 @@
+dependencies {
+    // 引入replay核心包
+    api ("com.tencent.qa:galileo_replay_core:$replay_version") {
+        exclude group : 'com.fasterxml.jackson.core', module: 'jackson-annotations'
+    }
+    // 加入kotlin依赖
+    api "org.jetbrains.kotlin:kotlin-stdlib:1.3.71"
+}
+
+apply plugin: 'com.tencent.qa.iomock'
+
+IoMock {
+//1.插桩配置（配置类名）
+//需要mock类--白名单TransformIncludeClazz
+    /*mapData = [TransformIncludeClazz: ['com.tencent.test.iomock.SecondsActivity',
+                                       'com.tencent.test.iomock.DataCacheManager',
+                                       'com.tencent.qqlive.apputils.FileUtil'],
+               MethodInjectMsg : ['com/tencent/test/iomock/SecondsActivity dealString * * com/tencent/test/iomock/SecondsActivity findViewTree ()V']
+    ]*/
+//如何找到需要配置的类：
+//sp：找到context.getSharedPreferences所在的类
+//db：找到SQLiteDatabase.query/rawQuery所在的类
+//file：找到new FileInputStream，或者父类为FileInputStream，BitmapFactory.decodeFile所在的类
+//time：找到System.currentTimeMillis/nanoTime，Date.getTime，Calendar.getInstance所在的类
+//
+//2.IoMock初始化配置
+//sp：支持过滤不mock的key,默认mock已配置类的sp所有key   addBlackSpMocks
+//db：支持仅mock某张表,默认mock已配置类的db所有表    addWhiteDbTable
+//file：支持不mock某些文件(匹配前面路径即可),默认mock已配置类的file所有路径  addBlackFileMocks
+//time：需要添加调用时间的方法的白名单，特殊的，如果需要mockCalendar,则需要配置其getTime或者get所在的调用方法
+//如下：
+//IoMockConfig.get()
+//             .addWhiteDbTable("likeFeedType")//mock数据库表名
+//             .addBlackFileMocks("/sdcard/Android/data/com.tencent")//不mock此文件夹
+//             .addBlackSpMocks("testMock")//不mockSp的key
+//             .addWhiteTimeMethods("<clinit>")//类初始化方法
+//             .addWhiteTimeMethods("onClick")//onClick方法内需要mockTime
+//
+//3.方法前插桩（不需要用到可跳过）
+//MethodInjectMsg为方法前插桩关键字，下面例子为：
+//在SecondsActivity的dealString方法前插入SecondsActivity.findViewTree(),其中
+//第三个值为方法签名，存在多个同名方法的时候需要指定，只有一个则可用*代替
+//第四个值为需要使用的被插方法参数，参数从1开始，实例类参数1为this，静态方法1即为第一个参数，举例
+//假如需要使用到静态方法dealString的第一个和第二个参数，则第四个值为1，2
+//假如需要使用到实例方法dealString的第一个和第二个参数，则第四个值为2，3
+//不需要用到参数则可用*代替
+}

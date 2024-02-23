@@ -1,14 +1,24 @@
 package com.example.test
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.Rect
+import android.graphics.RectF
 import android.os.Build
-import android.text.*
+import android.text.Layout
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.StaticLayout
+import android.text.TextPaint
 import android.text.style.TextAppearanceSpan
-import android.util.*
+import android.util.AttributeSet
+import android.util.Log
+import android.util.Property
 import android.view.View
 import com.fortunexiao.tktx.platforms.dp2px
-import com.tencent.gamehelper.flutter_plugin.annotation.FlutterPlugin
 
 
 /**
@@ -18,7 +28,6 @@ import com.tencent.gamehelper.flutter_plugin.annotation.FlutterPlugin
  *
  * @author fortunexiao
  */
-@FlutterPlugin("test2")
 class DownloadProgressBarButton  @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
 
 

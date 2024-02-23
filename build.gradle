@@ -7,32 +7,49 @@ buildscript {
 
     ext.kotlin_version = '1.4.32'
 
-    repositories {
-        google()
-        jcenter()
-        maven { url 'https://jitpack.io' }
+    // 录制回放
+    apply from: project.rootDir.getAbsolutePath() + "/replay/replay_constant.gradle"
 
-//        maven {
-//            url '/Users/xiaofanqing/Documents/localMavenRep'
-//        }
+    repositories {
+
+        maven {
+            url project.TENCENT_MAVEN_PUBLIC
+        }
+
+        maven {
+            url project.TENCENT_MAVEN_MIRROR
+        }
+        maven {
+            url project.TENCENT_MAVEN_THIRD_PARTY
+        }
+        maven {
+            url project.TENCENT_MAVEN_SNAPSHOT
+        }
+
+
+        google()
+
+        maven { url 'https://jitpack.io' }
 
         maven {
             url 'https://mirrors.tencent.com/repository/maven/thirdparty/'
         }
 
+
         maven {
             url 'repo'
         }
 
-//        // To download the required version of the Kotlin-Gradle plugin,
-//        // add the following repository.
-//        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
     dependencies {
 
+        // 录制回放
+        if(enable_replay) {
+            classpath "com.tencent.qa.iomock:galileo_aop_iomock:$replay_version"
+        }
 
 //        classpath 'com.android.tools.build:gradle:4.0.2'
-        classpath 'com.android.tools.build:gradle:8.1.2'
+        classpath 'com.android.tools.build:gradle:7.0.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10" // 这里要引入kotlin插件
 
 
@@ -57,6 +74,21 @@ apply plugin: 'com.test_plugins.plugin_first'
 
 allprojects {
     repositories {
+
+        maven {
+            url project.TENCENT_MAVEN_PUBLIC
+        }
+
+        maven {
+            url project.TENCENT_MAVEN_MIRROR
+        }
+        maven {
+            url project.TENCENT_MAVEN_THIRD_PARTY
+        }
+        maven {
+            url project.TENCENT_MAVEN_SNAPSHOT
+        }
+
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
@@ -82,8 +114,8 @@ ext {
     permission_version = "3.2.0"
 
     compile_sdk_version = 33
-    target_sdk_version = 33
-    min_sdk_version = 22
+    target_sdk_version = 30
+    min_sdk_version = 21
 
 //    build_tools_version = ""
     support_version = "27.0.2"

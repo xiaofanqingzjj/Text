@@ -14,7 +14,6 @@ import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.test.alarm.TestAlarm
 import com.example.test.anim.AnimationHandler
 import com.example.test.bookranklist.BookRankingFragment
-import com.example.test.transition.TestTransitionActivity
 import com.example.test.card.CardViewActivity
 import com.example.test.contentprovider.TestContentProvider
 import com.example.test.coroutine.TestCoroutine
@@ -37,15 +36,13 @@ import com.example.test.testattrs.TestAttributes
 import com.example.test.testconstraint.TestConstraintLayout
 import com.example.test.testj2v8.TestJ2V8
 import com.example.test.testlottie.TestLottieFragment
+import com.example.test.transition.TestTransitionActivity
 import com.example.test.webview.WebViewFragmentSytem
 import com.example.test.xlog.XLogInitor
-import com.tencent.common.log.TLog
-import com.tencent.gamehelper.flutter_plugin.annotation.FlutterPlugin
 
 //import android.animation.AnimationHandl
 
 
-@FlutterPlugin("test3")
 class MainActivity : MenuActivity() {
 
     companion object {

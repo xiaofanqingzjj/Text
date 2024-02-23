@@ -8,6 +8,7 @@ import com.squareup.leakcanary.LeakCanary
 import com.tencent.common.log.TLog
 import com.tencent.mars.xlog.Log
 import com.tencent.mars.xlog.Xlog
+import com.tencent.qa.RecordReplayManager
 
 class MyApplication : Application() {
 
@@ -21,14 +22,17 @@ class MyApplication : Application() {
 
         Log.d(TAG, "onCreate")
 
-//        initXlog()
+        //初始化工作应该和业务的启动初始化放在一起，这里在测试的工程中放这里
+//        RecordReplayManager.getInstance().init();
 
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your context in this process.
-            return;
-        }
+//        initXlog()
 //
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            // This process is dedicated to LeakCanary for heap analysis.
+//            // You should not init your context in this process.
+//            return;
+//        }
+////
 //        LeakCanary.refWatcher(this)
 //                .listenerServiceClass()
 //                .buildAndInstall()

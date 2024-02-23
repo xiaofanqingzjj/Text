@@ -1,0 +1,38 @@
+// 如果本地配置replay相关参数应该配置到local.properties
+// 如果流水线配置replay相关参数应该配置到环境变量
+project.ext {
+    // 是否开启replay
+    enable_replay = getParam("enableReplay", false).toBoolean()
+    // 是否开启replay覆盖率
+    enable_replay_coverage = getParam("enableReplayCoverage", false).toBoolean()
+    // 获取replay版本（未配置取最新）
+    replay_version = getParam("replayVersion", "1.0.1+")
+    println "*** enable_replay is $enable_replay ***"
+    if (enable_replay) {
+        println "*** enable_replay_coverage is $enable_replay_coverage ***"
+        println "*** replay_version is $replay_version ***"
+    }
+}
+
+def getParam(key, defaultValue) {
+    // (1)get from gradle.properties file
+    if (project.hasProperty(key)) {
+        return project.property(key)
+    }
+    // (2)get from local.properties file
+    File localFile = file('local.properties')
+    if (!localFile.exists()) {
+        localFile = file('../local.properties')
+    }
+    if (localFile.exists()) {
+        InputStream inputStream = localFile.newDataInputStream();
+        Properties localProperties = new Properties()
+        localProperties.load(inputStream)
+        if (localProperties.containsKey(key)) {
+            return localProperties.getProperty(key)
+        }
+    }
+
+    // (3)get from system
+    return System.getenv(key) != null ? System.getenv(key) : defaultValue
+}
