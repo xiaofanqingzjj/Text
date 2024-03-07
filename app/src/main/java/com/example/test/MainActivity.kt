@@ -13,6 +13,7 @@ import com.bedrock.module_base.MenuActivity
 import com.bedrock.permissionrequestor.PermissionsRequestor
 import com.example.test.alarm.TestAlarm
 import com.example.test.anim.AnimationHandler
+import com.example.test.aop.TimeConsume
 import com.example.test.bookranklist.BookRankingFragment
 import com.example.test.card.CardViewActivity
 import com.example.test.contentprovider.TestContentProvider
@@ -40,7 +41,6 @@ import com.example.test.transition.TestTransitionActivity
 import com.example.test.webview.WebViewFragmentSytem
 import com.example.test.xlog.XLogInitor
 
-//import android.animation.AnimationHandl
 
 
 class MainActivity : MenuActivity() {

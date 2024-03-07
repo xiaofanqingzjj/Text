@@ -48,23 +48,20 @@ buildscript {
             classpath "com.tencent.qa.iomock:galileo_aop_iomock:$replay_version"
         }
 
-//        classpath 'com.android.tools.build:gradle:4.0.2'
         classpath 'com.android.tools.build:gradle:7.0.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10" // 这里要引入kotlin插件
 
-
         classpath 'net.yrom:shrinker:0.2.9'
-
         classpath 'com.novoda:bintray-release:0.9.1'
 
 
         // 一个自定义的插件
         classpath 'com.test.plugin:ynplugin:1.0.0'
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-
-
+        // aspectjx
+//        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
+//        classpath 'com.github.franticn:gradle_plugin_android_aspectjx:2.0.6'
+        classpath 'com.tencent.qa:galileo_aop:8.1.0.927-SNAPSHOT'
     }
 }
 
@@ -101,10 +98,6 @@ allprojects {
     }
 }
 
-//task test() {
-//    println p1
-//    println p2
-//}
 
 task clean(type: Delete) {
     delete rootProject.buildDir
@@ -117,10 +110,7 @@ ext {
     target_sdk_version = 30
     min_sdk_version = 21
 
-//    build_tools_version = ""
     support_version = "27.0.2"
 
     androidx_version = "1.1.0"
-
-
 }

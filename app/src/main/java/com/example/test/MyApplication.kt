@@ -1,14 +1,10 @@
 package com.example.test
 
 import android.app.Application
-import android.content.Context
 import android.os.Environment
-import com.example.test.xlog.XLogInitor
-import com.squareup.leakcanary.LeakCanary
 import com.tencent.common.log.TLog
 import com.tencent.mars.xlog.Log
 import com.tencent.mars.xlog.Xlog
-import com.tencent.qa.RecordReplayManager
 
 class MyApplication : Application() {
 

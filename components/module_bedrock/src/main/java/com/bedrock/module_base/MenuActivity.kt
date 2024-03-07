@@ -3,12 +3,11 @@ package com.bedrock.module_base
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bedrock.module_base.recycleradapter.quickAdapter
-import kotlinx.android.synthetic.main.activity_menu.*
+import kotlinx.android.synthetic.main.activity_menu.recycler_view
 
 
 /**
@@ -33,10 +32,6 @@ open class MenuActivity: AppCompatActivity() {
                         (data as? Menu)?.let {menu->
                             val textView = findViewById<TextView>(android.R.id.text1)
                             textView.text = menu.name
-
-//                            setOnClickListener(View.OnClickListener {
-//                                click?.invoke()
-//                            })
                             setOnClickListener {
                                 menu.click?.invoke()
                             }
