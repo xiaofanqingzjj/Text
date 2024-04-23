@@ -6,8 +6,12 @@ apply plugin: 'kotlin-kapt'
 
 apply from: 'test_plugins.gradle'
 
+
+// 一个测试的Plugin
+//apply plugin: com.tencent.myplugins.MyPlugin
+
  //aspectjx
-apply plugin: 'android-aspectjx'
+//apply plugin: 'android-aspectjx'
 
 if(enable_replay) {
     apply from: project.rootDir.getAbsolutePath() + "/replay/replay_deps.gradle"
@@ -27,16 +31,6 @@ android {
             }
         }
 
-    }
-
-    aspectjx {
-        enabled true
-        include 'com.example.test.alarm'
-        exclude 'versions.9'
-        exclude 'com.google.firebase','com.google.android'
-        exclude 'androidx','kotlin','com.google','com.squareup','com.alipay','org.apache'
-//        includeJarFilter 'universal-image-loader', 'AspectJX-Demo/library'
-        exclude '.jar'
     }
 
 
