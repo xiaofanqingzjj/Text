@@ -28,6 +28,7 @@ import com.example.test.layout.TestLayoutFragment
 import com.example.test.movementmethod.TestMoveMethod
 import com.example.test.record.TestAudioPlay
 import com.example.test.record.TestRecord
+import com.example.test.record.TestVideoPlay
 import com.example.test.shortcut.ShortcutUtil
 import com.example.test.slidedrawer.TestSlideMenu
 import com.example.test.test_float_comment.CommentListFragment
@@ -72,6 +73,8 @@ class MainActivity : MenuActivity() {
         addMenu("CommentList") {
             SheetDialogFragment.show(this, CommentListFragment());
         }
+
+        addMenuByFragment("VideoPlayer", TestVideoPlay::class.java)
 
         addMenu("TLog") {
 //            TLog.d(TAG, "test TLog")
